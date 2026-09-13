@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Token sheet — 365 ID practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --graphite:#22201D;
+  --paper:#F5F2EC;
+  --marker-grey:#D8D3C8;
+  --foam:#62A8B8;
+  --foam-deep:#2E6B7C;
+  --cinnabar:#C25A28;
+
+  --rule: rgba(34,32,29,.16);
+  --rule-strong: rgba(34,32,29,.38);
+  --ink-2: rgba(34,32,29,.62);
+  --ink-3: rgba(34,32,29,.42);
+
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --text:"Instrument Sans",-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--graphite);
+  font-family:var(--text);font-size:15px;line-height:1.55;
+  font-feature-settings:"ss01";
+}
+.page{max-width:920px;margin:0 auto;padding:56px 24px 120px}
+
+/* ── journal margin rule ───────────────────────────── */
+.sheet{position:relative;padding-left:104px}
+.sheet::before{
+  content:"";position:absolute;left:80px;top:0;bottom:0;
+  width:1px;background:var(--rule);
+}
+.hang{
+  position:absolute;left:0;width:72px;text-align:right;
+  font-family:var(--display);font-size:11px;letter-spacing:.02em;
+  color:var(--ink-3);font-variant-numeric:tabular-nums;padding-top:3px;
+}
+
+h1{font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:-.015em;margin:0 0 4px}
+.sub{color:var(--ink-2);font-size:14px;margin:0 0 44px;max-width:52ch}
+h2{
+  font-family:var(--display);font-weight:600;font-size:13px;
+  letter-spacing:.01em;margin:0 0 20px;padding-bottom:7px;
+  border-bottom:1px solid var(--rule-strong);
+}
+section{margin-bottom:64px}
+p{margin:0 0 12px;max-width:60ch}
+.note{color:var(--ink-2);font-size:13.5px;max-width:60ch}
+em.marg{font-family:var(--text);font-style:italic;font-size:13px;color:var(--ink-2)}
+
+/* ── palette ───────────────────────────────────────── */
+.pal{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule-strong);border:1px solid var(--rule-strong)}
+@media (min-width:560px){.pal{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:820px){.pal{grid-template-columns:repeat(6,1fr)}}
+.chip{background:var(--paper);padding:0}
+.chip .fill{height:104px;display:block}
+.chip .meta{padding:10px 11px 13px}
+.chip .name{font-family:var(--display);font-weight:600;font-size:12.5px}
+.chip .hex{font-family:var(--display);font-variant-numeric:tabular-nums;font-size:11.5px;color:var(--ink-3);letter-spacing:.03em}
+.chip .role{font-size:11.5px;color:var(--ink-2);line-height:1.4;margin-top:6px}
+
+/* ── completion scale ──────────────────────────────── */
+.scale{display:flex;gap:1px;background:var(--rule-strong);border:1px solid var(--rule-strong);width:max-content}
+.scale div{width:76px;height:60px;background:var(--paper);position:relative}
+.scale span{position:absolute;left:0;right:0;bottom:-26px;text-align:center;font-size:11px;color:var(--ink-3);font-family:var(--display)}
+.s0{background:color-mix(in srgb,var(--foam) 11%,var(--paper))!important}
+.s1{background:color-mix(in srgb,var(--foam) 45%,var(--paper))!important}
+.s2{background:var(--foam-deep)!important}
+.s3{background:var(--marker-grey)!important}
+.s4{background:var(--paper)!important}
+.s5{background:var(--cinnabar)!important}
+
+/* ── type ──────────────────────────────────────────── */
+.counter{font-family:var(--display);font-weight:700;font-size:78px;line-height:.92;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.counter small{font-family:var(--display);font-weight:500;font-size:17px;letter-spacing:.01em;color:var(--ink-3);display:block;margin-top:8px}
+.tspec{border-top:1px solid var(--rule);padding:14px 0;display:grid;grid-template-columns:132px 1fr;gap:20px;align-items:baseline}
+.tspec .lbl{font-size:11px;color:var(--ink-3);font-family:var(--display);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.t-h{font-family:var(--display);font-weight:600;font-size:21px;letter-spacing:-.01em}
+.t-body{font-size:15px}
+.t-small{font-size:12.5px;color:var(--ink-2)}
+.t-num{font-family:var(--display);font-weight:500;font-size:15px;font-variant-numeric:tabular-nums}
+
+/* ── heatmap drawer ────────────────────────────────── */
+.drawer{background:var(--rule-strong);border:1px solid var(--rule-strong);display:inline-block;max-width:100%;overflow-x:auto}
+.grid{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,14px);gap:1px}
+.c{width:14px;height:14px;background:color-mix(in srgb,var(--foam) 11%,var(--paper));position:relative}
+.c.min{background:color-mix(in srgb,var(--foam) 45%,var(--paper))}
+.c.full{background:var(--foam-deep)}
+.c.skip{background:var(--marker-grey)}
+.c.rest{background:var(--paper)}
+.c.bench{background:var(--cinnabar)}
+.c.photo::after{content:"";position:absolute;right:2px;bottom:2px;width:3px;height:3px;background:var(--paper);opacity:.9}
+.c.rest.photo::after,.c.min.photo::after{background:var(--graphite);opacity:.45}
+.legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px;font-size:12px;color:var(--ink-2)}
+.legend i{display:inline-block;width:11px;height:11px;margin-right:7px;vertical-align:-1px;border:1px solid var(--rule-strong)}
+
+/* ── today fragment ────────────────────────────────── */
+.today{border-top:1px solid var(--rule-strong);padding-top:22px}
+.qmark{font-style:italic;font-size:14.5px;color:var(--ink-2);border-left:2px solid var(--cinnabar);padding-left:13px;margin:20px 0 24px;max-width:48ch}
+.btns{display:flex;gap:1px;background:var(--rule-strong);border:1px solid var(--rule-strong);width:max-content;max-width:100%;flex-wrap:wrap}
+button{
+  font:inherit;font-size:13.5px;border:0;background:var(--paper);color:var(--graphite);
+  padding:11px 17px;cursor:pointer;border-radius:0;font-family:var(--display);font-weight:500;
+  transition:background 120ms linear,color 120ms linear;
+}
+button:hover{background:color-mix(in srgb,var(--foam) 16%,var(--paper))}
+button.primary{background:var(--foam-deep);color:var(--paper)}
+button.primary:hover{background:color-mix(in srgb,var(--foam-deep) 88%,#000)}
+button:focus-visible{outline:2px solid var(--graphite);outline-offset:2px}
+.meta-row{display:flex;gap:26px;font-size:12px;color:var(--ink-3);font-family:var(--display);font-variant-numeric:tabular-nums;margin-top:16px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media (max-width:640px){.sheet{padding-left:0}.sheet::before{display:none}.hang{position:static;width:auto;text-align:left;margin-bottom:6px}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<h1>Token sheet</h1>
+<p class="sub">Six colours, two typefaces, one motion. Everything below is the real CSS the app would ship — no mockup shortcuts.</p>
+
+<section class="sheet">
+  <span class="hang">01</span>
+  <h2>Palette</h2>
+  <div class="pal">
+    <div class="chip"><span class="fill" style="background:#22201D"></span><div class="meta"><div class="name">graphite</div><div class="hex">#22201D</div><div class="role">All text, hairlines, the darkest ink.</div></div></div>
+    <div class="chip"><span class="fill" style="background:#F5F2EC;box-shadow:inset 0 0 0 1px rgba(34,32,29,.14)"></span><div class="meta"><div class="name">paper</div><div class="hex">#F5F2EC</div><div class="role">Warm marker-paper ground.</div></div></div>
+    <div class="chip"><span class="fill" style="background:#D8D3C8"></span><div class="meta"><div class="name">marker&#8209;grey</div><div class="hex">#D8D3C8</div><div class="role">Drawer dividers, skipped days.</div></div></div>
+    <div class="chip"><span class="fill" style="background:#62A8B8"></span><div class="meta"><div class="name">foam</div><div class="hex">#62A8B8</div><div class="role">Blue modelling foam. Minimum done.</div></div></div>
+    <div class="chip"><span class="fill" style="background:#2E6B7C"></span><div class="meta"><div class="name">foam&#8209;deep</div><div class="hex">#2E6B7C</div><div class="role">Worked foam. Full day, primary action.</div></div></div>
+    <div class="chip"><span class="fill" style="background:#C25A28"></span><div class="meta"><div class="name">cinnabar</div><div class="hex">#C25A28</div><div class="role">The found colour. Benchmarks and discoveries only.</div></div></div>
+  </div>
+  <p class="note" style="margin-top:20px">Cinnabar should appear under ten times in a year. It is never on a button, never on a heading, never twice on one screen.</p>
+</section>
+
+<section class="sheet">
+  <span class="hang">02</span>
+  <h2>Completion reads as foam being worked</h2>
+  <div class="scale" style="margin-bottom:38px">
+    <div class="s0"><span>untouched</span></div>
+    <div class="s1"><span>minimum</span></div>
+    <div class="s2"><span>full</span></div>
+    <div class="s3"><span>skipped</span></div>
+    <div class="s4"><span>rest</span></div>
+    <div class="s5"><span>benchmark</span></div>
+  </div>
+  <p class="note">One hue carries the entire completion axis. Skipped is grey, not red — it is absence of work, not failure. Rest is bare paper: nothing happened and nothing was supposed to.</p>
+</section>
+
+<section class="sheet">
+  <span class="hang">03</span>
+  <h2>Typography</h2>
+  <div class="counter">247<small>days recorded &middot; 118 remaining</small></div>
+  <p class="note" style="margin:26px 0 30px">Archivo over Inter for one reason: the numerals. Squared terminals, true tabular figures, and they hold at 78px and at 11px without turning to mush. Day counts are the most-read elements in this app.</p>
+  <div class="tspec"><div class="lbl">Archivo 600 / 21</div><div class="t-h">Boxes freehand, two-point</div></div>
+  <div class="tspec"><div class="lbl">Instrument 400 / 15</div><div class="t-body">Fill one page with boxes rotating through orientations. No rulers. Extend the back edges past the corner and let them cross &mdash; you want to see where the form actually goes.</div></div>
+  <div class="tspec"><div class="lbl">Archivo 500 / 15 tnum</div><div class="t-num">25 min &middot; day 034 &middot; phase 1 &middot; 0123456789</div></div>
+  <div class="tspec"><div class="lbl">Instrument 400 / 12.5</div><div class="t-small">Robertson, <em>How to Draw</em> &mdash; ch. 3</div></div>
+  <div class="tspec"><div class="lbl">Instrument italic</div><div><em class="marg">Second page went faster. Still hedging the far vertical.</em></div></div>
+  <p class="note" style="margin-top:26px">No handwriting face. Marginalia is Instrument Sans italic, hung in the margin against the rule &mdash; a marker font is exactly the tell we are trying to avoid.</p>
+</section>
+
+<section class="sheet">
+  <span class="hang">04</span>
+  <h2>The drawer &mdash; 365 cells</h2>
+  <div class="drawer"><div class="grid" id="hm"></div></div>
+  <div class="legend">
+    <span><i style="background:color-mix(in srgb,#62A8B8 11%,#F5F2EC)"></i>untouched</span>
+    <span><i style="background:color-mix(in srgb,#62A8B8 45%,#F5F2EC)"></i>minimum</span>
+    <span><i style="background:#2E6B7C"></i>full</span>
+    <span><i style="background:#D8D3C8"></i>skipped</span>
+    <span><i style="background:#F5F2EC"></i>rest</span>
+    <span><i style="background:#C25A28"></i>benchmark</span>
+  </div>
+  <p class="note" style="margin-top:20px">14px cells, 1px gaps, the divider colour showing through as grout. No rounded corners, no shadow, no month labels crowding the top. A small notch marks a cell that holds a photo. Shown here at a plausible day 247.</p>
+</section>
+
+<section class="sheet">
+  <span class="hang">05</span>
+  <h2>Sheet layout &mdash; Today</h2>
+  <div class="today">
+    <div style="font-family:var(--display);font-size:11px;color:var(--ink-3);letter-spacing:.02em">PHASE 4 &middot; PROCESS AND CAD</div>
+    <div style="font-family:var(--display);font-weight:600;font-size:23px;letter-spacing:-.012em;margin:10px 0 2px">Ideation volume &mdash; forced connection</div>
+    <div class="t-small" style="margin-bottom:16px">sketch &middot; 25 min &middot; Universal Methods of Design</div>
+    <p style="font-size:15px">Warm up: one page of straight lines, one page of ellipses on varying minor axes. Then take the object on your desk and the last tool you used, and draw six concepts that could only exist if those two things had to share a housing.</p>
+    <p class="qmark">What happens if you draw it wrong on purpose?</p>
+    <div class="btns">
+      <button class="primary">Done</button>
+      <button>Minimum done</button>
+      <button>Not this one today</button>
+      <button>Skip</button>
+    </div>
+    <div class="meta-row"><span>grace 2 of 2</span><span>swaps 1 of 2 this week</span><span>last export 11 days ago</span></div>
+  </div>
+  <p class="note" style="margin-top:26px">Separation by hairline and ground tint only. Radius caps at 2px &mdash; the only round things in this app are the ellipses being drawn. The status row is plain and quiet; the question is where the character lives.</p>
+</section>
+
+<section class="sheet">
+  <span class="hang">06</span>
+  <h2>Motion</h2>
+  <p>One move in the entire app: a heatmap cell filling when a day is marked complete. 180ms, ease-out, no overshoot, no scale. <button id="demo" style="border:1px solid var(--rule-strong);margin-left:6px">Mark it</button></p>
+  <div class="drawer" style="margin-top:18px"><div class="grid" style="grid-template-rows:repeat(1,28px)">
+    <div class="c full" style="width:28px;height:28px"></div>
+    <div class="c min" style="width:28px;height:28px"></div>
+    <div class="c full" style="width:28px;height:28px"></div>
+    <div class="c" id="target" style="width:28px;height:28px;transition:background 180ms cubic-bezier(.2,.7,.35,1)"></div>
+    <div class="c" style="width:28px;height:28px"></div>
+    <div class="c" style="width:28px;height:28px"></div>
+  </div></div>
+</section>
+
+</div>
+<script>
+(function(){
+  const g=document.getElementById('hm');
+  // plausible year at day 247: strong start, a two-week gap around day 130, minimums clustering late
+  let s=20250101;
+  const rnd=()=>(s=(s*1103515245+12345)%2147483648)/2147483648;
+  for(let d=1;d<=365;d++){
+    const el=document.createElement('div');
+    el.className='c';
+    const dow=(d+3)%7; // make day 1 a Thursday-ish
+    if(d<=247){
+      if(dow===6){ el.classList.add('rest'); }
+      else if([1,90,180].includes(d)){ el.classList.add('bench'); }
+      else if(d>124&&d<138){ el.classList.add(rnd()<.8?'skip':'min'); }
+      else{
+        const r=rnd();
+        if(r<.62) el.classList.add('full');
+        else if(r<.88) el.classList.add('min');
+        else el.classList.add('skip');
+      }
+      if(rnd()<.42&&!el.classList.contains('skip')) el.classList.add('photo');
+    }
+    el.title='Day '+d;
+    g.appendChild(el);
+  }
+  const t=document.getElementById('target');
+  document.getElementById('demo').addEventListener('click',()=>{
+    t.classList.toggle('full');
+  });
+})();
+</script>
+</body>
+</html>

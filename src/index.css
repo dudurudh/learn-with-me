@@ -1,0 +1,73 @@
+@import '@fontsource-variable/archivo';
+@import '@fontsource-variable/instrument-sans';
+@import 'tailwindcss';
+
+/* ──────────────────────────────────────────────────────────────
+   Tokens. Six colours, two typefaces, one motion.
+   Completion reads as a foam block getting worked: pale for
+   untouched, saturated for a full day. Cinnabar is the found
+   colour — benchmarks and discoveries only, under ten times a year.
+   ────────────────────────────────────────────────────────────── */
+@theme {
+  --color-graphite: #22201d;
+  --color-paper: #f5f2ec;
+  --color-marker: #d8d3c8;
+  --color-foam: #62a8b8;
+  --color-foam-deep: #2e6b7c;
+  --color-cinnabar: #c25a28;
+
+  --font-display: 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: 'Instrument Sans Variable', -apple-system, 'Segoe UI', sans-serif;
+
+  /* Separation is by hairline and ground tint, never by shadow. */
+  --radius-*: initial;
+  --radius-none: 0px;
+  --radius-sm: 2px;
+}
+
+@layer base {
+  :root {
+    --rule: rgb(34 32 29 / 0.16);
+    --rule-strong: rgb(34 32 29 / 0.38);
+    --ink-2: rgb(34 32 29 / 0.62);
+    --ink-3: rgb(34 32 29 / 0.42);
+
+    /* The completion axis, one hue carrying all of it. */
+    --cell-untouched: color-mix(in srgb, var(--color-foam) 11%, var(--color-paper));
+    --cell-minimum: color-mix(in srgb, var(--color-foam) 45%, var(--color-paper));
+    --cell-full: var(--color-foam-deep);
+    --cell-skipped: var(--color-marker);
+    --cell-rest: var(--color-paper);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-graphite);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  /* Day counts are the most-read elements here. */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-graphite);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
