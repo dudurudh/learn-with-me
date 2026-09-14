@@ -99,7 +99,7 @@ export function SavedQueue({ onChange }: { onChange?: () => void }) {
   const [saved, setSaved] = useState<SavedStory[]>([])
   useEffect(() => { void savedStories().then(setSaved) }, [])
   const unread = saved.filter((s) => !s.readAt)
-  if (unread.length === 0) return null
+  if (unread.length === 0) return null   // FollowPrompt covers the empty case
 
   return (
     <div className="mt-6 border-t border-[var(--rule)] pt-4">

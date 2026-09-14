@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Button, ButtonRow } from './ui'
 import { PhotoStrip } from './PhotoStrip'
 import { NewsPanel, SavedQueue } from './NewsPanel'
+import { FollowPrompt } from './FollowPrompt'
 import { SundayPanel } from './SundayPanel'
 import { markDay } from '../lib/progress'
 import { syncAfterCompletion } from '../lib/gist'
@@ -201,7 +202,12 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer') =>
         className="mt-7 w-full max-w-[60ch] resize-y border-l-2 border-[var(--marker)] bg-transparent pl-[13px] text-[13.5px] italic text-[var(--ink-2)] placeholder:text-[var(--ink-3)] focus:outline-none focus-visible:border-graphite"
       />
 
-      {today.type === 'read' && <SavedQueue onChange={() => void refresh()} />}
+      {today.type === 'read' && (
+        <>
+          <SavedQueue onChange={() => void refresh()} />
+          <FollowPrompt />
+        </>
+      )}
 
       {!today.isRest && (
         <PhotoStrip day={today} warnPublic={warnPublic} onChange={() => void refresh()} />

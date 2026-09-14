@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Today } from './components/Today'
 import { Drawer } from './components/Drawer'
 import { Log } from './components/Log'
@@ -7,6 +7,7 @@ import { Phase } from './components/Phase'
 import { Settings } from './components/Settings'
 import { exportToFile } from './lib/backup'
 import { useApp } from './lib/useApp'
+import { notificationState, scheduleInApp } from './lib/reminders'
 
 type View = 'today' | 'drawer' | 'series' | 'phase' | 'log' | 'settings'
 
@@ -23,6 +24,22 @@ export default function App() {
   const app = useApp()
   const [view, setView] = useState<View>('today')
   const { plan, settings, loading, error, refresh } = app
+
+  // Only fires while a tab is open — that is the documented limitation, not a
+  // bug. The calendar file is the mechanism that works when this is closed.
+  const reminderTime = settings?.reminderTime
+  const todayTitle = plan?.today?.title
+  const todayNumber = plan?.today?.day
+  useEffect(() => {
+    if (!reminderTime || notificationState() !== 'granted') return
+    return scheduleInApp(reminderTime, () => {
+      new Notification('Today\u2019s task', {
+        body: todayNumber ? `Day ${todayNumber} — ${todayTitle ?? ''}` : 'Open the app.',
+        icon: `${import.meta.env.BASE_URL}icon-192.png`,
+        tag: 'learn-with-me-daily',
+      })
+    })
+  }, [reminderTime, todayTitle, todayNumber])
 
   if (loading) return <Shell><p className="text-[var(--ink-2)]">Opening the drawer…</p></Shell>
   if (error) {
