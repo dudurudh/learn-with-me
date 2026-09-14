@@ -31,7 +31,10 @@ const NOTES = [
 
 const BUCKETS: TimeBucket[] = ['under10', '10to20', '20to40', '40plus']
 
-async function fakePhotoBlob(rand: () => number): Promise<Blob | null> {
+/** `skill` runs 0 to 1. Early drawings wobble and overshoot; later ones are
+ *  steadier and better composed — otherwise the demo's benchmark series shows
+ *  a year of identical scribbles and proves nothing. */
+async function fakePhotoBlob(rand: () => number, skill = 0.4): Promise<Blob | null> {
   // Browser only. Tests run headless and skip photo generation entirely.
   if (typeof document === 'undefined') return null
   const canvas = document.createElement('canvas')
@@ -41,19 +44,37 @@ async function fakePhotoBlob(rand: () => number): Promise<Blob | null> {
   if (!ctx) return null
   ctx.fillStyle = '#F5F2EC'
   ctx.fillRect(0, 0, 240, 320)
-  ctx.strokeStyle = 'rgba(34,32,29,0.55)'
-  for (let i = 0; i < 26; i++) {
-    ctx.lineWidth = 0.4 + rand() * 1.6
+  ctx.strokeStyle = `rgba(34,32,29,${0.45 + skill * 0.35})`
+  // A tighter margin and less stray ink as skill goes up.
+  const pad = 24 + skill * 34
+  const stray = Math.round(26 * (1 - skill) + 6)
+  for (let i = 0; i < stray; i++) {
+    ctx.lineWidth = 0.4 + rand() * (1.8 - skill)
     ctx.beginPath()
     ctx.moveTo(rand() * 240, rand() * 320)
     ctx.lineTo(rand() * 240, rand() * 320)
     ctx.stroke()
   }
-  for (let i = 0; i < 5; i++) {
-    ctx.lineWidth = 0.8
+  // A rough object, drawn straighter and more deliberately with practice.
+  const w = 240 - pad * 2
+  const h = 320 - pad * 2
+  const jitter = (1 - skill) * 16
+  ctx.lineWidth = 1 + skill * 1.4
+  for (let i = 0; i < 4; i++) {
     ctx.beginPath()
-    ctx.ellipse(40 + rand() * 160, 40 + rand() * 240, 18 + rand() * 40,
-      8 + rand() * 18, rand() * Math.PI, 0, Math.PI * 2)
+    ctx.moveTo(pad + rand() * jitter, pad + (h / 4) * i + rand() * jitter)
+    ctx.lineTo(pad + w + rand() * jitter, pad + (h / 4) * i + rand() * jitter)
+    ctx.stroke()
+  }
+  for (let i = 0; i < 3 + Math.round(skill * 3); i++) {
+    ctx.lineWidth = 0.7 + skill
+    ctx.beginPath()
+    ctx.ellipse(
+      120 + (rand() - 0.5) * jitter * 2,
+      pad + 30 + i * (h / 5),
+      w / 2 - rand() * jitter, 10 + skill * 14,
+      (rand() - 0.5) * (1 - skill), 0, Math.PI * 2,
+    )
     ctx.stroke()
   }
   return new Promise((resolve) =>
@@ -111,6 +132,8 @@ export async function seedDemoData(
     let status: ProgressRecord['status']
     if (day.isRest) {
       status = 'rest'
+    } else if (day.isBenchmark) {
+      status = 'full'
     } else if (day.day > 126 && day.day < 140) {
       status = rand() < 0.78 ? 'skipped' : 'minimum'   // the bad fortnight
     } else {
@@ -119,7 +142,11 @@ export async function seedDemoData(
     }
 
     const worked = status === 'full' || status === 'minimum'
-    if (opts.withPhotos && worked && rand() < 0.42) wantsPhoto.push(day.dayId)
+    // A benchmark day always gets a photo: the Series screen is the whole
+    // point of the demo, and it is useless with five empty frames.
+    if (opts.withPhotos && (day.isBenchmark || (worked && rand() < 0.42))) {
+      wantsPhoto.push(day.dayId)
+    }
 
     records.push({
       dayId: day.dayId,
@@ -148,8 +175,11 @@ export async function seedDemoData(
   opts.onProgress?.(records.length, records.length, 'days')
 
   let photos = 0
+  const dayNumber = new Map(days.map((d) => [d.dayId, d.day]))
   for (const dayId of wantsPhoto) {
-    const blob = await fakePhotoBlob(rand)
+    // Skill ramps across the seeded stretch.
+    const skill = Math.min(1, (dayNumber.get(dayId) ?? 1) / SEED_THROUGH_DAY)
+    const blob = await fakePhotoBlob(rand, 0.15 + skill * 0.75)
     if (!blob) break                       // headless: no canvas, no photos
     const id = randomId()
     const createdAt = records.find((r) => r.dayId === dayId)!.completedAt

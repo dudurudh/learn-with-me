@@ -102,7 +102,7 @@ export function Panel({
   return (
     <section
       className="rounded-[14px] px-5 py-5"
-      style={{ background: tint ? `color-mix(in srgb, ${tint} 7%, white)` : 'var(--color-surface)' }}
+      style={{ background: tint ? `color-mix(in srgb, ${tint} 7%, white)` : 'var(--color-surface-soft)' }}
     >
       {(title || action) && (
         <div className="mb-4 flex items-baseline justify-between gap-4">

@@ -887,3 +887,20 @@ describe('theme tokens actually ship', () => {
     }
   })
 })
+
+describe('the demo shows the thing it exists to show', () => {
+  it('always records the benchmark days it covers', async () => {
+    await seedDemoData(curriculum)
+    const rows = await allProgress()
+    const benchmarks = curriculum.days
+      .filter((d) => d.isBenchmark && d.day <= SEED_THROUGH_DAY)
+      .map((d) => d.dayId)
+    expect(benchmarks.length).toBeGreaterThan(0)
+    for (const id of benchmarks) {
+      const row = rows.find((r) => r.dayId === id)
+      expect(row, `benchmark ${id}`).toBeTruthy()
+      // A skipped benchmark leaves the series with an empty frame.
+      expect(row!.status, `benchmark ${id}`).toBe('full')
+    }
+  })
+})

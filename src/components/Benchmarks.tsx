@@ -64,7 +64,7 @@ export function Benchmarks({ app }: { app: AppState }) {
               <div key={s.day.dayId} className="flex items-start">
                 {/* The interval, written between the specimens rather than implied. */}
                 {i > 0 && (
-                  <div className="w-[44px] shrink-0 pt-[236px] sm:w-[64px] sm:pt-[300px]">
+                  <div className="w-[26px] shrink-0 pt-[186px] sm:w-[32px] sm:pt-[212px]">
                     <div className="border-t border-dashed border-[var(--rule-strong)]" />
                     <div className="tnum font-display mt-2 text-center text-[11px] text-[var(--ink-2)]">
                       {gap}d
@@ -72,9 +72,9 @@ export function Benchmarks({ app }: { app: AppState }) {
                   </div>
                 )}
 
-                <figure className="w-[178px] shrink-0 sm:w-[224px]">
+                <figure className="w-[118px] shrink-0 sm:w-[134px]">
                   <div
-                    className="flex h-[236px] items-end justify-center sm:h-[300px]"
+                    className="flex h-[186px] items-end justify-center sm:h-[212px]"
                     style={{ opacity: s.url ? 1 : 0.85 }}
                   >
                     {s.url ? (
@@ -85,12 +85,12 @@ export function Benchmarks({ app }: { app: AppState }) {
                       />
                     ) : (
                       <div
-                        className="flex h-[132px] w-[104px] items-center justify-center border border-dashed"
+                        className="flex h-[118px] w-[86px] items-center justify-center rounded-[6px] border border-dashed"
                         style={{
                           borderColor: reached ? 'var(--rule-strong)' : 'var(--color-marker)',
                         }}
                       >
-                        <span className="font-display tnum text-[13px] text-[var(--ink-2)]">
+                        <span className="font-display tnum text-[11.5px] text-[var(--ink-2)]">
                           {reached ? 'no photo' : 'to come'}
                         </span>
                       </div>
@@ -99,14 +99,14 @@ export function Benchmarks({ app }: { app: AppState }) {
 
                   {/* Pinned to the rule it was collected on. */}
                   <div className="border-t-2 border-graphite pt-[10px]">
-                    <div className="font-display tnum text-[19px] font-semibold leading-none">
+                    <div className="font-display tnum text-[17px] font-semibold leading-none">
                       {String(s.day.day).padStart(3, '0')}
                     </div>
-                    <div className="tnum font-display mt-[6px] text-[12px] text-[var(--ink-2)]">
+                    <div className="tnum font-display mt-[5px] text-[11.5px] text-[var(--ink-2)]">
                       {s.record?.planDate ?? (reached ? 'not recorded' : `in ${s.day.day - nextDay + 1} days`)}
                     </div>
                     {s.record?.note && (
-                      <p className="mt-2 max-w-[24ch] text-[12.5px] italic leading-snug text-[var(--ink-2)]">
+                      <p className="mt-2 text-[11.5px] italic leading-snug text-[var(--ink-2)]">
                         {s.record.note}
                       </p>
                     )}

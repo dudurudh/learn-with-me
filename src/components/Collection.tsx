@@ -21,7 +21,6 @@ interface Specimen {
 export function Collection({ app }: { app: AppState }) {
   const { curriculum, records } = app
   const [specimens, setSpecimens] = useState<Specimen[]>([])
-  const [size, setSize] = useState<'small' | 'large'>('small')
   const [zoom, setZoom] = useState<Specimen | null>(null)
 
   const byId = useMemo(
@@ -63,7 +62,7 @@ export function Collection({ app }: { app: AppState }) {
 
   // auto-fill so the tiles stretch to fill the row. flex-wrap leaves the
   // container's grout showing wherever the last row comes up short.
-  const track = size === 'small' ? '112px' : '188px'
+  const track = '188px'
 
   return (
     <section>
@@ -78,23 +77,6 @@ export function Collection({ app }: { app: AppState }) {
               : `${specimens.length} specimens, oldest first. The point is the whole wall, not any one of them.`}
           </p>
         </div>
-        {specimens.length > 0 && (
-          <div className="flex w-max gap-px border border-[var(--rule-strong)] bg-[var(--rule-strong)]">
-            {(['small', 'large'] as const).map((s) => (
-              <button
-                key={s}
-                onClick={() => setSize(s)}
-                className={
-                  'font-display px-[13px] py-[8px] text-[12.5px] font-medium transition-[background-color,transform] duration-100 active:translate-y-[1px] '
-                  + (size === s ? 'bg-action text-page'
-                    : 'bg-page hover:bg-[color-mix(in_srgb,var(--phase)_16%,var(--color-page))]')
-                }
-              >
-                {s === 'small' ? 'more at once' : 'bigger'}
-              </button>
-            ))}
-          </div>
-        )}
       </div>
 
       {specimens.length === 0 && (

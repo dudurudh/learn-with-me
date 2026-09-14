@@ -90,8 +90,8 @@ export function PhotoStrip({
         </div>
       )}
 
-      <div className="mt-3 -ml-[10px]">
-        <Button quiet disabled={busy} onClick={() => picker.current?.click()}>
+      <div className="mt-3">
+        <Button disabled={busy} onClick={() => picker.current?.click()}>
           <Camera size={16} strokeWidth={2.2} aria-hidden />
           {busy ? 'Compressing' : photos.length > 0 ? 'Add another' : 'Add a photo'}
         </Button>

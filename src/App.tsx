@@ -66,42 +66,43 @@ export default function App() {
   const hue = phaseColour(plan.today?.phase ?? 6)
 
   return (
-    <Shell hue={hue}>
-      <header className="mb-10 flex flex-col gap-5">
-        <div className="font-display text-[14px] text-[var(--ink-2)]">
-          <span className="tnum font-semibold text-graphite">{plan.worked}</span> days collected
-          <span className="mx-2 text-[var(--marker)]">/</span>
-          <span className="tnum">{365 - plan.completed}</span> to go
-          {settings.seeded && (
-            <span className="ml-3 rounded-full bg-p3 px-[9px] py-[2px] text-[11px] text-page">demo</span>
-          )}
-        </div>
-        {/* Soft pills rather than a bordered grid, and the active one picks
-            up the colour of the phase you are actually in. */}
-        <nav className="-mx-1 flex flex-wrap gap-1">
-          {TABS.map(({ key, label, Icon }) => {
-            const active = view === key
-            return (
-              <button
-                key={key}
-                onClick={() => setView(key)}
-                aria-current={active ? 'page' : undefined}
-                className={
-                  'font-display flex items-center gap-[7px] rounded-full px-[13px] py-[7px] '
-                  + 'text-[13.5px] font-medium transition-[background-color,color,transform] '
-                  + 'duration-100 active:translate-y-[1px] '
-                  + (active ? 'text-page' : 'text-[var(--ink-2)] hover:bg-surface hover:text-graphite')
-                }
-                style={active ? { background: hue } : undefined}
-              >
-                <Icon size={15} strokeWidth={2} aria-hidden />
-                {label}
-              </button>
-            )
-          })}
-        </nav>
-      </header>
+    <Shell
+      header={
+        <>
+          <div className="font-display mb-4 text-[14px] text-[var(--ink-2)]">
+            <span className="tnum font-semibold text-graphite">{plan.worked}</span> days collected
+            <span className="mx-2 text-[var(--marker)]">/</span>
+            <span className="tnum">{365 - plan.completed}</span> to go
+            {settings.seeded && (
+              <span className="ml-3 rounded-full bg-p3 px-[9px] py-[2px] text-[11px] text-page">demo</span>
+            )}
+          </div>
 
+          <nav className="-mx-1 flex flex-wrap gap-1">
+            {TABS.map(({ key, label, Icon }) => {
+              const active = view === key
+              return (
+                <button
+                  key={key}
+                  onClick={() => setView(key)}
+                  aria-current={active ? 'page' : undefined}
+                  className={
+                    'font-display flex items-center gap-[7px] rounded-full px-[13px] py-[7px] '
+                    + 'text-[13.5px] font-medium transition-[background-color,color,transform] '
+                    + 'duration-100 active:translate-y-[1px] '
+                    + (active ? 'text-page' : 'text-[var(--ink-2)] hover:bg-page hover:text-graphite')
+                  }
+                  style={active ? { background: hue } : undefined}
+                >
+                  <Icon size={15} strokeWidth={2} aria-hidden />
+                  {label}
+                </button>
+              )
+            })}
+          </nav>
+        </>
+      }
+    >
       {plan.backupPrompt !== 'none' && view !== 'settings' && (
         <p className="mb-8 rounded-[10px] bg-surface px-4 py-3 text-[14px] text-[var(--ink-2)]">
           {plan.backupPrompt === 'count'
@@ -129,23 +130,15 @@ export default function App() {
   )
 }
 
-function Shell({ children, hue }: { children: React.ReactNode; hue?: string }) {
+function Shell({ children, header }: { children: React.ReactNode; header?: React.ReactNode }) {
   return (
     <>
-      {/* The page used to start on bare white and drop straight into an 86px
-          number. A wash of the current phase's colour, fading out over the
-          fold, gives the top of the page somewhere to begin. */}
-      {hue && (
-        <div
-          aria-hidden
-          className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-[420px]"
-          style={{
-            background: `linear-gradient(to bottom, color-mix(in srgb, ${hue} 13%, white) 0%, `
-              + `color-mix(in srgb, ${hue} 5%, white) 45%, white 100%)`,
-          }}
-        />
+      {header && (
+        <header className="border-b border-[var(--rule)] bg-surface">
+          <div className="mx-auto max-w-[860px] px-6 py-5">{header}</div>
+        </header>
       )}
-      <main className="relative mx-auto max-w-[860px] px-6 py-10 sm:py-14">{children}</main>
+      <main className="mx-auto max-w-[860px] px-6 py-10 sm:py-12">{children}</main>
     </>
   )
 }

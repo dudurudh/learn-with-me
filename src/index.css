@@ -13,7 +13,8 @@
      WHICH PHASE and fill says HOW FAR IN — the drawer gets six colours
      instead of six shades of the same one. */
   --color-page: #ffffff;
-  --color-surface: #faf8f5;
+  --color-surface: #f7f5f1;
+  --color-surface-soft: #fcfbf9;
   --color-graphite: #1f1d1b;
   --color-marker: #dedad2;
 
