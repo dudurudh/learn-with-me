@@ -57,8 +57,8 @@ export function PhotoStrip({
 
   return (
     <div className="mt-8 border-t border-[var(--rule)] pt-5">
-      <div className="font-display text-[10px] tracking-[0.03em] text-[var(--ink-3)]">
-        SPECIMEN {photos.length > 0 && `· ${photos.length}`}
+      <div className="font-display text-[13px] font-semibold">
+        Specimen {photos.length > 0 && `· ${photos.length}`}
       </div>
 
       {photos.length > 0 && (
@@ -71,10 +71,10 @@ export function PhotoStrip({
                 className="block max-h-[220px]"
               />
               <figcaption className="flex items-center justify-between gap-4 px-2 py-[6px]">
-                <span className="font-display tnum text-[10px] tracking-[0.03em] text-[var(--ink-3)]">
-                  DAY {String(day.day).padStart(3, '0')} · {formatBytes(p.bytes)}
-                  {p.uploadState === 'uploaded' ? ' · PUSHED'
-                    : p.uploadState === 'failed' ? ' · QUEUED' : ' · LOCAL'}
+                <span className="font-display tnum text-[11px] text-[var(--ink-3)]">
+                  Day {String(day.day).padStart(3, '0')} · {formatBytes(p.bytes)}
+                  {p.uploadState === 'uploaded' ? ' · pushed'
+                    : p.uploadState === 'failed' ? ' · queued' : ' · on this device'}
                 </span>
                 <button
                   onClick={() => void deletePhoto(p.id).then(reload).then(onChange)}

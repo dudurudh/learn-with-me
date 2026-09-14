@@ -16,7 +16,7 @@ export function Phase({ app }: { app: AppState }) {
 
   return (
     <section>
-      <h1 className="font-display text-[26px] font-semibold tracking-[-0.015em]">Where you are</h1>
+      <h1 className="font-display text-[30px] font-semibold tracking-[-0.02em]">Where you are</h1>
 
       <div className="mt-8 space-y-px">
         {curriculum.phases.map((p) => {
@@ -61,12 +61,12 @@ export function Phase({ app }: { app: AppState }) {
         <>
           <table className="w-full border-collapse text-[13px]">
             <thead>
-              <tr className="font-display text-[10px] tracking-[0.03em] text-[var(--ink-3)]">
-                <th className="pb-2 text-left font-medium">TYPE</th>
-                <th className="pb-2 text-right font-medium">PLANNED</th>
-                <th className="pb-2 text-right font-medium">ACTUAL</th>
-                <th className="pb-2 text-right font-medium">GAP</th>
-                <th className="pb-2 text-right font-medium">N</th>
+              <tr className="font-display text-[12px] text-[var(--ink-3)]">
+                <th className="pb-2 text-left font-medium">type</th>
+                <th className="pb-2 text-right font-medium">planned</th>
+                <th className="pb-2 text-right font-medium">actual</th>
+                <th className="pb-2 text-right font-medium">gap</th>
+                <th className="pb-2 text-right font-medium">days</th>
               </tr>
             </thead>
             <tbody className="tnum font-display">
@@ -186,7 +186,7 @@ export function Phase({ app }: { app: AppState }) {
 function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <dt className="text-[10px] tracking-[0.03em] text-[var(--ink-3)]">{label.toUpperCase()}</dt>
+      <dt className="text-[12px] text-[var(--ink-3)]">{label}</dt>
       <dd className="mt-1 text-[15px] font-medium">{value}</dd>
     </div>
   )

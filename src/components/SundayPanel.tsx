@@ -30,18 +30,18 @@ export function SundayPanel({ week }: { week: number }) {
     <section className="mt-12 border-t border-[var(--rule-strong)] pt-4">
       <button
         onClick={() => setOpen(!open)}
-        className="font-display flex w-full items-baseline justify-between gap-4 text-left text-[11px] tracking-[0.02em] text-[var(--ink-3)]"
+        className="font-display flex w-full items-baseline justify-between gap-4 text-left text-[14px] font-semibold"
       >
-        <span>SUNDAY DRAWER</span>
-        <span>{open ? 'CLOSE' : 'OPEN'}</span>
+        <span>Sunday drawer</span>
+        <span>{open ? 'close' : 'open'}</span>
       </button>
 
       {open && (
         <div className="mt-6">
           {designer && (
             <article>
-              <div className="font-display tnum text-[10px] tracking-[0.03em] text-[var(--ink-3)]">
-                WEEK {String(designer.week).padStart(2, '0')} &middot; {designer.region.toUpperCase()}
+              <div className="font-display tnum text-[12.5px] text-[var(--ink-3)]">
+                Week {designer.week} &middot; {designer.region}
               </div>
               <h2 className="font-display mt-2 text-[23px] font-semibold tracking-[-0.012em]">
                 {designer.name}
@@ -89,9 +89,9 @@ export function SundayPanel({ week }: { week: number }) {
           )}
 
           <div className="mt-12 border-t border-[var(--rule)] pt-5">
-            <div className="font-display text-[10px] tracking-[0.03em] text-[var(--ink-3)]">
-              PROGRAMMES AND MONEY
-              {changes && ` · CHECKED ${relativeTime(changes.generatedAt).toUpperCase()}`}
+            <div className="font-display text-[13px] font-semibold">
+              Programmes and money
+              {changes && <span className="font-normal text-[var(--ink-3)]">{` · checked ${relativeTime(changes.generatedAt)}`}</span>}
             </div>
 
             {!changes && (
@@ -110,8 +110,8 @@ export function SundayPanel({ week }: { week: number }) {
               <div key={r.id} className="mt-4 border-l-2 border-cinnabar pl-[13px]">
                 <div className="font-display text-[13.5px] font-semibold">
                   {r.name}
-                  <span className="ml-2 text-[10px] tracking-[0.03em] text-[var(--ink-3)]">
-                    {r.status === 'check-manually' ? 'CHECK MANUALLY' : 'CHANGED'}
+                  <span className="ml-2 text-[11.5px] font-normal text-[var(--ink-3)]">
+                    {r.status === 'check-manually' ? 'check this one yourself' : 'changed'}
                   </span>
                 </div>
                 {r.message && <p className="mt-1 text-[13px] text-[var(--ink-2)]">{r.message}</p>}

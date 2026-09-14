@@ -191,7 +191,7 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
         <p className="mt-5 text-[12.5px] text-[var(--ink-3)]">
           <span
             className={
-              'font-display mr-[7px] border border-[var(--rule-strong)] px-[5px] py-[1px] text-[9.5px] tracking-[0.04em] ' +
+              'font-display mr-[7px] border border-[var(--rule-strong)] px-[6px] py-[1px] text-[11px] ' +
               (today.resourceMode === 'assigned' ? 'border-transparent bg-graphite text-paper' : '')
             }
           >
@@ -310,9 +310,7 @@ function Recorded({
 
       {(status === 'full' || status === 'minimum') && (
         <div className="mt-9">
-          <div className="font-display text-[10px] tracking-[0.03em] text-[var(--ink-3)]">
-            HOW LONG DID IT ACTUALLY TAKE
-          </div>
+          <div className="font-display text-[13px] font-semibold">How long did it actually take?</div>
           <div className="mt-3">
             <ButtonRow>
               {BUCKETS.map((b) => (

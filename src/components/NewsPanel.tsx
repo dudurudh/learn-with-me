@@ -35,10 +35,10 @@ export function NewsPanel({
       <button
         onClick={() => !gated && setOpen(!open)}
         disabled={gated}
-        className="font-display flex w-full items-baseline justify-between gap-4 text-left text-[11px] tracking-[0.02em] text-[var(--ink-3)] disabled:cursor-not-allowed"
+        className="font-display flex w-full items-baseline justify-between gap-4 text-left text-[14px] font-semibold disabled:cursor-not-allowed disabled:text-[var(--ink-3)]"
       >
-        <span>FIVE THINGS FROM THE FIELD</span>
-        <span>{gated ? 'LOCKED' : open ? 'CLOSE' : 'OPEN'}</span>
+        <span>Five things from the field</span>
+        <span>{gated ? 'locked' : open ? 'close' : 'open'}</span>
       </button>
 
       {/* A disabled control with no explanation reads as broken rather than
@@ -79,7 +79,7 @@ export function NewsPanel({
                 >
                   {story.title}
                 </a>
-                <div className="font-display mt-1 text-[10.5px] tracking-[0.03em] text-[var(--ink-3)]">
+                <div className="font-display mt-1 text-[11.5px] text-[var(--ink-3)]">
                   {story.source} &middot; {relativeTime(story.publishedAt)}
                 </div>
                 {story.summary && (
@@ -122,9 +122,7 @@ export function SavedQueue({ onChange }: { onChange?: () => void }) {
 
   return (
     <div className="mt-6 border-t border-[var(--rule)] pt-4">
-      <div className="font-display text-[10px] tracking-[0.03em] text-[var(--ink-3)]">
-        YOUR SAVED QUEUE &middot; {unread.length}
-      </div>
+      <div className="font-display text-[13px] font-semibold">Your saved queue &middot; {unread.length}</div>
       <p className="mt-2 max-w-[56ch] text-[13.5px]">
         Read two of these properly and write three sentences on each in the notes. That is
         today&rsquo;s reading — the book can wait.
@@ -138,7 +136,7 @@ export function SavedQueue({ onChange }: { onChange?: () => void }) {
             >
               {s.title}
             </a>
-            <div className="font-display mt-[2px] text-[10.5px] tracking-[0.03em] text-[var(--ink-3)]">
+            <div className="font-display mt-[2px] text-[11.5px] text-[var(--ink-3)]">
               {s.source} &middot; saved {relativeTime(s.savedAt)}
               <button
                 onClick={() => void unsaveStory(s.link).then((r) => { setSaved(r); onChange?.() })}

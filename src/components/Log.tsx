@@ -20,7 +20,7 @@ export function Log({ app }: { app: AppState }) {
   return (
     <section>
       <div className="flex flex-wrap items-baseline justify-between gap-4">
-        <h1 className="font-display text-[26px] font-semibold tracking-[-0.015em]">The log</h1>
+        <h1 className="font-display text-[30px] font-semibold tracking-[-0.02em]">The log</h1>
         <label className="flex items-center gap-2 text-[13px] text-[var(--ink-2)]">
           <input type="checkbox" checked={onlyNotes} onChange={(e) => setOnlyNotes(e.target.checked)} />
           only days with notes
@@ -52,7 +52,7 @@ export function Log({ app }: { app: AppState }) {
               >
                 <span className="font-display tnum text-[17px] font-semibold leading-tight">
                   {isReEntryId(record.dayId) ? '—' : String(record.day).padStart(3, '0')}
-                  <span className="mt-[2px] block text-[9.5px] font-medium tracking-[0.03em] text-[var(--ink-3)]">
+                  <span className="mt-[2px] block text-[11px] font-medium text-[var(--ink-3)]">
                     {record.planDate}
                   </span>
                 </span>
@@ -60,13 +60,13 @@ export function Log({ app }: { app: AppState }) {
                   <span className="font-display block text-[14.5px] font-semibold">
                     {day ? day.title : isReEntryId(record.dayId) ? 'Coming back' : record.dayId}
                     {isReEntryId(record.dayId) && (
-                      <span className="font-display ml-2 border border-[var(--rule-strong)] px-[5px] py-[1px] text-[9.5px] tracking-[0.04em] text-[var(--ink-3)]">
-                        RE-ENTRY
+                      <span className="font-display ml-2 border border-[var(--rule-strong)] px-[6px] py-[1px] text-[11px] font-normal text-[var(--ink-3)]">
+                        coming back
                       </span>
                     )}
                     {!day && !isReEntryId(record.dayId) && (
-                      <span className="font-display ml-2 border border-[var(--rule-strong)] px-[5px] py-[1px] text-[9.5px] tracking-[0.04em] text-[var(--ink-3)]">
-                        ORPHANED
+                      <span className="font-display ml-2 border border-[var(--rule-strong)] px-[6px] py-[1px] text-[11px] font-normal text-[var(--ink-3)]">
+                        orphaned
                       </span>
                     )}
                   </span>
@@ -112,8 +112,8 @@ function Status({ record }: { record: ProgressRecord }) {
           : 'var(--cell-rest)'
   return (
     <span className="flex items-center gap-2 pt-[3px]">
-      <span className="font-display hidden text-[10px] tracking-[0.03em] text-[var(--ink-3)] sm:inline">
-        {record.status.toUpperCase()}
+      <span className="font-display hidden text-[12px] text-[var(--ink-3)] sm:inline">
+        {record.status}
       </span>
       <span
         className="h-[14px] w-[14px] border border-[var(--rule-strong)]"

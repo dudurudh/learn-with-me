@@ -23,9 +23,7 @@ export function FollowPrompt() {
 
   return (
     <div className="mt-6 border-t border-[var(--rule)] pt-4">
-      <div className="font-display text-[10px] tracking-[0.03em] text-[var(--ink-3)]">
-        FROM YOUR FOLLOW LIST &middot; {picks.length}
-      </div>
+      <div className="font-display text-[13px] font-semibold">From your follow list &middot; {picks.length}</div>
       <p className="mt-2 max-w-[56ch] text-[13.5px]">
         Spend twenty minutes looking at the work of <b>{pick.name}</b>. Two sentences in the
         notes on what you would steal.

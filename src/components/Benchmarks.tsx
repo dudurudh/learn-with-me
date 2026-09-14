@@ -45,7 +45,7 @@ export function Benchmarks({ app }: { app: AppState }) {
 
   return (
     <section>
-      <h1 className="font-display text-[26px] font-semibold tracking-[-0.015em]">The series</h1>
+      <h1 className="font-display text-[30px] font-semibold tracking-[-0.02em]">The series</h1>
       <p className="mt-2 max-w-[56ch] text-[13.5px] text-[var(--ink-2)]">
         One object, drawn cold for fifteen minutes on five days across a year. Same object,
         same conditions, no technique you did not have on Day 1.
@@ -75,9 +75,9 @@ export function Benchmarks({ app }: { app: AppState }) {
                 </div>
                 <figcaption className="border-t border-[var(--rule)] px-3 py-[10px]">
                   <div className="font-display tnum text-[15px] font-semibold">
-                    DAY {String(s.day.day).padStart(3, '0')}
+                    Day {String(s.day.day).padStart(3, '0')}
                   </div>
-                  <div className="font-display mt-[3px] text-[10px] tracking-[0.03em] text-[var(--ink-3)]">
+                  <div className="font-display mt-[3px] text-[11.5px] text-[var(--ink-3)]">
                     {s.record?.planDate
                       ? s.record.planDate
                       : reached
@@ -96,8 +96,8 @@ export function Benchmarks({ app }: { app: AppState }) {
         </div>
       </div>
 
-      <p className="font-display tnum mt-5 text-[12px] text-[var(--ink-3)]">
-        {taken} OF 5 COLLECTED
+      <p className="font-display tnum mt-5 text-[13px] text-[var(--ink-3)]">
+        {taken} of 5 collected
       </p>
 
       {taken === 0 && (

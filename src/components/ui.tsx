@@ -7,7 +7,7 @@ export function Rule() {
 export function Section({ n, title, children }: { n: string; title: string; children: ReactNode }) {
   return (
     <section className="relative mb-14 sm:pl-[104px]">
-      <span className="font-display tnum absolute left-0 hidden w-[72px] pt-[3px] text-right text-[11px] tracking-[0.02em] text-[var(--ink-3)] sm:block">
+      <span className="font-display tnum absolute left-0 hidden w-[72px] pt-[3px] text-right text-[12px] text-[var(--ink-3)] sm:block">
         {n}
       </span>
       <span className="font-display absolute left-[80px] top-0 hidden h-full w-px bg-[var(--rule)] sm:block" />

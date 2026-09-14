@@ -76,9 +76,7 @@ export function StoragePanel({ app }: { app: AppState }) {
         </ButtonRow>
 
         <div className="mt-4 flex items-center gap-4 text-[13px] text-[var(--ink-2)]">
-          <span className="font-display text-[11px] tracking-[0.02em] text-[var(--ink-3)]">
-            ON IMPORT
-          </span>
+          <span className="font-display text-[12.5px] text-[var(--ink-3)]">On import</span>
           {(['merge', 'replace'] as ImportMode[]).map((m) => (
             <label key={m} className="flex items-center gap-2">
               <input type="radio" name="mode" checked={mode === m} onChange={() => setMode(m)} />
@@ -155,8 +153,8 @@ export function StoragePanel({ app }: { app: AppState }) {
         </ButtonRow>
 
         {settings.seeded && (
-          <p className="font-display mt-4 inline-block bg-cinnabar px-[7px] py-[3px] text-[10px] tracking-[0.04em] text-paper">
-            DEMO HISTORY IS ON &mdash; {seededRows} OF THESE RECORDS ARE FAKE
+          <p className="font-display mt-4 inline-block bg-cinnabar px-[8px] py-[3px] text-[12px] text-paper">
+            Demo history is on &mdash; {seededRows} of these records are made up
           </p>
         )}
 

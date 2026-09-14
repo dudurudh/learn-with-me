@@ -3,17 +3,19 @@ import { Today } from './components/Today'
 import { Drawer } from './components/Drawer'
 import { Log } from './components/Log'
 import { Benchmarks } from './components/Benchmarks'
+import { Collection } from './components/Collection'
 import { Phase } from './components/Phase'
 import { Settings } from './components/Settings'
 import { exportToFile } from './lib/backup'
 import { useApp } from './lib/useApp'
 import { notificationState, scheduleInApp } from './lib/reminders'
 
-type View = 'today' | 'drawer' | 'series' | 'phase' | 'log' | 'settings'
+type View = 'today' | 'drawer' | 'wall' | 'series' | 'phase' | 'log' | 'settings'
 
 const TABS: { key: View; label: string }[] = [
   { key: 'today', label: 'Today' },
   { key: 'drawer', label: 'Drawer' },
+  { key: 'wall', label: 'Wall' },
   { key: 'series', label: 'Series' },
   { key: 'phase', label: 'Phase' },
   { key: 'log', label: 'Log' },
@@ -67,7 +69,7 @@ export default function App() {
         </div>
         {/* Six tabs do not fit a 375px screen in one row. Wrapping keeps them
             all reachable without the page itself scrolling sideways. */}
-        <nav className="grid grid-cols-3 gap-px border border-[var(--rule-strong)] bg-[var(--rule-strong)] sm:flex sm:flex-wrap">
+        <nav className="grid grid-cols-4 gap-px border border-[var(--rule-strong)] bg-[var(--rule-strong)] sm:flex sm:flex-wrap">
           {TABS.map((t) => (
             <button
               key={t.key}
@@ -105,6 +107,7 @@ export default function App() {
 
       {view === 'today' && <Today app={app} onGoTo={setView} />}
       {view === 'drawer' && <Drawer app={app} />}
+      {view === 'wall' && <Collection app={app} />}
       {view === 'series' && <Benchmarks app={app} />}
       {view === 'phase' && <Phase app={app} />}
       {view === 'log' && <Log app={app} />}

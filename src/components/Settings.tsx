@@ -69,7 +69,7 @@ export function Settings({ app }: { app: AppState }) {
     <>
       <h1 className="font-display mb-10 text-[26px] font-semibold tracking-[-0.015em]">Settings</h1>
 
-      <Section n="00" title="The plan">
+      <Section n="01" title="The plan">
         {num('Day boundary', settings.dayBoundaryHour, 0, 12,
           (n) => set({ dayBoundaryHour: n }), '·  00 is midnight, 04 is the default')}
         {num('Grace budget', settings.graceBudget, 0, 7,
@@ -101,7 +101,7 @@ export function Settings({ app }: { app: AppState }) {
         </Note>
       </Section>
 
-      <Section n="00b" title="Jump to a day">
+      <Section n="02" title="Jump to a day">
         <div className="flex flex-wrap items-baseline gap-3">
           <input
             type="number" min={1} max={365} value={jump} placeholder={String(plan.today?.day ?? 1)}
@@ -127,7 +127,7 @@ export function Settings({ app }: { app: AppState }) {
         </Note>
       </Section>
 
-      <Section n="00c" title="Swaps">
+      <Section n="03" title="Swaps">
         <ButtonRow>
           <Button disabled={app.swaps.length === 0} onClick={() => void clearSwaps().then(refresh)}>
             Reset the running order
@@ -140,7 +140,7 @@ export function Settings({ app }: { app: AppState }) {
         </Note>
       </Section>
 
-      <Section n="00d" title="Books and courses">
+      <Section n="04" title="Books and courses">
         <table className="w-full border-collapse text-[13px]">
           <tbody>
             {Object.entries(curriculum.resources).map(([id, meta]) => {
@@ -194,7 +194,7 @@ export function Settings({ app }: { app: AppState }) {
         </Note>
       </Section>
 
-      <Section n="00h" title="Sync between your devices">
+      <Section n="05" title="Sync between your devices">
         <Field label="Token">
           <input
             type="password"
@@ -246,10 +246,10 @@ export function Settings({ app }: { app: AppState }) {
 
         {syncMessage && <p className="mt-3 text-[13px]">{syncMessage}</p>}
 
-        <p className="tnum font-display mt-4 text-[12px] text-[var(--ink-3)]">
+        <p className="tnum font-display mt-4 text-[12.5px] text-[var(--ink-3)]">
           {settings.lastSyncAt
-            ? `LAST SYNCED ${new Date(settings.lastSyncAt).toLocaleString()}`
-            : 'NEVER SYNCED'}
+            ? `Last synced ${new Date(settings.lastSyncAt).toLocaleString()}`
+            : 'Never synced'}
         </p>
 
         <label className="mt-4 flex items-start gap-2 text-[13.5px]">
@@ -281,7 +281,7 @@ export function Settings({ app }: { app: AppState }) {
         </Note>
       </Section>
 
-      <Section n="00g" title="Reminders">
+      <Section n="06" title="Reminders">
         <p className="mb-5 max-w-[60ch] text-[13.5px] text-[var(--ink-2)]">
           A site on GitHub Pages cannot push you a notification. Of the three below, only
           two reach you when the app is closed, and the calendar one is the one that
@@ -294,8 +294,8 @@ export function Settings({ app }: { app: AppState }) {
               style={{ borderColor: m.whenClosed ? 'var(--color-foam-deep)' : 'var(--color-marker)' }}>
               <div className="font-display text-[13.5px] font-semibold">
                 {m.name}
-                <span className="ml-2 text-[10px] tracking-[0.03em] text-[var(--ink-3)]">
-                  {m.whenClosed ? 'WORKS WHEN CLOSED' : 'ONLY WHILE OPEN'}
+                <span className="ml-2 text-[11.5px] font-normal text-[var(--ink-3)]">
+                  {m.whenClosed ? 'works when the app is closed' : 'only while a tab is open'}
                 </span>
               </div>
               <p className="mt-1 max-w-[58ch] text-[13px] text-[var(--ink-2)]">{m.summary}</p>
@@ -319,8 +319,8 @@ export function Settings({ app }: { app: AppState }) {
             {notifyState === 'granted' ? 'Notifications allowed' : 'Allow browser notifications'}
           </Button>
         </ButtonRow>
-        <p className="tnum font-display mt-3 text-[11px] text-[var(--ink-3)]">
-          DAILY AT {settings.reminderTime} &middot; NOTIFICATIONS {String(notifyState).toUpperCase()}
+        <p className="tnum font-display mt-3 text-[12.5px] text-[var(--ink-3)]">
+          Daily at {settings.reminderTime} &middot; browser notifications {String(notifyState)}
         </p>
 
         <Field label="ntfy topic">
@@ -340,7 +340,7 @@ export function Settings({ app }: { app: AppState }) {
         </Note>
       </Section>
 
-      <Section n="00f" title="Application deadlines">
+      <Section n="07" title="Application deadlines">
         {settings.deadlines.length > 0 && (
           <table className="mb-5 w-full border-collapse text-[13px]">
             <tbody>
@@ -369,21 +369,21 @@ export function Settings({ app }: { app: AppState }) {
 
         <div className="flex flex-wrap items-end gap-3">
           <label className="block">
-            <span className="font-display block text-[10px] tracking-[0.03em] text-[var(--ink-3)]">SCHOOL</span>
+            <span className="font-display block text-[12px] text-[var(--ink-3)]">School</span>
             <input
               value={school} onChange={(e) => setSchool(e.target.value)} placeholder="RISD"
               className="w-[150px] border-b border-[var(--rule-strong)] bg-transparent pb-1 text-[14px] focus:outline-none focus-visible:border-graphite"
             />
           </label>
           <label className="block">
-            <span className="font-display block text-[10px] tracking-[0.03em] text-[var(--ink-3)]">PROGRAMME</span>
+            <span className="font-display block text-[12px] text-[var(--ink-3)]">Programme</span>
             <input
               value={programme} onChange={(e) => setProgramme(e.target.value)} placeholder="MID"
               className="w-[150px] border-b border-[var(--rule-strong)] bg-transparent pb-1 text-[14px] focus:outline-none focus-visible:border-graphite"
             />
           </label>
           <label className="block">
-            <span className="font-display block text-[10px] tracking-[0.03em] text-[var(--ink-3)]">DEADLINE</span>
+            <span className="font-display block text-[12px] text-[var(--ink-3)]">Deadline</span>
             <input
               type="date" value={date} onChange={(e) => setDate(e.target.value)}
               className="tnum font-display border-b border-[var(--rule-strong)] bg-transparent pb-1 text-[14px] focus:outline-none focus-visible:border-graphite"
@@ -413,7 +413,7 @@ export function Settings({ app }: { app: AppState }) {
         </Note>
       </Section>
 
-      <Section n="00e" title="Pushing photos to the repo">
+      <Section n="08" title="Pushing photos to the repo">
         <Field label="Repository">
           <input
             placeholder="dudurudh/learn-with-me"
@@ -458,8 +458,8 @@ export function Settings({ app }: { app: AppState }) {
 
         {pushResult && <p className="mt-3 text-[13px]">{pushResult}</p>}
 
-        <p className="tnum font-display mt-4 text-[12px] text-[var(--ink-3)]">
-          {counts.local} LOCAL &middot; {counts.failed} QUEUED &middot; {counts.uploaded} PUSHED
+        <p className="tnum font-display mt-4 text-[12.5px] text-[var(--ink-3)]">
+          {counts.local} on this device &middot; {counts.failed} waiting to retry &middot; {counts.uploaded} pushed
         </p>
 
         <Note>

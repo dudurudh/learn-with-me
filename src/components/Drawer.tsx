@@ -34,7 +34,7 @@ export function Drawer({ app }: { app: AppState }) {
 
   return (
     <section>
-      <h1 className="font-display text-[26px] font-semibold tracking-[-0.015em]">The drawer</h1>
+      <h1 className="font-display text-[30px] font-semibold tracking-[-0.02em]">The drawer</h1>
       <p className="mt-2 max-w-[52ch] text-[13.5px] text-[var(--ink-2)]">
         One compartment per day. Colour is how worked the foam is, not how good the day was.
       </p>
@@ -141,9 +141,9 @@ export function DayDetail({
     <div className="mt-8 border-t border-[var(--rule-strong)] pt-5">
       <div className="flex items-start justify-between gap-6">
         <div>
-          <div className="font-display tnum text-[11px] tracking-[0.02em] text-[var(--ink-3)]">
-            DAY {String(day.day).padStart(3, '0')} &middot; PHASE {day.phase} &middot;{' '}
-            {record ? record.status.toUpperCase() : 'NOT YET'}
+          <div className="font-display tnum text-[13px] text-[var(--ink-3)]">
+            Day {String(day.day).padStart(3, '0')} &middot; phase {day.phase} &middot;{' '}
+            {record ? record.status : 'not yet'}
             {record?.planDate ? ` · ${record.planDate}` : ''}
           </div>
           <div className="font-display mt-2 text-[19px] font-semibold">{day.title}</div>
