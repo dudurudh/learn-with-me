@@ -296,7 +296,7 @@ export function Settings({ app }: { app: AppState }) {
             primary
             onClick={() => downloadIcs({
               time: settings.reminderTime,
-              appUrl: 'https://dudurudh.github.io/learn-with-me/',
+              appUrl: 'https://learnwithme.dudurudh.com/',
             })}
           >
             Download the calendar file

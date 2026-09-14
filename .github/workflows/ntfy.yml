@@ -23,6 +23,6 @@ jobs:
           curl -sS \
             -H "Title: Today's task" \
             -H "Tags: pencil2" \
-            -H "Click: https://dudurudh.github.io/learn-with-me/" \
+            -H "Click: https://learnwithme.dudurudh.com/" \
             -d "Open the app and see what today is." \
             "https://ntfy.sh/${NTFY_TOPIC}"

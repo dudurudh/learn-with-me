@@ -1,7 +1,7 @@
 # Learn with me
 
 A year of industrial design practice, one day at a time. Static site, no server,
-no database. Deployed at **https://dudurudh.github.io/learn-with-me/**
+no database. Deployed at **https://learnwithme.dudurudh.com/**
 
 The plan advances on completion, never on the calendar. Disappear for two weeks
 and you come back to the next day, not to fourteen overdue ones. There is no
