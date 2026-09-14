@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Button, ButtonRow } from './ui'
+import { Button, ButtonRow, Callout } from './ui'
+import { phaseColour } from '../lib/phaseColour'
 import { PhotoStrip } from './PhotoStrip'
 import { RecentStrip } from './RecentStrip'
 import { NewsPanel, SavedQueue } from './NewsPanel'
@@ -74,6 +75,7 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
   }
 
   const phase = phaseOf(curriculum, today.day)
+  const hue = phaseColour(today.phase)
   const resource = today.resource ? curriculum.resources[today.resource.id] : null
 
   const urgent = deadlineViews(
@@ -168,44 +170,72 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
           <><span className="text-[var(--marker)]">/</span><span>light week</span></>
         )}
         {today.isBenchmark && (
-          <span className="font-display rounded-full bg-graphite px-[10px] py-[3px] text-[12px] text-page">
-            benchmark
+          <span
+            className="font-display rounded-full px-[11px] py-[3px] text-[12px] text-page"
+            style={{ background: hue }}
+          >
+            benchmark day
           </span>
         )}
       </div>
 
-      <p className="mt-7 max-w-[58ch] text-[16.5px] leading-[1.62]">{today.full}</p>
-
-      {today.question && (
-        <p className="mt-10 max-w-[30ch] text-[23px] italic leading-[1.32] text-graphite">
-          {today.question}
-        </p>
+      {today.isBenchmark && (
+        <div className="mt-7 max-w-[66ch]">
+          <Callout title="What a benchmark day is" tint={hue}>
+            <p className="max-w-[58ch] text-[15px]">
+              You draw the same object on days 1, 90, 180, 270 and 365, under the same
+              conditions each time. Five drawings of one thing across a year is the only
+              honest measure of whether any of this is working. They end up side by side
+              on the Series tab.
+            </p>
+          </Callout>
+        </div>
       )}
 
-      <div className="mt-10 space-y-3">
-        <p className="max-w-[56ch] text-[15px] text-[var(--ink-2)]">
-          <span className="font-medium text-graphite">Short on time?</span> {today.minimum}
-        </p>
+      <div className="mt-7 max-w-[66ch] space-y-3">
+        <Callout title={`The whole thing · ${today.minutes} minutes`} tint={hue}>
+          <p className="max-w-[58ch] text-[16px] leading-[1.6]">{today.full}</p>
+        </Callout>
 
-        {resource && today.resource && (
-          <p className="max-w-[56ch] text-[15px] text-[var(--ink-2)]">
-            <span className="font-medium text-graphite">
-              {today.resourceMode === 'assigned' ? 'Today you need' : 'If you want to look it up'}:
-            </span>{' '}
-            {resource.title}
-            {today.resource.section ? ` — ${today.resource.section}` : ''}
-          </p>
+        {!today.isRest && (
+          <Callout title="The smaller version — this still counts as showing up" tint={hue} strength={3}>
+            <p className="max-w-[58ch] text-[15.5px] leading-[1.55]">{today.minimum}</p>
+          </Callout>
         )}
       </div>
 
+      {resource && today.resource && (
+        <p className="mt-5 max-w-[58ch] text-[15px] text-[var(--ink-2)]">
+          <span className="font-medium text-graphite">
+            {today.resourceMode === 'assigned' ? 'Today you need' : 'If you want to look it up'}:
+          </span>{' '}
+          {resource.title}
+          {today.resource.section ? ` — ${today.resource.section}` : ''}
+        </p>
+      )}
 
+      <div className="mt-8 max-w-[66ch]">
+        <Callout
+          title={today.question ? 'Something to think about while you work' : 'Notes'}
+          tint={hue}
+          strength={4}
+        >
+          {today.question && (
+            <p className="mb-4 max-w-[40ch] text-[19px] leading-[1.35] text-graphite">
+              {today.question}
+            </p>
+          )}
       <textarea
         value={note}
         onChange={(e) => setNote(e.target.value)}
         rows={2}
-        placeholder="What happened? (optional, and nobody reads it but you)"
-        className="mt-8 w-full max-w-[60ch] resize-y rounded-[8px] border border-[var(--rule-strong)] bg-transparent px-[13px] py-[10px] text-[15px] placeholder:text-[var(--ink-2)] focus:outline-none focus-visible:border-graphite"
+        placeholder={today.question
+          ? "Answer it here if you like, or just write what happened. Nobody reads this but you."
+          : "What happened? Nobody reads this but you."}
+        className="w-full max-w-[58ch] resize-y rounded-[9px] border border-[var(--rule-strong)] bg-white px-[13px] py-[10px] text-[15px] placeholder:text-[var(--ink-2)] focus:outline-none focus-visible:border-graphite"
       />
+        </Callout>
+      </div>
 
       {today.type === 'read' && (
         <>

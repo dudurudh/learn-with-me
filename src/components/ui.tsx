@@ -60,3 +60,28 @@ export function Field({ label, children }: { label: string; children: ReactNode 
   )
 }
 
+
+/** A soft tinted box. Used for anything that is set apart from the running
+ *  text — which is clearer than floating italics and warmer than a rule. */
+export function Callout({
+  title, tint = 'var(--color-p1)', strength = 6, children,
+}: {
+  title?: ReactNode
+  tint?: string
+  strength?: number
+  children: ReactNode
+}) {
+  return (
+    <div
+      className="rounded-[12px] px-5 py-4"
+      style={{ background: `color-mix(in srgb, ${tint} ${strength}%, white)` }}
+    >
+      {title && (
+        <div className="font-display mb-2 text-[13.5px] font-semibold" style={{ color: tint }}>
+          {title}
+        </div>
+      )}
+      {children}
+    </div>
+  )
+}
