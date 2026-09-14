@@ -33,9 +33,9 @@ export function Wordmark({ size = 26 }: { size?: number }) {
         className="text-[30px] leading-none text-graphite sm:text-[34px]"
         style={{
           fontFamily: 'var(--font-title)',
-          // opsz for display sizes, a little SOFT to take the edge off, and
-          // just enough WONK to stop it looking like a stock serif.
-          fontVariationSettings: "'opsz' 90, 'wght' 500, 'SOFT' 40, 'WONK' 1",
+          // opsz for a display size, slightly narrowed, and heavy enough to
+          // hold its own beside the mark.
+          fontVariationSettings: "'opsz' 48, 'wdth' 90, 'wght' 600",
           letterSpacing: '-0.012em',
         }}
       >

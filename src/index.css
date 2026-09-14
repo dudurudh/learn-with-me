@@ -1,6 +1,6 @@
 @import '@fontsource-variable/archivo';
 @import '@fontsource-variable/instrument-sans';
-@import '@fontsource-variable/fraunces/full.css';
+@import '@fontsource-variable/bricolage-grotesque/standard.css';
 @import 'tailwindcss';
 
 /* ──────────────────────────────────────────────────────────────
@@ -42,8 +42,9 @@
 
   --font-display: 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif;
   --font-sans: 'Instrument Sans Variable', -apple-system, 'Segoe UI', sans-serif;
-  /* The wordmark only. A journal has a title page; the rest of the app does not. */
-  --font-title: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  /* The wordmark and nothing else. Every other word in the app is Archivo or
+     Instrument Sans. */
+  --font-title: 'Bricolage Grotesque Variable', 'Archivo Variable', system-ui, sans-serif;
 
   --radius-*: initial;
   --radius-none: 0px;

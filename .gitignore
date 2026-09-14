@@ -27,3 +27,4 @@ dist-ssr
 .claude/serve-static.mjs
 .claude/curriculum-review.html
 .claude/radius.html
+.claude/fonts.html
