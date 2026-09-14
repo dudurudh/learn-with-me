@@ -55,6 +55,22 @@ used. It is never committed to this repo — the repo is public.
 - **There is no copy anywhere else.** Losing the browser profile without an
   export loses the year.
 
+### Syncing between your phone and your laptop
+
+Optional, and off until you set it up. Settings → *Sync between your devices*:
+paste a token with **`gist` scope** (nothing else), then press *Make me a secret
+Gist* and it creates one and fills in the id.
+
+- **Pull happens once when the app loads. Push happens after each completed day.**
+- **Conflicts resolve per day, not per file.** Whichever copy of a given day was
+  completed later wins, and a day only one device knows about is never dropped.
+  Straight last-write-wins on the whole file would delete real work the moment
+  two devices are out of step — which is the situation sync exists to handle.
+- **Photos are excluded.** A year of them is far too much for a Gist; they go to
+  the repo instead.
+- A "secret" Gist is unlisted, not private. Anyone with the id can read it, so
+  the id is the secret.
+
 ### Photos
 
 Compressed in the browser before anything is stored: **max 1600px on the long
@@ -137,7 +153,7 @@ each entry is reported as unconfirmed and nothing is diffed for it.
 ```bash
 npm install
 npm run dev        # http://localhost:5173/learn-with-me/
-npm run test       # 55 tests
+npm run test       # 59 tests
 npm run build
 ```
 

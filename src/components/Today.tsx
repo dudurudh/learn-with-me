@@ -4,6 +4,7 @@ import { PhotoStrip } from './PhotoStrip'
 import { NewsPanel, SavedQueue } from './NewsPanel'
 import { SundayPanel } from './SundayPanel'
 import { markDay } from '../lib/progress'
+import { syncAfterCompletion } from '../lib/gist'
 import { shouldWarnAboutPublicPhotos } from '../lib/addPhoto'
 import { findSwap } from '../lib/plan'
 import { addSwap } from '../lib/swaps'
@@ -83,6 +84,7 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer') =>
     try {
       await markDay(today, { status, note })
       setJustDid({ day: today, status })
+      void syncAfterCompletion()   // never blocks; the day is already on disk
     } finally {
       setBusy(false)
     }

@@ -4,6 +4,7 @@ import { getSettings } from './db'
 import { allProgress, allResourceStates } from './progress'
 import { planState, type PlanState } from './plan'
 import { getSwaps, type Swap } from './swaps'
+import { pullFromGist } from './gist'
 import type { Curriculum, ProgressRecord, ResourceState, Settings } from './types'
 
 export interface AppState {
@@ -46,7 +47,14 @@ export function useApp(): AppState {
     }
   }, [])
 
-  useEffect(() => { void refresh() }, [refresh])
+  useEffect(() => {
+    // Read local first so the app is usable immediately, then pull and
+    // re-read. A failed or unconfigured sync changes nothing.
+    void refresh().then(async () => {
+      const outcome = await pullFromGist()
+      if (outcome.status === 'pulled') await refresh()
+    })
+  }, [refresh])
 
   return {
     curriculum, records, settings, swaps, resourceStates, error, loading, refresh,

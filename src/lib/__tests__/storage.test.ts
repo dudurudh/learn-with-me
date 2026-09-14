@@ -5,7 +5,7 @@ import { IDBFactory } from 'fake-indexeddb'
 import { db, getSettings, saveSettings, resetDbHandle } from '../db'
 import { allProgress, markDay, setResourceState, getResourceState } from '../progress'
 import { planState, computeStreak, graceUsed, findSwap, nextDay } from '../plan'
-import { buildExport, importExport, parseExport } from '../backup'
+import { buildExport, importExport, parseExport, type ExportFile } from '../backup'
 import { seedDemoData, clearDemoData, SEED_THROUGH_DAY } from '../seed'
 import { planDate, toISODate, daysBetween } from '../time'
 import type { Curriculum, ProgressRecord } from '../types'
@@ -677,5 +677,110 @@ describe('curated content files', () => {
     expect(file.funding.length).toBeGreaterThanOrEqual(10)
     // Nothing claims to be confirmed until a real admissions URL is pasted in.
     expect(file.schools.every((s) => s.urlConfirmed === false)).toBe(true)
+  })
+})
+
+describe('Gist sync', () => {
+  it('does nothing at all when it is not configured', async () => {
+    const { pushToGist, pullFromGist, isConfigured } = await import('../gist')
+    expect(await isConfigured()).toBe(false)
+    expect((await pushToGist()).status).toBe('off')
+    expect((await pullFromGist()).status).toBe('off')
+  })
+
+  it('never puts photos or the token itself into the Gist payload', async () => {
+    const { pushToGist } = await import('../gist')
+    await saveSettings({ gistToken: 'gho_secret', gistId: 'abc123' })
+    const database = await db()
+    await database.put('photos', {
+      id: 'p1', dayId: curriculum.days[0].dayId, createdAt: new Date().toISOString(),
+      blob: new Blob(['x']), width: 1, height: 1, bytes: 1,
+      remotePath: null, uploadState: 'local',
+    })
+    await markDay(curriculum.days[0], { status: 'full' })
+
+    let sent = ''
+    const realFetch = globalThis.fetch
+    globalThis.fetch = (async (_url: string, init?: RequestInit) => {
+      sent = String(init?.body ?? '')
+      return new Response('{}', { status: 200 })
+    }) as unknown as typeof fetch
+    try {
+      const result = await pushToGist()
+      expect(result.status).toBe('pushed')
+      expect(sent).not.toContain('gho_secret')     // the token never travels
+
+      // The body nests the payload as a JSON string, so parse rather than
+      // substring-match — escaped quotes make that silently wrong.
+      const body = JSON.parse(sent) as { files: Record<string, { content: string }> }
+      const payload = JSON.parse(body.files['learn-with-me-progress.json'].content) as ExportFile
+      expect(payload.photosIncluded).toBe(false)
+      expect(payload.photos).toEqual([])
+      expect(payload.counts.photos).toBe(1)        // the photo exists, it just does not travel
+      expect(payload.settings).not.toHaveProperty('gistToken')
+      expect(payload.settings).not.toHaveProperty('githubToken')
+    } finally {
+      globalThis.fetch = realFetch
+    }
+  })
+
+  it('merges per day, so the other device’s work is never deleted', async () => {
+    const { pullFromGist } = await import('../gist')
+    await saveSettings({ gistToken: 't', gistId: 'g' })
+
+    // This device did day 5 and nothing else.
+    await markDay(curriculum.days[4], { status: 'full', at: new Date('2026-03-10T20:00:00Z') })
+
+    // The Gist holds days 1-3 from the phone, and an older copy of day 5.
+    const remote = {
+      app: 'learn-with-me', exportVersion: 1, exportedAt: '2026-03-05T20:00:00.000Z',
+      device: { id: 'phone', name: 'iPhone' },
+      counts: { progress: 4, resources: 0, photos: 0 },
+      photosIncluded: false, settings: undefined, resources: [], photos: [],
+      progress: [
+        ...curriculum.days.slice(0, 3).map((d) => ({
+          dayId: d.dayId, day: d.day, type: d.type, status: 'full',
+          completedAt: '2026-03-05T20:00:00.000Z', planDate: '2026-03-05',
+          actualTime: null, note: 'from the phone', photoIds: [], swappedFor: null,
+        })),
+        {
+          dayId: curriculum.days[4].dayId, day: 5, type: curriculum.days[4].type,
+          status: 'skipped', completedAt: '2026-03-01T20:00:00.000Z', planDate: '2026-03-01',
+          actualTime: null, note: 'older', photoIds: [], swappedFor: null,
+        },
+      ],
+    }
+
+    const realFetch = globalThis.fetch
+    globalThis.fetch = (async () => new Response(JSON.stringify({
+      files: { 'learn-with-me-progress.json': { content: JSON.stringify(remote) } },
+    }), { status: 200 })) as unknown as typeof fetch
+    try {
+      const result = await pullFromGist()
+      expect(result.status).toBe('pulled')
+
+      const rows = await allProgress()
+      expect(rows).toHaveLength(4)                                   // 1,2,3 arrived
+      const day5 = rows.find((r) => r.day === 5)!
+      expect(day5.status).toBe('full')                               // ours was newer
+      expect(rows.find((r) => r.day === 1)!.note).toBe('from the phone')
+    } finally {
+      globalThis.fetch = realFetch
+    }
+  })
+
+  it('explains a rejected token instead of failing silently', async () => {
+    const { pullFromGist } = await import('../gist')
+    await saveSettings({ gistToken: 'bad', gistId: 'g' })
+    const realFetch = globalThis.fetch
+    globalThis.fetch = (async () =>
+      new Response('{"message":"Bad credentials"}', { status: 401 })) as unknown as typeof fetch
+    try {
+      const result = await pullFromGist()
+      expect(result.status).toBe('error')
+      expect(result).toHaveProperty('message', expect.stringMatching(/gist scope/i))
+    } finally {
+      globalThis.fetch = realFetch
+    }
   })
 })

@@ -6,6 +6,7 @@ import { setResourceState } from '../lib/progress'
 import { clearSwaps } from '../lib/swaps'
 import { flushUploadQueue, queueCounts } from '../lib/upload'
 import { MECHANISMS, askForNotifications, downloadIcs, notificationState } from '../lib/reminders'
+import { createSecretGist, pullFromGist, pushToGist, type SyncOutcome } from '../lib/gist'
 import type { AppState } from '../lib/useApp'
 import type { Holding } from '../lib/types'
 
@@ -25,6 +26,23 @@ export function Settings({ app }: { app: AppState }) {
   const [pushResult, setPushResult] = useState<string | null>(null)
   const [counts, setCounts] = useState({ local: 0, failed: 0, uploaded: 0 })
   const [notifyState, setNotifyState] = useState<string>(() => notificationState())
+  const [syncing, setSyncing] = useState(false)
+  const [syncMessage, setSyncMessage] = useState<string | null>(null)
+
+  const runSync = (fn: () => Promise<SyncOutcome>) => {
+    setSyncing(true); setSyncMessage(null)
+    void fn()
+      .then((r) => {
+        setSyncMessage(
+          r.status === 'pushed' ? `Pushed ${r.records} days.`
+            : r.status === 'pulled' ? `From ${r.from}: ${r.added} added, ${r.replaced} updated, ${r.kept} already newer here.`
+              : r.status === 'already-current' ? 'Already up to date.'
+                : r.status === 'off' ? 'Add a token and a Gist id first.'
+                  : r.message,
+        )
+      })
+      .finally(() => { setSyncing(false); void refresh() })
+  }
   useEffect(() => { void queueCounts().then(setCounts) }, [app.records])
   if (!curriculum || !settings || !plan) return null
 
@@ -173,6 +191,93 @@ export function Settings({ app }: { app: AppState }) {
           Free or paid is a fact about the book and lives in curriculum.json. Whether you own it,
           borrowed it, or still need it is yours, so it lives here and travels in your backup.
           A borrowed book can carry a date back.
+        </Note>
+      </Section>
+
+      <Section n="00h" title="Sync between your devices">
+        <Field label="Token">
+          <input
+            type="password"
+            placeholder="a token with gist scope"
+            value={settings.gistToken}
+            onChange={(e) => set({ gistToken: e.target.value })}
+            className="w-full max-w-[280px] border-b border-[var(--rule-strong)] bg-transparent pb-1 text-[15px] focus:outline-none focus-visible:border-graphite"
+          />
+        </Field>
+        <Field label="Secret Gist id">
+          <input
+            placeholder="paste one, or make one below"
+            value={settings.gistId}
+            onChange={(e) => set({ gistId: e.target.value })}
+            className="tnum w-full max-w-[280px] border-b border-[var(--rule-strong)] bg-transparent pb-1 text-[15px] focus:outline-none focus-visible:border-graphite"
+          />
+        </Field>
+
+        <div className="mt-4">
+          <ButtonRow>
+            <Button
+              primary
+              disabled={syncing || !settings.gistToken || !settings.gistId}
+              onClick={() => runSync(pushToGist)}
+            >
+              {syncing ? 'Syncing' : 'Push to the Gist'}
+            </Button>
+            <Button
+              disabled={syncing || !settings.gistToken || !settings.gistId}
+              onClick={() => runSync(pullFromGist)}
+            >
+              Pull from the Gist
+            </Button>
+            <Button
+              disabled={syncing || !settings.gistToken || Boolean(settings.gistId)}
+              title={settings.gistId ? 'You already have one' : undefined}
+              onClick={() => {
+                setSyncing(true)
+                void createSecretGist()
+                  .then((id) => setSyncMessage(`Created a secret Gist: ${id}`))
+                  .catch((e: Error) => setSyncMessage(e.message))
+                  .finally(() => { setSyncing(false); refresh() })
+              }}
+            >
+              Make me a secret Gist
+            </Button>
+          </ButtonRow>
+        </div>
+
+        {syncMessage && <p className="mt-3 text-[13px]">{syncMessage}</p>}
+
+        <p className="tnum font-display mt-4 text-[12px] text-[var(--ink-3)]">
+          {settings.lastSyncAt
+            ? `LAST SYNCED ${new Date(settings.lastSyncAt).toLocaleString()}`
+            : 'NEVER SYNCED'}
+        </p>
+
+        <label className="mt-4 flex items-start gap-2 text-[13.5px]">
+          <input
+            type="checkbox"
+            className="mt-[4px]"
+            checked={settings.gistAutoSync}
+            onChange={(e) => set({ gistAutoSync: e.target.checked })}
+          />
+          <span className="max-w-[52ch]">Push automatically after each day is marked</span>
+        </label>
+
+        <Note>
+          Optional, and the app works completely without it. Pulling happens once when the app
+          loads; pushing happens after each completed day. Photos are excluded &mdash; a year of
+          them is far too much for a Gist. They go to the repo instead.
+        </Note>
+        <Note>
+          A conflict is resolved <b>per day, not per file</b>: whichever copy of a given day was
+          completed later wins, and a day only one device knows about is never dropped. Straight
+          last-write-wins on the whole file would delete real work the moment two devices are
+          out of step.
+        </Note>
+        <Note>
+          The token needs <code>gist</code> scope and nothing else. It is kept in this
+          browser&rsquo;s IndexedDB and is never exported or committed &mdash; a real if modest
+          risk, since anything that can run JavaScript on this origin could read it. A secret
+          Gist is unlisted rather than private, so treat the id as the secret.
         </Note>
       </Section>
 

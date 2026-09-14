@@ -53,6 +53,8 @@ export const DEFAULT_SETTINGS: Omit<Settings, 'deviceId' | 'deviceName'> = {
   ntfyTopic: '',
   gistToken: '',
   gistId: '',
+  gistAutoSync: true,
+  lastSyncAt: null,
   githubToken: '',
   githubRepo: '',
   publicPhotoWarningSeen: false,

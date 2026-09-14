@@ -115,6 +115,8 @@ export interface Settings {
   ntfyTopic: string
   gistToken: string
   gistId: string
+  gistAutoSync: boolean
+  lastSyncAt: string | null
   githubToken: string
   githubRepo: string
   publicPhotoWarningSeen: boolean
