@@ -1,15 +1,11 @@
 import { useEffect, useState } from 'react'
-import {
-  loadDesigners, loadProgramChanges, followed, toggleFollow, relativeTime,
-  type Designer, type ProgramResult,
-} from '../lib/extras'
+import { loadDesigners, followed, toggleFollow, type Designer } from '../lib/extras'
 
 /** Something closed that you open, not a banner that announces itself. */
 export function SundayPanel({ week }: { week: number }) {
   const [designer, setDesigner] = useState<Designer | null>(null)
   const [open, setOpen] = useState(false)
   const [follows, setFollows] = useState<string[]>([])
-  const [changes, setChanges] = useState<{ generatedAt: string; results: ProgramResult[] } | null>(null)
 
   useEffect(() => {
     void loadDesigners().then((file) => {
@@ -20,11 +16,7 @@ export function SundayPanel({ week }: { week: number }) {
     void followed().then(setFollows)
   }, [week])
 
-  useEffect(() => { if (open) void loadProgramChanges().then(setChanges) }, [open])
 
-  const notable = changes?.results.filter(
-    (r) => r.status === 'changed-notable' || r.status === 'check-manually') ?? []
-  const unconfirmed = changes?.results.filter((r) => r.status === 'unconfirmed') ?? []
 
   return (
     <section className="mt-12 border-t border-[var(--rule-strong)] pt-4">
@@ -88,55 +80,10 @@ export function SundayPanel({ week }: { week: number }) {
             </article>
           )}
 
-          <div className="mt-12 border-t border-[var(--rule)] pt-5">
-            <div className="font-display text-[13px] font-semibold">
-              Programmes and money
-              {changes && <span className="font-normal text-[var(--ink-3)]">{` · checked ${relativeTime(changes.generatedAt)}`}</span>}
-            </div>
-
-            {!changes && (
-              <p className="mt-3 text-[13px] text-[var(--ink-2)]">
-                The weekly Action has not run yet, or has not been able to.
-              </p>
-            )}
-
-            {changes && notable.length === 0 && (
-              <p className="mt-3 text-[13px] text-[var(--ink-2)]">
-                Nothing moved on the confirmed pages this week.
-              </p>
-            )}
-
-            {notable.map((r) => (
-              <div key={r.id} className="mt-4 border-l-2 border-cinnabar pl-[13px]">
-                <div className="font-display text-[13.5px] font-semibold">
-                  {r.name}
-                  <span className="ml-2 text-[11.5px] font-normal text-[var(--ink-3)]">
-                    {r.status === 'check-manually' ? 'check this one yourself' : 'changed'}
-                  </span>
-                </div>
-                {r.message && <p className="mt-1 text-[13px] text-[var(--ink-2)]">{r.message}</p>}
-                {r.added?.slice(0, 3).map((line) => (
-                  <p key={line} className="mt-1 max-w-[60ch] text-[12.5px] text-[var(--ink-2)]">+ {line}</p>
-                ))}
-                {r.url && (
-                  <a
-                    href={r.url} target="_blank" rel="noreferrer noopener"
-                    className="font-display mt-1 inline-block text-[11px] underline underline-offset-2"
-                  >
-                    open the page
-                  </a>
-                )}
-              </div>
-            ))}
-
-            {unconfirmed.length > 0 && (
-              <p className="mt-5 max-w-[60ch] text-[12.5px] text-[var(--ink-3)]">
-                {unconfirmed.length} watchlist {unconfirmed.length === 1 ? 'entry is' : 'entries are'} still
-                pointing at a school domain rather than a confirmed admissions page, so nothing is
-                being diffed for them. Paste the real URLs into programs.json.
-              </p>
-            )}
-          </div>
+          <p className="mt-10 border-t border-[var(--rule)] pt-4 text-[13px] text-[var(--ink-2)]">
+            Deadlines, the school watchlist and funding live on the Schools tab, every day
+            rather than only on Sundays.
+          </p>
         </div>
       )}
     </section>

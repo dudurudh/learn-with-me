@@ -83,17 +83,6 @@ export function Settings({ app }: { app: AppState }) {
             className="tnum font-display border-b border-[var(--rule-strong)] bg-transparent pb-1 text-[15px] focus:outline-none focus-visible:border-graphite"
           />
         </Field>
-        <label className="mb-3 flex items-start gap-2 text-[13.5px]">
-          <input
-            type="checkbox"
-            className="mt-[4px]"
-            checked={settings.newsGatedUntilComplete}
-            onChange={(e) => set({ newsGatedUntilComplete: e.target.checked })}
-          />
-          <span className="max-w-[52ch]">
-            Keep the news digest closed until the day is marked done
-          </span>
-        </label>
 
         <Note>
           A session at 23:30 should land on the day it felt like, and one at 00:20 should not

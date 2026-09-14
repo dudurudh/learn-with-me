@@ -5,12 +5,13 @@ import { Log } from './components/Log'
 import { Benchmarks } from './components/Benchmarks'
 import { Collection } from './components/Collection'
 import { Phase } from './components/Phase'
+import { Schools } from './components/Schools'
 import { Settings } from './components/Settings'
 import { exportToFile } from './lib/backup'
 import { useApp } from './lib/useApp'
 import { notificationState, scheduleInApp } from './lib/reminders'
 
-type View = 'today' | 'drawer' | 'wall' | 'series' | 'phase' | 'log' | 'settings'
+type View = 'today' | 'drawer' | 'wall' | 'series' | 'phase' | 'schools' | 'log' | 'settings'
 
 const TABS: { key: View; label: string }[] = [
   { key: 'today', label: 'Today' },
@@ -18,6 +19,7 @@ const TABS: { key: View; label: string }[] = [
   { key: 'wall', label: 'Wall' },
   { key: 'series', label: 'Series' },
   { key: 'phase', label: 'Phase' },
+  { key: 'schools', label: 'Schools' },
   { key: 'log', label: 'Log' },
   { key: 'settings', label: 'Settings' },
 ]
@@ -116,6 +118,7 @@ export default function App() {
       {view === 'wall' && <Collection app={app} />}
       {view === 'series' && <Benchmarks app={app} />}
       {view === 'phase' && <Phase app={app} />}
+      {view === 'schools' && <Schools app={app} />}
       {view === 'log' && <Log app={app} />}
       {view === 'settings' && <Settings app={app} />}
     </Shell>

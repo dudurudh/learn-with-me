@@ -128,6 +128,8 @@ in the log rather than dropped. A new day slots in without disturbing anything.
 | [`programs.yml`](.github/workflows/programs.yml) | Sundays | Diffs admissions pages against last week's snapshot |
 | [`ntfy.yml`](.github/workflows/ntfy.yml) | daily | Posts the reminder, if `NTFY_TOPIC` is set |
 
+The digest sits below the task on the Today view and is always visible.
+
 **News is fetched in the Action, not the browser**, because CORS blocks every
 one of these feeds and public proxies are unreliable. The app then reads
 `news.json` same-origin, with no key and no quota, and it works offline from the
@@ -140,6 +142,10 @@ school restructures its site, and a silently wrong deadline is the worst failure
 this could have. Instead it strips markup, diffs against last week, and shows
 *what changed* with a link. A page that 404s is flagged **check manually**, never
 reported as "no change".
+
+Everything about applications — your deadlines, the school watchlist, funding
+sources and what changed this week — is on the **Schools** tab, available every
+day.
 
 **The watchlist ships with school domains, not deep admissions links.** Inventing
 URL paths that may not exist would be worse than useless. Paste the real

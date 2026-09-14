@@ -16,7 +16,7 @@ import { weekOf } from '../lib/plan'
 import { buildReEntryDay } from '../lib/reentry'
 import { deadlineViews, project } from '../lib/stats'
 import type { AppState } from '../lib/useApp'
-import type { CurriculumDay, DayStatus, Settings, TimeBucket } from '../lib/types'
+import type { CurriculumDay, DayStatus, TimeBucket } from '../lib/types'
 
 const BUCKETS: { key: TimeBucket; label: string }[] = [
   { key: 'under10', label: 'under 10' },
@@ -48,7 +48,6 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
       day={justDid.day}
       status={justDid.status}
       warnPublic={warnPublic}
-      settings={settings}
       onPhotoChange={refresh}
       onTime={async (bucket) => {
         const record = await (await db()).get('progress', justDid.day.dayId)
@@ -252,24 +251,18 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
 
       {today.isRest && <SundayPanel week={today.week} />}
 
-      <NewsPanel
-        settings={settings}
-        dayDone={false}
-        onSettingsChange={() => void refresh()}
-        onOpenSettings={() => onGoTo('settings')}
-      />
+      <NewsPanel />
     </article>
   )
 }
 
 /** The one considered moment: the cell fills, and nothing else moves. */
 function Recorded({
-  day, status, warnPublic, settings, onTime, onSkipTime, onSeeDrawer, onPhotoChange,
+  day, status, warnPublic, onTime, onSkipTime, onSeeDrawer, onPhotoChange,
 }: {
   day: CurriculumDay
   status: DayStatus
   warnPublic: boolean
-  settings: Settings
   onTime: (b: TimeBucket) => Promise<void>
   onSkipTime: () => Promise<void>
   onSeeDrawer: () => void
@@ -328,7 +321,7 @@ function Recorded({
         <PhotoStrip day={day} warnPublic={warnPublic} onChange={onPhotoChange} />
       )}
 
-      <NewsPanel settings={settings} dayDone onSettingsChange={onPhotoChange} />
+      <NewsPanel />
 
       <div className="mt-9 flex gap-6 text-[13px]">
         <button className="underline underline-offset-4 hover:text-[var(--ink-2)]" onClick={onSeeDrawer}>
