@@ -2,9 +2,23 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "dev",
+      "runtimeExecutable": "/Users/dudu/.local/node/bin/node",
+      "runtimeArgs": [
+        "node_modules/vite/bin/vite.js",
+        "--port",
+        "5173",
+        "--host"
+      ],
+      "port": 5173,
+      "url": "http://localhost:5173"
+    },
+    {
       "name": "swatches",
       "runtimeExecutable": "/Users/dudu/.local/node/bin/node",
-      "runtimeArgs": [".claude/serve-static.mjs"],
+      "runtimeArgs": [
+        ".claude/serve-static.mjs"
+      ],
       "port": 4173
     }
   ]

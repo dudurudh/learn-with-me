@@ -87,6 +87,12 @@ export default function App() {
               {t.label}
             </button>
           ))}
+          {/* The grout here is the container showing through the gaps, so any
+              cell the tabs do not fill reads as a grey slab. Third time this
+              has bitten: drawer, photo wall, now the nav. */}
+          {Array.from({ length: (4 - (TABS.length % 4)) % 4 }).map((_, i) => (
+            <span key={`pad-${i}`} className="bg-paper sm:hidden" aria-hidden />
+          ))}
         </nav>
       </header>
 
