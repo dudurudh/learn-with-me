@@ -8,7 +8,7 @@
    untouched, saturated for a full day. Cinnabar is the found
    colour — benchmarks and discoveries only, under ten times a year.
    ────────────────────────────────────────────────────────────── */
-@theme {
+@theme static {
   /* White ground. One hue for the whole year read as dry, so colour now says
      WHICH PHASE and fill says HOW FAR IN — the drawer gets six colours
      instead of six shades of the same one. */
@@ -24,7 +24,15 @@
   --color-p5: #398457;   /* making        */
   --color-p6: #b0417a;   /* portfolio     */
 
-  /* Deep enough to carry white text at 7:1. */
+  /* Deep enough to carry white text at 4.7:1 or better, so a primary button
+     can wear the colour of the phase you are in rather than one fixed teal. */
+  --color-p1-deep: #2a7b9b;
+  --color-p2-deep: #936e0b;
+  --color-p3-deep: #c4432c;
+  --color-p4-deep: #6e58a8;
+  --color-p5-deep: #388155;
+  --color-p6-deep: #b0417a;
+
   --color-action: #155e75;
 
   --font-display: 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif;

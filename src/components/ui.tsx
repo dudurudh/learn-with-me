@@ -14,10 +14,10 @@ export function Section({ title, children }: { n?: string; title: string; childr
 }
 
 export function Button({
-  children, onClick, primary, disabled, title,
+  children, onClick, primary, disabled, title, accent,
 }: {
   children: ReactNode; onClick?: () => void; primary?: boolean
-  disabled?: boolean; title?: string
+  disabled?: boolean; title?: string; accent?: string
 }) {
   return (
     <button
@@ -25,8 +25,9 @@ export function Button({
       onClick={onClick}
       disabled={disabled}
       title={title}
+      style={primary && accent && !disabled ? { background: accent } : undefined}
       className={
-        'font-display rounded-[7px] px-[18px] py-[11px] text-[14px] font-medium ' +
+        'font-display inline-flex items-center gap-[7px] rounded-[9px] px-[16px] py-[10px] text-[14px] font-medium ' +
         'transition-[background-color,transform] duration-100 active:translate-y-[1px] ' +
         'disabled:cursor-not-allowed disabled:text-[var(--ink-3)] ' +
         (primary

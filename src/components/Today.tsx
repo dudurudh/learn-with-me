@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Button, ButtonRow, Callout } from './ui'
-import { phaseColour } from '../lib/phaseColour'
+import { phaseColour, phaseInk } from '../lib/phaseColour'
+import { activityOf } from '../lib/activity'
+import { Clock3, Check, Minus, Shuffle, X } from 'lucide-react'
 import { PhotoStrip } from './PhotoStrip'
 import { RecentStrip } from './RecentStrip'
 import { NewsPanel, SavedQueue } from './NewsPanel'
@@ -76,6 +78,8 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
 
   const phase = phaseOf(curriculum, today.day)
   const hue = phaseColour(today.phase)
+  const act = activityOf(today.type)
+  const ActIcon = act.icon
   const resource = today.resource ? curriculum.resources[today.resource.id] : null
 
   const urgent = deadlineViews(
@@ -159,15 +163,27 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
         {today.title}
       </h1>
 
-      <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13.5px] text-[var(--ink-2)]">
-        <span>{today.type}</span>
-        <span className="text-[var(--marker)]">/</span>
-        <span className="tnum">{today.minutes} minutes</span>
+      <div className="mt-4 flex flex-wrap items-center gap-2 text-[13.5px]">
+        <span
+          className="font-display inline-flex items-center gap-[6px] rounded-full px-[11px] py-[4px] text-[12.5px] font-medium text-page"
+          style={{ background: act.colour }}
+        >
+          <ActIcon size={14} strokeWidth={2.2} aria-hidden />
+          {act.label}
+        </span>
+        <span className="font-display tnum inline-flex items-center gap-[5px] rounded-full bg-surface px-[11px] py-[4px] text-[12.5px] text-[var(--ink-2)]">
+          <Clock3 size={14} strokeWidth={2} aria-hidden />
+          {today.minutes} min
+        </span>
         {today.isProjectBlock && (
-          <><span className="text-[var(--marker)]">/</span><span>the long one</span></>
+          <span className="font-display rounded-full bg-surface px-[11px] py-[4px] text-[12.5px] text-[var(--ink-2)]">
+            the long one
+          </span>
         )}
         {today.isDeload && (
-          <><span className="text-[var(--marker)]">/</span><span>light week</span></>
+          <span className="font-display rounded-full bg-surface px-[11px] py-[4px] text-[12.5px] text-[var(--ink-2)]">
+            light week
+          </span>
         )}
         {today.isBenchmark && (
           <span
@@ -181,7 +197,7 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
 
       {today.isBenchmark && (
         <div className="mt-7 max-w-[66ch]">
-          <Callout title="What a benchmark day is" tint={hue}>
+          <Callout title="What a benchmark day is" tint="var(--color-p4)" strength={8}>
             <p className="max-w-[58ch] text-[15px]">
               You draw the same object on days 1, 90, 180, 270 and 365, under the same
               conditions each time. Five drawings of one thing across a year is the only
@@ -198,7 +214,7 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
         </Callout>
 
         {!today.isRest && (
-          <Callout title="The smaller version — this still counts as showing up" tint={hue} strength={3}>
+          <Callout title="The smaller version — this still counts as showing up" tint="var(--color-p5)" strength={7}>
             <p className="max-w-[58ch] text-[15.5px] leading-[1.55]">{today.minimum}</p>
           </Callout>
         )}
@@ -217,8 +233,8 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
       <div className="mt-8 max-w-[66ch]">
         <Callout
           title={today.question ? 'Something to think about while you work' : 'Notes'}
-          tint={hue}
-          strength={4}
+          tint="var(--color-p2)"
+          strength={9}
         >
           {today.question && (
             <p className="mb-4 max-w-[40ch] text-[19px] leading-[1.35] text-graphite">
@@ -250,20 +266,28 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
 
       <div className="mt-6">
         <ButtonRow>
-          <Button primary disabled={busy} onClick={() => void mark('full')}>
+          <Button primary accent={phaseInk(today.phase)} disabled={busy} onClick={() => void mark('full')}>
+            <Check size={16} strokeWidth={2.4} aria-hidden />
             {today.isRest ? 'Nothing today' : 'Done'}
           </Button>
           {!today.isRest && (
             <>
-              <Button disabled={busy} onClick={() => void mark('minimum')}>Minimum done</Button>
+              <Button disabled={busy} onClick={() => void mark('minimum')}>
+                <Minus size={16} strokeWidth={2.4} aria-hidden />
+                Minimum done
+              </Button>
               <Button
                 disabled={busy || plan.swapsLeft === 0}
                 title={plan.swapsLeft === 0 ? 'Two a week, and this week is spent' : undefined}
                 onClick={() => void swap()}
               >
+                <Shuffle size={16} strokeWidth={2.2} aria-hidden />
                 Not this one today
               </Button>
-              <Button disabled={busy} onClick={() => void mark('skipped')}>Skip</Button>
+              <Button disabled={busy} onClick={() => void mark('skipped')}>
+                <X size={16} strokeWidth={2.4} aria-hidden />
+                Skip
+              </Button>
             </>
           )}
         </ButtonRow>

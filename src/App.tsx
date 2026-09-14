@@ -1,4 +1,8 @@
 import { useEffect, useState } from 'react'
+import {
+  Sun, LayoutGrid, Images, GitCompareArrows, TrendingUp,
+  GraduationCap, ScrollText, Settings2,
+} from 'lucide-react'
 import { Today } from './components/Today'
 import { Drawer } from './components/Drawer'
 import { Log } from './components/Log'
@@ -10,18 +14,19 @@ import { Settings } from './components/Settings'
 import { exportToFile } from './lib/backup'
 import { useApp } from './lib/useApp'
 import { notificationState, scheduleInApp } from './lib/reminders'
+import { phaseColour } from './lib/phaseColour'
 
 type View = 'today' | 'drawer' | 'wall' | 'series' | 'phase' | 'schools' | 'log' | 'settings'
 
-const TABS: { key: View; label: string }[] = [
-  { key: 'today', label: 'Today' },
-  { key: 'drawer', label: 'Drawer' },
-  { key: 'wall', label: 'Wall' },
-  { key: 'series', label: 'Series' },
-  { key: 'phase', label: 'Phase' },
-  { key: 'schools', label: 'Schools' },
-  { key: 'log', label: 'Log' },
-  { key: 'settings', label: 'Settings' },
+const TABS: { key: View; label: string; Icon: typeof Sun }[] = [
+  { key: 'today',    label: 'Today',    Icon: Sun },
+  { key: 'drawer',   label: 'Drawer',   Icon: LayoutGrid },
+  { key: 'wall',     label: 'Wall',     Icon: Images },
+  { key: 'series',   label: 'Series',   Icon: GitCompareArrows },
+  { key: 'phase',    label: 'Progress', Icon: TrendingUp },
+  { key: 'schools',  label: 'Schools',  Icon: GraduationCap },
+  { key: 'log',      label: 'Log',      Icon: ScrollText },
+  { key: 'settings', label: 'Settings', Icon: Settings2 },
 ]
 
 export default function App() {
@@ -58,9 +63,11 @@ export default function App() {
   }
   if (!plan || !settings) return null
 
+  const hue = phaseColour(plan.today?.phase ?? 6)
+
   return (
     <Shell>
-      <header className="mb-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between">
+      <header className="mb-10 flex flex-col gap-5">
         <div className="font-display text-[14px] text-[var(--ink-2)]">
           <span className="tnum font-semibold text-graphite">{plan.worked}</span> days collected
           <span className="mx-2 text-[var(--marker)]">/</span>
@@ -69,32 +76,29 @@ export default function App() {
             <span className="ml-3 rounded-full bg-p3 px-[9px] py-[2px] text-[11px] text-page">demo</span>
           )}
         </div>
-        {/* Six tabs do not fit a 375px screen in one row. Wrapping keeps them
-            all reachable without the page itself scrolling sideways. */}
-        <nav className="grid grid-cols-4 gap-px border border-[var(--rule-strong)] bg-[var(--rule-strong)] sm:flex sm:flex-wrap">
-          {TABS.map((t) => (
-            <button
-              key={t.key}
-              onClick={() => setView(t.key)}
-              aria-current={view === t.key ? 'page' : undefined}
-              className={
-                'font-display whitespace-nowrap px-[12px] py-[10px] text-[13px] font-medium ' +
-                'transition-[background-color,transform] duration-100 active:translate-y-[1px] ' +
-                'sm:px-[14px] sm:py-[8px] sm:text-[12.5px] ' +
-                (view === t.key
-                  ? 'bg-action text-page'
-                  : 'bg-page hover:bg-[color-mix(in_srgb,var(--phase)_16%,var(--color-page))]')
-              }
-            >
-              {t.label}
-            </button>
-          ))}
-          {/* The grout here is the container showing through the gaps, so any
-              cell the tabs do not fill reads as a grey slab. Third time this
-              has bitten: drawer, photo wall, now the nav. */}
-          {Array.from({ length: (4 - (TABS.length % 4)) % 4 }).map((_, i) => (
-            <span key={`pad-${i}`} className="bg-page sm:hidden" aria-hidden />
-          ))}
+        {/* Soft pills rather than a bordered grid, and the active one picks
+            up the colour of the phase you are actually in. */}
+        <nav className="-mx-1 flex flex-wrap gap-1">
+          {TABS.map(({ key, label, Icon }) => {
+            const active = view === key
+            return (
+              <button
+                key={key}
+                onClick={() => setView(key)}
+                aria-current={active ? 'page' : undefined}
+                className={
+                  'font-display flex items-center gap-[7px] rounded-full px-[13px] py-[7px] '
+                  + 'text-[13.5px] font-medium transition-[background-color,color,transform] '
+                  + 'duration-100 active:translate-y-[1px] '
+                  + (active ? 'text-page' : 'text-[var(--ink-2)] hover:bg-surface hover:text-graphite')
+                }
+                style={active ? { background: hue } : undefined}
+              >
+                <Icon size={15} strokeWidth={2} aria-hidden />
+                {label}
+              </button>
+            )
+          })}
         </nav>
       </header>
 

@@ -847,3 +847,43 @@ describe('contrast', () => {
     expect(ratio([255, 255, 255], token('action'))).toBeGreaterThanOrEqual(4.5)
   })
 })
+
+describe('phase colours carry text safely', () => {
+  const lin = (c: number) => {
+    const v = c / 255
+    return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4
+  }
+  const lum = ([r, g, b]: number[]) => 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b)
+  const ratio = (a: number[], b: number[]) => {
+    const [hi, lo] = [lum(a), lum(b)].sort((x, y) => y - x)
+    return (hi + 0.05) / (lo + 0.05)
+  }
+  const css = readFileSync(new URL('../../index.css', import.meta.url), 'utf8')
+  const token = (n: string) => {
+    const m = new RegExp(`--color-${n}: (#[0-9a-f]{6})`).exec(css)!
+    return [1, 3, 5].map((i) => parseInt(m[1].slice(i, i + 2), 16))
+  }
+
+  it('lets a primary button wear any phase colour under white text', () => {
+    for (const n of [1, 2, 3, 4, 5, 6]) {
+      expect(ratio([255, 255, 255], token(`p${n}-deep`)), `p${n}-deep`).toBeGreaterThanOrEqual(4.5)
+    }
+  })
+})
+
+describe('theme tokens actually ship', () => {
+  // Tailwind v4's @theme drops any token no utility class references, and most
+  // of these are only reached through inline var() in phase-coloured styles.
+  // `@theme static` emits them all; this fails if that ever regresses.
+  it('declares every colour token under @theme static', () => {
+    const css = readFileSync(new URL('../../index.css', import.meta.url), 'utf8')
+    expect(css).toContain('@theme static')
+    for (const t of [
+      'page', 'surface', 'graphite', 'marker', 'action',
+      'p1', 'p2', 'p3', 'p4', 'p5', 'p6',
+      'p1-deep', 'p2-deep', 'p3-deep', 'p4-deep', 'p5-deep', 'p6-deep',
+    ]) {
+      expect(css, `--color-${t}`).toContain(`--color-${t}:`)
+    }
+  })
+})

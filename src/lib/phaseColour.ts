@@ -34,3 +34,8 @@ export function cellFill(
 export function cellShape(isBenchmark: boolean): string {
   return isBenchmark ? 'rounded-full' : 'rounded-[3px]'
 }
+
+/** A darker cut of the phase colour, safe under white text. */
+export function phaseInk(phase: number): string {
+  return `var(--color-p${phase >= 1 && phase <= 6 ? phase : 1}-deep)`
+}

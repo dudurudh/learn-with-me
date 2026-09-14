@@ -3,6 +3,7 @@ import { addPhotoToDay, deletePhoto, markPublicPhotoWarningSeen } from '../lib/a
 import { formatBytes } from '../lib/images'
 import { photosForDay } from '../lib/photos'
 import { Button, ButtonRow } from './ui'
+import { Camera, FolderOpen } from 'lucide-react'
 import type { CurriculumDay, PhotoRecord } from '../lib/types'
 
 export function PhotoStrip({
@@ -93,9 +94,13 @@ export function PhotoStrip({
       <div className="mt-4">
         <ButtonRow>
           <Button disabled={busy} onClick={() => camera.current?.click()}>
+            <Camera size={16} strokeWidth={2.2} aria-hidden />
             {busy ? 'Compressing' : 'Take a photo'}
           </Button>
-          <Button disabled={busy} onClick={() => picker.current?.click()}>Choose a file</Button>
+          <Button disabled={busy} onClick={() => picker.current?.click()}>
+            <FolderOpen size={16} strokeWidth={2.2} aria-hidden />
+            Choose a file
+          </Button>
         </ButtonRow>
       </div>
 
