@@ -7,7 +7,7 @@ export function Rule() {
 export function Section({ n, title, children }: { n: string; title: string; children: ReactNode }) {
   return (
     <section className="relative mb-14 sm:pl-[104px]">
-      <span className="font-display tnum absolute left-0 hidden w-[72px] pt-[3px] text-right text-[12px] text-[var(--ink-3)] sm:block">
+      <span className="font-display tnum absolute left-0 hidden w-[72px] pt-[3px] text-right text-[12px] text-[var(--ink-2)] sm:block">
         {n}
       </span>
       <span className="font-display absolute left-[80px] top-0 hidden h-full w-px bg-[var(--rule)] sm:block" />
@@ -61,9 +61,37 @@ export function Note({ children }: { children: ReactNode }) {
 
 export function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <label className="mb-3 grid grid-cols-[150px_1fr] items-baseline gap-4">
-      <span className="font-display text-[12px] text-[var(--ink-3)]">{label}</span>
-      {children}
+    <label className="-mt-px grid grid-cols-[76px_1fr] items-baseline py-3 sm:grid-cols-[132px_1fr]">
+      <span className="font-display pr-4 text-right text-[12px] text-[var(--ink-2)] sm:text-[13px]">
+        {label}
+      </span>
+      <span className="block self-stretch border-l border-[var(--rule-strong)] pl-4 sm:pl-6">
+        {children}
+      </span>
     </label>
   )
+}
+
+/**
+ * A ruled journal margin: the label hangs to the left of a continuous hairline
+ * and the content sits to the right of it. Hierarchy comes from position and
+ * the rule, so labels can stay at readable contrast instead of being greyed
+ * out until they nearly vanish.
+ */
+export function MarginRow({
+  label, children, tight,
+}: { label: ReactNode; children: ReactNode; tight?: boolean }) {
+  return (
+    <div className={`grid grid-cols-[76px_1fr] sm:grid-cols-[132px_1fr] ${tight ? 'py-2' : 'py-4'}`}>
+      <div className="font-display pr-4 text-right text-[12px] leading-[1.5] text-[var(--ink-2)] sm:text-[13px]">
+        {label}
+      </div>
+      <div className="border-l border-[var(--rule-strong)] pl-4 sm:pl-6">{children}</div>
+    </div>
+  )
+}
+
+/** Wraps a run of MarginRows so the hairline reads as one continuous rule. */
+export function Margin({ children }: { children: ReactNode }) {
+  return <div className="[&>*+*]:-mt-px">{children}</div>
 }

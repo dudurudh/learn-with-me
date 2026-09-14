@@ -784,3 +784,43 @@ describe('Gist sync', () => {
     }
   })
 })
+
+describe('contrast', () => {
+  // The muted inks were 4.43:1 and 2.52:1 — both under the 4.5:1 floor for
+  // body text. Hierarchy comes from the ruled margin now, not from faintness.
+  const lin = (c: number) => {
+    const v = c / 255
+    return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4
+  }
+  const lum = ([r, g, b]: number[]) =>
+    0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b)
+  const over = (fg: number[], a: number, bg: number[]) =>
+    fg.map((f, i) => a * f + (1 - a) * bg[i])
+  const ratio = (a: number[], b: number[]) => {
+    const [hi, lo] = [lum(a), lum(b)].sort((x, y) => y - x)
+    return (hi + 0.05) / (lo + 0.05)
+  }
+
+  const PAPER = [245, 242, 236]
+  const GRAPHITE = [34, 32, 29]
+
+  it('keeps every text ink above the AA floor on paper', () => {
+    const inks = { graphite: 1, 'ink-2': 0.72, 'ink-3': 0.66 }
+    for (const [name, alpha] of Object.entries(inks)) {
+      const r = ratio(over(GRAPHITE, alpha, PAPER), PAPER)
+      expect(r, `${name} at alpha ${alpha}`).toBeGreaterThanOrEqual(4.5)
+    }
+  })
+
+  it('keeps the stylesheet in step with these numbers', () => {
+    const css = readFileSync(new URL('../../index.css', import.meta.url), 'utf8')
+    const ink2 = /--ink-2: rgb\(34 32 29 \/ ([\d.]+)\)/.exec(css)![1]
+    const ink3 = /--ink-3: rgb\(34 32 29 \/ ([\d.]+)\)/.exec(css)![1]
+    expect(ratio(over(GRAPHITE, Number(ink2), PAPER), PAPER)).toBeGreaterThanOrEqual(4.5)
+    expect(ratio(over(GRAPHITE, Number(ink3), PAPER), PAPER)).toBeGreaterThanOrEqual(4.5)
+  })
+
+  it('keeps paper text on the foam-deep button readable', () => {
+    expect(ratio([245, 242, 236], [46, 107, 124])).toBeGreaterThanOrEqual(4.5)
+  })
+})

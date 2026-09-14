@@ -29,8 +29,11 @@
   :root {
     --rule: rgb(34 32 29 / 0.16);
     --rule-strong: rgb(34 32 29 / 0.38);
-    --ink-2: rgb(34 32 29 / 0.62);
-    --ink-3: rgb(34 32 29 / 0.42);
+    /* 0.62 and 0.42 measured 4.43:1 and 2.52:1 against paper — both below the
+       4.5:1 floor. Hierarchy comes from the ruled margin now, not from making
+       text hard to read. */
+    --ink-2: rgb(34 32 29 / 0.72);
+    --ink-3: rgb(34 32 29 / 0.66);
 
     /* The completion axis, one hue carrying all of it. */
     --cell-untouched: color-mix(in srgb, var(--color-foam) 11%, var(--color-paper));

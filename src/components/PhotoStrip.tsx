@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { addPhotoToDay, deletePhoto, markPublicPhotoWarningSeen } from '../lib/addPhoto'
 import { formatBytes } from '../lib/images'
 import { photosForDay } from '../lib/photos'
-import { Button, ButtonRow } from './ui'
+import { Button, ButtonRow, Margin, MarginRow } from './ui'
 import type { CurriculumDay, PhotoRecord } from '../lib/types'
 
 export function PhotoStrip({
@@ -56,10 +56,9 @@ export function PhotoStrip({
   }
 
   return (
-    <div className="mt-8 border-t border-[var(--rule)] pt-5">
-      <div className="font-display text-[13px] font-semibold">
-        Specimen {photos.length > 0 && `· ${photos.length}`}
-      </div>
+    <div className="mt-8 border-t border-[var(--rule)] pt-2">
+      <Margin>
+      <MarginRow label={photos.length > 0 ? `Specimen · ${photos.length}` : 'Specimen'}>
 
       {photos.length > 0 && (
         <div className="mt-3 inline-flex max-w-full flex-wrap gap-px bg-[var(--rule-strong)] p-px">
@@ -108,6 +107,8 @@ export function PhotoStrip({
 
       {status && <p className="tnum font-display mt-3 text-[11px] text-[var(--ink-3)]">{status}</p>}
 
+      </MarginRow>
+      </Margin>
       {showWarning && (
         <div className="mt-4 border-l-2 border-cinnabar pl-[13px] text-[13px] text-[var(--ink-2)]">
           <p className="max-w-[56ch]">

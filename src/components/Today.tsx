@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Button, ButtonRow } from './ui'
+import { Button, ButtonRow, Margin, MarginRow } from './ui'
 import { PhotoStrip } from './PhotoStrip'
 import { RecentStrip } from './RecentStrip'
 import { NewsPanel, SavedQueue } from './NewsPanel'
@@ -181,25 +181,23 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
         </p>
       )}
 
-      <div className="mt-10 border-t border-[var(--rule)] pt-4">
-        <div className="font-display text-[13px] font-semibold">If today is a bad day</div>
-        <p className="mt-1 max-w-[56ch] text-[14.5px] text-[var(--ink-2)]">{today.minimum}</p>
+      <div className="mt-10 border-t border-[var(--rule)] pt-2">
+        <Margin>
+          <MarginRow label={<>If today is<br />a bad day</>}>
+            <p className="max-w-[54ch] text-[14.5px]">{today.minimum}</p>
+          </MarginRow>
+
+          {resource && today.resource && (
+            <MarginRow label={today.resourceMode === 'assigned' ? 'Read this' : 'Look here'}>
+              <p className="max-w-[54ch] text-[14px]">
+                {resource.title}
+                {today.resource.section ? ` — ${today.resource.section}` : ''}
+              </p>
+            </MarginRow>
+          )}
+        </Margin>
       </div>
 
-      {resource && today.resource && (
-        <p className="mt-5 text-[12.5px] text-[var(--ink-3)]">
-          <span
-            className={
-              'font-display mr-[7px] border border-[var(--rule-strong)] px-[6px] py-[1px] text-[11px] ' +
-              (today.resourceMode === 'assigned' ? 'border-transparent bg-graphite text-paper' : '')
-            }
-          >
-            {today.resourceMode}
-          </span>
-          {resource.title}
-          {today.resource.section ? ` — ${today.resource.section}` : ''}
-        </p>
-      )}
 
       <textarea
         value={note}
@@ -302,18 +300,20 @@ function Recorded({
       </div>
 
       {(status === 'full' || status === 'minimum') && (
-        <div className="mt-9">
-          <div className="font-display text-[13px] font-semibold">How long did it actually take?</div>
-          <div className="mt-3">
-            <ButtonRow>
-              {BUCKETS.map((b) => (
-                <Button key={b.key} onClick={() => void onTime(b.key)}>{b.label}</Button>
-              ))}
-            </ButtonRow>
-          </div>
-          <p className="mt-3 text-[12px] text-[var(--ink-3)]">
-            Estimated {day.minutes} minutes. This is how the plan finds out where it was wrong.
-          </p>
+        <div className="mt-9 border-t border-[var(--rule)] pt-2">
+          <Margin>
+            <MarginRow label={<>How long<br />did it take?</>}>
+              <ButtonRow>
+                {BUCKETS.map((b) => (
+                  <Button key={b.key} onClick={() => void onTime(b.key)}>{b.label}</Button>
+                ))}
+              </ButtonRow>
+              <p className="mt-3 max-w-[48ch] text-[13px] text-[var(--ink-2)]">
+                Estimated {day.minutes} minutes. This is how the plan finds out where it
+                was wrong.
+              </p>
+            </MarginRow>
+          </Margin>
         </div>
       )}
 
