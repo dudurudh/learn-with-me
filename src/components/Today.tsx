@@ -24,7 +24,7 @@ const BUCKETS: { key: TimeBucket; label: string }[] = [
   { key: '40plus', label: '40+' },
 ]
 
-export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer') => void }) {
+export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | 'settings') => void }) {
   const { curriculum, plan, settings, refresh } = app
   const [note, setNote] = useState('')
   const [justDid, setJustDid] = useState<{ day: CurriculumDay; status: DayStatus } | null>(null)
@@ -244,7 +244,12 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer') =>
 
       {today.isRest && <SundayPanel week={today.week} />}
 
-      <NewsPanel settings={settings} dayDone={false} onSettingsChange={() => void refresh()} />
+      <NewsPanel
+        settings={settings}
+        dayDone={false}
+        onSettingsChange={() => void refresh()}
+        onOpenSettings={() => onGoTo('settings')}
+      />
     </article>
   )
 }

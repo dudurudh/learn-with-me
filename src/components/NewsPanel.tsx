@@ -12,11 +12,12 @@ import type { Settings } from '../lib/types'
  * never appears above the task and can be gated behind finishing the day.
  */
 export function NewsPanel({
-  settings, dayDone, onSettingsChange,
+  settings, dayDone, onSettingsChange, onOpenSettings,
 }: {
   settings: Settings
   dayDone: boolean
   onSettingsChange: () => void
+  onOpenSettings?: () => void
 }) {
   const [open, setOpen] = useState(false)
   const [news, setNews] = useState<NewsFile | null>(null)
@@ -37,8 +38,26 @@ export function NewsPanel({
         className="font-display flex w-full items-baseline justify-between gap-4 text-left text-[11px] tracking-[0.02em] text-[var(--ink-3)] disabled:cursor-not-allowed"
       >
         <span>FIVE THINGS FROM THE FIELD</span>
-        <span>{gated ? 'AFTER TODAY IS DONE' : open ? 'CLOSE' : 'OPEN'}</span>
+        <span>{gated ? 'LOCKED' : open ? 'CLOSE' : 'OPEN'}</span>
       </button>
+
+      {/* A disabled control with no explanation reads as broken rather than
+          deliberate, which is how a feature gets reported as a bug. */}
+      {gated && (
+        <p className="mt-3 max-w-[56ch] text-[13px] text-[var(--ink-2)]">
+          Deliberately shut until today is marked done &mdash; a feed is the easiest thing to do
+          instead of drawing.{' '}
+          {onOpenSettings && (
+            <button
+              onClick={onOpenSettings}
+              className="underline underline-offset-4 hover:text-graphite"
+            >
+              Unlock it in settings
+            </button>
+          )}
+          {onOpenSettings && ' if you would rather it were always open.'}
+        </p>
+      )}
 
       {open && !gated && (
         <div className="mt-5">
