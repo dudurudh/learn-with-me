@@ -11,7 +11,7 @@ export function Section({ n, title, children }: { n: string; title: string; chil
         {n}
       </span>
       <span className="font-display absolute left-[80px] top-0 hidden h-full w-px bg-[var(--rule)] sm:block" />
-      <h2 className="font-display mb-5 border-b border-[var(--rule-strong)] pb-[7px] text-[13px] font-semibold">
+      <h2 className="font-display mb-5 border-b border-[var(--rule-strong)] pb-[7px] text-[15px] font-semibold tracking-[-0.006em]">
         {title}
       </h2>
       {children}
@@ -32,7 +32,8 @@ export function Button({
       disabled={disabled}
       title={title}
       className={
-        'font-display px-[17px] py-[11px] text-[13.5px] font-medium transition-colors duration-100 ' +
+        'font-display px-[17px] py-[11px] text-[13.5px] font-medium ' +
+        'transition-[background-color,transform] duration-100 active:translate-y-[1px] ' +
         'disabled:cursor-not-allowed disabled:text-[var(--ink-3)] ' +
         (primary
           ? 'bg-foam-deep text-paper hover:bg-[#27596a] disabled:bg-marker disabled:text-[var(--ink-3)]'
@@ -61,7 +62,7 @@ export function Note({ children }: { children: ReactNode }) {
 export function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
     <label className="mb-3 grid grid-cols-[150px_1fr] items-baseline gap-4">
-      <span className="font-display text-[11px] tracking-[0.02em] text-[var(--ink-3)]">{label}</span>
+      <span className="font-display text-[12px] text-[var(--ink-3)]">{label}</span>
       {children}
     </label>
   )

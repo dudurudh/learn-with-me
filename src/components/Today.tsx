@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Button, ButtonRow } from './ui'
 import { PhotoStrip } from './PhotoStrip'
+import { RecentStrip } from './RecentStrip'
 import { NewsPanel, SavedQueue } from './NewsPanel'
 import { FollowPrompt } from './FollowPrompt'
 import { SundayPanel } from './SundayPanel'
@@ -125,9 +126,7 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
 
       {reEntry && (
         <div className="mb-7 border-b border-[var(--rule)] pb-5">
-          <div className="font-display text-[11px] tracking-[0.02em] text-[var(--ink-3)]">
-            COMING BACK
-          </div>
+          <div className="font-display text-[13px] font-semibold">Coming back</div>
           <p className="mt-2 max-w-[56ch] text-[13.5px] text-[var(--ink-2)]">
             It has been {plan.daysSinceLastWorked} days. Here is a short one first &mdash; ten
             minutes, nothing new, and it counts as a full day. Day {plan.today?.day} is waiting
@@ -136,47 +135,56 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
         </div>
       )}
 
-      <div className="font-display text-[11px] tracking-[0.02em] text-[var(--ink-3)]">
-        PHASE {today.phase} &middot; {phase?.title.toUpperCase()}
+      <div className="flex items-start justify-between gap-6">
+        <div>
+          <div className="font-display text-[13px] text-[var(--ink-3)]">
+            Phase {today.phase} &middot; {phase?.title}
+          </div>
+
+          <div className="font-display tnum mt-3 text-[86px] leading-[0.86] font-bold tracking-[-0.04em] text-foam-deep">
+            {reEntry ? '\u2014' : String(today.day).padStart(3, '0')}
+          </div>
+        </div>
+
+        {/* The last nine weeks, on the page you open every day. Small enough
+            to sit beside the number on a phone as well as a desk. */}
+        <div className="mt-1 shrink-0">
+          <RecentStrip app={app} />
+        </div>
       </div>
 
-      <div className="mt-4 flex items-baseline gap-4">
-        {/* A re-entry day is an extra, not day 202 — numbering it would claim
-            otherwise and make the count wrong by one in the reader's head. */}
-        <span className="font-display tnum text-[42px] leading-none font-bold tracking-[-0.03em]">
-          {reEntry ? '—' : String(today.day).padStart(3, '0')}
-        </span>
-        <h1 className="font-display text-[23px] font-semibold tracking-[-0.012em]">
-          {today.title}
-        </h1>
-      </div>
+      <h1 className="font-display mt-5 max-w-[22ch] text-[30px] leading-[1.08] font-semibold tracking-[-0.02em]">
+        {today.title}
+      </h1>
 
-      <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12.5px] text-[var(--ink-2)]">
+      <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13.5px] text-[var(--ink-2)]">
         <span>{today.type}</span>
-        <span>&middot;</span>
-        <span className="tnum">{today.minutes} min</span>
-        {today.isProjectBlock && <><span>&middot;</span><span>project block</span></>}
-        {today.isDeload && <><span>&middot;</span><span>light week</span></>}
+        <span className="text-[var(--marker)]">/</span>
+        <span className="tnum">{today.minutes} minutes</span>
+        {today.isProjectBlock && (
+          <><span className="text-[var(--marker)]">/</span><span>the long one</span></>
+        )}
+        {today.isDeload && (
+          <><span className="text-[var(--marker)]">/</span><span>light week</span></>
+        )}
         {today.isBenchmark && (
-          <span className="font-display bg-cinnabar px-[6px] py-[2px] text-[10px] tracking-[0.04em] text-paper">
-            BENCHMARK
+          <span className="font-display bg-cinnabar px-[7px] py-[2px] text-[11px] text-paper">
+            benchmark
           </span>
         )}
       </div>
 
-      <p className="mt-5 max-w-[60ch] text-[15px]">{today.full}</p>
+      <p className="mt-7 max-w-[58ch] text-[16.5px] leading-[1.62]">{today.full}</p>
 
       {today.question && (
-        <p className="mt-6 max-w-[48ch] border-l-2 border-cinnabar pl-[13px] text-[14.5px] italic text-[var(--ink-2)]">
+        <p className="mt-9 max-w-[26ch] border-l-[3px] border-cinnabar pl-5 text-[21px] italic leading-[1.34] text-graphite">
           {today.question}
         </p>
       )}
 
-      <div className="mt-6 border-t border-[var(--rule)] pt-4">
-        <div className="font-display text-[10px] tracking-[0.03em] text-[var(--ink-3)]">
-          IF TODAY IS A BAD DAY
-        </div>
-        <p className="mt-1 max-w-[56ch] text-[13.5px] text-[var(--ink-2)]">{today.minimum}</p>
+      <div className="mt-10 border-t border-[var(--rule)] pt-4">
+        <div className="font-display text-[13px] font-semibold">If today is a bad day</div>
+        <p className="mt-1 max-w-[56ch] text-[14.5px] text-[var(--ink-2)]">{today.minimum}</p>
       </div>
 
       {resource && today.resource && (
@@ -187,7 +195,7 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
               (today.resourceMode === 'assigned' ? 'border-transparent bg-graphite text-paper' : '')
             }
           >
-            {today.resourceMode?.toUpperCase()}
+            {today.resourceMode}
           </span>
           {resource.title}
           {today.resource.section ? ` — ${today.resource.section}` : ''}
@@ -198,7 +206,7 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
         value={note}
         onChange={(e) => setNote(e.target.value)}
         rows={2}
-        placeholder="Marginalia"
+        placeholder="What happened? (optional, and nobody reads it but you)"
         className="mt-7 w-full max-w-[60ch] resize-y border-l-2 border-[var(--marker)] bg-transparent pl-[13px] text-[13.5px] italic text-[var(--ink-2)] placeholder:text-[var(--ink-3)] focus:outline-none focus-visible:border-graphite"
       />
 
@@ -236,7 +244,7 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
 
       {swapNote && <p className="mt-3 text-[13px] text-[var(--ink-2)]">{swapNote}</p>}
 
-      <div className="tnum font-display mt-5 flex flex-wrap gap-x-7 gap-y-1 text-[12px] text-[var(--ink-3)]">
+      <div className="tnum font-display mt-5 flex flex-wrap gap-x-7 gap-y-1 text-[12.5px] text-[var(--ink-3)]">
         <span>streak {plan.streak}</span>
         <span>grace {plan.graceRemaining} of {settings.graceBudget}</span>
         {!today.isRest && <span>swaps {plan.swapsLeft} of {settings.swapsPerWeek} this week</span>}
