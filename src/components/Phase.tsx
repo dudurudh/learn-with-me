@@ -1,5 +1,6 @@
 import { driftByType, skipRates, project, deadlineViews, phaseProgress } from '../lib/stats'
 import { phaseOf } from '../lib/curriculum'
+import { Margin, MarginRow } from './ui'
 import type { AppState } from '../lib/useApp'
 
 export function Phase({ app }: { app: AppState }) {
@@ -20,7 +21,7 @@ export function Phase({ app }: { app: AppState }) {
 
       <div className="mt-8 space-y-px">
         {curriculum.phases.map((p) => {
-          const { completed, total, fraction } = phaseProgress(curriculum, records, p.phase)
+          const { completed, total } = phaseProgress(curriculum, records, p.phase)
           const isCurrent = p.phase === current?.phase
           return (
             <div key={p.phase} className="border-b border-[var(--rule)] py-3">
@@ -33,14 +34,20 @@ export function Phase({ app }: { app: AppState }) {
                   {completed} / {total}
                 </div>
               </div>
-              <div className="mt-2 h-[6px] w-full bg-[var(--cell-untouched)]">
-                <div
-                  className="h-full"
-                  style={{
-                    width: `${Math.round(fraction * 100)}%`,
-                    background: isCurrent ? 'var(--color-foam-deep)' : 'var(--color-foam)',
-                  }}
-                />
+              {/* One cell per day, the same grammar as the drawer, so a
+                  phase reads as a block of compartments rather than a bar. */}
+              <div className="mt-[10px] flex flex-wrap gap-[2px]">
+                {Array.from({ length: total }).map((_, i) => (
+                  <span
+                    key={i}
+                    className="h-[8px] w-[8px]"
+                    style={{
+                      background: i < completed
+                        ? (isCurrent ? 'var(--color-foam-deep)' : 'var(--color-foam)')
+                        : 'var(--cell-untouched)',
+                    }}
+                  />
+                ))}
               </div>
               {isCurrent && (
                 <p className="mt-2 max-w-[60ch] text-[13px] text-[var(--ink-2)]">{p.goal}</p>
@@ -51,7 +58,7 @@ export function Phase({ app }: { app: AppState }) {
       </div>
 
       <h2 className="font-display mt-14 mb-5 border-b border-[var(--rule-strong)] pb-[7px] text-[13px] font-semibold">
-        Estimated against actual
+        Where the plan was wrong
       </h2>
       {drift.length === 0 ? (
         <p className="text-[13.5px] text-[var(--ink-2)]">
@@ -97,7 +104,7 @@ export function Phase({ app }: { app: AppState }) {
       )}
 
       <h2 className="font-display mt-14 mb-5 border-b border-[var(--rule-strong)] pb-[7px] text-[13px] font-semibold">
-        What gets done, by type
+        What actually gets done
       </h2>
       {rates.length === 0 ? (
         <p className="text-[13.5px] text-[var(--ink-2)]">Nothing recorded in the last 30 days.</p>
@@ -134,17 +141,27 @@ export function Phase({ app }: { app: AppState }) {
       )}
 
       <h2 className="font-display mt-14 mb-5 border-b border-[var(--rule-strong)] pb-[7px] text-[13px] font-semibold">
-        Rate and finish date
+        Your rate
       </h2>
-      <dl className="tnum font-display grid max-w-[560px] grid-cols-2 gap-x-8 gap-y-3 text-[13px] sm:grid-cols-3">
-        <Stat label="days a week" value={projection.daysPerWeek?.toFixed(1) ?? '—'} />
-        <Stat label="days left" value={String(projection.remaining)} />
-        <Stat label="day 365 lands" value={projection.projectedFinish ?? '—'} />
-      </dl>
-      <p className="mt-3 max-w-[60ch] text-[12px] text-[var(--ink-3)]">
-        Projected from the rate you actually work at, not from the calendar.
-        {projection.daysPerWeek === null && ' Needs about a week of records first.'}
-      </p>
+      <Margin>
+        <MarginRow label="Days a week" tight>
+          <span className="tnum font-display text-[21px] font-semibold">
+            {projection.daysPerWeek?.toFixed(1) ?? '—'}
+          </span>
+        </MarginRow>
+        <MarginRow label="Days left" tight>
+          <span className="tnum font-display text-[21px] font-semibold">{projection.remaining}</span>
+        </MarginRow>
+        <MarginRow label="Day 365 lands" tight>
+          <span className="tnum font-display text-[21px] font-semibold">
+            {projection.projectedFinish ?? '—'}
+          </span>
+          <p className="mt-2 max-w-[52ch] text-[13.5px] text-[var(--ink-2)]">
+            Projected from the rate you actually work at, not from the calendar.
+            {projection.daysPerWeek === null && ' Needs about a week of records first.'}
+          </p>
+        </MarginRow>
+      </Margin>
 
       {deadlines.length > 0 && (
         <>
@@ -183,11 +200,3 @@ export function Phase({ app }: { app: AppState }) {
   )
 }
 
-function Stat({ label, value }: { label: string; value: string }) {
-  return (
-    <div>
-      <dt className="text-[12px] text-[var(--ink-3)]">{label}</dt>
-      <dd className="mt-1 text-[15px] font-medium">{value}</dd>
-    </div>
-  )
-}

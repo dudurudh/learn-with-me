@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { photosForDay } from '../lib/photos'
+import { daysBetween } from '../lib/time'
 import type { AppState } from '../lib/useApp'
 import type { CurriculumDay, PhotoRecord, ProgressRecord } from '../lib/types'
 
@@ -11,9 +12,9 @@ interface Specimen {
 }
 
 /**
- * The same object at five stages, a year apart end to end. This is the payoff
- * the whole plan is built around, so it gets the most room and the least
- * decoration — the drawings do the work.
+ * The same object at five stages, a year apart end to end. Laid out as
+ * specimens on a bench rather than a row of cards: each one pinned to the rule
+ * it was collected on, with the interval between them written in.
  */
 export function Benchmarks({ app }: { app: AppState }) {
   const { curriculum, records, plan } = app
@@ -42,77 +43,101 @@ export function Benchmarks({ app }: { app: AppState }) {
 
   const taken = specimens.filter((s) => s.url).length
   const nextDay = plan.today?.day ?? 365
+  const first = specimens[0]?.record?.planDate ?? null
+  const last = [...specimens].reverse().find((s) => s.record)?.record?.planDate ?? null
+  const elapsed = first && last ? daysBetween(first, last) : 0
 
   return (
     <section>
       <h1 className="font-display text-[30px] font-semibold tracking-[-0.02em]">The series</h1>
-      <p className="mt-2 max-w-[56ch] text-[13.5px] text-[var(--ink-2)]">
-        One object, drawn cold for fifteen minutes on five days across a year. Same object,
-        same conditions, no technique you did not have on Day 1.
+      <p className="mt-2 max-w-[54ch] text-[15px] text-[var(--ink-2)]">
+        One object, drawn cold for fifteen minutes, five times. Same object, same conditions, no
+        technique you did not have on Day 1.
       </p>
 
-      <div className="mt-9 -mx-6 overflow-x-auto px-6 sm:mx-0 sm:px-0">
-        <div className="flex min-w-max gap-px bg-[var(--rule-strong)] p-px">
-          {specimens.map((s) => {
+      <div className="mt-10 -mx-6 overflow-x-auto px-6 sm:mx-0 sm:px-0">
+        <div className="flex min-w-max items-start">
+          {specimens.map((s, i) => {
             const reached = s.day.day < nextDay
+            const gap = i > 0 ? s.day.day - specimens[i - 1].day.day : 0
             return (
-              <figure key={s.day.dayId} className="flex w-[190px] flex-col bg-paper sm:w-[210px]">
-                <div className="flex h-[250px] items-center justify-center overflow-hidden sm:h-[280px]">
-                  {s.url ? (
-                    <img
-                      src={s.url}
-                      alt={`The benchmark object on day ${s.day.day}`}
-                      className="max-h-full max-w-full object-contain"
-                    />
-                  ) : (
-                    <span
-                      className="font-display tnum text-[46px] font-bold tracking-[-0.03em]"
-                      style={{ color: reached ? 'var(--ink-3)' : 'var(--color-marker)' }}
-                    >
+              <div key={s.day.dayId} className="flex items-start">
+                {/* The interval, written between the specimens rather than implied. */}
+                {i > 0 && (
+                  <div className="w-[44px] shrink-0 pt-[236px] sm:w-[64px] sm:pt-[300px]">
+                    <div className="border-t border-dashed border-[var(--rule-strong)]" />
+                    <div className="tnum font-display mt-2 text-center text-[11px] text-[var(--ink-2)]">
+                      {gap}d
+                    </div>
+                  </div>
+                )}
+
+                <figure className="w-[178px] shrink-0 sm:w-[224px]">
+                  <div
+                    className="flex h-[236px] items-end justify-center sm:h-[300px]"
+                    style={{ opacity: s.url ? 1 : 0.85 }}
+                  >
+                    {s.url ? (
+                      <img
+                        src={s.url}
+                        alt={`The benchmark object on day ${s.day.day}`}
+                        className="max-h-full max-w-full object-contain"
+                      />
+                    ) : (
+                      <div
+                        className="flex h-[132px] w-[104px] items-center justify-center border border-dashed"
+                        style={{
+                          borderColor: reached ? 'var(--rule-strong)' : 'var(--color-marker)',
+                        }}
+                      >
+                        <span className="font-display tnum text-[13px] text-[var(--ink-2)]">
+                          {reached ? 'no photo' : 'to come'}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Pinned to the rule it was collected on. */}
+                  <div className="border-t-2 border-graphite pt-[10px]">
+                    <div className="font-display tnum text-[19px] font-semibold leading-none">
                       {String(s.day.day).padStart(3, '0')}
-                    </span>
-                  )}
-                </div>
-                <figcaption className="border-t border-[var(--rule)] px-3 py-[10px]">
-                  <div className="font-display tnum text-[15px] font-semibold">
-                    Day {String(s.day.day).padStart(3, '0')}
+                    </div>
+                    <div className="tnum font-display mt-[6px] text-[12px] text-[var(--ink-2)]">
+                      {s.record?.planDate ?? (reached ? 'not recorded' : `in ${s.day.day - nextDay + 1} days`)}
+                    </div>
+                    {s.record?.note && (
+                      <p className="mt-2 max-w-[24ch] text-[12.5px] italic leading-snug text-[var(--ink-2)]">
+                        {s.record.note}
+                      </p>
+                    )}
                   </div>
-                  <div className="font-display mt-[3px] text-[11.5px] text-[var(--ink-3)]">
-                    {s.record?.planDate
-                      ? s.record.planDate
-                      : reached
-                        ? 'not recorded'
-                        : `${s.day.day - nextDay + 1} days away`}
-                  </div>
-                  {s.record?.note && (
-                    <p className="mt-2 text-[12px] italic leading-snug text-[var(--ink-2)]">
-                      {s.record.note}
-                    </p>
-                  )}
-                </figcaption>
-              </figure>
+                </figure>
+              </div>
             )
           })}
         </div>
       </div>
 
-      <p className="font-display tnum mt-5 text-[13px] text-[var(--ink-3)]">
-        {taken} of 5 collected
-      </p>
-
-      {taken === 0 && (
-        <p className="mt-6 max-w-[56ch] text-[13.5px] text-[var(--ink-2)]">
-          Nothing here yet. Day 1 is where you pick the object and draw it before you know
-          anything — that drawing is the one this whole screen is measured against, so it is
-          worth being genuinely bad.
-        </p>
-      )}
-      {taken > 0 && taken < 5 && (
-        <p className="mt-6 max-w-[56ch] text-[13.5px] text-[var(--ink-2)]">
-          The empty compartments are the point. They fill on days 90, 180, 270 and 365, and
-          there is no way to fill them early.
-        </p>
-      )}
+      <div className="mt-8 grid grid-cols-[76px_1fr] sm:grid-cols-[132px_1fr]">
+        <div className="font-display pr-4 text-right text-[12px] text-[var(--ink-2)] sm:text-[13px]">
+          Collected
+        </div>
+        <div className="border-l border-[var(--rule-strong)] pl-4 sm:pl-6">
+          <p className="tnum font-display text-[15px]">
+            {taken} of 5 photographed
+            {elapsed > 0 && (
+              <span className="text-[var(--ink-2)]"> · {elapsed} days from the first to the last</span>
+            )}
+          </p>
+          <p className="mt-2 max-w-[54ch] text-[14px] text-[var(--ink-2)]">
+            {taken === 0
+              ? 'Day 1 is where you pick the object and draw it before you know anything. That drawing is what this whole screen is measured against, so it is worth being genuinely bad.'
+              : taken < 5
+                ? 'The empty frames are the point. They fill on days 90, 180, 270 and 365, and there is no way to fill them early.'
+                : 'Five drawings of one object, a year apart end to end. This is the evidence.'}
+          </p>
+        </div>
+      </div>
     </section>
   )
 }
