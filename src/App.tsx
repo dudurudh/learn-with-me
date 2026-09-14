@@ -66,7 +66,7 @@ export default function App() {
   const hue = phaseColour(plan.today?.phase ?? 6)
 
   return (
-    <Shell>
+    <Shell hue={hue}>
       <header className="mb-10 flex flex-col gap-5">
         <div className="font-display text-[14px] text-[var(--ink-2)]">
           <span className="tnum font-semibold text-graphite">{plan.worked}</span> days collected
@@ -103,7 +103,7 @@ export default function App() {
       </header>
 
       {plan.backupPrompt !== 'none' && view !== 'settings' && (
-        <p className="mb-8 border-t border-b border-[var(--rule)] py-3 text-[13.5px] text-[var(--ink-2)]">
+        <p className="mb-8 rounded-[10px] bg-surface px-4 py-3 text-[14px] text-[var(--ink-2)]">
           {plan.backupPrompt === 'count'
             ? 'A few days have gone in since your last backup.'
             : 'It has been a while since your last backup.'}{' '}
@@ -129,6 +129,23 @@ export default function App() {
   )
 }
 
-function Shell({ children }: { children: React.ReactNode }) {
-  return <main className="mx-auto max-w-[860px] px-6 py-10 sm:py-14">{children}</main>
+function Shell({ children, hue }: { children: React.ReactNode; hue?: string }) {
+  return (
+    <>
+      {/* The page used to start on bare white and drop straight into an 86px
+          number. A wash of the current phase's colour, fading out over the
+          fold, gives the top of the page somewhere to begin. */}
+      {hue && (
+        <div
+          aria-hidden
+          className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-[420px]"
+          style={{
+            background: `linear-gradient(to bottom, color-mix(in srgb, ${hue} 13%, white) 0%, `
+              + `color-mix(in srgb, ${hue} 5%, white) 45%, white 100%)`,
+          }}
+        />
+      )}
+      <main className="relative mx-auto max-w-[860px] px-6 py-10 sm:py-14">{children}</main>
+    </>
+  )
 }

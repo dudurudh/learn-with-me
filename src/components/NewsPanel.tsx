@@ -1,16 +1,12 @@
 import { useEffect, useState } from 'react'
+import { Panel } from './ui'
 import {
   loadNews, savedStories, saveStory, unsaveStory, relativeTime,
   type NewsFile, type SavedStory,
 } from '../lib/extras'
 
-/**
- * Below the fold and closed by default, on purpose. A news feed is the single
- * most likely thing to become the activity you do instead of sketching, so it
- * never appears above the task and can be gated behind finishing the day.
- */
-/** Always visible now. It still sits below the task rather than above it —
- *  that part of the brief stands; the lock did not. */
+/** Always visible, and still below the task rather than above it — a feed is
+ *  the easiest thing to do instead of drawing. */
 export function NewsPanel() {
   const [open, setOpen] = useState(true)
   const [news, setNews] = useState<NewsFile | null>(null)
@@ -23,18 +19,22 @@ export function NewsPanel() {
   const staleHours = news ? (Date.now() - Date.parse(news.generatedAt)) / 3_600_000 : 0
 
   return (
-    <section className="mt-16 border-t border-[var(--rule-strong)] pt-4">
-      <button
-        onClick={() => setOpen(!open)}
-        className="font-display flex w-full items-baseline justify-between gap-4 text-left text-[14px] font-semibold"
+    <div className="mt-14 max-w-[66ch]">
+      <Panel
+        title="Five things from the field"
+        action={
+          <button
+            onClick={() => setOpen(!open)}
+            className="font-display text-[13.5px] text-[var(--ink-2)] underline underline-offset-4 hover:text-graphite"
+          >
+            {open ? 'close' : 'open'}
+          </button>
+        }
       >
-        <span>Five things from the field</span>
-        <span className="font-normal text-[var(--ink-3)]">{open ? 'close' : 'open'}</span>
-      </button>
 
 
       {open && (
-        <div className="mt-5">
+        <div>
           {!news && <p className="text-[13px] text-[var(--ink-2)]">Nothing fetched yet.</p>}
 
           {news && staleHours > 48 && (
@@ -72,7 +72,8 @@ export function NewsPanel() {
 
         </div>
       )}
-    </section>
+      </Panel>
+    </div>
   )
 }
 

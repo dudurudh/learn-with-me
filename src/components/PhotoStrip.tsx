@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { addPhotoToDay, deletePhoto, markPublicPhotoWarningSeen } from '../lib/addPhoto'
 import { formatBytes } from '../lib/images'
 import { photosForDay } from '../lib/photos'
-import { Button, ButtonRow } from './ui'
-import { Camera, FolderOpen } from 'lucide-react'
+import { Button } from './ui'
+import { Camera } from 'lucide-react'
 import type { CurriculumDay, PhotoRecord } from '../lib/types'
 
 export function PhotoStrip({
@@ -19,7 +19,6 @@ export function PhotoStrip({
   const [status, setStatus] = useState<string | null>(null)
   const [showWarning, setShowWarning] = useState(false)
   const picker = useRef<HTMLInputElement>(null)
-  const camera = useRef<HTMLInputElement>(null)
 
   const reload = async () => {
     const rows = await photosForDay(day.dayId)
@@ -58,10 +57,10 @@ export function PhotoStrip({
 
   return (
     <div className="mt-10">
-      <p className="font-display text-[16px] font-medium">
+      <p className="font-display text-[15px] font-medium text-[var(--ink-2)]">
         {photos.length > 0
           ? `${photos.length} photo${photos.length === 1 ? '' : 's'} of this day`
-          : 'Photograph the page'}
+          : 'Photograph the page — even when it is bad'}
       </p>
 
       {photos.length > 0 && (
@@ -91,23 +90,13 @@ export function PhotoStrip({
         </div>
       )}
 
-      <div className="mt-4">
-        <ButtonRow>
-          <Button disabled={busy} onClick={() => camera.current?.click()}>
-            <Camera size={16} strokeWidth={2.2} aria-hidden />
-            {busy ? 'Compressing' : 'Take a photo'}
-          </Button>
-          <Button disabled={busy} onClick={() => picker.current?.click()}>
-            <FolderOpen size={16} strokeWidth={2.2} aria-hidden />
-            Choose a file
-          </Button>
-        </ButtonRow>
+      <div className="mt-3 -ml-[10px]">
+        <Button quiet disabled={busy} onClick={() => picker.current?.click()}>
+          <Camera size={16} strokeWidth={2.2} aria-hidden />
+          {busy ? 'Compressing' : photos.length > 0 ? 'Add another' : 'Add a photo'}
+        </Button>
       </div>
 
-      <input
-        ref={camera} type="file" accept="image/*" capture="environment"
-        className="hidden" onChange={(e) => { void take(e.target.files); e.target.value = '' }}
-      />
       <input
         ref={picker} type="file" accept="image/*" multiple
         className="hidden" onChange={(e) => { void take(e.target.files); e.target.value = '' }}

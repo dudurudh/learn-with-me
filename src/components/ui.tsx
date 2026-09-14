@@ -14,9 +14,9 @@ export function Section({ title, children }: { n?: string; title: string; childr
 }
 
 export function Button({
-  children, onClick, primary, disabled, title, accent,
+  children, onClick, primary, quiet, disabled, title, accent,
 }: {
-  children: ReactNode; onClick?: () => void; primary?: boolean
+  children: ReactNode; onClick?: () => void; primary?: boolean; quiet?: boolean
   disabled?: boolean; title?: string; accent?: string
 }) {
   return (
@@ -32,7 +32,9 @@ export function Button({
         'disabled:cursor-not-allowed disabled:text-[var(--ink-3)] ' +
         (primary
           ? 'bg-action text-page hover:bg-[#10495c] disabled:bg-marker disabled:text-[var(--ink-3)]'
-          : 'border border-[var(--rule-strong)] bg-page hover:bg-[color-mix(in_srgb,var(--phase)_14%,var(--color-page))]')
+          : quiet
+            ? 'text-[var(--ink-2)] hover:bg-surface hover:text-graphite'
+            : 'border border-[var(--rule-strong)] bg-page hover:bg-[color-mix(in_srgb,var(--phase)_14%,var(--color-page))]')
       }
     >
       {children}
@@ -84,5 +86,31 @@ export function Callout({
       )}
       {children}
     </div>
+  )
+}
+
+/** A grouped block, so a section reads as its own thing rather than more
+ *  page. Used to keep the day's decision apart from everything around it. */
+export function Panel({
+  title, action, tint, children,
+}: {
+  title?: ReactNode
+  action?: ReactNode
+  tint?: string
+  children: ReactNode
+}) {
+  return (
+    <section
+      className="rounded-[14px] px-5 py-5"
+      style={{ background: tint ? `color-mix(in srgb, ${tint} 7%, white)` : 'var(--color-surface)' }}
+    >
+      {(title || action) && (
+        <div className="mb-4 flex items-baseline justify-between gap-4">
+          {title && <h2 className="font-display text-[16px] font-semibold">{title}</h2>}
+          {action}
+        </div>
+      )}
+      {children}
+    </section>
   )
 }

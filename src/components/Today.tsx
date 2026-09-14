@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Button, ButtonRow, Callout } from './ui'
+import { Button, ButtonRow, Callout, Panel } from './ui'
 import { phaseColour, phaseInk } from '../lib/phaseColour'
 import { activityOf } from '../lib/activity'
 import { Clock3, Check, Minus, Shuffle, X } from 'lucide-react'
@@ -264,41 +264,43 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
         <PhotoStrip day={today} warnPublic={warnPublic} onChange={() => void refresh()} />
       )}
 
-      <div className="mt-6">
-        <ButtonRow>
-          <Button primary accent={phaseInk(today.phase)} disabled={busy} onClick={() => void mark('full')}>
-            <Check size={16} strokeWidth={2.4} aria-hidden />
-            {today.isRest ? 'Nothing today' : 'Done'}
-          </Button>
-          {!today.isRest && (
-            <>
-              <Button disabled={busy} onClick={() => void mark('minimum')}>
-                <Minus size={16} strokeWidth={2.4} aria-hidden />
-                Minimum done
-              </Button>
-              <Button
-                disabled={busy || plan.swapsLeft === 0}
-                title={plan.swapsLeft === 0 ? 'Two a week, and this week is spent' : undefined}
-                onClick={() => void swap()}
-              >
-                <Shuffle size={16} strokeWidth={2.2} aria-hidden />
-                Not this one today
-              </Button>
-              <Button disabled={busy} onClick={() => void mark('skipped')}>
-                <X size={16} strokeWidth={2.4} aria-hidden />
-                Skip
-              </Button>
-            </>
-          )}
-        </ButtonRow>
-      </div>
+      <div className="mt-8 max-w-[66ch]">
+        <Panel title="How did today go?" tint={hue}>
+          <ButtonRow>
+            <Button primary accent={phaseInk(today.phase)} disabled={busy} onClick={() => void mark('full')}>
+              <Check size={16} strokeWidth={2.4} aria-hidden />
+              {today.isRest ? 'Nothing today' : 'Done'}
+            </Button>
+            {!today.isRest && (
+              <>
+                <Button disabled={busy} onClick={() => void mark('minimum')}>
+                  <Minus size={16} strokeWidth={2.4} aria-hidden />
+                  Minimum done
+                </Button>
+                <Button
+                  disabled={busy || plan.swapsLeft === 0}
+                  title={plan.swapsLeft === 0 ? 'Two a week, and this week is spent' : undefined}
+                  onClick={() => void swap()}
+                >
+                  <Shuffle size={16} strokeWidth={2.2} aria-hidden />
+                  Not this one today
+                </Button>
+                <Button disabled={busy} onClick={() => void mark('skipped')}>
+                  <X size={16} strokeWidth={2.4} aria-hidden />
+                  Skip
+                </Button>
+              </>
+            )}
+          </ButtonRow>
 
-      {swapNote && <p className="mt-3 text-[13px] text-[var(--ink-2)]">{swapNote}</p>}
+          {swapNote && <p className="mt-3 text-[14px]">{swapNote}</p>}
 
-      <div className="tnum font-display mt-5 flex flex-wrap gap-x-7 gap-y-1 text-[12.5px] text-[var(--ink-3)]">
-        <span>streak {plan.streak}</span>
-        <span>grace {plan.graceRemaining} of {settings.graceBudget}</span>
-        {!today.isRest && <span>swaps {plan.swapsLeft} of {settings.swapsPerWeek} this week</span>}
+          <div className="tnum font-display mt-4 flex flex-wrap gap-x-6 gap-y-1 text-[13px] text-[var(--ink-2)]">
+            <span>streak {plan.streak}</span>
+            <span>grace {plan.graceRemaining} of {settings.graceBudget}</span>
+            {!today.isRest && <span>swaps {plan.swapsLeft} of {settings.swapsPerWeek} this week</span>}
+          </div>
+        </Panel>
       </div>
 
       {today.isRest && <SundayPanel week={today.week} />}
