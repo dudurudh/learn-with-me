@@ -61,7 +61,7 @@ export function SundayPanel({ week }: { week: number }) {
                 <a
                   href={`https://duckduckgo.com/?q=${encodeURIComponent(designer.searchQuery)}`}
                   target="_blank" rel="noreferrer noopener"
-                  className="font-display bg-paper px-[14px] py-[9px] text-[12.5px] font-medium hover:bg-[color-mix(in_srgb,var(--color-foam)_16%,var(--color-paper))]"
+                  className="font-display bg-page px-[14px] py-[9px] text-[12.5px] font-medium hover:bg-[color-mix(in_srgb,var(--phase)_16%,var(--color-page))]"
                 >
                   Go and look at the work
                 </a>
@@ -70,8 +70,8 @@ export function SundayPanel({ week }: { week: number }) {
                   className={
                     'font-display px-[14px] py-[9px] text-[12.5px] font-medium ' +
                     (follows.includes(designer.id)
-                      ? 'bg-foam-deep text-paper'
-                      : 'bg-paper hover:bg-[color-mix(in_srgb,var(--color-foam)_16%,var(--color-paper))]')
+                      ? 'bg-action text-page'
+                      : 'bg-page hover:bg-[color-mix(in_srgb,var(--phase)_16%,var(--color-page))]')
                   }
                 >
                   {follows.includes(designer.id) ? 'Following' : 'Follow'}

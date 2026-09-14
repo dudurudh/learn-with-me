@@ -1,14 +1,7 @@
 import { useMemo } from 'react'
 import { orderedDays } from '../lib/swaps'
 import type { AppState } from '../lib/useApp'
-import type { DayStatus } from '../lib/types'
-
-const FILL: Record<DayStatus, string> = {
-  full: 'var(--cell-full)',
-  minimum: 'var(--cell-minimum)',
-  skipped: 'var(--cell-skipped)',
-  rest: 'var(--cell-rest)',
-}
+import { cellFill, cellShape } from '../lib/phaseColour'
 
 /**
  * A fragment of the drawer, on the page you open every day. The whole reward
@@ -39,19 +32,16 @@ export function RecentStrip({ app, weeks = 9 }: { app: AppState; weeks?: number 
 
   return (
     <div
-      className="inline-grid grid-flow-col grid-rows-7 gap-[2px]"
+      className="inline-grid grid-flow-col grid-rows-7 gap-[3px]"
       aria-hidden
       title="The last few weeks"
     >
       {cells.map(({ day, record, isNext }) => (
         <span
           key={day.dayId}
-          className="h-[11px] w-[11px]"
+          className={`h-[11px] w-[11px] ${cellShape(day.isBenchmark)}`}
           style={{
-            background: record
-              ? (day.isBenchmark && record.status !== 'skipped'
-                ? 'var(--color-cinnabar)' : FILL[record.status])
-              : 'var(--cell-untouched)',
+            background: cellFill(day.phase, record?.status),
             boxShadow: isNext ? 'inset 0 0 0 2px var(--color-graphite)' : undefined,
           }}
         />

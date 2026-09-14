@@ -1,5 +1,6 @@
 import { driftByType, skipRates, project, deadlineViews, phaseProgress } from '../lib/stats'
 import { phaseOf } from '../lib/curriculum'
+import { phaseColour } from '../lib/phaseColour'
 import type { AppState } from '../lib/useApp'
 
 export function Phase({ app }: { app: AppState }) {
@@ -25,8 +26,11 @@ export function Phase({ app }: { app: AppState }) {
           return (
             <div key={p.phase} className="border-b border-[var(--rule)] py-3">
               <div className="flex items-baseline justify-between gap-4">
-                <div className="font-display text-[14px] font-semibold">
-                  <span className="tnum mr-2 text-[var(--ink-3)]">P{p.phase}</span>
+                <div className="font-display flex items-baseline gap-[9px] text-[15px] font-semibold">
+                  <span
+                    className="inline-block h-[11px] w-[11px] shrink-0 rounded-[3px]"
+                    style={{ background: phaseColour(p.phase) }}
+                  />
                   {p.title}
                 </div>
                 <div className="font-display tnum text-[12px] text-[var(--ink-3)]">
@@ -39,11 +43,11 @@ export function Phase({ app }: { app: AppState }) {
                 {Array.from({ length: total }).map((_, i) => (
                   <span
                     key={i}
-                    className="h-[8px] w-[8px]"
+                    className="h-[9px] w-[9px] rounded-[2px]"
                     style={{
                       background: i < completed
-                        ? (isCurrent ? 'var(--color-foam-deep)' : 'var(--color-foam)')
-                        : 'var(--cell-untouched)',
+                        ? phaseColour(p.phase)
+                        : `color-mix(in srgb, ${phaseColour(p.phase)} 13%, white)`,
                     }}
                   />
                 ))}
@@ -83,7 +87,7 @@ export function Phase({ app }: { app: AppState }) {
                   <td className="py-2 text-right">{d.actual ?? '—'}</td>
                   <td
                     className="py-2 text-right"
-                    style={{ color: d.overrunning ? 'var(--color-cinnabar)' : undefined }}
+                    style={{ color: d.overrunning ? 'var(--color-p3)' : undefined }}
                   >
                     {d.gapPercent === null ? '—' : `${d.gapPercent > 0 ? '+' : ''}${d.gapPercent}%`}
                   </td>
@@ -118,7 +122,7 @@ export function Phase({ app }: { app: AppState }) {
                     className="block h-full"
                     style={{
                       width: `${Math.round(r.rate * 100)}%`,
-                      background: r.falling ? 'var(--color-marker)' : 'var(--color-foam-deep)',
+                      background: r.falling ? 'var(--color-marker)' : 'var(--color-p5)',
                     }}
                   />
                 </span>
@@ -176,7 +180,7 @@ export function Phase({ app }: { app: AppState }) {
                   <td className="tnum font-display py-3 pr-4 text-right whitespace-nowrap">{d.date}</td>
                   <td
                     className="tnum font-display py-3 text-right whitespace-nowrap"
-                    style={{ color: d.urgent ? 'var(--color-cinnabar)' : undefined }}
+                    style={{ color: d.urgent ? 'var(--color-p3)' : undefined }}
                   >
                     {d.daysLeft < 0 ? 'passed' : `${d.daysLeft} days`}
                   </td>

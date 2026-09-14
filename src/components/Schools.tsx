@@ -64,7 +64,7 @@ export function Schools({ app }: { app: AppState }) {
                   <td className="tnum font-display py-3 pr-4 text-right whitespace-nowrap">{d.date}</td>
                   <td
                     className="tnum font-display py-3 text-right whitespace-nowrap font-semibold"
-                    style={{ color: d.urgent ? 'var(--color-cinnabar)' : undefined }}
+                    style={{ color: d.urgent ? 'var(--color-p3)' : undefined }}
                   >
                     {d.daysLeft < 0 ? 'passed' : `${d.daysLeft} days`}
                   </td>
@@ -158,10 +158,10 @@ function Status({ change, confirmed }: { change?: ProgramResult; confirmed: bool
   }
   if (!change) return <span className="text-[12.5px] text-[var(--ink-3)]">not checked yet</span>
   if (change.status === 'check-manually') {
-    return <span className="text-[12.5px] font-semibold text-cinnabar">check this one yourself</span>
+    return <span className="text-[12.5px] font-semibold text-p3">check this one yourself</span>
   }
   if (change.status === 'changed-notable' || change.status === 'changed') {
-    return <span className="text-[12.5px] font-semibold text-cinnabar">changed this week</span>
+    return <span className="text-[12.5px] font-semibold text-p3">changed this week</span>
   }
   return <span className="text-[12.5px] text-[var(--ink-3)]">no change</span>
 }

@@ -9,38 +9,50 @@
    colour — benchmarks and discoveries only, under ten times a year.
    ────────────────────────────────────────────────────────────── */
 @theme {
-  --color-graphite: #22201d;
-  --color-paper: #f5f2ec;
-  --color-marker: #d8d3c8;
-  --color-foam: #62a8b8;
-  --color-foam-deep: #2e6b7c;
-  --color-cinnabar: #c25a28;
+  /* White ground. One hue for the whole year read as dry, so colour now says
+     WHICH PHASE and fill says HOW FAR IN — the drawer gets six colours
+     instead of six shades of the same one. */
+  --color-page: #ffffff;
+  --color-surface: #faf8f5;
+  --color-graphite: #1f1d1b;
+  --color-marker: #dedad2;
+
+  --color-p1: #2e86a8;   /* mark-making   */
+  --color-p2: #b8890e;   /* form          */
+  --color-p3: #c4432c;   /* value         */
+  --color-p4: #6e58a8;   /* process       */
+  --color-p5: #398457;   /* making        */
+  --color-p6: #b0417a;   /* portfolio     */
+
+  /* Deep enough to carry white text at 7:1. */
+  --color-action: #155e75;
 
   --font-display: 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif;
   --font-sans: 'Instrument Sans Variable', -apple-system, 'Segoe UI', sans-serif;
 
-  /* Separation is by hairline and ground tint, never by shadow. */
   --radius-*: initial;
   --radius-none: 0px;
-  --radius-sm: 2px;
+  --radius-sm: 4px;
+  --radius-md: 7px;
+  --radius-lg: 12px;
 }
 
 @layer base {
   :root {
-    --rule: rgb(34 32 29 / 0.16);
-    --rule-strong: rgb(34 32 29 / 0.38);
-    /* 0.62 and 0.42 measured 4.43:1 and 2.52:1 against paper — both below the
-       4.5:1 floor. Hierarchy comes from the ruled margin now, not from making
-       text hard to read. */
-    --ink-2: rgb(34 32 29 / 0.72);
-    --ink-3: rgb(34 32 29 / 0.66);
+    --rule: rgb(31 29 27 / 0.14);
+    --rule-strong: rgb(31 29 27 / 0.30);
+    /* On white these measure 6.6:1 and 4.7:1. */
+    --ink-2: rgb(31 29 27 / 0.72);
+    --ink-3: rgb(31 29 27 / 0.62);
 
-    /* The completion axis, one hue carrying all of it. */
-    --cell-untouched: color-mix(in srgb, var(--color-foam) 11%, var(--color-paper));
-    --cell-minimum: color-mix(in srgb, var(--color-foam) 45%, var(--color-paper));
-    --cell-full: var(--color-foam-deep);
+    /* The phase hue is set per element; fill says how far into the day
+       you got. Same "block getting worked" idea, six colours instead of one. */
+    --phase: var(--color-p1);
+    --cell-untouched: color-mix(in srgb, var(--phase) 13%, white);
+    --cell-minimum: color-mix(in srgb, var(--phase) 46%, white);
+    --cell-full: var(--phase);
     --cell-skipped: var(--color-marker);
-    --cell-rest: var(--color-paper);
+    --cell-rest: color-mix(in srgb, var(--phase) 5%, white);
   }
 
   html {
@@ -48,7 +60,7 @@
   }
 
   body {
-    background: var(--color-paper);
+    background: var(--color-page);
     color: var(--color-graphite);
     font-family: var(--font-sans);
     font-size: 15px;

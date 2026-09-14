@@ -86,8 +86,8 @@ export function Collection({ app }: { app: AppState }) {
                 onClick={() => setSize(s)}
                 className={
                   'font-display px-[13px] py-[8px] text-[12.5px] font-medium transition-[background-color,transform] duration-100 active:translate-y-[1px] '
-                  + (size === s ? 'bg-foam-deep text-paper'
-                    : 'bg-paper hover:bg-[color-mix(in_srgb,var(--color-foam)_16%,var(--color-paper))]')
+                  + (size === s ? 'bg-action text-page'
+                    : 'bg-page hover:bg-[color-mix(in_srgb,var(--phase)_16%,var(--color-page))]')
                 }
               >
                 {s === 'small' ? 'more at once' : 'bigger'}
@@ -105,11 +105,11 @@ export function Collection({ app }: { app: AppState }) {
       )}
 
       <div
-        className="mt-9 grid gap-px bg-[var(--rule-strong)] p-px"
+        className="mt-9 grid gap-[5px]"
         style={{ gridTemplateColumns: `repeat(auto-fill, minmax(${track}, 1fr))` }}
       >
         {specimens.map((s) => (
-          <figure key={s.photo.id} className="bg-paper">
+          <figure key={s.photo.id} className="overflow-hidden rounded-[9px] bg-surface">
             <button
               onClick={() => setZoom(s)}
               className="block aspect-square w-full overflow-hidden"
@@ -123,10 +123,10 @@ export function Collection({ app }: { app: AppState }) {
               />
             </button>
             {/* Labelled like a collected sample: number, then date. */}
-            <figcaption className="border-t border-[var(--rule)] px-2 py-[7px]">
+            <figcaption className="px-2 py-[7px]">
               <span
                 className="font-display tnum block text-[12.5px] font-semibold"
-                style={{ color: s.isBenchmark ? 'var(--color-cinnabar)' : undefined }}
+                style={{ color: s.isBenchmark ? 'var(--color-graphite)' : undefined }}
               >
                 {String(s.day).padStart(3, '0')}
               </span>

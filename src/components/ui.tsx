@@ -30,8 +30,8 @@ export function Button({
         'transition-[background-color,transform] duration-100 active:translate-y-[1px] ' +
         'disabled:cursor-not-allowed disabled:text-[var(--ink-3)] ' +
         (primary
-          ? 'bg-foam-deep text-paper hover:bg-[#27596a] disabled:bg-marker disabled:text-[var(--ink-3)]'
-          : 'border border-[var(--rule-strong)] bg-paper hover:bg-[color-mix(in_srgb,var(--color-foam)_14%,var(--color-paper))]')
+          ? 'bg-action text-page hover:bg-[#10495c] disabled:bg-marker disabled:text-[var(--ink-3)]'
+          : 'border border-[var(--rule-strong)] bg-page hover:bg-[color-mix(in_srgb,var(--phase)_14%,var(--color-page))]')
       }
     >
       {children}

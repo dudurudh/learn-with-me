@@ -141,7 +141,7 @@ export function Settings({ app }: { app: AppState }) {
                     <span className="font-display block text-[13.5px] font-semibold">{meta.title}</span>
                     <span className="font-display text-[10.5px] tracking-[0.03em] text-[var(--ink-3)]">
                       {meta.type} &middot;{' '}
-                      <span className={meta.cost === 'paid' ? 'text-cinnabar' : ''}>{meta.cost}</span>
+                      <span className={meta.cost === 'paid' ? 'text-p3' : ''}>{meta.cost}</span>
                       {meta.multiSession && ' · multi-session'}
                     </span>
                   </td>
@@ -154,8 +154,8 @@ export function Settings({ app }: { app: AppState }) {
                           className={
                             'font-display px-[9px] py-[6px] text-[11px] ' +
                             (holding === h.key
-                              ? 'bg-foam-deep text-paper'
-                              : 'bg-paper text-[var(--ink-2)] hover:bg-[color-mix(in_srgb,var(--color-foam)_16%,var(--color-paper))]')
+                              ? 'bg-action text-page'
+                              : 'bg-page text-[var(--ink-2)] hover:bg-[color-mix(in_srgb,var(--phase)_16%,var(--color-page))]')
                           }
                         >
                           {h.label}

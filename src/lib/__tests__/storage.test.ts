@@ -786,41 +786,64 @@ describe('Gist sync', () => {
 })
 
 describe('contrast', () => {
-  // The muted inks were 4.43:1 and 2.52:1 — both under the 4.5:1 floor for
-  // body text. Hierarchy comes from the ruled margin now, not from faintness.
   const lin = (c: number) => {
     const v = c / 255
     return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4
   }
-  const lum = ([r, g, b]: number[]) =>
-    0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b)
+  const lum = ([r, g, b]: number[]) => 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b)
   const over = (fg: number[], a: number, bg: number[]) =>
     fg.map((f, i) => a * f + (1 - a) * bg[i])
   const ratio = (a: number[], b: number[]) => {
     const [hi, lo] = [lum(a), lum(b)].sort((x, y) => y - x)
     return (hi + 0.05) / (lo + 0.05)
   }
+  const hex = (h: string) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16))
 
-  const PAPER = [245, 242, 236]
-  const GRAPHITE = [34, 32, 29]
+  const css = readFileSync(new URL('../../index.css', import.meta.url), 'utf8')
+  const token = (name: string) => {
+    const m = new RegExp(`--color-${name}: (#[0-9a-f]{6})`).exec(css)
+    if (!m) throw new Error(`token --color-${name} not found in index.css`)
+    return hex(m[1])
+  }
+  const alpha = (name: string) => {
+    const m = new RegExp(`--${name}: rgb\\((\\d+) (\\d+) (\\d+) / ([\\d.]+)\\)`).exec(css)
+    if (!m) throw new Error(`--${name} not found in index.css`)
+    return { rgb: [+m[1], +m[2], +m[3]], a: +m[4] }
+  }
 
-  it('keeps every text ink above the AA floor on paper', () => {
-    const inks = { graphite: 1, 'ink-2': 0.72, 'ink-3': 0.66 }
-    for (const [name, alpha] of Object.entries(inks)) {
-      const r = ratio(over(GRAPHITE, alpha, PAPER), PAPER)
-      expect(r, `${name} at alpha ${alpha}`).toBeGreaterThanOrEqual(4.5)
+  const PAGE = token('page')
+
+  it('keeps every muted text ink above the AA floor on the page ground', () => {
+    for (const name of ['ink-2', 'ink-3']) {
+      const { rgb, a } = alpha(name)
+      const r = ratio(over(rgb, a, PAGE), PAGE)
+      expect(r, `--${name} at ${a}`).toBeGreaterThanOrEqual(4.5)
     }
   })
 
-  it('keeps the stylesheet in step with these numbers', () => {
-    const css = readFileSync(new URL('../../index.css', import.meta.url), 'utf8')
-    const ink2 = /--ink-2: rgb\(34 32 29 \/ ([\d.]+)\)/.exec(css)![1]
-    const ink3 = /--ink-3: rgb\(34 32 29 \/ ([\d.]+)\)/.exec(css)![1]
-    expect(ratio(over(GRAPHITE, Number(ink2), PAPER), PAPER)).toBeGreaterThanOrEqual(4.5)
-    expect(ratio(over(GRAPHITE, Number(ink3), PAPER), PAPER)).toBeGreaterThanOrEqual(4.5)
+  it('keeps body text well clear of the floor', () => {
+    expect(ratio(token('graphite'), PAGE)).toBeGreaterThanOrEqual(7)
   })
 
-  it('keeps paper text on the foam-deep button readable', () => {
-    expect(ratio([245, 242, 236], [46, 107, 124])).toBeGreaterThanOrEqual(4.5)
+  it('makes every phase colour visible as a fill against the page', () => {
+    // Non-text UI needs 3:1. These are drawer cells, not type.
+    for (const n of [1, 2, 3, 4, 5, 6]) {
+      const r = ratio(token(`p${n}`), PAGE)
+      expect(r, `phase ${n}`).toBeGreaterThanOrEqual(3)
+    }
+  })
+
+  it('keeps the six phase colours distinguishable from each other', () => {
+    const hues = [1, 2, 3, 4, 5, 6].map((n) => token(`p${n}`))
+    for (let i = 0; i < hues.length; i++) {
+      for (let j = i + 1; j < hues.length; j++) {
+        const dist = Math.hypot(...hues[i].map((c, k) => c - hues[j][k]))
+        expect(dist, `phase ${i + 1} vs ${j + 1}`).toBeGreaterThan(60)
+      }
+    }
+  })
+
+  it('carries white text on the action colour', () => {
+    expect(ratio([255, 255, 255], token('action'))).toBeGreaterThanOrEqual(4.5)
   })
 })

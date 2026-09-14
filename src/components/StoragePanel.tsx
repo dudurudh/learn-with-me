@@ -153,7 +153,7 @@ export function StoragePanel({ app }: { app: AppState }) {
         </ButtonRow>
 
         {settings.seeded && (
-          <p className="font-display mt-4 inline-block bg-cinnabar px-[8px] py-[3px] text-[12px] text-paper">
+          <p className="font-display mt-4 inline-block rounded-full bg-p3 px-[10px] py-[3px] text-[12px] text-page">
             Demo history is on &mdash; {seededRows} of these records are made up
           </p>
         )}

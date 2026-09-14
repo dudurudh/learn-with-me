@@ -31,7 +31,7 @@ export function FollowPrompt() {
       <a
         href={`https://duckduckgo.com/?q=${encodeURIComponent(pick.searchQuery)}`}
         target="_blank" rel="noreferrer noopener"
-        className="font-display mt-3 inline-block border border-[var(--rule-strong)] px-[14px] py-[8px] text-[12.5px] font-medium hover:bg-[color-mix(in_srgb,var(--color-foam)_16%,var(--color-paper))]"
+        className="font-display mt-3 inline-block border border-[var(--rule-strong)] px-[14px] py-[8px] text-[12.5px] font-medium hover:bg-[color-mix(in_srgb,var(--phase)_16%,var(--color-page))]"
       >
         Go and look
       </a>

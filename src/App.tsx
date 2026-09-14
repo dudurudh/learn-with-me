@@ -49,7 +49,7 @@ export default function App() {
   if (error) {
     return (
       <Shell>
-        <p className="text-cinnabar">{error}</p>
+        <p className="text-p3">{error}</p>
         <p className="mt-3 text-[13.5px] text-[var(--ink-2)]">
           Your progress is untouched — this is the curriculum file failing to load, not your data.
         </p>
@@ -66,7 +66,7 @@ export default function App() {
           <span className="mx-2 text-[var(--marker)]">/</span>
           <span className="tnum">{365 - plan.completed}</span> to go
           {settings.seeded && (
-            <span className="ml-3 bg-cinnabar px-[7px] py-[2px] text-[11px] text-paper">demo</span>
+            <span className="ml-3 rounded-full bg-p3 px-[9px] py-[2px] text-[11px] text-page">demo</span>
           )}
         </div>
         {/* Six tabs do not fit a 375px screen in one row. Wrapping keeps them
@@ -82,8 +82,8 @@ export default function App() {
                 'transition-[background-color,transform] duration-100 active:translate-y-[1px] ' +
                 'sm:px-[14px] sm:py-[8px] sm:text-[12.5px] ' +
                 (view === t.key
-                  ? 'bg-foam-deep text-paper'
-                  : 'bg-paper hover:bg-[color-mix(in_srgb,var(--color-foam)_16%,var(--color-paper))]')
+                  ? 'bg-action text-page'
+                  : 'bg-page hover:bg-[color-mix(in_srgb,var(--phase)_16%,var(--color-page))]')
               }
             >
               {t.label}
@@ -93,7 +93,7 @@ export default function App() {
               cell the tabs do not fill reads as a grey slab. Third time this
               has bitten: drawer, photo wall, now the nav. */}
           {Array.from({ length: (4 - (TABS.length % 4)) % 4 }).map((_, i) => (
-            <span key={`pad-${i}`} className="bg-paper sm:hidden" aria-hidden />
+            <span key={`pad-${i}`} className="bg-page sm:hidden" aria-hidden />
           ))}
         </nav>
       </header>

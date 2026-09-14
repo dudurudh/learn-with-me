@@ -111,7 +111,7 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
         <div className="mb-8">
           {urgent.map((d) => (
             <p key={d.id} className="text-[15px]">
-              <span className="font-display font-semibold text-cinnabar">
+              <span className="font-display font-semibold text-p3">
                 {d.daysLeft} days
               </span>{' '}
               until {d.school} closes — {d.programme}.
@@ -141,7 +141,7 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
             Phase {today.phase} &middot; {phase?.title}
           </div>
 
-          <div className="font-display tnum mt-3 text-[86px] leading-[0.86] font-bold tracking-[-0.04em] text-foam-deep">
+          <div className="font-display tnum mt-3 text-[86px] leading-[0.86] font-bold tracking-[-0.04em] text-action">
             {reEntry ? '\u2014' : String(today.day).padStart(3, '0')}
           </div>
         </div>
@@ -168,7 +168,7 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
           <><span className="text-[var(--marker)]">/</span><span>light week</span></>
         )}
         {today.isBenchmark && (
-          <span className="font-display bg-cinnabar px-[7px] py-[2px] text-[11px] text-paper">
+          <span className="font-display rounded-full bg-graphite px-[10px] py-[3px] text-[12px] text-page">
             benchmark
           </span>
         )}

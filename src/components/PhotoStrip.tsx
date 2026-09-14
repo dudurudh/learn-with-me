@@ -66,7 +66,7 @@ export function PhotoStrip({
       {photos.length > 0 && (
         <div className="mt-3 inline-flex max-w-full flex-wrap gap-px bg-[var(--rule-strong)] p-px">
           {photos.map((p, i) => (
-            <figure key={p.id} className="bg-paper">
+            <figure key={p.id} className="bg-page">
               <img
                 src={urls.get(p.id)}
                 alt={`Day ${day.day}, photo ${i + 1}`}
