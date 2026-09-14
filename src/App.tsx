@@ -14,7 +14,6 @@ import { Settings } from './components/Settings'
 import { exportToFile } from './lib/backup'
 import { useApp } from './lib/useApp'
 import { notificationState, scheduleInApp } from './lib/reminders'
-import { phaseColour } from './lib/phaseColour'
 
 type View = 'today' | 'drawer' | 'wall' | 'series' | 'phase' | 'schools' | 'log' | 'settings'
 
@@ -43,7 +42,7 @@ export default function App() {
     if (!reminderTime || notificationState() !== 'granted') return
     return scheduleInApp(reminderTime, () => {
       new Notification('Today\u2019s task', {
-        body: todayNumber ? `Day ${todayNumber} — ${todayTitle ?? ''}` : 'Open the app.',
+        body: todayNumber ? `Day ${todayNumber}: ${todayTitle ?? ''}` : 'Open the app.',
         icon: `${import.meta.env.BASE_URL}icon-192.png`,
         tag: 'learn-with-me-daily',
       })
@@ -56,23 +55,21 @@ export default function App() {
       <Shell>
         <p className="text-p3">{error}</p>
         <p className="mt-3 text-[13.5px] text-[var(--ink-2)]">
-          Your progress is untouched — this is the curriculum file failing to load, not your data.
+          Your progress is safe. The curriculum file failed to load, not your records.
         </p>
       </Shell>
     )
   }
   if (!plan || !settings) return null
 
-  const hue = phaseColour(plan.today?.phase ?? 6)
 
   return (
     <Shell
       header={
         <>
           <div className="font-display mb-4 text-[14px] text-[var(--ink-2)]">
-            <span className="tnum font-semibold text-graphite">{plan.worked}</span> days collected
-            <span className="mx-2 text-[var(--marker)]">/</span>
-            <span className="tnum">{365 - plan.completed}</span> to go
+You have done <span className="tnum font-semibold text-graphite">{plan.worked}</span> days.
+            {' '}<span className="tnum">{365 - plan.completed}</span> left to go.
             {settings.seeded && (
               <span className="ml-3 rounded-full bg-p3 px-[9px] py-[2px] text-[11px] text-page">demo</span>
             )}
@@ -92,7 +89,7 @@ export default function App() {
                     + 'duration-100 active:translate-y-[1px] '
                     + (active ? 'text-page' : 'text-[var(--ink-2)] hover:bg-page hover:text-graphite')
                   }
-                  style={active ? { background: hue } : undefined}
+                  style={active ? { background: 'var(--color-accent)' } : undefined}
                 >
                   <Icon size={15} strokeWidth={2} aria-hidden />
                   {label}
@@ -106,13 +103,13 @@ export default function App() {
       {plan.backupPrompt !== 'none' && view !== 'settings' && (
         <p className="mb-8 rounded-[10px] bg-surface px-4 py-3 text-[14px] text-[var(--ink-2)]">
           {plan.backupPrompt === 'count'
-            ? 'A few days have gone in since your last backup.'
-            : 'It has been a while since your last backup.'}{' '}
+            ? 'You have finished several days since your last backup.'
+            : 'You have not backed up in a while.'}{' '}
           <button
             className="underline underline-offset-4"
             onClick={() => void exportToFile().then(refresh)}
           >
-            Download one
+            Download a copy now
           </button>
           .
         </p>
@@ -134,7 +131,15 @@ function Shell({ children, header }: { children: React.ReactNode; header?: React
   return (
     <>
       {header && (
-        <header className="border-b border-[var(--rule)] bg-surface">
+        <header
+          className="border-b border-[var(--rule)] bg-surface"
+          style={{
+            backgroundImage:
+              'linear-gradient(to right, rgba(31,29,27,.045) 1px, transparent 1px),'
+              + 'linear-gradient(to bottom, rgba(31,29,27,.045) 1px, transparent 1px)',
+            backgroundSize: '22px 22px',
+          }}
+        >
           <div className="mx-auto max-w-[860px] px-6 py-5">{header}</div>
         </header>
       )}

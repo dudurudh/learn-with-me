@@ -112,7 +112,7 @@ export function Settings({ app }: { app: AppState }) {
         <Note>
           {settings.floorDay > 1
             ? `Currently ignoring everything below day ${settings.floorDay}.`
-            : 'Moves the starting point without inventing history — days below it are ignored rather than marked done.'}
+            : 'This moves your starting point without inventing history. The app ignores days below it rather than marking them done.'}
         </Note>
       </Section>
 
@@ -154,7 +154,7 @@ export function Settings({ app }: { app: AppState }) {
                           className={
                             'font-display px-[9px] py-[6px] text-[11px] ' +
                             (holding === h.key
-                              ? 'bg-action text-page'
+                              ? 'bg-accent text-page'
                               : 'bg-page text-[var(--ink-2)] hover:bg-[color-mix(in_srgb,var(--phase)_16%,var(--color-page))]')
                           }
                         >
@@ -429,7 +429,7 @@ export function Settings({ app }: { app: AppState }) {
                 void flushUploadQueue()
                   .then((r) => {
                     setPushResult(
-                      r.skipped === 'offline' ? 'Offline — the queue will keep.'
+                      r.skipped === 'offline' ? 'You are offline. The queue will wait.'
                         : r.skipped === 'no-token' ? 'No token or repository set.'
                           : r.failed > 0 ? `${r.uploaded} pushed, then stopped: ${r.lastError ?? 'unknown error'}`
                             : r.uploaded === 0 ? 'Nothing waiting.'

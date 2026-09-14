@@ -3,6 +3,8 @@ import { allPhotoDayIds } from '../lib/photos'
 import { PhotoStrip } from './PhotoStrip'
 import { orderedDays } from '../lib/swaps'
 import { cellFill, cellShape, phaseColour } from '../lib/phaseColour'
+import { LayoutGrid } from 'lucide-react'
+import { EmptyDrawer } from './Illustration'
 import type { AppState } from '../lib/useApp'
 import type { CurriculumDay, ProgressRecord } from '../lib/types'
 
@@ -28,11 +30,14 @@ export function Drawer({ app }: { app: AppState }) {
 
   return (
     <section>
-      <h1 className="font-display text-[30px] font-semibold tracking-[-0.02em]">The drawer</h1>
+      <h1 className="font-display flex items-center gap-3 text-[30px] font-semibold tracking-[-0.02em]">
+        <LayoutGrid size={26} strokeWidth={2} className="text-accent" aria-hidden />
+        The drawer
+      </h1>
       <p className="mt-2 max-w-[56ch] text-[15px] text-[var(--ink-2)]">
         {worked === 0
-          ? 'Three hundred and sixty-five compartments, one per day. They fill up as you go.'
-          : `${worked} of them filled so far. Each phase has its own colour, and how solid a square is says how much of that day you did.`}
+          ? 'There are 365 compartments here, one for each day. They fill up as you go.'
+          : `You have filled ${worked} of them. Each phase has its own colour. The more solid a square looks, the more of that day you did.`}
       </p>
 
       <div className="mt-10 space-y-9">
@@ -43,11 +48,14 @@ export function Drawer({ app }: { app: AppState }) {
           return (
             <div key={phase.phase}>
               <div className="mb-3 flex flex-wrap items-baseline gap-x-3">
-                <span
-                  className="inline-block h-[13px] w-[13px] rounded-[3px]"
-                  style={{ background: hue }}
-                />
-                <h2 className="font-display text-[17px] font-semibold">{phase.title}</h2>
+                <h2 className="font-display flex items-center gap-[9px] text-[17px] font-semibold">
+                  <span
+                    className="inline-block h-[15px] w-[15px] rounded-[4px]"
+                    style={{ background: hue }}
+                    aria-hidden
+                  />
+                  {phase.title}
+                </h2>
                 <span className="tnum font-display text-[14px] text-[var(--ink-2)]">
                   {done} of {phaseDays.length}
                 </span>
@@ -87,24 +95,28 @@ export function Drawer({ app }: { app: AppState }) {
         })}
       </div>
 
-      <div className="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-[13.5px] text-[var(--ink-2)]">
-        <Key fill="color-mix(in srgb, var(--color-p1) 13%, white)" label="not yet" />
-        <Key fill="color-mix(in srgb, var(--color-p1) 46%, white)" label="the minimum" />
-        <Key fill="var(--color-p1)" label="the whole thing" />
-        <Key fill="var(--color-marker)" label="skipped" />
+      {worked === 0 && (
+        <div className="mt-10 flex justify-center"><EmptyDrawer /></div>
+      )}
+
+      <div className="mt-10 flex flex-wrap gap-x-6 gap-y-2 rounded-[14px] bg-surface-soft px-5 py-4 text-[13.5px] text-[var(--ink-2)]">
+        <Key fill="color-mix(in srgb, var(--color-p1) 13%, white)" label="not started" />
+        <Key fill="color-mix(in srgb, var(--color-p1) 46%, white)" label="you did the minimum" />
+        <Key fill="var(--color-p1)" label="you did the whole task" />
+        <Key fill="var(--color-marker)" label="you skipped it" />
         <span className="tnum">
           <i
             className="mr-[7px] inline-block h-[13px] w-[13px] rounded-full align-[-2px]"
             style={{ background: 'var(--color-p1)' }}
           />
-          benchmark day
+          a benchmark day
         </span>
         <span className="tnum">
           <i
             className="mr-[7px] inline-block h-[13px] w-[13px] rounded-[3px] align-[-2px]"
             style={{ boxShadow: 'inset 0 0 0 2px var(--color-graphite)' }}
           />
-          you are here
+          today
         </span>
       </div>
 

@@ -70,7 +70,7 @@ export function SundayPanel({ week }: { week: number }) {
                   className={
                     'font-display px-[14px] py-[9px] text-[12.5px] font-medium ' +
                     (follows.includes(designer.id)
-                      ? 'bg-action text-page'
+                      ? 'bg-accent text-page'
                       : 'bg-page hover:bg-[color-mix(in_srgb,var(--phase)_16%,var(--color-page))]')
                   }
                 >

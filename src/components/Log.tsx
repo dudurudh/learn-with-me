@@ -3,6 +3,8 @@ import { DayDetail } from './Drawer'
 import type { AppState } from '../lib/useApp'
 import type { CurriculumDay, ProgressRecord } from '../lib/types'
 import { isReEntryId } from '../lib/reentry'
+import { ScrollText } from 'lucide-react'
+import { EmptyPage } from './Illustration'
 
 export function Log({ app }: { app: AppState }) {
   const { curriculum, records, plan } = app
@@ -20,7 +22,10 @@ export function Log({ app }: { app: AppState }) {
   return (
     <section>
       <div className="flex flex-wrap items-baseline justify-between gap-4">
-        <h1 className="font-display text-[30px] font-semibold tracking-[-0.02em]">The log</h1>
+        <h1 className="font-display flex items-center gap-3 text-[30px] font-semibold tracking-[-0.02em]">
+          <ScrollText size={26} strokeWidth={2} className="text-accent" aria-hidden />
+          The log
+        </h1>
         <label className="flex items-center gap-2 text-[13px] text-[var(--ink-2)]">
           <input type="checkbox" checked={onlyNotes} onChange={(e) => setOnlyNotes(e.target.checked)} />
           only days with notes
@@ -36,7 +41,10 @@ export function Log({ app }: { app: AppState }) {
       )}
 
       {rows.length === 0 && (
-        <p className="mt-6 text-[var(--ink-2)]">
+        <div className="mt-10 flex justify-center"><EmptyPage /></div>
+      )}
+      {rows.length === 0 && (
+        <p className="mt-6 text-center text-[var(--ink-2)]">
           {records.length === 0 ? 'Nothing recorded yet.' : 'No notes written yet.'}
         </p>
       )}

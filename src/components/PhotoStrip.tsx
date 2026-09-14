@@ -59,8 +59,8 @@ export function PhotoStrip({
     <div className="mt-10">
       <p className="font-display text-[15px] font-medium text-[var(--ink-2)]">
         {photos.length > 0
-          ? `${photos.length} photo${photos.length === 1 ? '' : 's'} of this day`
-          : 'Photograph the page — even when it is bad'}
+          ? `You have ${photos.length} photo${photos.length === 1 ? '' : 's'} from this day.`
+          : 'Take a photo of the page. Bad pages count too.'}
       </p>
 
       {photos.length > 0 && (
@@ -107,10 +107,11 @@ export function PhotoStrip({
       {showWarning && (
         <div className="mt-5 max-w-[58ch] rounded-[8px] border border-[var(--rule-strong)] p-4 text-[14px] text-[var(--ink-2)]">
           <p className="max-w-[56ch]">
-            Once a GitHub token is set up, photos are pushed to a public repo and become
-            publicly accessible URLs. That is deliberate — it means they survive a browser
-            wipe and can be seen from any device. It also means not shooting with mail,
-            screens or documents in frame.
+            When you set up a GitHub token, the app pushes your photos to a public
+            repository. Anyone with the link can then open them. This is deliberate. It
+            means your photos survive if you clear the browser, and you can see them from
+            any device. It also means you should keep mail, screens, and documents out of
+            the frame.
           </p>
           <button
             onClick={() => setShowWarning(false)}

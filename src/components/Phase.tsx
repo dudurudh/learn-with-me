@@ -1,6 +1,7 @@
 import { driftByType, skipRates, project, deadlineViews, phaseProgress } from '../lib/stats'
 import { phaseOf } from '../lib/curriculum'
 import { phaseColour } from '../lib/phaseColour'
+import { TrendingUp, Timer, ListChecks, CalendarClock } from 'lucide-react'
 import type { AppState } from '../lib/useApp'
 
 export function Phase({ app }: { app: AppState }) {
@@ -17,7 +18,10 @@ export function Phase({ app }: { app: AppState }) {
 
   return (
     <section>
-      <h1 className="font-display text-[30px] font-semibold tracking-[-0.02em]">Where you are</h1>
+      <h1 className="font-display flex items-center gap-3 text-[30px] font-semibold tracking-[-0.02em]">
+        <TrendingUp size={26} strokeWidth={2} className="text-accent" aria-hidden />
+        Where you are
+      </h1>
 
       <div className="mt-8 space-y-px">
         {curriculum.phases.map((p) => {
@@ -61,11 +65,14 @@ export function Phase({ app }: { app: AppState }) {
       </div>
 
       <h2 className="font-display mt-14 mb-5 border-b border-[var(--rule-strong)] pb-[7px] text-[13px] font-semibold">
-        Where the plan was wrong
+        <span className="flex items-center gap-[9px]">
+          <Timer size={17} strokeWidth={2} className="text-accent" aria-hidden />
+          Where the plan was wrong
+        </span>
       </h2>
       {drift.length === 0 ? (
         <p className="text-[13.5px] text-[var(--ink-2)]">
-          Nothing yet. The time you tap after finishing a day is what fills this in.
+          There is nothing here yet. This fills in as you record how long each day took.
         </p>
       ) : (
         <>
@@ -98,16 +105,20 @@ export function Phase({ app }: { app: AppState }) {
           </table>
           {overrunning.map((d) => (
             <p key={d.type} className="mt-4 max-w-[60ch] text-[13.5px]">
-              <b>{d.type}</b> days are taking about {d.actual} minutes against a planned{' '}
-              {d.estimated}. The estimate is wrong. Cut the task rather than pushing through it —
-              curriculum.json is editable and this is the number that says which days to cut.
+              Your <b>{d.type}</b> days take about {d.actual} minutes, but the plan allows{' '}
+              {d.estimated}. The estimate is wrong. Make those tasks smaller rather than pushing
+              through them. You can edit curriculum.json yourself, and this number tells you
+              which days to cut.
             </p>
           ))}
         </>
       )}
 
       <h2 className="font-display mt-14 mb-5 border-b border-[var(--rule-strong)] pb-[7px] text-[13px] font-semibold">
-        What actually gets done
+        <span className="flex items-center gap-[9px]">
+          <ListChecks size={17} strokeWidth={2} className="text-accent" aria-hidden />
+          What actually gets done
+        </span>
       </h2>
       {rates.length === 0 ? (
         <p className="text-[13.5px] text-[var(--ink-2)]">Nothing recorded in the last 30 days.</p>
@@ -135,16 +146,19 @@ export function Phase({ app }: { app: AppState }) {
           <p className="mt-3 text-[12px] text-[var(--ink-3)]">Last 30 recorded days, rest excluded.</p>
           {falling.map((r) => (
             <p key={r.type} className="mt-4 max-w-[60ch] text-[13.5px]">
-              <b>{r.type}</b> days are getting done {Math.round(r.rate * 100)}% of the time. Either
-              make those tasks smaller, or drop that strand on purpose — both are fine, drifting is
-              the one that costs you.
+              You finish <b>{r.type}</b> days {Math.round(r.rate * 100)}% of the time. Either make
+              those tasks smaller or decide to drop them. Both are reasonable choices. Drifting
+              without deciding is the one that costs you.
             </p>
           ))}
         </>
       )}
 
       <h2 className="font-display mt-14 mb-5 border-b border-[var(--rule-strong)] pb-[7px] text-[13px] font-semibold">
-        Your rate
+        <span className="flex items-center gap-[9px]">
+          <CalendarClock size={17} strokeWidth={2} className="text-accent" aria-hidden />
+          Your rate
+        </span>
       </h2>
       <p className="max-w-[56ch] text-[17px] leading-[1.6]">
         You are working{' '}
@@ -160,7 +174,7 @@ export function Phase({ app }: { app: AppState }) {
         .
       </p>
       <p className="mt-3 max-w-[56ch] text-[14px] text-[var(--ink-2)]">
-        Worked out from how often you actually finish a day, not from the calendar.
+        This comes from how often you actually finish a day, not from the calendar.
         {projection.daysPerWeek === null && ' Needs about a week of records first.'}
       </p>
 
@@ -191,8 +205,8 @@ export function Phase({ app }: { app: AppState }) {
           {projection.projectedFinish && (
             <p className="mt-4 max-w-[60ch] text-[13.5px]">
               {deadlines.some((d) => d.finishesBefore === false)
-                ? 'At your current rate, Phase 6 lands after at least one of these deadlines. That is the number to adjust against — either the rate, or which schools go in the first round.'
-                : 'At your current rate, Phase 6 lands before every deadline above.'}
+                ? 'At your current pace, you will finish Phase 6 after at least one of these deadlines. You can change the pace, or change which schools you apply to first.'
+                : 'At your current pace, you will finish Phase 6 before every deadline above.'}
             </p>
           )}
         </>

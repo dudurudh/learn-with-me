@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Button, ButtonRow, Callout, Panel } from './ui'
-import { phaseColour, phaseInk } from '../lib/phaseColour'
+import { phaseColour } from '../lib/phaseColour'
 import { activityOf } from '../lib/activity'
 import { Clock3, Check, Minus, Shuffle, X } from 'lucide-react'
 import { PhotoStrip } from './PhotoStrip'
@@ -70,7 +70,7 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
           Three hundred and sixty-five
         </h1>
         <p className="mt-3 max-w-[52ch] text-[var(--ink-2)]">
-          Every day in the plan has a record against it. The drawer is full.
+          You have a record against every day in the plan. The drawer is full.
         </p>
       </div>
     )
@@ -99,7 +99,7 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
 
   const swap = async () => {
     const result = findSwap(curriculum, new Map(app.records.map((r) => [r.dayId, r])), today)
-    if (!result) { setSwapNote('Nothing lighter left in this phase to swap in.'); return }
+    if (!result) { setSwapNote('There is nothing lighter left in this phase to swap in.'); return }
     await addSwap({
       deferredId: today.dayId,
       substituteId: result.substitute.dayId,
@@ -120,10 +120,10 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
               <span className="font-display font-semibold text-p3">
                 {d.daysLeft} days
               </span>{' '}
-              until {d.school} closes — {d.programme}.
+              until {d.school} closes. The programme is {d.programme}.
               {d.finishesBefore === false && (
                 <span className="text-[var(--ink-2)]">
-                  {' '}At your current rate you finish after it.
+                  {' '}At your current pace, you will finish the year after that date.
                 </span>
               )}
             </p>
@@ -134,20 +134,25 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
       {reEntry && (
         <div className="mb-8">
           <p className="max-w-[56ch] text-[15.5px]">
-            It has been {plan.daysSinceLastWorked} days. Here is a short one first &mdash; ten
-            minutes, nothing new, and it counts as a full day. Day {plan.today?.day} is waiting
-            after it and it is not going anywhere.
+            You have been away for {plan.daysSinceLastWorked} days. Start with a short one.
+            It takes ten minutes, covers nothing new, and counts as a full day. Day{' '}
+            {plan.today?.day} will still be here afterwards.
           </p>
         </div>
       )}
 
       <div className="flex items-start justify-between gap-6">
         <div>
-          <div className="font-display text-[13px] text-[var(--ink-3)]">
-            Phase {today.phase} &middot; {phase?.title}
+          <div className="font-display flex items-center gap-[8px] text-[14px] text-[var(--ink-2)]">
+            <span
+              className="inline-block h-[11px] w-[11px] shrink-0 rounded-[3px]"
+              style={{ background: hue }}
+              aria-hidden
+            />
+            Phase {today.phase} of 6. {phase?.title}.
           </div>
 
-          <div className="font-display tnum mt-3 text-[86px] leading-[0.86] font-bold tracking-[-0.04em] text-action">
+          <div className="font-display tnum mt-3 text-[86px] leading-[0.86] font-bold tracking-[-0.04em] text-accent">
             {reEntry ? '\u2014' : String(today.day).padStart(3, '0')}
           </div>
         </div>
@@ -177,7 +182,7 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
         </span>
         {today.isProjectBlock && (
           <span className="font-display rounded-full bg-surface px-[11px] py-[4px] text-[12.5px] text-[var(--ink-2)]">
-            the long one
+            a longer session
           </span>
         )}
         {today.isDeload && (
@@ -199,22 +204,22 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
         <div className="mt-7 max-w-[66ch]">
           <Callout title="What a benchmark day is" tint="var(--color-p4)" strength={8}>
             <p className="max-w-[58ch] text-[15px]">
-              You draw the same object on days 1, 90, 180, 270 and 365, under the same
-              conditions each time. Five drawings of one thing across a year is the only
-              honest measure of whether any of this is working. They end up side by side
-              on the Series tab.
+              You draw the same object on days 1, 90, 180, 270, and 365. Keep the
+              conditions the same every time. Five drawings of one object across a year
+              will tell you whether this is working. You can see them side by side on the
+              Series tab.
             </p>
           </Callout>
         </div>
       )}
 
       <div className="mt-7 max-w-[66ch] space-y-3">
-        <Callout title={`The whole thing · ${today.minutes} minutes`} tint={hue}>
+        <Callout title={`The full task (${today.minutes} minutes)`} tint="var(--color-accent)" strength={5}>
           <p className="max-w-[58ch] text-[16px] leading-[1.6]">{today.full}</p>
         </Callout>
 
         {!today.isRest && (
-          <Callout title="The smaller version — this still counts as showing up" tint="var(--color-p5)" strength={7}>
+          <Callout title="If today is hard" tint="var(--color-p5)" strength={7}>
             <p className="max-w-[58ch] text-[15.5px] leading-[1.55]">{today.minimum}</p>
           </Callout>
         )}
@@ -223,16 +228,16 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
       {resource && today.resource && (
         <p className="mt-5 max-w-[58ch] text-[15px] text-[var(--ink-2)]">
           <span className="font-medium text-graphite">
-            {today.resourceMode === 'assigned' ? 'Today you need' : 'If you want to look it up'}:
+            {today.resourceMode === 'assigned' ? 'You will need this today:' : 'You can look this up if you want to:'}
           </span>{' '}
           {resource.title}
-          {today.resource.section ? ` — ${today.resource.section}` : ''}
+          {today.resource.section ? `, ${today.resource.section}` : ''}
         </p>
       )}
 
       <div className="mt-8 max-w-[66ch]">
         <Callout
-          title={today.question ? 'Something to think about while you work' : 'Notes'}
+          title={today.question ? 'Something to think about while you work' : 'Your notes'}
           tint="var(--color-p2)"
           strength={9}
         >
@@ -265,9 +270,9 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
       )}
 
       <div className="mt-8 max-w-[66ch]">
-        <Panel title="How did today go?" tint={hue}>
+        <Panel title="How did today go?">
           <ButtonRow>
-            <Button primary accent={phaseInk(today.phase)} disabled={busy} onClick={() => void mark('full')}>
+            <Button primary disabled={busy} onClick={() => void mark('full')}>
               <Check size={16} strokeWidth={2.4} aria-hidden />
               {today.isRest ? 'Nothing today' : 'Done'}
             </Button>
@@ -279,7 +284,7 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
                 </Button>
                 <Button
                   disabled={busy || plan.swapsLeft === 0}
-                  title={plan.swapsLeft === 0 ? 'Two a week, and this week is spent' : undefined}
+                  title={plan.swapsLeft === 0 ? 'You get two swaps a week, and you have used both' : undefined}
                   onClick={() => void swap()}
                 >
                   <Shuffle size={16} strokeWidth={2.2} aria-hidden />
@@ -366,8 +371,8 @@ function Recorded({
             </ButtonRow>
           </div>
           <p className="mt-3 max-w-[50ch] text-[14px] text-[var(--ink-2)]">
-            The plan guessed {day.minutes}. Telling it the truth is how it finds out where
-            it was wrong.
+            The plan guessed {day.minutes} minutes. When you tell it the truth, it can show
+            you which estimates are wrong.
           </p>
         </div>
       )}

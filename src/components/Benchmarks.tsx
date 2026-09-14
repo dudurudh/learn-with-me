@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import { photosForDay } from '../lib/photos'
 import { daysBetween } from '../lib/time'
+import { GitCompareArrows } from 'lucide-react'
+import { EmptyFrames } from './Illustration'
+import { Panel } from './ui'
 import type { AppState } from '../lib/useApp'
 import type { CurriculumDay, PhotoRecord, ProgressRecord } from '../lib/types'
 
@@ -49,10 +52,13 @@ export function Benchmarks({ app }: { app: AppState }) {
 
   return (
     <section>
-      <h1 className="font-display text-[30px] font-semibold tracking-[-0.02em]">The series</h1>
+      <h1 className="font-display flex items-center gap-3 text-[30px] font-semibold tracking-[-0.02em]">
+        <GitCompareArrows size={26} strokeWidth={2} className="text-accent" aria-hidden />
+        The series
+      </h1>
       <p className="mt-2 max-w-[54ch] text-[15px] text-[var(--ink-2)]">
-        One object, drawn cold for fifteen minutes, five times. Same object, same conditions, no
-        technique you did not have on Day 1.
+        You draw the same object five times, for fifteen minutes each, with no reference and no
+        construction. Keep the conditions the same every time.
       </p>
 
       <div className="mt-10 -mx-6 overflow-x-auto px-6 sm:mx-0 sm:px-0">
@@ -118,22 +124,23 @@ export function Benchmarks({ app }: { app: AppState }) {
         </div>
       </div>
 
-      <div className="mt-9">
-        <div>
+      <div className="mt-9 max-w-[66ch]">
+        <Panel>
+          {taken === 0 && <div className="mb-4 flex justify-center"><EmptyFrames /></div>}
           <p className="tnum font-display text-[17px] font-medium">
-            {taken} of 5 photographed
+            You have photographed {taken} of the 5
             {elapsed > 0 && (
-              <span className="text-[var(--ink-2)]"> · {elapsed} days from the first to the last</span>
+              <span className="text-[var(--ink-2)]">, over {elapsed} days</span>
             )}
           </p>
           <p className="mt-2 max-w-[54ch] text-[14px] text-[var(--ink-2)]">
             {taken === 0
-              ? 'Day 1 is where you pick the object and draw it before you know anything. That drawing is what this whole screen is measured against, so it is worth being genuinely bad.'
+              ? 'On Day 1 you pick the object and draw it before you have learned anything. Everything else on this screen is measured against that drawing, so let it be bad.'
               : taken < 5
-                ? 'The empty frames are the point. They fill on days 90, 180, 270 and 365, and there is no way to fill them early.'
-                : 'Five drawings of one object, a year apart end to end. This is the evidence.'}
+                ? 'The empty frames matter as much as the full ones. You fill them on days 90, 180, 270, and 365. There is no way to fill them early.'
+                : 'Here are five drawings of one object, made a year apart. This is your evidence.'}
           </p>
-        </div>
+        </Panel>
       </div>
     </section>
   )

@@ -31,7 +31,7 @@ export function Button({
         'transition-[background-color,transform] duration-100 active:translate-y-[1px] ' +
         'disabled:cursor-not-allowed disabled:text-[var(--ink-3)] ' +
         (primary
-          ? 'bg-action text-page hover:bg-[#10495c] disabled:bg-marker disabled:text-[var(--ink-3)]'
+          ? 'bg-accent text-page hover:bg-[#1b3563] disabled:bg-marker disabled:text-[var(--ink-3)]'
           : quiet
             ? 'text-[var(--ink-2)] hover:bg-surface hover:text-graphite'
             : 'border border-[var(--rule-strong)] bg-page hover:bg-[color-mix(in_srgb,var(--phase)_14%,var(--color-page))]')

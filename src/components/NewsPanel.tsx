@@ -90,8 +90,8 @@ export function SavedQueue({ onChange }: { onChange?: () => void }) {
     <div className="mt-6 border-t border-[var(--rule)] pt-4">
       <div className="font-display text-[13px] font-semibold">Your saved queue &middot; {unread.length}</div>
       <p className="mt-2 max-w-[56ch] text-[13.5px]">
-        Read two of these properly and write three sentences on each in the notes. That is
-        today&rsquo;s reading — the book can wait.
+        Read two of these properly and write three sentences about each one in your notes.
+        That is today&rsquo;s reading. The book can wait.
       </p>
       <ul className="mt-3">
         {unread.slice(0, 5).map((s) => (

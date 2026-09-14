@@ -25,8 +25,12 @@
   --color-p5: #398457;   /* making        */
   --color-p6: #b0417a;   /* portfolio     */
 
-  /* Deep enough to carry white text at 4.7:1 or better, so a primary button
-     can wear the colour of the phase you are in rather than one fixed teal. */
+  /* Phase colours are data. The accent is chrome: buttons, the active tab,
+     the day number. It sits 77 away from the nearest phase hue so the two
+     never get confused. */
+  --color-accent: #24457f;
+  --color-accent-soft: #eef1f7;
+
   --color-p1-deep: #2a7b9b;
   --color-p2-deep: #936e0b;
   --color-p3-deep: #c4432c;
@@ -34,7 +38,6 @@
   --color-p5-deep: #388155;
   --color-p6-deep: #b0417a;
 
-  --color-action: #155e75;
 
   --font-display: 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif;
   --font-sans: 'Instrument Sans Variable', -apple-system, 'Segoe UI', sans-serif;

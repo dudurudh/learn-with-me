@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { db } from '../lib/db'
+import { Images } from 'lucide-react'
+import { EmptyWall } from './Illustration'
 import type { AppState } from '../lib/useApp'
 import type { PhotoRecord } from '../lib/types'
 
@@ -68,21 +70,25 @@ export function Collection({ app }: { app: AppState }) {
     <section>
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="font-display text-[30px] font-semibold tracking-[-0.02em]">
+          <h1 className="font-display flex items-center gap-3 text-[30px] font-semibold tracking-[-0.02em]">
+            <Images size={26} strokeWidth={2} className="text-accent" aria-hidden />
             The collection
           </h1>
           <p className="mt-2 max-w-[52ch] text-[14.5px] text-[var(--ink-2)]">
             {specimens.length === 0
-              ? 'Empty. Every photo you take lands here, in order, and stays.'
-              : `${specimens.length} specimens, oldest first. The point is the whole wall, not any one of them.`}
+              ? 'This is empty for now. Every photo you take lands here, in order, and stays.'
+              : `You have ${specimens.length} photos here, oldest first. Look at the whole wall rather than any one of them.`}
           </p>
         </div>
       </div>
 
       {specimens.length === 0 && (
-        <p className="mt-10 max-w-[52ch] text-[14.5px] text-[var(--ink-2)]">
-          Photograph the page even when it is bad — especially when it is bad. A year from now
-          the bad ones are the only reason the good ones mean anything.
+        <div className="mt-10 flex justify-center"><EmptyWall /></div>
+      )}
+      {specimens.length === 0 && (
+        <p className="mt-6 max-w-[52ch] text-[14.5px] text-[var(--ink-2)]">
+          Take a photo of the page even when the work is bad. In a year, the bad pages are
+          what will make the good ones mean something.
         </p>
       )}
 

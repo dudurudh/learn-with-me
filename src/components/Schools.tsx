@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { loadProgramChanges, relativeTime, type ProgramResult } from '../lib/extras'
 import { deadlineViews, project } from '../lib/stats'
 import type { AppState } from '../lib/useApp'
+import { GraduationCap, CalendarClock, Eye, Banknote } from 'lucide-react'
 
 interface Watchlist {
   note: string
@@ -36,20 +37,28 @@ export function Schools({ app }: { app: AppState }) {
 
   return (
     <section>
-      <h1 className="font-display text-[30px] font-semibold tracking-[-0.02em]">Schools and money</h1>
+      <h1 className="font-display flex items-center gap-3 text-[30px] font-semibold tracking-[-0.02em]">
+        <GraduationCap size={26} strokeWidth={2} className="text-accent" aria-hidden />
+        Schools and money
+      </h1>
       <p className="mt-2 max-w-[58ch] text-[14.5px] text-[var(--ink-2)]">
-        Deadlines and funding move without warning, so this watches the pages rather than
-        storing dates that go stale. Nothing here is a date I made up.
+        Schools change their deadlines and funding without warning. This page watches the
+        real admissions pages instead of storing dates that go out of date. None of the dates
+        here are invented.
       </p>
 
       <h2 className="font-display mt-11 mb-4 border-b border-[var(--rule-strong)] pb-[7px] text-[15px] font-semibold">
-        Your deadlines
+        <span className="flex items-center gap-[9px]">
+          <CalendarClock size={17} strokeWidth={2} className="text-accent" aria-hidden />
+          Your deadlines
+        </span>
       </h2>
       {deadlines.length === 0 ? (
         <p className="max-w-[58ch] text-[14px] text-[var(--ink-2)]">
-          None entered. Add them in Settings and anything inside sixty days pins to the top of
-          the Today view. I deliberately did not ship real dates &mdash; application cycles shift
-          every year and a wrong deadline in an app you trust is worse than no deadline at all.
+          You have not added any yet. Add them in Settings, and any deadline within sixty days
+          will appear at the top of the Today view. The app does not ship with real dates,
+          because application cycles change every year. A wrong deadline in an app you trust
+          is worse than no deadline at all.
         </p>
       ) : (
         <>
@@ -77,15 +86,18 @@ export function Schools({ app }: { app: AppState }) {
               At your current rate Day 365 lands on{' '}
               <span className="tnum font-display font-semibold">{projection.projectedFinish}</span>
               {deadlines.some((d) => d.finishesBefore === false)
-                ? ' — after at least one of these. That is the number to adjust against.'
-                : ' — before all of them.'}
+                ? ', which is after at least one of these deadlines.'
+                : ', which is before all of them.'}
             </p>
           )}
         </>
       )}
 
       <h2 className="font-display mt-12 mb-4 border-b border-[var(--rule-strong)] pb-[7px] text-[15px] font-semibold">
-        The watchlist
+        <span className="inline-flex items-center gap-[9px]">
+          <Eye size={17} strokeWidth={2} className="text-accent" aria-hidden />
+          The watchlist
+        </span>
         {changes && (
           <span className="ml-2 text-[12.5px] font-normal text-[var(--ink-3)]">
             checked {relativeTime(changes.generatedAt)}
@@ -119,12 +131,15 @@ export function Schools({ app }: { app: AppState }) {
       })}
 
       <h2 className="font-display mt-12 mb-4 border-b border-[var(--rule-strong)] pb-[7px] text-[15px] font-semibold">
-        Funding
+        <span className="flex items-center gap-[9px]">
+          <Banknote size={17} strokeWidth={2} className="text-accent" aria-hidden />
+          Funding
+        </span>
       </h2>
       <p className="mb-4 max-w-[58ch] text-[13.5px] text-[var(--ink-2)]">
-        At US schools the departmental assistantship is the single biggest lever, and it is
-        usually decided with admission rather than after. Ask about it in the application, not
-        later.
+        At US schools, a departmental assistantship makes the biggest difference to what you
+        pay. Schools usually decide it when they admit you, not afterwards, so ask about it in
+        your application.
       </p>
       {list?.funding.map((f) => (
         <div key={f.id} className="border-b border-[var(--rule)] py-3">
@@ -152,7 +167,7 @@ function Status({ change, confirmed }: { change?: ProgramResult; confirmed: bool
   if (!confirmed) {
     return (
       <span className="text-[12.5px] text-[var(--ink-3)]">
-        not watched yet &mdash; needs the real admissions URL
+        not watched yet. Add the real admissions link.
       </span>
     )
   }
