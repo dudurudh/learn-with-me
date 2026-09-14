@@ -1,0 +1,32 @@
+name: Daily design digest
+
+on:
+  schedule:
+    - cron: '15 9 * * *'      # 05:15 America/New_York in winter, 06:15 in summer
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: node scripts/fetch-news.mjs
+      - name: Commit only if the stories changed
+        run: |
+          if [[ -n "$(git status --porcelain public/news.json)" ]]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add public/news.json
+            git commit -m "News digest $(date -u +%Y-%m-%d)"
+            git push
+          else
+            echo "nothing to commit"
+          fi

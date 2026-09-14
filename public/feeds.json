@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "note": "Edit this file directly on github.com. The Action drops any feed that 404s or times out rather than failing the run, so a dead URL costs you that source and nothing else. A story must match at least one `boost` term to be eligible at all; `damp` pushes architecture and interiors down, which is where most of the noise is.",
+  "primary": [
+    {
+      "id": "core77",
+      "name": "Core77",
+      "url": "https://www.core77.com/feed"
+    },
+    {
+      "id": "dezeen",
+      "name": "Dezeen",
+      "url": "https://www.dezeen.com/feed/"
+    },
+    {
+      "id": "designboom",
+      "name": "designboom",
+      "url": "https://www.designboom.com/feed/"
+    },
+    {
+      "id": "yanko",
+      "name": "Yanko Design",
+      "url": "https://www.yankodesign.com/feed/"
+    },
+    {
+      "id": "fastcompany",
+      "name": "Fast Company",
+      "url": "https://www.fastcompany.com/co-design/rss"
+    },
+    {
+      "id": "wallpaper",
+      "name": "Wallpaper*",
+      "url": "https://www.wallpaper.com/feed/rss"
+    },
+    {
+      "id": "idsa",
+      "name": "IDSA",
+      "url": "https://www.idsa.org/rss"
+    }
+  ],
+  "supplementary": [
+    {
+      "id": "gn-industrial",
+      "name": "Google News",
+      "url": "https://news.google.com/rss/search?q=%22industrial+design%22&hl=en-US&gl=US&ceid=US:en"
+    },
+    {
+      "id": "gn-award",
+      "name": "Google News",
+      "url": "https://news.google.com/rss/search?q=%22product+design%22+award&hl=en-US&gl=US&ceid=US:en"
+    },
+    {
+      "id": "gn-studio",
+      "name": "Google News",
+      "url": "https://news.google.com/rss/search?q=%22design+studio%22+launch&hl=en-US&gl=US&ceid=US:en"
+    }
+  ],
+  "boost": [
+    "industrial design",
+    "product design",
+    "furniture",
+    "transport design",
+    "automotive design",
+    "materials",
+    "CMF",
+    "prototype",
+    "model making",
+    "ergonomics",
+    "manufacturing",
+    "injection moulding",
+    "tooling",
+    "sustainability",
+    "designer",
+    "studio",
+    "workshop",
+    "chair",
+    "stool",
+    "table",
+    "sofa",
+    "lamp",
+    "light",
+    "kettle",
+    "appliance",
+    "tool",
+    "vehicle",
+    "car",
+    "bicycle",
+    "footwear",
+    "packaging",
+    "wearable",
+    "3d printing",
+    "injection",
+    "foam",
+    "aluminium",
+    "plastic",
+    "recycled",
+    "factory",
+    "production",
+    "concept car",
+    "teardown",
+    "IDSA",
+    "Core77"
+  ],
+  "damp": [
+    "graphic design",
+    "typeface",
+    "typography",
+    "branding",
+    "logo",
+    "poster",
+    "interior design",
+    "interiors",
+    "architecture",
+    "architect",
+    "real estate",
+    "industrial park",
+    "industrial property",
+    "industrial estate",
+    "industrial output",
+    "industrial policy",
+    "manufacturing earnings",
+    "web design",
+    "UX",
+    "app design",
+    "house",
+    "home",
+    "apartment",
+    "villa",
+    "residence",
+    "pavilion",
+    "gallery",
+    "museum",
+    "hotel",
+    "restaurant",
+    "cafe",
+    "floor plan",
+    "renovation",
+    "extension",
+    "skyscraper",
+    "tower",
+    "facade",
+    "landscape",
+    "garden",
+    "exhibition design",
+    "installation",
+    "studio visit",
+    "art"
+  ]
+}

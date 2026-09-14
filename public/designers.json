@@ -1,0 +1,820 @@
+{
+  "schemaVersion": 1,
+  "note": "Curated by hand, not generated. Where a designer's key works are empty the field was left for you to fill in rather than guessed at — `needsFillingIn` marks those. The app renders what is in this file and never invents.",
+  "designers": [
+    {
+      "id": "michael-thonet",
+      "name": "Michael Thonet",
+      "nationality": "Austria",
+      "region": "Europe",
+      "era": "1830s–1870s",
+      "discipline": "Furniture, bentwood",
+      "keyWorks": [
+        "Chair No. 14"
+      ],
+      "whyTheyMatter": "Turned a chair into a kit of six parts that could be shipped flat and assembled anywhere — mass production before the word existed.",
+      "searchQuery": "Michael Thonet Furniture design work",
+      "needsFillingIn": false,
+      "week": 1
+    },
+    {
+      "id": "eileen-gray",
+      "name": "Eileen Gray",
+      "nationality": "Ireland",
+      "region": "Europe",
+      "era": "1920s–1930s",
+      "discipline": "Furniture, interiors",
+      "keyWorks": [
+        "E-1027 adjustable table",
+        "Bibendum chair"
+      ],
+      "whyTheyMatter": "Worked outside every movement of her time and was written out of the histories until late in her life.",
+      "searchQuery": "Eileen Gray Furniture design work",
+      "needsFillingIn": false,
+      "week": 2
+    },
+    {
+      "id": "marianne-brandt",
+      "name": "Marianne Brandt",
+      "nationality": "Germany",
+      "region": "Europe",
+      "era": "1920s–1930s",
+      "discipline": "Metalwork, lighting",
+      "keyWorks": [
+        "Kandem bedside lamp"
+      ],
+      "whyTheyMatter": "Ran the Bauhaus metal workshop and designed for actual manufacture, which most of the school did not.",
+      "searchQuery": "Marianne Brandt Metalwork design work",
+      "needsFillingIn": false,
+      "week": 3
+    },
+    {
+      "id": "raymond-loewy",
+      "name": "Raymond Loewy",
+      "nationality": "France / United States",
+      "region": "North America",
+      "era": "1930s–1970s",
+      "discipline": "Industrial design, transport",
+      "keyWorks": [
+        "Coldspot refrigerator",
+        "Studebaker Avanti"
+      ],
+      "whyTheyMatter": "Invented the industrial design consultancy as a business, and the idea that styling sells.",
+      "searchQuery": "Raymond Loewy Industrial design design work",
+      "needsFillingIn": false,
+      "week": 4
+    },
+    {
+      "id": "charlotte-perriand",
+      "name": "Charlotte Perriand",
+      "nationality": "France",
+      "region": "Europe",
+      "era": "1920s–1990s",
+      "discipline": "Furniture, interiors",
+      "keyWorks": [
+        "LC4 chaise longue",
+        "Les Arcs ski resort interiors"
+      ],
+      "whyTheyMatter": "Built the furniture the Corbusier office is famous for, and spent decades after it doing better work alone.",
+      "searchQuery": "Charlotte Perriand Furniture design work",
+      "needsFillingIn": false,
+      "week": 5
+    },
+    {
+      "id": "aino-aalto",
+      "name": "Aino Aalto",
+      "nationality": "Finland",
+      "region": "Europe",
+      "era": "1920s–1940s",
+      "discipline": "Glass, furniture",
+      "keyWorks": [
+        "Bölgeblick glassware"
+      ],
+      "whyTheyMatter": "Half of the Aalto practice and the one whose glassware is still in production and still cheap.",
+      "searchQuery": "Aino Aalto Glass design work",
+      "needsFillingIn": false,
+      "week": 6
+    },
+    {
+      "id": "henry-dreyfuss",
+      "name": "Henry Dreyfuss",
+      "nationality": "United States",
+      "region": "North America",
+      "era": "1930s–1960s",
+      "discipline": "Industrial design, human factors",
+      "keyWorks": [
+        "Bell 302 telephone",
+        "Honeywell round thermostat",
+        "Designing for People"
+      ],
+      "whyTheyMatter": "Put the human body at the centre of the method and wrote down the measurements everyone still uses.",
+      "searchQuery": "Henry Dreyfuss Industrial design design work",
+      "needsFillingIn": false,
+      "week": 7
+    },
+    {
+      "id": "belle-kogan",
+      "name": "Belle Kogan",
+      "nationality": "United States",
+      "region": "North America",
+      "era": "1930s–1960s",
+      "discipline": "Industrial design, ceramics, plastics",
+      "keyWorks": [],
+      "whyTheyMatter": "One of the first women to run an industrial design office in America, at a time when the profession was closed to them.",
+      "searchQuery": "Belle Kogan Industrial design design work",
+      "needsFillingIn": true,
+      "week": 8
+    },
+    {
+      "id": "gio-ponti",
+      "name": "Gio Ponti",
+      "nationality": "Italy",
+      "region": "Europe",
+      "era": "1930s–1970s",
+      "discipline": "Furniture, ceramics, architecture",
+      "keyWorks": [
+        "Superleggera chair",
+        "Pirelli Tower"
+      ],
+      "whyTheyMatter": "Made a chair light enough to lift with one finger and edited Domus for decades alongside it.",
+      "searchQuery": "Gio Ponti Furniture design work",
+      "needsFillingIn": false,
+      "week": 9
+    },
+    {
+      "id": "eva-zeisel",
+      "name": "Eva Zeisel",
+      "nationality": "Hungary / United States",
+      "region": "North America",
+      "era": "1940s–2000s",
+      "discipline": "Ceramics, tableware",
+      "keyWorks": [
+        "Museum service for Castleton China"
+      ],
+      "whyTheyMatter": "Worked in curves when the field was committed to the grid, and kept working into her nineties.",
+      "searchQuery": "Eva Zeisel Ceramics design work",
+      "needsFillingIn": false,
+      "week": 10
+    },
+    {
+      "id": "jean-prouve",
+      "name": "Jean Prouvé",
+      "nationality": "France",
+      "region": "Europe",
+      "era": "1930s–1960s",
+      "discipline": "Furniture, prefabrication",
+      "keyWorks": [
+        "Standard chair",
+        "Maison Tropicale"
+      ],
+      "whyTheyMatter": "A metalworker first and a designer second, which is why his structures show you exactly how they carry load.",
+      "searchQuery": "Jean Prouvé Furniture design work",
+      "needsFillingIn": false,
+      "week": 11
+    },
+    {
+      "id": "clara-porset",
+      "name": "Clara Porset",
+      "nationality": "Cuba / Mexico",
+      "region": "Latin America",
+      "era": "1940s–1970s",
+      "discipline": "Furniture",
+      "keyWorks": [
+        "Butaque chair"
+      ],
+      "whyTheyMatter": "Took a vernacular Mexican chair seriously as a modern object, and argued for design rooted in place.",
+      "searchQuery": "Clara Porset Furniture design work",
+      "needsFillingIn": false,
+      "week": 12
+    },
+    {
+      "id": "lina-bo-bardi",
+      "name": "Lina Bo Bardi",
+      "nationality": "Italy / Brazil",
+      "region": "Latin America",
+      "era": "1950s–1980s",
+      "discipline": "Furniture, architecture",
+      "keyWorks": [
+        "Bowl chair",
+        "MASP, São Paulo"
+      ],
+      "whyTheyMatter": "Left Italy for Brazil and built work that belonged there rather than importing European modernism wholesale.",
+      "searchQuery": "Lina Bo Bardi Furniture design work",
+      "needsFillingIn": false,
+      "week": 13
+    },
+    {
+      "id": "greta-magnusson-grossman",
+      "name": "Greta Magnusson Grossman",
+      "nationality": "Sweden / United States",
+      "region": "North America",
+      "era": "1940s–1960s",
+      "discipline": "Lighting, furniture",
+      "keyWorks": [
+        "Grasshopper lamp",
+        "Cobra lamp"
+      ],
+      "whyTheyMatter": "Ran a shop, a practice and a teaching career in two countries, and her lamps still look like next year.",
+      "searchQuery": "Greta Magnusson Grossman Lighting design work",
+      "needsFillingIn": false,
+      "week": 14
+    },
+    {
+      "id": "kaare-klint",
+      "name": "Kaare Klint",
+      "nationality": "Denmark",
+      "region": "Europe",
+      "era": "1920s–1950s",
+      "discipline": "Furniture",
+      "keyWorks": [
+        "Safari chair",
+        "Faaborg chair"
+      ],
+      "whyTheyMatter": "Measured furniture and the things people put in it, and turned that into the Danish teaching method.",
+      "searchQuery": "Kaare Klint Furniture design work",
+      "needsFillingIn": false,
+      "week": 15
+    },
+    {
+      "id": "florence-knoll",
+      "name": "Florence Knoll",
+      "nationality": "United States",
+      "region": "North America",
+      "era": "1940s–1960s",
+      "discipline": "Furniture, interiors",
+      "keyWorks": [
+        "Knoll Planning Unit interiors"
+      ],
+      "whyTheyMatter": "Designed the modern office as a system, and commissioned most of the century's famous chairs.",
+      "searchQuery": "Florence Knoll Furniture design work",
+      "needsFillingIn": false,
+      "week": 16
+    },
+    {
+      "id": "ray-and-charles-eames",
+      "name": "Ray and Charles Eames",
+      "nationality": "United States",
+      "region": "North America",
+      "era": "1940s–1970s",
+      "discipline": "Furniture, film, exhibitions",
+      "keyWorks": [
+        "Eames Lounge Chair and Ottoman",
+        "LCW",
+        "Moulded plastic shell chairs",
+        "Powers of Ten"
+      ],
+      "whyTheyMatter": "Treated a chair, a film and a toy as the same problem, and showed their process rather than hiding it.",
+      "searchQuery": "Ray and Charles Eames Furniture design work",
+      "needsFillingIn": false,
+      "week": 17
+    },
+    {
+      "id": "isamu-noguchi",
+      "name": "Isamu Noguchi",
+      "nationality": "United States / Japan",
+      "region": "North America",
+      "era": "1940s–1980s",
+      "discipline": "Furniture, lighting, sculpture",
+      "keyWorks": [
+        "Noguchi table",
+        "Akari light sculptures"
+      ],
+      "whyTheyMatter": "Moved between sculpture and product without deciding which one he was doing.",
+      "searchQuery": "Isamu Noguchi Furniture design work",
+      "needsFillingIn": false,
+      "week": 18
+    },
+    {
+      "id": "sori-yanagi",
+      "name": "Sori Yanagi",
+      "nationality": "Japan",
+      "region": "Asia",
+      "era": "1950s–1990s",
+      "discipline": "Furniture, tableware",
+      "keyWorks": [
+        "Butterfly stool",
+        "Elephant stool"
+      ],
+      "whyTheyMatter": "Worked by making models with his hands rather than drawing, and said so.",
+      "searchQuery": "Sori Yanagi Furniture design work",
+      "needsFillingIn": false,
+      "week": 19
+    },
+    {
+      "id": "hans-wegner",
+      "name": "Hans Wegner",
+      "nationality": "Denmark",
+      "region": "Europe",
+      "era": "1940s–1970s",
+      "discipline": "Furniture",
+      "keyWorks": [
+        "CH24 Wishbone chair"
+      ],
+      "whyTheyMatter": "Made about five hundred chairs and understood joinery better than anyone who has made fewer.",
+      "searchQuery": "Hans Wegner Furniture design work",
+      "needsFillingIn": false,
+      "week": 20
+    },
+    {
+      "id": "arne-jacobsen",
+      "name": "Arne Jacobsen",
+      "nationality": "Denmark",
+      "region": "Europe",
+      "era": "1950s–1960s",
+      "discipline": "Furniture, lighting, architecture",
+      "keyWorks": [
+        "Egg chair",
+        "Swan chair",
+        "Series 7 chair"
+      ],
+      "whyTheyMatter": "Designed the building and then everything inside it down to the cutlery.",
+      "searchQuery": "Arne Jacobsen Furniture design work",
+      "needsFillingIn": false,
+      "week": 21
+    },
+    {
+      "id": "nanna-ditzel",
+      "name": "Nanna Ditzel",
+      "nationality": "Denmark",
+      "region": "Europe",
+      "era": "1950s–1990s",
+      "discipline": "Furniture, textiles, jewellery",
+      "keyWorks": [
+        "Hanging Egg chair",
+        "Trinidad chair"
+      ],
+      "whyTheyMatter": "Kept experimenting with materials for fifty years while her contemporaries settled into teak.",
+      "searchQuery": "Nanna Ditzel Furniture design work",
+      "needsFillingIn": false,
+      "week": 22
+    },
+    {
+      "id": "kenji-ekuan",
+      "name": "Kenji Ekuan",
+      "nationality": "Japan",
+      "region": "Asia",
+      "era": "1950s–2000s",
+      "discipline": "Industrial design",
+      "keyWorks": [
+        "Kikkoman soy sauce dispenser"
+      ],
+      "whyTheyMatter": "Designed an object so ordinary you have used it without ever looking at it.",
+      "searchQuery": "Kenji Ekuan Industrial design design work",
+      "needsFillingIn": false,
+      "week": 23
+    },
+    {
+      "id": "eliot-noyes",
+      "name": "Eliot Noyes",
+      "nationality": "United States",
+      "region": "North America",
+      "era": "1950s–1970s",
+      "discipline": "Industrial design, corporate design",
+      "keyWorks": [
+        "IBM Selectric typewriter"
+      ],
+      "whyTheyMatter": "Built the idea that a company should look and behave like one thing, and ran it at IBM for twenty years.",
+      "searchQuery": "Eliot Noyes Industrial design design work",
+      "needsFillingIn": false,
+      "week": 24
+    },
+    {
+      "id": "sergio-rodrigues",
+      "name": "Sergio Rodrigues",
+      "nationality": "Brazil",
+      "region": "Latin America",
+      "era": "1950s–1980s",
+      "discipline": "Furniture",
+      "keyWorks": [
+        "Mole armchair"
+      ],
+      "whyTheyMatter": "Made Brazilian modern furniture out of heavy timber and leather rather than imported slenderness.",
+      "searchQuery": "Sergio Rodrigues Furniture design work",
+      "needsFillingIn": false,
+      "week": 25
+    },
+    {
+      "id": "dieter-rams",
+      "name": "Dieter Rams",
+      "nationality": "Germany",
+      "region": "Europe",
+      "era": "1950s–1990s",
+      "discipline": "Industrial design",
+      "keyWorks": [
+        "Braun T3 radio",
+        "606 Universal Shelving System",
+        "Ten principles for good design"
+      ],
+      "whyTheyMatter": "Wrote the ten principles everyone quotes and, more usefully, spent forty years actually following them.",
+      "searchQuery": "Dieter Rams Industrial design design work",
+      "needsFillingIn": false,
+      "week": 26
+    },
+    {
+      "id": "achille-castiglioni",
+      "name": "Achille Castiglioni",
+      "nationality": "Italy",
+      "region": "Europe",
+      "era": "1950s–1990s",
+      "discipline": "Furniture, lighting",
+      "keyWorks": [
+        "Arco lamp",
+        "Mezzadro stool",
+        "Snoopy lamp"
+      ],
+      "whyTheyMatter": "Started from a found object and an argument, and the joke is always structural rather than applied.",
+      "searchQuery": "Achille Castiglioni Furniture design work",
+      "needsFillingIn": false,
+      "week": 27
+    },
+    {
+      "id": "marco-zanuso",
+      "name": "Marco Zanuso",
+      "nationality": "Italy",
+      "region": "Europe",
+      "era": "1950s–1980s",
+      "discipline": "Furniture, appliances",
+      "keyWorks": [
+        "Lady armchair",
+        "Brionvega TS 502 radio"
+      ],
+      "whyTheyMatter": "Worked out how to make furniture from foam and plastic when nobody knew how those materials behaved.",
+      "searchQuery": "Marco Zanuso Furniture design work",
+      "needsFillingIn": false,
+      "week": 28
+    },
+    {
+      "id": "richard-sapper",
+      "name": "Richard Sapper",
+      "nationality": "Germany / Italy",
+      "region": "Europe",
+      "era": "1960s–2010s",
+      "discipline": "Industrial design",
+      "keyWorks": [
+        "Tizio lamp",
+        "IBM ThinkPad",
+        "Brionvega TS 502 radio"
+      ],
+      "whyTheyMatter": "Built objects that hide their mechanism completely until you need it.",
+      "searchQuery": "Richard Sapper Industrial design design work",
+      "needsFillingIn": false,
+      "week": 29
+    },
+    {
+      "id": "verner-panton",
+      "name": "Verner Panton",
+      "nationality": "Denmark",
+      "region": "Europe",
+      "era": "1960s–1970s",
+      "discipline": "Furniture, lighting, interiors",
+      "keyWorks": [
+        "Panton chair",
+        "Flowerpot lamp"
+      ],
+      "whyTheyMatter": "Chased the single-material, single-piece chair for years before the plastics could do it.",
+      "searchQuery": "Verner Panton Furniture design work",
+      "needsFillingIn": false,
+      "week": 30
+    },
+    {
+      "id": "anna-castelli-ferrieri",
+      "name": "Anna Castelli Ferrieri",
+      "nationality": "Italy",
+      "region": "Europe",
+      "era": "1960s–1980s",
+      "discipline": "Furniture, plastics",
+      "keyWorks": [
+        "Componibili storage units"
+      ],
+      "whyTheyMatter": "Ran Kartell's design direction and made moulded plastic into something you would keep.",
+      "searchQuery": "Anna Castelli Ferrieri Furniture design work",
+      "needsFillingIn": false,
+      "week": 31
+    },
+    {
+      "id": "gae-aulenti",
+      "name": "Gae Aulenti",
+      "nationality": "Italy",
+      "region": "Europe",
+      "era": "1960s–2000s",
+      "discipline": "Furniture, lighting, exhibitions",
+      "keyWorks": [
+        "Pipistrello lamp",
+        "Musée d'Orsay interior"
+      ],
+      "whyTheyMatter": "Worked at every scale from a lamp to a railway station converted into a museum.",
+      "searchQuery": "Gae Aulenti Furniture design work",
+      "needsFillingIn": false,
+      "week": 32
+    },
+    {
+      "id": "ettore-sottsass",
+      "name": "Ettore Sottsass",
+      "nationality": "Italy",
+      "region": "Europe",
+      "era": "1960s–1990s",
+      "discipline": "Industrial design, furniture",
+      "keyWorks": [
+        "Olivetti Valentine typewriter",
+        "Carlton bookcase"
+      ],
+      "whyTheyMatter": "Used colour and pattern as arguments about what objects are for, not as decoration.",
+      "searchQuery": "Ettore Sottsass Industrial design design work",
+      "needsFillingIn": false,
+      "week": 33
+    },
+    {
+      "id": "reiko-tanabe",
+      "name": "Reiko Tanabe",
+      "nationality": "Japan",
+      "region": "Asia",
+      "era": "1960s–",
+      "discipline": "Furniture",
+      "keyWorks": [
+        "Murai stool"
+      ],
+      "whyTheyMatter": "A three-piece plywood stool that has stayed in production for decades on the strength of its geometry.",
+      "searchQuery": "Reiko Tanabe Furniture design work",
+      "needsFillingIn": false,
+      "week": 34
+    },
+    {
+      "id": "enzo-mari",
+      "name": "Enzo Mari",
+      "nationality": "Italy",
+      "region": "Europe",
+      "era": "1960s–2010s",
+      "discipline": "Furniture, objects, publishing",
+      "keyWorks": [
+        "Autoprogettazione",
+        "16 Animali"
+      ],
+      "whyTheyMatter": "Published furniture as free instructions and spent his life arguing about who design is actually for.",
+      "searchQuery": "Enzo Mari Furniture design work",
+      "needsFillingIn": false,
+      "week": 35
+    },
+    {
+      "id": "shiro-kuramata",
+      "name": "Shiro Kuramata",
+      "nationality": "Japan",
+      "region": "Asia",
+      "era": "1970s–1990s",
+      "discipline": "Furniture, interiors",
+      "keyWorks": [
+        "How High the Moon",
+        "Miss Blanche"
+      ],
+      "whyTheyMatter": "Made furniture out of expanded steel mesh and acrylic so it looks like it is barely there.",
+      "searchQuery": "Shiro Kuramata Furniture design work",
+      "needsFillingIn": false,
+      "week": 36
+    },
+    {
+      "id": "lella-vignelli",
+      "name": "Lella Vignelli",
+      "nationality": "Italy / United States",
+      "region": "North America",
+      "era": "1960s–2000s",
+      "discipline": "Furniture, products, identity",
+      "keyWorks": [
+        "Heller dinnerware"
+      ],
+      "whyTheyMatter": "Half of a practice usually credited to one name, across furniture, objects and identity.",
+      "searchQuery": "Lella Vignelli Furniture design work",
+      "needsFillingIn": false,
+      "week": 37
+    },
+    {
+      "id": "jasper-morrison",
+      "name": "Jasper Morrison",
+      "nationality": "United Kingdom",
+      "region": "Europe",
+      "era": "1980s–",
+      "discipline": "Furniture, products",
+      "keyWorks": [
+        "Air chair",
+        "Glo-Ball",
+        "Super Normal"
+      ],
+      "whyTheyMatter": "Spent a career removing things from objects until only what is needed is left.",
+      "searchQuery": "Jasper Morrison Furniture design work",
+      "needsFillingIn": false,
+      "week": 38
+    },
+    {
+      "id": "marc-newson",
+      "name": "Marc Newson",
+      "nationality": "Australia",
+      "region": "Oceania",
+      "era": "1980s–",
+      "discipline": "Furniture, products, transport",
+      "keyWorks": [
+        "Lockheed Lounge",
+        "Embryo chair"
+      ],
+      "whyTheyMatter": "Made compound-curved forms before software made them easy, by beating metal.",
+      "searchQuery": "Marc Newson Furniture design work",
+      "needsFillingIn": false,
+      "week": 39
+    },
+    {
+      "id": "fernando-and-humberto-campana",
+      "name": "Fernando and Humberto Campana",
+      "nationality": "Brazil",
+      "region": "Latin America",
+      "era": "1990s–",
+      "discipline": "Furniture",
+      "keyWorks": [
+        "Favela chair",
+        "Vermelha chair"
+      ],
+      "whyTheyMatter": "Built furniture out of rope, offcuts and stuffed toys, and made it read as luxury rather than poverty.",
+      "searchQuery": "Fernando and Humberto Campana Furniture design work",
+      "needsFillingIn": false,
+      "week": 40
+    },
+    {
+      "id": "naoto-fukasawa",
+      "name": "Naoto Fukasawa",
+      "nationality": "Japan",
+      "region": "Asia",
+      "era": "1990s–",
+      "discipline": "Industrial design",
+      "keyWorks": [
+        "MUJI wall-mounted CD player",
+        "Super Normal"
+      ],
+      "whyTheyMatter": "Designs for the behaviour people already have, so the object seems to have been there all along.",
+      "searchQuery": "Naoto Fukasawa Industrial design design work",
+      "needsFillingIn": false,
+      "week": 41
+    },
+    {
+      "id": "hella-jongerius",
+      "name": "Hella Jongerius",
+      "nationality": "Netherlands",
+      "region": "Europe",
+      "era": "1990s–",
+      "discipline": "Products, textiles, colour",
+      "keyWorks": [
+        "Polder sofa",
+        "KLM cabin interiors"
+      ],
+      "whyTheyMatter": "Treats colour and material as the real design work rather than the finishing stage.",
+      "searchQuery": "Hella Jongerius Products design work",
+      "needsFillingIn": false,
+      "week": 42
+    },
+    {
+      "id": "konstantin-grcic",
+      "name": "Konstantin Grcic",
+      "nationality": "Germany",
+      "region": "Europe",
+      "era": "1990s–",
+      "discipline": "Furniture, products",
+      "keyWorks": [
+        "Chair One",
+        "Mayday lamp"
+      ],
+      "whyTheyMatter": "Trained as a cabinetmaker and designs like an engineer arguing with one.",
+      "searchQuery": "Konstantin Grcic Furniture design work",
+      "needsFillingIn": false,
+      "week": 43
+    },
+    {
+      "id": "ayse-birsel",
+      "name": "Ayşe Birsel",
+      "nationality": "Turkey / United States",
+      "region": "Asia",
+      "era": "1990s–",
+      "discipline": "Industrial design, process",
+      "keyWorks": [
+        "Herman Miller Resolve system"
+      ],
+      "whyTheyMatter": "Made her design process explicit and teachable, which most designers never manage.",
+      "searchQuery": "Ayşe Birsel Industrial design design work",
+      "needsFillingIn": false,
+      "week": 44
+    },
+    {
+      "id": "patricia-urquiola",
+      "name": "Patricia Urquiola",
+      "nationality": "Spain / Italy",
+      "region": "Europe",
+      "era": "2000s–",
+      "discipline": "Furniture, products",
+      "keyWorks": [
+        "Fjord chair",
+        "Tropicalia"
+      ],
+      "whyTheyMatter": "Brings textile and craft techniques into industrial production without making them look nostalgic.",
+      "searchQuery": "Patricia Urquiola Furniture design work",
+      "needsFillingIn": false,
+      "week": 45
+    },
+    {
+      "id": "oki-sato-nendo",
+      "name": "Oki Sato (Nendo)",
+      "nationality": "Japan",
+      "region": "Asia",
+      "era": "2000s–",
+      "discipline": "Furniture, products, interiors",
+      "keyWorks": [
+        "Cabbage chair"
+      ],
+      "whyTheyMatter": "Produces at a volume nobody else attempts, each piece built on one small observation.",
+      "searchQuery": "Oki Sato (Nendo) Furniture design work",
+      "needsFillingIn": false,
+      "week": 46
+    },
+    {
+      "id": "bibi-seck",
+      "name": "Bibi Seck",
+      "nationality": "Senegal / France",
+      "region": "Africa",
+      "era": "2000s–",
+      "discipline": "Furniture, transport, products",
+      "keyWorks": [
+        "Taboo stool"
+      ],
+      "whyTheyMatter": "Designs for and manufactures in West Africa, using recycled plastic waste as the input.",
+      "searchQuery": "Bibi Seck Furniture design work",
+      "needsFillingIn": false,
+      "week": 47
+    },
+    {
+      "id": "jomo-tariku",
+      "name": "Jomo Tariku",
+      "nationality": "Ethiopia / United States",
+      "region": "Africa",
+      "era": "2010s–",
+      "discipline": "Furniture",
+      "keyWorks": [
+        "Nyala chair",
+        "Meedo chair"
+      ],
+      "whyTheyMatter": "Draws on Ethiopian objects and forms directly, and has spent years arguing for African design in collections.",
+      "searchQuery": "Jomo Tariku Furniture design work",
+      "needsFillingIn": false,
+      "week": 48
+    },
+    {
+      "id": "nifemi-marcus-bello",
+      "name": "Nifemi Marcus-Bello",
+      "nationality": "Nigeria",
+      "region": "Africa",
+      "era": "2010s–",
+      "discipline": "Industrial design, furniture",
+      "keyWorks": [
+        "LM Stool"
+      ],
+      "whyTheyMatter": "Designs around what Lagos can actually manufacture, and treats that constraint as the brief.",
+      "searchQuery": "Nifemi Marcus-Bello Industrial design design work",
+      "needsFillingIn": false,
+      "week": 49
+    },
+    {
+      "id": "nipa-doshi",
+      "name": "Nipa Doshi",
+      "nationality": "India / United Kingdom",
+      "region": "Asia",
+      "era": "2000s–",
+      "discipline": "Furniture, products",
+      "keyWorks": [
+        "Charpoy",
+        "My Beautiful Backside"
+      ],
+      "whyTheyMatter": "Half of Doshi Levien, bringing Indian craft and narrative into European industrial production without flattening either.",
+      "searchQuery": "Nipa Doshi Furniture design work",
+      "needsFillingIn": false,
+      "week": 50
+    },
+    {
+      "id": "nada-debs",
+      "name": "Nada Debs",
+      "nationality": "Lebanon",
+      "region": "Asia",
+      "era": "2000s–",
+      "discipline": "Furniture, objects",
+      "keyWorks": [],
+      "whyTheyMatter": "Works between Middle Eastern craft inlay and a stripped-back geometry, manufacturing in the region rather than exporting the idea.",
+      "searchQuery": "Nada Debs Furniture design work",
+      "needsFillingIn": true,
+      "week": 51
+    },
+    {
+      "id": "aissa-dione",
+      "name": "Aissa Dione",
+      "nationality": "Senegal",
+      "region": "Africa",
+      "era": "1990s–",
+      "discipline": "Textiles, furniture",
+      "keyWorks": [],
+      "whyTheyMatter": "Rebuilt a weaving industry around Senegalese cotton and looms, supplying European houses from Dakar.",
+      "searchQuery": "Aissa Dione Textiles design work",
+      "needsFillingIn": true,
+      "week": 52
+    }
+  ]
+}

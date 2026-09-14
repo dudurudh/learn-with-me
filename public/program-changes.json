@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-14T01:54:51.766Z",
+  "keepWeeks": 8,
+  "results": [
+    {
+      "id": "risd",
+      "name": "RISD",
+      "kind": "school",
+      "url": "https://www.risd.edu/",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    },
+    {
+      "id": "iit-id",
+      "name": "IIT Institute of Design",
+      "kind": "school",
+      "url": "https://id.iit.edu/",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    },
+    {
+      "id": "uic",
+      "name": "UIC School of Design",
+      "kind": "school",
+      "url": "https://arch.uic.edu/",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    },
+    {
+      "id": "artcenter",
+      "name": "ArtCenter",
+      "kind": "school",
+      "url": "https://www.artcenter.edu/",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    },
+    {
+      "id": "pratt",
+      "name": "Pratt Institute",
+      "kind": "school",
+      "url": "https://www.pratt.edu/",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    },
+    {
+      "id": "cca",
+      "name": "California College of the Arts",
+      "kind": "school",
+      "url": "https://www.cca.edu/",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    },
+    {
+      "id": "gatech",
+      "name": "Georgia Tech",
+      "kind": "school",
+      "url": "https://design.gatech.edu/",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    },
+    {
+      "id": "daap",
+      "name": "University of Cincinnati DAAP",
+      "kind": "school",
+      "url": "https://daap.uc.edu/",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    },
+    {
+      "id": "cmu",
+      "name": "Carnegie Mellon",
+      "kind": "school",
+      "url": "https://design.cmu.edu/",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    },
+    {
+      "id": "umea",
+      "name": "Umeå Institute of Design",
+      "kind": "school",
+      "url": "https://www.umu.se/en/umea-institute-of-design/",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    },
+    {
+      "id": "rca",
+      "name": "Royal College of Art",
+      "kind": "school",
+      "url": "https://www.rca.ac.uk/",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    },
+    {
+      "id": "tudelft",
+      "name": "TU Delft",
+      "kind": "school",
+      "url": "https://www.tudelft.nl/en/ide",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    },
+    {
+      "id": "polimi",
+      "name": "Politecnico di Milano",
+      "kind": "school",
+      "url": "https://www.polimi.it/en",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    },
+    {
+      "id": "aalto",
+      "name": "Aalto University",
+      "kind": "school",
+      "url": "https://www.aalto.fi/en",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    },
+    {
+      "id": "assistantships",
+      "name": "Departmental assistantships and fellowships",
+      "kind": "funding",
+      "url": null,
+      "status": "no-url",
+      "message": "No URL set for this one yet."
+    },
+    {
+      "id": "fulbright",
+      "name": "Fulbright",
+      "kind": "funding",
+      "url": "https://foreign.fulbrightonline.org/",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    },
+    {
+      "id": "daad",
+      "name": "DAAD (Germany)",
+      "kind": "funding",
+      "url": "https://www.daad.de/en/",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    },
+    {
+      "id": "chevening",
+      "name": "Chevening (UK)",
+      "kind": "funding",
+      "url": "https://www.chevening.org/",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    },
+    {
+      "id": "si",
+      "name": "Swedish Institute Scholarships",
+      "kind": "funding",
+      "url": "https://si.se/en/",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    },
+    {
+      "id": "erasmus",
+      "name": "Erasmus Mundus joint masters",
+      "kind": "funding",
+      "url": "https://www.eacea.ec.europa.eu/",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    },
+    {
+      "id": "mext",
+      "name": "MEXT (Japan)",
+      "kind": "funding",
+      "url": "https://www.studyinjapan.go.jp/en/",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    },
+    {
+      "id": "gks",
+      "name": "Global Korea Scholarship",
+      "kind": "funding",
+      "url": "https://www.studyinkorea.go.kr/",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    },
+    {
+      "id": "iyt",
+      "name": "Invest Your Talent in Italy",
+      "kind": "funding",
+      "url": null,
+      "status": "no-url",
+      "message": "No URL set for this one yet."
+    },
+    {
+      "id": "idsa-awards",
+      "name": "IDSA scholarships and student awards",
+      "kind": "funding",
+      "url": "https://www.idsa.org/",
+      "status": "unconfirmed",
+      "message": "This is the school domain, not a confirmed admissions page. Replace the url in programs.json and set urlConfirmed to true."
+    }
+  ]
+}

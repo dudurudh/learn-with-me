@@ -39,7 +39,7 @@ export default function App() {
 
   return (
     <Shell>
-      <header className="mb-9 flex flex-wrap items-baseline justify-between gap-4">
+      <header className="mb-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between">
         <div className="font-display tnum text-[11px] tracking-[0.02em] text-[var(--ink-3)]">
           {String(plan.worked).padStart(3, '0')} WORKED
           <span className="mx-2">·</span>
@@ -48,14 +48,16 @@ export default function App() {
             <span className="ml-3 bg-cinnabar px-[6px] py-[2px] text-[10px] text-paper">DEMO</span>
           )}
         </div>
-        <nav className="flex gap-px border border-[var(--rule-strong)] bg-[var(--rule-strong)]">
+        {/* Six tabs do not fit a 375px screen in one row. Wrapping keeps them
+            all reachable without the page itself scrolling sideways. */}
+        <nav className="flex flex-wrap gap-px border border-[var(--rule-strong)] bg-[var(--rule-strong)]">
           {TABS.map((t) => (
             <button
               key={t.key}
               onClick={() => setView(t.key)}
               aria-current={view === t.key ? 'page' : undefined}
               className={
-                'font-display px-[14px] py-[8px] text-[12.5px] font-medium transition-colors duration-100 ' +
+                'font-display flex-1 whitespace-nowrap px-[12px] py-[9px] text-[12.5px] font-medium transition-colors duration-100 sm:flex-none sm:px-[14px] sm:py-[8px] ' +
                 (view === t.key
                   ? 'bg-foam-deep text-paper'
                   : 'bg-paper hover:bg-[color-mix(in_srgb,var(--color-foam)_16%,var(--color-paper))]')

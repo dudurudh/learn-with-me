@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "note": "The URLs below are school domains, not deep admissions links — I did not want to invent paths that may not exist. Replace each `url` with the real admissions or funding page and set `urlConfirmed` to true. The weekly Action flags anything still unconfirmed, and flags any page that 404s as 'check manually' rather than reporting no change, because a silent no-change on a broken URL is exactly how a deadline gets missed.",
+  "schools": [
+    { "id": "risd",     "school": "RISD",                          "programme": "MID (incl. the extended track for applicants without a design background)", "url": "https://www.risd.edu/", "fundingUrl": null, "targetDeadline": null, "priority": "high",   "urlConfirmed": false },
+    { "id": "iit-id",   "school": "IIT Institute of Design",        "programme": "MDes",  "url": "https://id.iit.edu/",              "fundingUrl": null, "targetDeadline": null, "priority": "high",   "urlConfirmed": false },
+    { "id": "uic",      "school": "UIC School of Design",           "programme": "MDes",  "url": "https://arch.uic.edu/",            "fundingUrl": null, "targetDeadline": null, "priority": "high",   "urlConfirmed": false },
+    { "id": "artcenter","school": "ArtCenter",                      "programme": "MS/MFA Industrial Design", "url": "https://www.artcenter.edu/", "fundingUrl": null, "targetDeadline": null, "priority": "medium", "urlConfirmed": false },
+    { "id": "pratt",    "school": "Pratt Institute",                "programme": "MID",   "url": "https://www.pratt.edu/",           "fundingUrl": null, "targetDeadline": null, "priority": "medium", "urlConfirmed": false },
+    { "id": "cca",      "school": "California College of the Arts", "programme": "MDes",  "url": "https://www.cca.edu/",             "fundingUrl": null, "targetDeadline": null, "priority": "medium", "urlConfirmed": false },
+    { "id": "gatech",   "school": "Georgia Tech",                   "programme": "MID",   "url": "https://design.gatech.edu/",       "fundingUrl": null, "targetDeadline": null, "priority": "medium", "urlConfirmed": false },
+    { "id": "daap",     "school": "University of Cincinnati DAAP",  "programme": "MDes",  "url": "https://daap.uc.edu/",             "fundingUrl": null, "targetDeadline": null, "priority": "medium", "urlConfirmed": false },
+    { "id": "cmu",      "school": "Carnegie Mellon",                "programme": "MPS / MDes", "url": "https://design.cmu.edu/",     "fundingUrl": null, "targetDeadline": null, "priority": "high",   "urlConfirmed": false },
+    { "id": "umea",     "school": "Umeå Institute of Design",       "programme": "MFA Advanced Product Design", "url": "https://www.umu.se/en/umea-institute-of-design/", "fundingUrl": null, "targetDeadline": null, "priority": "high", "urlConfirmed": false },
+    { "id": "rca",      "school": "Royal College of Art",           "programme": "MA Design Products", "url": "https://www.rca.ac.uk/", "fundingUrl": null, "targetDeadline": null, "priority": "medium", "urlConfirmed": false },
+    { "id": "tudelft",  "school": "TU Delft",                       "programme": "MSc Integrated Product Design", "url": "https://www.tudelft.nl/en/ide", "fundingUrl": null, "targetDeadline": null, "priority": "high", "urlConfirmed": false },
+    { "id": "polimi",   "school": "Politecnico di Milano",          "programme": "MSc Integrated Product Design", "url": "https://www.polimi.it/en", "fundingUrl": null, "targetDeadline": null, "priority": "medium", "urlConfirmed": false },
+    { "id": "aalto",    "school": "Aalto University",               "programme": "MA Collaborative and Industrial Design", "url": "https://www.aalto.fi/en", "fundingUrl": null, "targetDeadline": null, "priority": "medium", "urlConfirmed": false }
+  ],
+  "funding": [
+    { "id": "assistantships", "name": "Departmental assistantships and fellowships", "url": null, "note": "At US schools this is the single biggest lever, and it is usually decided with admission rather than after. Any school page that mentions TA or RA funding gets flagged.", "urlConfirmed": false },
+    { "id": "fulbright",   "name": "Fulbright",                        "url": "https://foreign.fulbrightonline.org/", "note": "Both directions: US students abroad, and foreign students to the US.", "urlConfirmed": false },
+    { "id": "daad",        "name": "DAAD (Germany)",                   "url": "https://www.daad.de/en/",              "note": null, "urlConfirmed": false },
+    { "id": "chevening",   "name": "Chevening (UK)",                   "url": "https://www.chevening.org/",           "note": null, "urlConfirmed": false },
+    { "id": "si",          "name": "Swedish Institute Scholarships",   "url": "https://si.se/en/",                    "note": "Relevant to Umeå.", "urlConfirmed": false },
+    { "id": "erasmus",     "name": "Erasmus Mundus joint masters",     "url": "https://www.eacea.ec.europa.eu/",      "note": "Often fully funded.", "urlConfirmed": false },
+    { "id": "mext",        "name": "MEXT (Japan)",                     "url": "https://www.studyinjapan.go.jp/en/",   "note": null, "urlConfirmed": false },
+    { "id": "gks",         "name": "Global Korea Scholarship",         "url": "https://www.studyinkorea.go.kr/",      "note": null, "urlConfirmed": false },
+    { "id": "iyt",         "name": "Invest Your Talent in Italy",      "url": null,                                   "note": "Relevant to Politecnico di Milano.", "urlConfirmed": false },
+    { "id": "idsa-awards", "name": "IDSA scholarships and student awards", "url": "https://www.idsa.org/",            "note": null, "urlConfirmed": false }
+  ]
+}

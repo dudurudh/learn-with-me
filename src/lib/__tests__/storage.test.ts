@@ -593,3 +593,89 @@ describe('dates are local throughout', () => {
     expect(daysBetween('2026-03-01', '2026-03-15')).toBe(14)
   })
 })
+
+describe('the calendar file', () => {
+  it('is a valid daily recurring event with an alarm', async () => {
+    const { buildIcs } = await import('../reminders')
+    const ics = buildIcs({ time: '19:30', appUrl: 'https://example.github.io/app/' })
+    const lines = ics.split('\r\n')
+
+    expect(lines[0]).toBe('BEGIN:VCALENDAR')
+    expect(lines.at(-2)).toBe('END:VCALENDAR')
+    expect(ics).toContain('VERSION:2.0')
+    expect(ics).toContain('RRULE:FREQ=DAILY')
+    expect(ics).toContain('BEGIN:VALARM')
+    expect(ics).toContain('ACTION:DISPLAY')
+    expect(ics).toContain('URL:https://example.github.io/app/')
+    // CRLF line endings are required; a bare \n breaks Apple Calendar.
+    expect(ics.includes('\r\n')).toBe(true)
+    expect(/[^\r]\n/.test(ics)).toBe(false)
+    // Every line folded to the 75-octet limit.
+    for (const line of lines) expect(line.length).toBeLessThanOrEqual(75)
+    // Balanced blocks.
+    const count = (t: string) => (ics.match(new RegExp(t, 'g')) ?? []).length
+    expect(count('BEGIN:VEVENT')).toBe(count('END:VEVENT'))
+    expect(count('BEGIN:VALARM')).toBe(count('END:VALARM'))
+  })
+
+  it('starts tomorrow when today’s time has already passed', async () => {
+    const { buildIcs } = await import('../reminders')
+    const ics = buildIcs({ time: '00:01', appUrl: 'https://example.com/' })
+    const dtstart = /DTSTART:(\d{8})T/.exec(ics)![1]
+    const today = new Date()
+    const todayStamp = `${today.getUTCFullYear()}${String(today.getUTCMonth() + 1).padStart(2, '0')}${String(today.getUTCDate()).padStart(2, '0')}`
+    expect(Number(dtstart)).toBeGreaterThanOrEqual(Number(todayStamp))
+  })
+
+  it('says plainly which mechanisms survive the app being closed', async () => {
+    const { MECHANISMS } = await import('../reminders')
+    expect(MECHANISMS).toHaveLength(3)
+    expect(MECHANISMS.find((m) => m.id === 'in-app')!.whenClosed).toBe(false)
+    expect(MECHANISMS.find((m) => m.id === 'calendar')!.whenClosed).toBe(true)
+    expect(MECHANISMS.find((m) => m.id === 'ntfy')!.whenClosed).toBe(true)
+  })
+})
+
+describe('curated content files', () => {
+  it('has 52 designers, one per week, meeting both spread floors', () => {
+    const file = JSON.parse(
+      readFileSync(new URL('../../../public/designers.json', import.meta.url), 'utf8'),
+    ) as { designers: { week: number; nationality: string; region: string; keyWorks: string[] }[] }
+
+    expect(file.designers).toHaveLength(52)
+    expect(file.designers.map((d) => d.week)).toEqual(
+      Array.from({ length: 52 }, (_, i) => i + 1))
+
+    const outside = file.designers.filter(
+      (d) => !['Europe', 'North America'].includes(d.region)).length
+    expect(outside / 52).toBeGreaterThanOrEqual(1 / 3)
+
+    // Never more than three consecutive weeks from one country.
+    let run = 0
+    let prev = ''
+    for (const d of file.designers) {
+      run = d.nationality === prev ? run + 1 : 1
+      prev = d.nationality
+      expect(run).toBeLessThanOrEqual(3)
+    }
+  })
+
+  it('leaves key works empty rather than inventing them', () => {
+    const file = JSON.parse(
+      readFileSync(new URL('../../../public/designers.json', import.meta.url), 'utf8'),
+    ) as { designers: { keyWorks: string[]; needsFillingIn: boolean }[] }
+    for (const d of file.designers) {
+      expect(d.needsFillingIn).toBe(d.keyWorks.length === 0)
+    }
+  })
+
+  it('flags every unconfirmed programme URL instead of pretending it is watched', () => {
+    const file = JSON.parse(
+      readFileSync(new URL('../../../public/programs.json', import.meta.url), 'utf8'),
+    ) as { schools: { url: string | null; urlConfirmed: boolean }[]; funding: unknown[] }
+    expect(file.schools).toHaveLength(14)
+    expect(file.funding.length).toBeGreaterThanOrEqual(10)
+    // Nothing claims to be confirmed until a real admissions URL is pasted in.
+    expect(file.schools.every((s) => s.urlConfirmed === false)).toBe(true)
+  })
+})

@@ -5,6 +5,7 @@ import { saveSettings } from '../lib/db'
 import { setResourceState } from '../lib/progress'
 import { clearSwaps } from '../lib/swaps'
 import { flushUploadQueue, queueCounts } from '../lib/upload'
+import { MECHANISMS, askForNotifications, downloadIcs, notificationState } from '../lib/reminders'
 import type { AppState } from '../lib/useApp'
 import type { Holding } from '../lib/types'
 
@@ -23,6 +24,7 @@ export function Settings({ app }: { app: AppState }) {
   const [pushing, setPushing] = useState(false)
   const [pushResult, setPushResult] = useState<string | null>(null)
   const [counts, setCounts] = useState({ local: 0, failed: 0, uploaded: 0 })
+  const [notifyState, setNotifyState] = useState<string>(() => notificationState())
   useEffect(() => { void queueCounts().then(setCounts) }, [app.records])
   if (!curriculum || !settings || !plan) return null
 
@@ -63,6 +65,18 @@ export function Settings({ app }: { app: AppState }) {
             className="tnum font-display border-b border-[var(--rule-strong)] bg-transparent pb-1 text-[15px] focus:outline-none focus-visible:border-graphite"
           />
         </Field>
+        <label className="mb-3 flex items-start gap-2 text-[13.5px]">
+          <input
+            type="checkbox"
+            className="mt-[4px]"
+            checked={settings.newsGatedUntilComplete}
+            onChange={(e) => set({ newsGatedUntilComplete: e.target.checked })}
+          />
+          <span className="max-w-[52ch]">
+            Keep the news digest closed until the day is marked done
+          </span>
+        </label>
+
         <Note>
           A session at 23:30 should land on the day it felt like, and one at 00:20 should not
           break anything. The boundary hour decides which date a completion is stamped with.
@@ -159,6 +173,65 @@ export function Settings({ app }: { app: AppState }) {
           Free or paid is a fact about the book and lives in curriculum.json. Whether you own it,
           borrowed it, or still need it is yours, so it lives here and travels in your backup.
           A borrowed book can carry a date back.
+        </Note>
+      </Section>
+
+      <Section n="00g" title="Reminders">
+        <p className="mb-5 max-w-[60ch] text-[13.5px] text-[var(--ink-2)]">
+          A site on GitHub Pages cannot push you a notification. Of the three below, only
+          two reach you when the app is closed, and the calendar one is the one that
+          actually works.
+        </p>
+
+        <div className="mb-6 space-y-3">
+          {MECHANISMS.map((m) => (
+            <div key={m.id} className="border-l-2 pl-[13px]"
+              style={{ borderColor: m.whenClosed ? 'var(--color-foam-deep)' : 'var(--color-marker)' }}>
+              <div className="font-display text-[13.5px] font-semibold">
+                {m.name}
+                <span className="ml-2 text-[10px] tracking-[0.03em] text-[var(--ink-3)]">
+                  {m.whenClosed ? 'WORKS WHEN CLOSED' : 'ONLY WHILE OPEN'}
+                </span>
+              </div>
+              <p className="mt-1 max-w-[58ch] text-[13px] text-[var(--ink-2)]">{m.summary}</p>
+            </div>
+          ))}
+        </div>
+
+        <ButtonRow>
+          <Button
+            primary
+            onClick={() => downloadIcs({
+              time: settings.reminderTime,
+              appUrl: 'https://dudurudh.github.io/learn-with-me/',
+            })}
+          >
+            Download the calendar file
+          </Button>
+          <Button
+            onClick={() => void askForNotifications().then((r) => setNotifyState(String(r)))}
+          >
+            {notifyState === 'granted' ? 'Notifications allowed' : 'Allow browser notifications'}
+          </Button>
+        </ButtonRow>
+        <p className="tnum font-display mt-3 text-[11px] text-[var(--ink-3)]">
+          DAILY AT {settings.reminderTime} &middot; NOTIFICATIONS {String(notifyState).toUpperCase()}
+        </p>
+
+        <Field label="ntfy topic">
+          <input
+            placeholder="something-long-and-unguessable"
+            value={settings.ntfyTopic}
+            onChange={(e) => set({ ntfyTopic: e.target.value })}
+            className="w-full max-w-[280px] border-b border-[var(--rule-strong)] bg-transparent pb-1 text-[15px] focus:outline-none focus-visible:border-graphite"
+          />
+        </Field>
+        <Note>
+          Four steps: install the ntfy app, subscribe to a topic name only you know, add that
+          same name as a repository secret called <code>NTFY_TOPIC</code>, and the daily Action
+          does the rest. The topic is a password in all but name &mdash; anyone who knows it can
+          read your reminders or send you their own, so make it long. This field is a note to
+          yourself; the Action reads the secret, not this.
         </Note>
       </Section>
 

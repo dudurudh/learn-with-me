@@ -1,0 +1,28 @@
+name: Daily ntfy reminder
+
+# The only mechanism here that reaches your phone when the app is closed and
+# your calendar is not open. Needs an NTFY_TOPIC repository secret; without one
+# the job exits quietly rather than failing every morning.
+on:
+  schedule:
+    - cron: '30 23 * * *'     # 19:30 America/New_York in winter, 18:30 in summer
+  workflow_dispatch:
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Push the reminder
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: |
+          if [[ -z "$NTFY_TOPIC" ]]; then
+            echo "No NTFY_TOPIC secret set — nothing to do."
+            exit 0
+          fi
+          curl -sS \
+            -H "Title: Today's task" \
+            -H "Tags: pencil2" \
+            -H "Click: https://dudurudh.github.io/learn-with-me/" \
+            -d "Open the app and see what today is." \
+            "https://ntfy.sh/${NTFY_TOPIC}"
