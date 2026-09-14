@@ -5,6 +5,7 @@ import { activityOf } from '../lib/activity'
 import { Clock3, Check, Minus, Shuffle, X } from 'lucide-react'
 import { PhotoStrip } from './PhotoStrip'
 import { RecentStrip } from './RecentStrip'
+import { PhaseRail } from './PhaseRail'
 import { NewsPanel, SavedQueue } from './NewsPanel'
 import { FollowPrompt } from './FollowPrompt'
 import { SundayPanel } from './SundayPanel'
@@ -14,7 +15,6 @@ import { shouldWarnAboutPublicPhotos } from '../lib/addPhoto'
 import { findSwap } from '../lib/plan'
 import { addSwap } from '../lib/swaps'
 import { db } from '../lib/db'
-import { phaseOf } from '../lib/curriculum'
 import { weekOf } from '../lib/plan'
 import { buildReEntryDay } from '../lib/reentry'
 import { deadlineViews, project } from '../lib/stats'
@@ -76,7 +76,6 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
     )
   }
 
-  const phase = phaseOf(curriculum, today.day)
   const hue = phaseColour(today.phase)
   const act = activityOf(today.type)
   const ActIcon = act.icon
@@ -141,63 +140,57 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
         </div>
       )}
 
-      <div className="flex items-start justify-between gap-6">
-        <div>
-          <div className="font-display flex items-center gap-[8px] text-[14px] text-[var(--ink-2)]">
-            <span
-              className="inline-block h-[11px] w-[11px] shrink-0 rounded-[3px]"
-              style={{ background: hue }}
-              aria-hidden
-            />
-            Phase {today.phase} of 6. {phase?.title}.
-          </div>
-
-          <div className="font-display tnum mt-3 text-[86px] leading-[0.86] font-bold tracking-[-0.04em] text-accent">
+      <div className="gap-8 sm:grid sm:grid-cols-[1fr_auto]">
+        <div className="min-w-0">
+          <div className="font-display tnum text-[86px] leading-[0.86] font-bold tracking-[-0.04em] text-accent">
             {reEntry ? '\u2014' : String(today.day).padStart(3, '0')}
           </div>
+
+          <h1 className="font-display mt-4 max-w-[22ch] text-[30px] leading-[1.08] font-semibold tracking-[-0.02em]">
+            {today.title}
+          </h1>
+
+          <div className="mt-4 flex flex-wrap items-center gap-2 text-[13.5px]">
+            <span
+              className="font-display inline-flex items-center gap-[6px] rounded-full px-[11px] py-[4px] text-[12.5px] font-medium text-page"
+              style={{ background: act.colour }}
+            >
+              <ActIcon size={14} strokeWidth={2.2} aria-hidden />
+              {act.label}
+            </span>
+            <span className="font-display tnum inline-flex items-center gap-[5px] rounded-full bg-surface px-[11px] py-[4px] text-[12.5px] text-[var(--ink-2)]">
+              <Clock3 size={14} strokeWidth={2} aria-hidden />
+              {today.minutes} min
+            </span>
+            {today.isProjectBlock && (
+              <span className="font-display rounded-full bg-surface px-[11px] py-[4px] text-[12.5px] text-[var(--ink-2)]">
+                a longer session
+              </span>
+            )}
+            {today.isDeload && (
+              <span className="font-display rounded-full bg-surface px-[11px] py-[4px] text-[12.5px] text-[var(--ink-2)]">
+                light week
+              </span>
+            )}
+            {today.isBenchmark && (
+              <span
+                className="font-display rounded-full px-[11px] py-[3px] text-[12px] text-page"
+                style={{ background: hue }}
+              >
+                benchmark day
+              </span>
+            )}
+          </div>
+
+          <div className="mt-6">
+            <RecentStrip app={app} />
+          </div>
         </div>
 
-        {/* The last nine weeks, on the page you open every day. Small enough
-            to sit beside the number on a phone as well as a desk. */}
-        <div className="mt-1 shrink-0">
-          <RecentStrip app={app} />
+        {/* Six dividers, the current one out. */}
+        <div className="mt-7 shrink-0 sm:mt-1">
+          <PhaseRail app={app} current={today.phase} />
         </div>
-      </div>
-
-      <h1 className="font-display mt-5 max-w-[22ch] text-[30px] leading-[1.08] font-semibold tracking-[-0.02em]">
-        {today.title}
-      </h1>
-
-      <div className="mt-4 flex flex-wrap items-center gap-2 text-[13.5px]">
-        <span
-          className="font-display inline-flex items-center gap-[6px] rounded-full px-[11px] py-[4px] text-[12.5px] font-medium text-page"
-          style={{ background: act.colour }}
-        >
-          <ActIcon size={14} strokeWidth={2.2} aria-hidden />
-          {act.label}
-        </span>
-        <span className="font-display tnum inline-flex items-center gap-[5px] rounded-full bg-surface px-[11px] py-[4px] text-[12.5px] text-[var(--ink-2)]">
-          <Clock3 size={14} strokeWidth={2} aria-hidden />
-          {today.minutes} min
-        </span>
-        {today.isProjectBlock && (
-          <span className="font-display rounded-full bg-surface px-[11px] py-[4px] text-[12.5px] text-[var(--ink-2)]">
-            a longer session
-          </span>
-        )}
-        {today.isDeload && (
-          <span className="font-display rounded-full bg-surface px-[11px] py-[4px] text-[12.5px] text-[var(--ink-2)]">
-            light week
-          </span>
-        )}
-        {today.isBenchmark && (
-          <span
-            className="font-display rounded-full px-[11px] py-[3px] text-[12px] text-page"
-            style={{ background: hue }}
-          >
-            benchmark day
-          </span>
-        )}
       </div>
 
       {today.isBenchmark && (

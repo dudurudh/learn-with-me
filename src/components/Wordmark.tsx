@@ -3,9 +3,9 @@
  * It matches the home screen icon, so the thing on your phone and the thing at
  * the top of the page are recognisably the same object.
  */
-export function Wordmark({ size = 22 }: { size?: number }) {
+export function Wordmark({ size = 28 }: { size?: number }) {
   return (
-    <span className="flex items-center gap-[10px]">
+    <span className="inline-flex items-center gap-[11px] rounded-[10px] border border-[rgba(36,69,127,.16)] bg-white/70 px-[13px] py-[8px]">
       <svg
         width={size}
         height={size}
@@ -29,7 +29,7 @@ export function Wordmark({ size = 22 }: { size?: number }) {
           )),
         )}
       </svg>
-      <span className="font-display text-[16px] font-semibold tracking-[-0.012em] text-graphite">
+      <span className="font-display text-[21px] font-semibold leading-none tracking-[-0.022em] text-graphite">
         Learn with me
       </span>
     </span>
