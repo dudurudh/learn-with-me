@@ -88,16 +88,25 @@ export async function seedDemoData(
   const database = await db()
   const days = curriculum.days.filter((d) => d.day <= SEED_THROUGH_DAY)
 
-  // Walk backwards from today, mostly a day at a time, occasionally slipping.
+  // Work out the gaps first, then start far enough back that the last seeded
+  // day lands on today. Otherwise the demo log carries dates in the future,
+  // which is both wrong and quietly confusing.
+  const gaps = days.map(() => (rand() < 0.82 ? 1 : rand() < 0.7 ? 2 : 3))
+  const span = gaps.slice(0, -1).reduce((a, b) => a + b, 0)
   const cursor = new Date()
-  cursor.setDate(cursor.getDate() - 246)
+  cursor.setHours(0, 0, 0, 0)
+  cursor.setDate(cursor.getDate() - span)
 
   const records: ProgressRecord[] = []
   const wantsPhoto: string[] = []
 
-  for (const day of days) {
+  const now = Date.now()
+  days.forEach((day, i) => {
     const at = new Date(cursor)
     at.setHours(18 + Math.floor(rand() * 5), Math.floor(rand() * 60))
+    // Evenings are the plausible hour, but the last day is today and its
+    // evening may not have happened yet.
+    if (at.getTime() > now) at.setTime(now)
 
     let status: ProgressRecord['status']
     if (day.isRest) {
@@ -127,8 +136,8 @@ export async function seedDemoData(
     })
 
     // Most days advance one calendar day; sometimes life gets in the way.
-    cursor.setDate(cursor.getDate() + (rand() < 0.82 ? 1 : rand() < 0.7 ? 2 : 3))
-  }
+    cursor.setDate(cursor.getDate() + gaps[i])
+  })
 
   // Days go in first, in one transaction. Drawing 80-odd fake sketches takes
   // half a minute, and the app should be usable the whole time rather than

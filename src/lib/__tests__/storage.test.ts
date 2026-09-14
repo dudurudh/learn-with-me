@@ -330,3 +330,76 @@ describe('write-through', () => {
     expect(row.day).toBe(1)
   })
 })
+
+describe('deferring a day', () => {
+  it('exchanges its place with the substitute and loses nothing', async () => {
+    const { orderedDays } = await import('../swaps')
+    const deferred = curriculum.days.find((d) => d.day === 2)!
+    const swap = findSwap(curriculum, new Map(), deferred)!
+    const order = orderedDays(curriculum, [{
+      deferredId: deferred.dayId,
+      substituteId: swap.substitute.dayId,
+      at: new Date().toISOString(),
+      week: 1,
+    }])
+
+    expect(order).toHaveLength(365)                                  // nothing dropped
+    expect(new Set(order.map((d) => d.dayId)).size).toBe(365)        // nothing duplicated
+    expect(order[1].dayId).toBe(swap.substitute.dayId)               // lighter day is up next
+    const movedTo = order.findIndex((d) => d.dayId === deferred.dayId)
+    expect(movedTo).toBeGreaterThan(1)                               // the original is still coming
+  })
+
+  it('caps at two a week', async () => {
+    const { swapsUsedInWeek } = await import('../swaps')
+    const swaps = [
+      { deferredId: 'a', substituteId: 'b', at: '', week: 1 },
+      { deferredId: 'c', substituteId: 'd', at: '', week: 1 },
+      { deferredId: 'e', substituteId: 'f', at: '', week: 2 },
+    ]
+    expect(swapsUsedInWeek(swaps, 1)).toBe(2)
+    expect(swapsUsedInWeek(swaps, 2)).toBe(1)
+  })
+
+  it('ignores a swap whose day was hand-edited out of the file', async () => {
+    const { orderedDays } = await import('../swaps')
+    const order = orderedDays(curriculum, [{
+      deferredId: 'p1-d002-ghosting-point-to-point',
+      substituteId: 'p9-d999-deleted-long-ago',
+      at: '', week: 1,
+    }])
+    expect(order).toHaveLength(365)
+    expect(order[1].day).toBe(2)   // order is simply left alone
+  })
+})
+
+describe('jump to a day', () => {
+  it('moves the starting point without inventing history', async () => {
+    const { orderedDays } = await import('../swaps')
+    const order = orderedDays(curriculum, [], 47)
+    expect(order[0].day).toBe(47)
+    expect(order).toHaveLength(365 - 46)
+    expect(await allProgress()).toHaveLength(0)   // no fake completions written
+  })
+})
+
+describe('seeded history is plausible', () => {
+  it('never stamps a day in the future', async () => {
+    await seedDemoData(curriculum)
+    const rows = await allProgress()
+    const now = Date.now()
+    const future = rows.filter((r) => Date.parse(r.completedAt) > now)
+    expect(future.map((r) => `day ${r.day} @ ${r.planDate}`)).toEqual([])
+  })
+
+  it('runs in date order, ending on or near today', async () => {
+    await seedDemoData(curriculum)
+    const rows = await allProgress()
+    for (let i = 1; i < rows.length; i++) {
+      expect(Date.parse(rows[i].completedAt)).toBeGreaterThan(Date.parse(rows[i - 1].completedAt))
+    }
+    const last = new Date(rows[rows.length - 1].completedAt)
+    const ageDays = Math.floor((Date.now() - last.getTime()) / 86_400_000)
+    expect(ageDays).toBeLessThanOrEqual(1)
+  })
+})

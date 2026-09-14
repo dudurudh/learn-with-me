@@ -43,6 +43,7 @@ export const DEFAULT_SETTINGS: Omit<Settings, 'deviceId' | 'deviceName'> = {
   dayBoundaryHour: 4,
   graceBudget: 2,
   graceWindowDays: 14,
+  floorDay: 1,
   swapsPerWeek: 2,
   reminderTime: '19:30',
   newsGatedUntilComplete: true,

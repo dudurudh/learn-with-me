@@ -102,6 +102,8 @@ export interface Settings {
   dayBoundaryHour: number
   graceBudget: number
   graceWindowDays: number
+  /** Jump-to-a-day: the plan ignores anything below this. */
+  floorDay: number
   swapsPerWeek: number
   reminderTime: string
   newsGatedUntilComplete: boolean

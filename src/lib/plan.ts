@@ -1,5 +1,6 @@
 import type { Curriculum, CurriculumDay, ProgressRecord, Settings } from './types'
 import { daysSince } from './time'
+import { orderedDays, swapsUsedInWeek, type Swap } from './swaps'
 
 export interface OrphanedRecord {
   record: ProgressRecord
@@ -17,6 +18,8 @@ export interface PlanState {
   graceRemaining: number
   /** Records whose dayId is no longer in the curriculum. Kept, never dropped. */
   orphaned: OrphanedRecord[]
+  /** "Not this one today" allowance left in the current curriculum week. */
+  swapsLeft: number
   /** Plan days since the last full/minimum completion, for the re-entry flow. */
   daysSinceLastWorked: number | null
   needsReEntry: boolean
@@ -31,8 +34,10 @@ export interface PlanState {
 export function nextDay(
   curriculum: Curriculum,
   progress: Map<string, ProgressRecord>,
+  swaps: Swap[] = [],
+  floorDay = 1,
 ): CurriculumDay | null {
-  for (const day of curriculum.days) {
+  for (const day of orderedDays(curriculum, swaps, floorDay)) {
     if (!progress.has(day.dayId)) return day
   }
   return null
@@ -70,6 +75,7 @@ export function planState(
   curriculum: Curriculum,
   records: ProgressRecord[],
   settings: Settings,
+  swaps: Swap[] = [],
   now = new Date(),
 ): PlanState {
   const byId = new Map(records.map((r) => [r.dayId, r]))
@@ -93,8 +99,12 @@ export function planState(
         : sinceExport !== null && sinceExport >= 45 ? 'age'
           : 'none'
 
+  const today = nextDay(curriculum, byId, swaps, settings.floorDay)
   return {
-    today: nextDay(curriculum, byId),
+    today,
+    swapsLeft: today
+      ? Math.max(0, settings.swapsPerWeek - swapsUsedInWeek(swaps, weekOf(today.day)))
+      : settings.swapsPerWeek,
     completed: live.length,
     worked,
     streak: computeStreak(live, settings.graceBudget),
@@ -138,10 +148,6 @@ export function findSwap(
   const lighter = candidates.filter((d) => d.minutes <= deferred.minutes)
   const substitute = (lighter.length ? lighter : candidates)[0]
   return { substitute, deferred }
-}
-
-export function swapsUsedThisWeek(records: ProgressRecord[], week: number): number {
-  return records.filter((r) => r.swappedFor !== null && weekOf(r.day) === week).length
 }
 
 export function weekOf(day: number): number {

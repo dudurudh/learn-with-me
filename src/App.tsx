@@ -1,85 +1,91 @@
-import { StoragePanel } from './components/StoragePanel'
+import { useState } from 'react'
+import { Today } from './components/Today'
+import { Drawer } from './components/Drawer'
+import { Log } from './components/Log'
+import { Settings } from './components/Settings'
+import { exportToFile } from './lib/backup'
 import { useApp } from './lib/useApp'
-import { phaseOf } from './lib/curriculum'
+
+type View = 'today' | 'drawer' | 'log' | 'settings'
+
+const TABS: { key: View; label: string }[] = [
+  { key: 'today', label: 'Today' },
+  { key: 'drawer', label: 'Drawer' },
+  { key: 'log', label: 'Log' },
+  { key: 'settings', label: 'Settings' },
+]
 
 export default function App() {
   const app = useApp()
-  const { curriculum, plan, settings, loading, error } = app
+  const [view, setView] = useState<View>('today')
+  const { plan, settings, loading, error, refresh } = app
 
   if (loading) return <Shell><p className="text-[var(--ink-2)]">Opening the drawer…</p></Shell>
-  if (error) return <Shell><p className="text-cinnabar">{error}</p></Shell>
-  if (!curriculum || !plan || !settings) return null
-
-  const today = plan.today
-  const phase = today ? phaseOf(curriculum, today.day) : null
+  if (error) {
+    return (
+      <Shell>
+        <p className="text-cinnabar">{error}</p>
+        <p className="mt-3 text-[13.5px] text-[var(--ink-2)]">
+          Your progress is untouched — this is the curriculum file failing to load, not your data.
+        </p>
+      </Shell>
+    )
+  }
+  if (!plan || !settings) return null
 
   return (
     <Shell>
-      <div className="font-display text-[11px] tracking-[0.02em] text-[var(--ink-3)]">
-        STORAGE &middot; STEP 3
-      </div>
-
-      <div className="font-display tnum mt-6 text-[78px] leading-[0.92] font-bold tracking-[-0.03em]">
-        {String(plan.worked).padStart(3, '0')}
-      </div>
-      <div className="font-display mt-2 text-[15px] text-[var(--ink-3)]">
-        days worked &middot; {365 - plan.completed} remaining
-      </div>
-
-      <dl className="tnum font-display mt-8 mb-14 grid max-w-[560px] grid-cols-2 gap-x-8 gap-y-2 text-[13px] sm:grid-cols-4">
-        <Stat label="next up" value={today ? `day ${today.day}` : 'finished'} />
-        <Stat label="streak" value={String(plan.streak)} />
-        <Stat label="grace left" value={`${plan.graceRemaining} of ${settings.graceBudget}`} />
-        <Stat label="orphaned" value={String(plan.orphaned.length)} />
-      </dl>
-
-      {today && (
-        <div className="mb-14 border-t border-[var(--rule-strong)] pt-5">
-          <div className="font-display text-[11px] tracking-[0.02em] text-[var(--ink-3)]">
-            PHASE {today.phase} &middot; {phase?.title.toUpperCase()}
-          </div>
-          <div className="font-display mt-[10px] text-[23px] font-semibold tracking-[-0.012em]">
-            {today.title}
-          </div>
-          <div className="mt-1 text-[12.5px] text-[var(--ink-2)]">
-            {today.type} &middot; {today.minutes} min
-            {today.isBenchmark && ' · benchmark'}
-            {today.isDeload && ' · light week'}
-          </div>
-          <p className="mt-4 max-w-[60ch]">{today.full}</p>
-          {today.question && (
-            <p className="mt-5 max-w-[48ch] border-l-2 border-cinnabar pl-[13px] text-[14.5px] italic text-[var(--ink-2)]">
-              {today.question}
-            </p>
+      <header className="mb-9 flex flex-wrap items-baseline justify-between gap-4">
+        <div className="font-display tnum text-[11px] tracking-[0.02em] text-[var(--ink-3)]">
+          {String(plan.worked).padStart(3, '0')} WORKED
+          <span className="mx-2">·</span>
+          {365 - plan.completed} LEFT
+          {settings.seeded && (
+            <span className="ml-3 bg-cinnabar px-[6px] py-[2px] text-[10px] text-paper">DEMO</span>
           )}
-          <p className="mt-5 text-[12px] text-[var(--ink-3)]">
-            The controls for this live in step 4. Nothing here is markable yet.
-          </p>
         </div>
-      )}
+        <nav className="flex gap-px border border-[var(--rule-strong)] bg-[var(--rule-strong)]">
+          {TABS.map((t) => (
+            <button
+              key={t.key}
+              onClick={() => setView(t.key)}
+              aria-current={view === t.key ? 'page' : undefined}
+              className={
+                'font-display px-[14px] py-[8px] text-[12.5px] font-medium transition-colors duration-100 ' +
+                (view === t.key
+                  ? 'bg-foam-deep text-paper'
+                  : 'bg-paper hover:bg-[color-mix(in_srgb,var(--color-foam)_16%,var(--color-paper))]')
+              }
+            >
+              {t.label}
+            </button>
+          ))}
+        </nav>
+      </header>
 
-      {plan.backupPrompt !== 'none' && (
-        <p className="mb-14 border-t border-b border-[var(--rule)] py-3 text-[13.5px] text-[var(--ink-2)]">
+      {plan.backupPrompt !== 'none' && view !== 'settings' && (
+        <p className="mb-8 border-t border-b border-[var(--rule)] py-3 text-[13.5px] text-[var(--ink-2)]">
           {plan.backupPrompt === 'count'
-            ? 'Worth taking a backup — quite a few days have gone in since the last one.'
-            : 'It has been a while since the last backup.'}
+            ? 'A few days have gone in since your last backup.'
+            : 'It has been a while since your last backup.'}{' '}
+          <button
+            className="underline underline-offset-4"
+            onClick={() => void exportToFile().then(refresh)}
+          >
+            Download one
+          </button>
+          .
         </p>
       )}
 
-      <StoragePanel app={app} />
+      {view === 'today' && <Today app={app} onGoTo={setView} />}
+      {view === 'drawer' && <Drawer app={app} />}
+      {view === 'log' && <Log app={app} />}
+      {view === 'settings' && <Settings app={app} />}
     </Shell>
   )
 }
 
-function Stat({ label, value }: { label: string; value: string }) {
-  return (
-    <div>
-      <dt className="text-[10px] tracking-[0.03em] text-[var(--ink-3)]">{label.toUpperCase()}</dt>
-      <dd className="mt-1 text-[15px] font-medium">{value}</dd>
-    </div>
-  )
-}
-
 function Shell({ children }: { children: React.ReactNode }) {
-  return <main className="mx-auto max-w-[860px] px-6 py-14">{children}</main>
+  return <main className="mx-auto max-w-[860px] px-6 py-10 sm:py-14">{children}</main>
 }
