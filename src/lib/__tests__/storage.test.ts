@@ -403,3 +403,64 @@ describe('seeded history is plausible', () => {
     expect(ageDays).toBeLessThanOrEqual(1)
   })
 })
+
+describe('photo upload paths', () => {
+  it('names files by day, with a suffix once there is more than one', async () => {
+    const { remotePathFor } = await import('../upload')
+    expect(remotePathFor(1, 0)).toBe('progress-photos/day-001.jpg')
+    expect(remotePathFor(47, 0)).toBe('progress-photos/day-047.jpg')
+    expect(remotePathFor(47, 1)).toBe('progress-photos/day-047-b.jpg')
+    expect(remotePathFor(365, 2)).toBe('progress-photos/day-365-c.jpg')
+  })
+
+  it('accepts a repo as owner/name or as a github URL', async () => {
+    const { parseRepo } = await import('../upload')
+    expect(parseRepo('dudurudh/learn-with-me')).toEqual({ owner: 'dudurudh', repo: 'learn-with-me' })
+    expect(parseRepo('https://github.com/dudurudh/learn-with-me.git'))
+      .toEqual({ owner: 'dudurudh', repo: 'learn-with-me' })
+    expect(parseRepo('  dudurudh/learn-with-me  '))
+      .toEqual({ owner: 'dudurudh', repo: 'learn-with-me' })
+    expect(parseRepo('not a repo')).toBeNull()
+    expect(parseRepo('')).toBeNull()
+  })
+
+  it('does nothing, rather than failing, when no token is configured', async () => {
+    const { flushUploadQueue } = await import('../upload')
+    const result = await flushUploadQueue()
+    expect(result.skipped).toBe('no-token')
+    expect(result.uploaded).toBe(0)
+    expect(result.failed).toBe(0)
+  })
+
+  it('keeps the local copy when a push fails', async () => {
+    const { flushUploadQueue } = await import('../upload')
+    await saveSettings({ githubToken: 'bad-token', githubRepo: 'someone/somewhere' })
+    const database = await db()
+    await database.put('photos', {
+      id: 'photo-1', dayId: curriculum.days[0].dayId, createdAt: new Date().toISOString(),
+      blob: new Blob(['not-really-a-jpeg']), width: 100, height: 100, bytes: 17,
+      remotePath: 'progress-photos/day-001.jpg', uploadState: 'local',
+    })
+    const realFetch = globalThis.fetch
+    globalThis.fetch = (async () =>
+      new Response(JSON.stringify({ message: 'Bad credentials' }), { status: 401 })) as typeof fetch
+    try {
+      const result = await flushUploadQueue()
+      expect(result.failed).toBe(1)
+      expect(result.uploaded).toBe(0)
+      const photo = await (await db()).get('photos', 'photo-1')
+      expect(photo).toBeTruthy()                 // the sketch is still here
+      expect(photo!.bytes).toBe(17)              // and untouched
+      expect(photo!.uploadState).toBe('failed')  // queued for retry
+    } finally {
+      globalThis.fetch = realFetch
+    }
+  })
+})
+
+describe('the benchmark series', () => {
+  it('is exactly the five days a year apart end to end', () => {
+    const days = curriculum.days.filter((d) => d.isBenchmark).map((d) => d.day)
+    expect(days).toEqual([1, 90, 180, 270, 365])
+  })
+})

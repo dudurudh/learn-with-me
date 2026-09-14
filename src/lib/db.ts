@@ -55,6 +55,7 @@ export const DEFAULT_SETTINGS: Omit<Settings, 'deviceId' | 'deviceName'> = {
   gistId: '',
   githubToken: '',
   githubRepo: '',
+  publicPhotoWarningSeen: false,
   deadlines: [],
 }
 

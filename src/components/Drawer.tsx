@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
-import { allPhotoDayIds, usePhotoUrls } from '../lib/photos'
+import { allPhotoDayIds } from '../lib/photos'
+import { PhotoStrip } from './PhotoStrip'
 import { orderedDays } from '../lib/swaps'
 import type { AppState } from '../lib/useApp'
 import type { CurriculumDay, DayStatus, ProgressRecord } from '../lib/types'
@@ -98,7 +99,14 @@ export function Drawer({ app }: { app: AppState }) {
         </span>
       </div>
 
-      {open && <DayDetail day={open} record={byId.get(open.dayId)} onClose={() => setOpen(null)} />}
+      {open && (
+        <DayDetail
+          day={open}
+          record={byId.get(open.dayId)}
+          onClose={() => setOpen(null)}
+          onChange={() => void app.refresh()}
+        />
+      )}
     </section>
   )
 }
@@ -116,9 +124,13 @@ function Key({ fill, label }: { fill: string; label: string }) {
 }
 
 export function DayDetail({
-  day, record, onClose,
-}: { day: CurriculumDay; record?: ProgressRecord; onClose: () => void }) {
-  const urls = usePhotoUrls(day.dayId)
+  day, record, onClose, onChange,
+}: {
+  day: CurriculumDay
+  record?: ProgressRecord
+  onClose: () => void
+  onChange?: () => void
+}) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
     window.addEventListener('keydown', onKey)
@@ -152,19 +164,7 @@ export function DayDetail({
         </p>
       )}
 
-      {urls.length > 0 && (
-        <div className="mt-5 inline-flex max-w-full flex-wrap gap-px bg-[var(--rule-strong)] p-px">
-          {urls.map((url, i) => (
-            <figure key={url} className="bg-paper">
-              <img src={url} alt={`Day ${day.day}, photo ${i + 1}`} className="block max-h-[280px]" />
-              <figcaption className="font-display tnum px-2 py-[6px] text-[10px] tracking-[0.03em] text-[var(--ink-3)]">
-                DAY {String(day.day).padStart(3, '0')}
-                {record?.planDate ? ` · ${record.planDate}` : ''}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      )}
+      <PhotoStrip day={day} warnPublic={false} onChange={onChange} />
     </div>
   )
 }

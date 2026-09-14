@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Button, ButtonRow } from './ui'
+import { PhotoStrip } from './PhotoStrip'
 import { markDay } from '../lib/progress'
+import { shouldWarnAboutPublicPhotos } from '../lib/addPhoto'
 import { findSwap } from '../lib/plan'
 import { addSwap } from '../lib/swaps'
 import { db } from '../lib/db'
@@ -22,9 +24,11 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer') =>
   const [justDid, setJustDid] = useState<{ day: CurriculumDay; status: DayStatus } | null>(null)
   const [swapNote, setSwapNote] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
+  const [warnPublic, setWarnPublic] = useState(false)
 
   const today = plan?.today ?? null
   useEffect(() => { setNote(''); setSwapNote(null) }, [today?.dayId])
+  useEffect(() => { void shouldWarnAboutPublicPhotos().then(setWarnPublic) }, [])
 
   if (!curriculum || !plan || !settings) return null
 
@@ -32,6 +36,8 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer') =>
     return <Recorded
       day={justDid.day}
       status={justDid.status}
+      warnPublic={warnPublic}
+      onPhotoChange={refresh}
       onTime={async (bucket) => {
         const record = await (await db()).get('progress', justDid.day.dayId)
         if (record) await (await db()).put('progress', { ...record, actualTime: bucket })
@@ -147,6 +153,10 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer') =>
         className="mt-7 w-full max-w-[60ch] resize-y border-l-2 border-[var(--marker)] bg-transparent pl-[13px] text-[13.5px] italic text-[var(--ink-2)] placeholder:text-[var(--ink-3)] focus:outline-none focus-visible:border-graphite"
       />
 
+      {!today.isRest && (
+        <PhotoStrip day={today} warnPublic={warnPublic} onChange={() => void refresh()} />
+      )}
+
       <div className="mt-6">
         <ButtonRow>
           <Button primary disabled={busy} onClick={() => void mark('full')}>
@@ -181,13 +191,15 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer') =>
 
 /** The one considered moment: the cell fills, and nothing else moves. */
 function Recorded({
-  day, status, onTime, onSkipTime, onSeeDrawer,
+  day, status, warnPublic, onTime, onSkipTime, onSeeDrawer, onPhotoChange,
 }: {
   day: CurriculumDay
   status: DayStatus
+  warnPublic: boolean
   onTime: (b: TimeBucket) => Promise<void>
   onSkipTime: () => Promise<void>
   onSeeDrawer: () => void
+  onPhotoChange: () => void
 }) {
   const [filled, setFilled] = useState(false)
   useEffect(() => {
@@ -238,6 +250,10 @@ function Recorded({
             Estimated {day.minutes} minutes. This is how the plan finds out where it was wrong.
           </p>
         </div>
+      )}
+
+      {status !== 'rest' && status !== 'skipped' && (
+        <PhotoStrip day={day} warnPublic={warnPublic} onChange={onPhotoChange} />
       )}
 
       <div className="mt-9 flex gap-6 text-[13px]">

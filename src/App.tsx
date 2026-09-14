@@ -2,15 +2,17 @@ import { useState } from 'react'
 import { Today } from './components/Today'
 import { Drawer } from './components/Drawer'
 import { Log } from './components/Log'
+import { Benchmarks } from './components/Benchmarks'
 import { Settings } from './components/Settings'
 import { exportToFile } from './lib/backup'
 import { useApp } from './lib/useApp'
 
-type View = 'today' | 'drawer' | 'log' | 'settings'
+type View = 'today' | 'drawer' | 'series' | 'log' | 'settings'
 
 const TABS: { key: View; label: string }[] = [
   { key: 'today', label: 'Today' },
   { key: 'drawer', label: 'Drawer' },
+  { key: 'series', label: 'Series' },
   { key: 'log', label: 'Log' },
   { key: 'settings', label: 'Settings' },
 ]
@@ -80,6 +82,7 @@ export default function App() {
 
       {view === 'today' && <Today app={app} onGoTo={setView} />}
       {view === 'drawer' && <Drawer app={app} />}
+      {view === 'series' && <Benchmarks app={app} />}
       {view === 'log' && <Log app={app} />}
       {view === 'settings' && <Settings app={app} />}
     </Shell>

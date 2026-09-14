@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button, ButtonRow, Field, Note, Section } from './ui'
 import { StoragePanel } from './StoragePanel'
 import { saveSettings } from '../lib/db'
 import { setResourceState } from '../lib/progress'
 import { clearSwaps } from '../lib/swaps'
+import { flushUploadQueue, queueCounts } from '../lib/upload'
 import type { AppState } from '../lib/useApp'
 import type { Holding } from '../lib/types'
 
@@ -16,6 +17,10 @@ const HOLDINGS: { key: Holding; label: string }[] = [
 export function Settings({ app }: { app: AppState }) {
   const { curriculum, settings, refresh, plan } = app
   const [jump, setJump] = useState('')
+  const [pushing, setPushing] = useState(false)
+  const [pushResult, setPushResult] = useState<string | null>(null)
+  const [counts, setCounts] = useState({ local: 0, failed: 0, uploaded: 0 })
+  useEffect(() => { void queueCounts().then(setCounts) }, [app.records])
   if (!curriculum || !settings || !plan) return null
 
   const set = (patch: Parameters<typeof saveSettings>[0]) =>
@@ -151,6 +156,68 @@ export function Settings({ app }: { app: AppState }) {
           Free or paid is a fact about the book and lives in curriculum.json. Whether you own it,
           borrowed it, or still need it is yours, so it lives here and travels in your backup.
           A borrowed book can carry a date back.
+        </Note>
+      </Section>
+
+      <Section n="00e" title="Pushing photos to the repo">
+        <Field label="Repository">
+          <input
+            placeholder="dudurudh/learn-with-me"
+            value={settings.githubRepo}
+            onChange={(e) => set({ githubRepo: e.target.value })}
+            className="w-full max-w-[280px] border-b border-[var(--rule-strong)] bg-transparent pb-1 text-[15px] focus:outline-none focus-visible:border-graphite"
+          />
+        </Field>
+        <Field label="Token">
+          <input
+            type="password"
+            placeholder="github_pat_…"
+            value={settings.githubToken}
+            onChange={(e) => set({ githubToken: e.target.value })}
+            className="w-full max-w-[280px] border-b border-[var(--rule-strong)] bg-transparent pb-1 text-[15px] focus:outline-none focus-visible:border-graphite"
+          />
+        </Field>
+
+        <div className="mt-4">
+          <ButtonRow>
+            <Button
+              disabled={pushing || !settings.githubToken}
+              onClick={() => {
+                setPushing(true)
+                void flushUploadQueue()
+                  .then((r) => {
+                    setPushResult(
+                      r.skipped === 'offline' ? 'Offline — the queue will keep.'
+                        : r.skipped === 'no-token' ? 'No token or repository set.'
+                          : r.failed > 0 ? `${r.uploaded} pushed, then stopped: ${r.lastError ?? 'unknown error'}`
+                            : r.uploaded === 0 ? 'Nothing waiting.'
+                              : `${r.uploaded} photo${r.uploaded === 1 ? '' : 's'} pushed.`,
+                    )
+                  })
+                  .finally(() => { setPushing(false); void refresh() })
+              }}
+            >
+              {pushing ? 'Pushing' : 'Push what is waiting'}
+            </Button>
+          </ButtonRow>
+        </div>
+
+        {pushResult && <p className="mt-3 text-[13px]">{pushResult}</p>}
+
+        <p className="tnum font-display mt-4 text-[12px] text-[var(--ink-3)]">
+          {counts.local} LOCAL &middot; {counts.failed} QUEUED &middot; {counts.uploaded} PUSHED
+        </p>
+
+        <Note>
+          Use a <b>fine-grained</b> personal access token scoped to this one repository with
+          contents: write &mdash; not a classic token with full repo scope. The token is kept in
+          this browser&rsquo;s IndexedDB, which is a real if modest risk: anything that can run
+          JavaScript here can read it. It is never exported and never committed.
+        </Note>
+        <Note>
+          Photos land at <code>progress-photos/day-047.jpg</code> in a public repo, so they
+          survive a browser wipe and can be seen from any device. The app works completely
+          without this configured &mdash; photos simply stay on this device.
         </Note>
       </Section>
 

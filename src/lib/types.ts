@@ -117,6 +117,7 @@ export interface Settings {
   gistId: string
   githubToken: string
   githubRepo: string
+  publicPhotoWarningSeen: boolean
   deadlines: Deadline[]
 }
 

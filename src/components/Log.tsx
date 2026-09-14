@@ -74,7 +74,7 @@ export function Log({ app }: { app: AppState }) {
               </button>
               {open === record.dayId && day && (
                 <div className="pb-5">
-                  <DayDetail day={day} record={record} onClose={() => setOpen(null)} />
+                  <DayDetail day={day} record={record} onClose={() => setOpen(null)} onChange={() => void app.refresh()} />
                 </div>
               )}
               {open === record.dayId && !day && (
