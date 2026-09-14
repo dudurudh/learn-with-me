@@ -1,5 +1,6 @@
 @import '@fontsource-variable/archivo';
 @import '@fontsource-variable/instrument-sans';
+@import '@fontsource-variable/fraunces/full.css';
 @import 'tailwindcss';
 
 /* ──────────────────────────────────────────────────────────────
@@ -30,7 +31,6 @@
      never get confused. */
   --color-accent: #24457f;
   --color-accent-soft: #eef1f7;
-  --color-header: #eaeef6;
 
   --color-p1-deep: #2a7b9b;
   --color-p2-deep: #936e0b;
@@ -42,6 +42,8 @@
 
   --font-display: 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif;
   --font-sans: 'Instrument Sans Variable', -apple-system, 'Segoe UI', sans-serif;
+  /* The wordmark only. A journal has a title page; the rest of the app does not. */
+  --font-title: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
 
   --radius-*: initial;
   --radius-none: 0px;

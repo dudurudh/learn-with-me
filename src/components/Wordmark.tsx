@@ -3,15 +3,15 @@
  * It matches the home screen icon, so the thing on your phone and the thing at
  * the top of the page are recognisably the same object.
  */
-export function Wordmark({ size = 28 }: { size?: number }) {
+export function Wordmark({ size = 26 }: { size?: number }) {
   return (
-    <span className="inline-flex items-center gap-[11px] rounded-[10px] border border-[rgba(36,69,127,.16)] bg-white/70 px-[13px] py-[8px]">
+    <span className="inline-flex items-baseline gap-[12px]">
       <svg
         width={size}
         height={size}
         viewBox="0 0 24 24"
         aria-hidden
-        className="shrink-0"
+        className="shrink-0 translate-y-[3px]"
       >
         <rect x="0.5" y="0.5" width="23" height="23" rx="5" fill="var(--color-accent)" />
         {[0, 1, 2].map((r) =>
@@ -29,7 +29,16 @@ export function Wordmark({ size = 28 }: { size?: number }) {
           )),
         )}
       </svg>
-      <span className="font-display text-[21px] font-semibold leading-none tracking-[-0.022em] text-graphite">
+      <span
+        className="text-[30px] leading-none text-graphite sm:text-[34px]"
+        style={{
+          fontFamily: 'var(--font-title)',
+          // opsz for display sizes, a little SOFT to take the edge off, and
+          // just enough WONK to stop it looking like a stock serif.
+          fontVariationSettings: "'opsz' 90, 'wght' 500, 'SOFT' 40, 'WONK' 1",
+          letterSpacing: '-0.012em',
+        }}
+      >
         Learn with me
       </span>
     </span>

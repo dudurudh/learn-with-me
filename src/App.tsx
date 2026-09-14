@@ -68,18 +68,11 @@ export default function App() {
     <Shell
       header={
         <>
-          <div className="mb-4 flex flex-wrap items-center justify-between gap-x-5 gap-y-2">
-            <Wordmark />
-            <div className="font-display text-[14px] text-[var(--ink-2)]">
-              You have done <span className="tnum font-semibold text-graphite">{plan.worked}</span> days.
-              {' '}<span className="tnum">{365 - plan.completed}</span> left to go.
-              {settings.seeded && (
-                <span className="ml-3 rounded-full bg-p3 px-[9px] py-[2px] text-[11px] text-page">demo</span>
-              )}
-            </div>
-          </div>
+          <Wordmark />
 
-          <nav className="-mx-1 flex flex-wrap gap-1">
+          <div className="mt-5 flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+            <nav className="-mx-1 flex flex-wrap gap-1">
+
             {TABS.map(({ key, label, Icon }) => {
               const active = view === key
               return (
@@ -91,7 +84,7 @@ export default function App() {
                     'font-display flex items-center gap-[7px] rounded-full px-[13px] py-[7px] '
                     + 'text-[13.5px] font-medium transition-[background-color,color,transform] '
                     + 'duration-100 active:translate-y-[1px] '
-                    + (active ? 'text-page' : 'text-[var(--ink-2)] hover:bg-white hover:text-graphite')
+                    + (active ? 'text-page' : 'text-[var(--ink-2)] hover:bg-surface hover:text-graphite')
                   }
                   style={active ? { background: 'var(--color-accent)' } : undefined}
                 >
@@ -100,7 +93,16 @@ export default function App() {
                 </button>
               )
             })}
-          </nav>
+            </nav>
+
+            <div className="font-display text-[14px] text-[var(--ink-2)]">
+              You have done <span className="tnum font-semibold text-graphite">{plan.worked}</span> days.
+              {' '}<span className="tnum">{365 - plan.completed}</span> left to go.
+              {settings.seeded && (
+                <span className="ml-3 rounded-full bg-p3 px-[9px] py-[2px] text-[11px] text-page">demo</span>
+              )}
+            </div>
+          </div>
         </>
       }
     >
@@ -135,15 +137,7 @@ function Shell({ children, header }: { children: React.ReactNode; header?: React
   return (
     <>
       {header && (
-        <header
-          className="border-b border-[rgba(36,69,127,.14)] bg-header"
-          style={{
-            backgroundImage:
-              'linear-gradient(to right, rgba(36,69,127,.055) 1px, transparent 1px),'
-              + 'linear-gradient(to bottom, rgba(36,69,127,.055) 1px, transparent 1px)',
-            backgroundSize: '22px 22px',
-          }}
-        >
+        <header className="border-b border-[var(--rule)] bg-page">
           <div className="mx-auto max-w-[860px] px-6 py-5">{header}</div>
         </header>
       )}
