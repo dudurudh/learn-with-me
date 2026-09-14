@@ -1,6 +1,5 @@
 import { driftByType, skipRates, project, deadlineViews, phaseProgress } from '../lib/stats'
 import { phaseOf } from '../lib/curriculum'
-import { Margin, MarginRow } from './ui'
 import type { AppState } from '../lib/useApp'
 
 export function Phase({ app }: { app: AppState }) {
@@ -143,25 +142,23 @@ export function Phase({ app }: { app: AppState }) {
       <h2 className="font-display mt-14 mb-5 border-b border-[var(--rule-strong)] pb-[7px] text-[13px] font-semibold">
         Your rate
       </h2>
-      <Margin>
-        <MarginRow label="Days a week" tight>
-          <span className="tnum font-display text-[21px] font-semibold">
-            {projection.daysPerWeek?.toFixed(1) ?? '—'}
-          </span>
-        </MarginRow>
-        <MarginRow label="Days left" tight>
-          <span className="tnum font-display text-[21px] font-semibold">{projection.remaining}</span>
-        </MarginRow>
-        <MarginRow label="Day 365 lands" tight>
-          <span className="tnum font-display text-[21px] font-semibold">
-            {projection.projectedFinish ?? '—'}
-          </span>
-          <p className="mt-2 max-w-[52ch] text-[13.5px] text-[var(--ink-2)]">
-            Projected from the rate you actually work at, not from the calendar.
-            {projection.daysPerWeek === null && ' Needs about a week of records first.'}
-          </p>
-        </MarginRow>
-      </Margin>
+      <p className="max-w-[56ch] text-[17px] leading-[1.6]">
+        You are working{' '}
+        <span className="tnum font-display font-semibold">
+          {projection.daysPerWeek?.toFixed(1) ?? '—'}
+        </span>{' '}
+        days a week, with{' '}
+        <span className="tnum font-display font-semibold">{projection.remaining}</span> to go.
+        At that rate Day 365 lands on{' '}
+        <span className="tnum font-display font-semibold">
+          {projection.projectedFinish ?? 'a date the app cannot guess yet'}
+        </span>
+        .
+      </p>
+      <p className="mt-3 max-w-[56ch] text-[14px] text-[var(--ink-2)]">
+        Worked out from how often you actually finish a day, not from the calendar.
+        {projection.daysPerWeek === null && ' Needs about a week of records first.'}
+      </p>
 
       {deadlines.length > 0 && (
         <>

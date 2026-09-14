@@ -118,12 +118,9 @@ export function Benchmarks({ app }: { app: AppState }) {
         </div>
       </div>
 
-      <div className="mt-8 grid grid-cols-[76px_1fr] sm:grid-cols-[132px_1fr]">
-        <div className="font-display pr-4 text-right text-[12px] text-[var(--ink-2)] sm:text-[13px]">
-          Collected
-        </div>
-        <div className="border-l border-[var(--rule-strong)] pl-4 sm:pl-6">
-          <p className="tnum font-display text-[15px]">
+      <div className="mt-9">
+        <div>
+          <p className="tnum font-display text-[17px] font-medium">
             {taken} of 5 photographed
             {elapsed > 0 && (
               <span className="text-[var(--ink-2)]"> · {elapsed} days from the first to the last</span>

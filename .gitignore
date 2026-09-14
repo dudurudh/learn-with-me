@@ -26,3 +26,4 @@ dist-ssr
 # Local tooling
 .claude/serve-static.mjs
 .claude/curriculum-review.html
+.claude/radius.html

@@ -279,8 +279,7 @@ export function Settings({ app }: { app: AppState }) {
 
         <div className="mb-6 space-y-3">
           {MECHANISMS.map((m) => (
-            <div key={m.id} className="border-l-2 pl-[13px]"
-              style={{ borderColor: m.whenClosed ? 'var(--color-foam-deep)' : 'var(--color-marker)' }}>
+            <div key={m.id}>
               <div className="font-display text-[13.5px] font-semibold">
                 {m.name}
                 <span className="ml-2 text-[11.5px] font-normal text-[var(--ink-3)]">

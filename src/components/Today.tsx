@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Button, ButtonRow, Margin, MarginRow } from './ui'
+import { Button, ButtonRow } from './ui'
 import { PhotoStrip } from './PhotoStrip'
 import { RecentStrip } from './RecentStrip'
 import { NewsPanel, SavedQueue } from './NewsPanel'
@@ -108,14 +108,16 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
       {/* The one exception to keeping everything quiet: a deadline inside
           sixty days pins here, and is allowed to be a little insistent. */}
       {urgent.length > 0 && (
-        <div className="mb-7 border-l-2 border-cinnabar pl-[13px]">
+        <div className="mb-8">
           {urgent.map((d) => (
-            <p key={d.id} className="text-[13.5px]">
-              <span className="font-display tnum font-semibold">{d.daysLeft} days</span>
-              {' '}to {d.school} &mdash; {d.programme}
+            <p key={d.id} className="text-[15px]">
+              <span className="font-display font-semibold text-cinnabar">
+                {d.daysLeft} days
+              </span>{' '}
+              until {d.school} closes — {d.programme}.
               {d.finishesBefore === false && (
                 <span className="text-[var(--ink-2)]">
-                  {' '}&middot; at your current rate you finish after it
+                  {' '}At your current rate you finish after it.
                 </span>
               )}
             </p>
@@ -124,9 +126,8 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
       )}
 
       {reEntry && (
-        <div className="mb-7 border-b border-[var(--rule)] pb-5">
-          <div className="font-display text-[13px] font-semibold">Coming back</div>
-          <p className="mt-2 max-w-[56ch] text-[13.5px] text-[var(--ink-2)]">
+        <div className="mb-8">
+          <p className="max-w-[56ch] text-[15.5px]">
             It has been {plan.daysSinceLastWorked} days. Here is a short one first &mdash; ten
             minutes, nothing new, and it counts as a full day. Day {plan.today?.day} is waiting
             after it and it is not going anywhere.
@@ -176,26 +177,25 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
       <p className="mt-7 max-w-[58ch] text-[16.5px] leading-[1.62]">{today.full}</p>
 
       {today.question && (
-        <p className="mt-9 max-w-[26ch] border-l-[3px] border-cinnabar pl-5 text-[21px] italic leading-[1.34] text-graphite">
+        <p className="mt-10 max-w-[30ch] text-[23px] italic leading-[1.32] text-graphite">
           {today.question}
         </p>
       )}
 
-      <div className="mt-10 border-t border-[var(--rule)] pt-2">
-        <Margin>
-          <MarginRow label={<>If today is<br />a bad day</>}>
-            <p className="max-w-[54ch] text-[14.5px]">{today.minimum}</p>
-          </MarginRow>
+      <div className="mt-10 space-y-3">
+        <p className="max-w-[56ch] text-[15px] text-[var(--ink-2)]">
+          <span className="font-medium text-graphite">Short on time?</span> {today.minimum}
+        </p>
 
-          {resource && today.resource && (
-            <MarginRow label={today.resourceMode === 'assigned' ? 'Read this' : 'Look here'}>
-              <p className="max-w-[54ch] text-[14px]">
-                {resource.title}
-                {today.resource.section ? ` — ${today.resource.section}` : ''}
-              </p>
-            </MarginRow>
-          )}
-        </Margin>
+        {resource && today.resource && (
+          <p className="max-w-[56ch] text-[15px] text-[var(--ink-2)]">
+            <span className="font-medium text-graphite">
+              {today.resourceMode === 'assigned' ? 'Today you need' : 'If you want to look it up'}:
+            </span>{' '}
+            {resource.title}
+            {today.resource.section ? ` — ${today.resource.section}` : ''}
+          </p>
+        )}
       </div>
 
 
@@ -204,7 +204,7 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer' | '
         onChange={(e) => setNote(e.target.value)}
         rows={2}
         placeholder="What happened? (optional, and nobody reads it but you)"
-        className="mt-7 w-full max-w-[60ch] resize-y border-l-2 border-[var(--marker)] bg-transparent pl-[13px] text-[13.5px] italic text-[var(--ink-2)] placeholder:text-[var(--ink-3)] focus:outline-none focus-visible:border-graphite"
+        className="mt-8 w-full max-w-[60ch] resize-y rounded-[8px] border border-[var(--rule-strong)] bg-transparent px-[13px] py-[10px] text-[15px] placeholder:text-[var(--ink-2)] focus:outline-none focus-visible:border-graphite"
       />
 
       {today.type === 'read' && (
@@ -300,20 +300,19 @@ function Recorded({
       </div>
 
       {(status === 'full' || status === 'minimum') && (
-        <div className="mt-9 border-t border-[var(--rule)] pt-2">
-          <Margin>
-            <MarginRow label={<>How long<br />did it take?</>}>
-              <ButtonRow>
-                {BUCKETS.map((b) => (
-                  <Button key={b.key} onClick={() => void onTime(b.key)}>{b.label}</Button>
-                ))}
-              </ButtonRow>
-              <p className="mt-3 max-w-[48ch] text-[13px] text-[var(--ink-2)]">
-                Estimated {day.minutes} minutes. This is how the plan finds out where it
-                was wrong.
-              </p>
-            </MarginRow>
-          </Margin>
+        <div className="mt-10">
+          <p className="font-display text-[16px] font-medium">How long did that actually take?</p>
+          <div className="mt-4">
+            <ButtonRow>
+              {BUCKETS.map((b) => (
+                <Button key={b.key} onClick={() => void onTime(b.key)}>{b.label}</Button>
+              ))}
+            </ButtonRow>
+          </div>
+          <p className="mt-3 max-w-[50ch] text-[14px] text-[var(--ink-2)]">
+            The plan guessed {day.minutes}. Telling it the truth is how it finds out where
+            it was wrong.
+          </p>
         </div>
       )}
 

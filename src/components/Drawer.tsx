@@ -159,7 +159,7 @@ export function DayDetail({
       <p className="mt-3 max-w-[60ch] text-[13.5px] text-[var(--ink-2)]">{day.full}</p>
 
       {record?.note && (
-        <p className="mt-4 max-w-[52ch] border-l-2 border-[var(--marker)] pl-[13px] text-[13px] italic text-[var(--ink-2)]">
+        <p className="mt-4 max-w-[52ch] text-[14px] italic text-[var(--ink-2)]">
           {record.note}
         </p>
       )}

@@ -4,16 +4,10 @@ export function Rule() {
   return <hr className="my-0 border-0 border-t border-[var(--rule)]" />
 }
 
-export function Section({ n, title, children }: { n: string; title: string; children: ReactNode }) {
+export function Section({ title, children }: { n?: string; title: string; children: ReactNode }) {
   return (
-    <section className="relative mb-14 sm:pl-[104px]">
-      <span className="font-display tnum absolute left-0 hidden w-[72px] pt-[3px] text-right text-[12px] text-[var(--ink-2)] sm:block">
-        {n}
-      </span>
-      <span className="font-display absolute left-[80px] top-0 hidden h-full w-px bg-[var(--rule)] sm:block" />
-      <h2 className="font-display mb-5 border-b border-[var(--rule-strong)] pb-[7px] text-[15px] font-semibold tracking-[-0.006em]">
-        {title}
-      </h2>
+    <section className="mb-14">
+      <h2 className="font-display mb-5 text-[19px] font-semibold tracking-[-0.012em]">{title}</h2>
       {children}
     </section>
   )
@@ -32,12 +26,12 @@ export function Button({
       disabled={disabled}
       title={title}
       className={
-        'font-display px-[17px] py-[11px] text-[13.5px] font-medium ' +
+        'font-display rounded-[7px] px-[18px] py-[11px] text-[14px] font-medium ' +
         'transition-[background-color,transform] duration-100 active:translate-y-[1px] ' +
         'disabled:cursor-not-allowed disabled:text-[var(--ink-3)] ' +
         (primary
           ? 'bg-foam-deep text-paper hover:bg-[#27596a] disabled:bg-marker disabled:text-[var(--ink-3)]'
-          : 'bg-paper hover:bg-[color-mix(in_srgb,var(--color-foam)_16%,var(--color-paper))]')
+          : 'border border-[var(--rule-strong)] bg-paper hover:bg-[color-mix(in_srgb,var(--color-foam)_14%,var(--color-paper))]')
       }
     >
       {children}
@@ -49,9 +43,7 @@ export function Button({
  *  showing through as grout. No shadows, no gaps, no rounded corners. */
 export function ButtonRow({ children }: { children: ReactNode }) {
   return (
-    <div className="flex w-max max-w-full flex-wrap gap-px border border-[var(--rule-strong)] bg-[var(--rule-strong)]">
-      {children}
-    </div>
+    <div className="flex w-max max-w-full flex-wrap gap-[6px]">{children}</div>
   )
 }
 
@@ -61,37 +53,10 @@ export function Note({ children }: { children: ReactNode }) {
 
 export function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <label className="-mt-px grid grid-cols-[76px_1fr] items-baseline py-3 sm:grid-cols-[132px_1fr]">
-      <span className="font-display pr-4 text-right text-[12px] text-[var(--ink-2)] sm:text-[13px]">
-        {label}
-      </span>
-      <span className="block self-stretch border-l border-[var(--rule-strong)] pl-4 sm:pl-6">
-        {children}
-      </span>
+    <label className="mb-5 block">
+      <span className="font-display mb-[6px] block text-[14px] font-medium">{label}</span>
+      {children}
     </label>
   )
 }
 
-/**
- * A ruled journal margin: the label hangs to the left of a continuous hairline
- * and the content sits to the right of it. Hierarchy comes from position and
- * the rule, so labels can stay at readable contrast instead of being greyed
- * out until they nearly vanish.
- */
-export function MarginRow({
-  label, children, tight,
-}: { label: ReactNode; children: ReactNode; tight?: boolean }) {
-  return (
-    <div className={`grid grid-cols-[76px_1fr] sm:grid-cols-[132px_1fr] ${tight ? 'py-2' : 'py-4'}`}>
-      <div className="font-display pr-4 text-right text-[12px] leading-[1.5] text-[var(--ink-2)] sm:text-[13px]">
-        {label}
-      </div>
-      <div className="border-l border-[var(--rule-strong)] pl-4 sm:pl-6">{children}</div>
-    </div>
-  )
-}
-
-/** Wraps a run of MarginRows so the hairline reads as one continuous rule. */
-export function Margin({ children }: { children: ReactNode }) {
-  return <div className="[&>*+*]:-mt-px">{children}</div>
-}
