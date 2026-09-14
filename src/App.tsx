@@ -3,16 +3,18 @@ import { Today } from './components/Today'
 import { Drawer } from './components/Drawer'
 import { Log } from './components/Log'
 import { Benchmarks } from './components/Benchmarks'
+import { Phase } from './components/Phase'
 import { Settings } from './components/Settings'
 import { exportToFile } from './lib/backup'
 import { useApp } from './lib/useApp'
 
-type View = 'today' | 'drawer' | 'series' | 'log' | 'settings'
+type View = 'today' | 'drawer' | 'series' | 'phase' | 'log' | 'settings'
 
 const TABS: { key: View; label: string }[] = [
   { key: 'today', label: 'Today' },
   { key: 'drawer', label: 'Drawer' },
   { key: 'series', label: 'Series' },
+  { key: 'phase', label: 'Phase' },
   { key: 'log', label: 'Log' },
   { key: 'settings', label: 'Settings' },
 ]
@@ -83,6 +85,7 @@ export default function App() {
       {view === 'today' && <Today app={app} onGoTo={setView} />}
       {view === 'drawer' && <Drawer app={app} />}
       {view === 'series' && <Benchmarks app={app} />}
+      {view === 'phase' && <Phase app={app} />}
       {view === 'log' && <Log app={app} />}
       {view === 'settings' && <Settings app={app} />}
     </Shell>

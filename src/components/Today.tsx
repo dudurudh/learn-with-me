@@ -8,6 +8,8 @@ import { addSwap } from '../lib/swaps'
 import { db } from '../lib/db'
 import { phaseOf } from '../lib/curriculum'
 import { weekOf } from '../lib/plan'
+import { buildReEntryDay } from '../lib/reentry'
+import { deadlineViews, project } from '../lib/stats'
 import type { AppState } from '../lib/useApp'
 import type { CurriculumDay, DayStatus, TimeBucket } from '../lib/types'
 
@@ -26,7 +28,11 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer') =>
   const [busy, setBusy] = useState(false)
   const [warnPublic, setWarnPublic] = useState(false)
 
-  const today = plan?.today ?? null
+  const reEntry =
+    plan?.needsReEntry && plan.today && curriculum
+      ? buildReEntryDay(curriculum, app.records, plan.today)
+      : null
+  const today = reEntry ?? plan?.today ?? null
   useEffect(() => { setNote(''); setSwapNote(null) }, [today?.dayId])
   useEffect(() => { void shouldWarnAboutPublicPhotos().then(setWarnPublic) }, [])
 
@@ -65,6 +71,10 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer') =>
   const phase = phaseOf(curriculum, today.day)
   const resource = today.resource ? curriculum.resources[today.resource.id] : null
 
+  const urgent = deadlineViews(
+    settings.deadlines, project(app.records).projectedFinish,
+  ).filter((d) => d.urgent)
+
   const mark = async (status: DayStatus) => {
     setBusy(true)
     try {
@@ -89,13 +99,46 @@ export function Today({ app, onGoTo }: { app: AppState; onGoTo: (v: 'drawer') =>
 
   return (
     <article>
+      {/* The one exception to keeping everything quiet: a deadline inside
+          sixty days pins here, and is allowed to be a little insistent. */}
+      {urgent.length > 0 && (
+        <div className="mb-7 border-l-2 border-cinnabar pl-[13px]">
+          {urgent.map((d) => (
+            <p key={d.id} className="text-[13.5px]">
+              <span className="font-display tnum font-semibold">{d.daysLeft} days</span>
+              {' '}to {d.school} &mdash; {d.programme}
+              {d.finishesBefore === false && (
+                <span className="text-[var(--ink-2)]">
+                  {' '}&middot; at your current rate you finish after it
+                </span>
+              )}
+            </p>
+          ))}
+        </div>
+      )}
+
+      {reEntry && (
+        <div className="mb-7 border-b border-[var(--rule)] pb-5">
+          <div className="font-display text-[11px] tracking-[0.02em] text-[var(--ink-3)]">
+            COMING BACK
+          </div>
+          <p className="mt-2 max-w-[56ch] text-[13.5px] text-[var(--ink-2)]">
+            It has been {plan.daysSinceLastWorked} days. Here is a short one first &mdash; ten
+            minutes, nothing new, and it counts as a full day. Day {plan.today?.day} is waiting
+            after it and it is not going anywhere.
+          </p>
+        </div>
+      )}
+
       <div className="font-display text-[11px] tracking-[0.02em] text-[var(--ink-3)]">
         PHASE {today.phase} &middot; {phase?.title.toUpperCase()}
       </div>
 
       <div className="mt-4 flex items-baseline gap-4">
+        {/* A re-entry day is an extra, not day 202 — numbering it would claim
+            otherwise and make the count wrong by one in the reader's head. */}
         <span className="font-display tnum text-[42px] leading-none font-bold tracking-[-0.03em]">
-          {String(today.day).padStart(3, '0')}
+          {reEntry ? '—' : String(today.day).padStart(3, '0')}
         </span>
         <h1 className="font-display text-[23px] font-semibold tracking-[-0.012em]">
           {today.title}

@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { DayDetail } from './Drawer'
 import type { AppState } from '../lib/useApp'
 import type { CurriculumDay, ProgressRecord } from '../lib/types'
+import { isReEntryId } from '../lib/reentry'
 
 export function Log({ app }: { app: AppState }) {
   const { curriculum, records, plan } = app
@@ -50,15 +51,20 @@ export function Log({ app }: { app: AppState }) {
                 className="grid w-full grid-cols-[54px_1fr_auto] items-start gap-4 py-3 text-left focus-visible:outline-2 focus-visible:outline-graphite sm:grid-cols-[68px_1fr_auto]"
               >
                 <span className="font-display tnum text-[17px] font-semibold leading-tight">
-                  {String(record.day).padStart(3, '0')}
+                  {isReEntryId(record.dayId) ? '—' : String(record.day).padStart(3, '0')}
                   <span className="mt-[2px] block text-[9.5px] font-medium tracking-[0.03em] text-[var(--ink-3)]">
                     {record.planDate}
                   </span>
                 </span>
                 <span>
                   <span className="font-display block text-[14.5px] font-semibold">
-                    {day ? day.title : record.dayId}
-                    {!day && (
+                    {day ? day.title : isReEntryId(record.dayId) ? 'Coming back' : record.dayId}
+                    {isReEntryId(record.dayId) && (
+                      <span className="font-display ml-2 border border-[var(--rule-strong)] px-[5px] py-[1px] text-[9.5px] tracking-[0.04em] text-[var(--ink-3)]">
+                        RE-ENTRY
+                      </span>
+                    )}
+                    {!day && !isReEntryId(record.dayId) && (
                       <span className="font-display ml-2 border border-[var(--rule-strong)] px-[5px] py-[1px] text-[9.5px] tracking-[0.04em] text-[var(--ink-3)]">
                         ORPHANED
                       </span>
@@ -77,7 +83,13 @@ export function Log({ app }: { app: AppState }) {
                   <DayDetail day={day} record={record} onClose={() => setOpen(null)} onChange={() => void app.refresh()} />
                 </div>
               )}
-              {open === record.dayId && !day && (
+              {open === record.dayId && !day && isReEntryId(record.dayId) && (
+                <p className="pb-5 max-w-[56ch] text-[13px] text-[var(--ink-2)]">
+                  A short day taken after time away: the warm-up and one drill already behind you.
+                  It sits between days {record.day - 1} and {record.day} and counts as a full day.
+                </p>
+              )}
+              {open === record.dayId && !day && !isReEntryId(record.dayId) && (
                 <p className="pb-5 text-[13px] text-[var(--ink-2)]">
                   This day was removed from curriculum.json after you completed it. The record is
                   intact: <span className="tnum">{record.status}</span>, {record.planDate}

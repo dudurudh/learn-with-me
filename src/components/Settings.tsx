@@ -17,6 +17,9 @@ const HOLDINGS: { key: Holding; label: string }[] = [
 export function Settings({ app }: { app: AppState }) {
   const { curriculum, settings, refresh, plan } = app
   const [jump, setJump] = useState('')
+  const [school, setSchool] = useState('')
+  const [programme, setProgramme] = useState('')
+  const [date, setDate] = useState('')
   const [pushing, setPushing] = useState(false)
   const [pushResult, setPushResult] = useState<string | null>(null)
   const [counts, setCounts] = useState({ local: 0, failed: 0, uploaded: 0 })
@@ -156,6 +159,79 @@ export function Settings({ app }: { app: AppState }) {
           Free or paid is a fact about the book and lives in curriculum.json. Whether you own it,
           borrowed it, or still need it is yours, so it lives here and travels in your backup.
           A borrowed book can carry a date back.
+        </Note>
+      </Section>
+
+      <Section n="00f" title="Application deadlines">
+        {settings.deadlines.length > 0 && (
+          <table className="mb-5 w-full border-collapse text-[13px]">
+            <tbody>
+              {[...settings.deadlines]
+                .sort((a, b) => a.date.localeCompare(b.date))
+                .map((d) => (
+                  <tr key={d.id} className="border-b border-[var(--rule)]">
+                    <td className="py-2 pr-3">
+                      <span className="font-display block text-[13.5px] font-semibold">{d.school}</span>
+                      <span className="text-[12px] text-[var(--ink-3)]">{d.programme}</span>
+                    </td>
+                    <td className="tnum font-display py-2 pr-3 text-right whitespace-nowrap">{d.date}</td>
+                    <td className="w-px py-2">
+                      <button
+                        onClick={() => set({ deadlines: settings.deadlines.filter((x) => x.id !== d.id) })}
+                        className="font-display text-[11px] text-[var(--ink-3)] underline underline-offset-2"
+                      >
+                        remove
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        )}
+
+        <div className="flex flex-wrap items-end gap-3">
+          <label className="block">
+            <span className="font-display block text-[10px] tracking-[0.03em] text-[var(--ink-3)]">SCHOOL</span>
+            <input
+              value={school} onChange={(e) => setSchool(e.target.value)} placeholder="RISD"
+              className="w-[150px] border-b border-[var(--rule-strong)] bg-transparent pb-1 text-[14px] focus:outline-none focus-visible:border-graphite"
+            />
+          </label>
+          <label className="block">
+            <span className="font-display block text-[10px] tracking-[0.03em] text-[var(--ink-3)]">PROGRAMME</span>
+            <input
+              value={programme} onChange={(e) => setProgramme(e.target.value)} placeholder="MID"
+              className="w-[150px] border-b border-[var(--rule-strong)] bg-transparent pb-1 text-[14px] focus:outline-none focus-visible:border-graphite"
+            />
+          </label>
+          <label className="block">
+            <span className="font-display block text-[10px] tracking-[0.03em] text-[var(--ink-3)]">DEADLINE</span>
+            <input
+              type="date" value={date} onChange={(e) => setDate(e.target.value)}
+              className="tnum font-display border-b border-[var(--rule-strong)] bg-transparent pb-1 text-[14px] focus:outline-none focus-visible:border-graphite"
+            />
+          </label>
+          <ButtonRow>
+            <Button
+              disabled={!school || !date}
+              onClick={() => {
+                set({
+                  deadlines: [...settings.deadlines, {
+                    id: crypto.randomUUID(), school, programme, date, priority: 'medium' as const,
+                  }],
+                })
+                setSchool(''); setProgramme(''); setDate('')
+              }}
+            >
+              Add
+            </Button>
+          </ButtonRow>
+        </div>
+
+        <Note>
+          A deadline inside sixty days pins to the top of the Today view. That is the one place
+          the app is allowed to be a little insistent, and the Phase screen shows whether your
+          projected Day 365 lands before or after each of these.
         </Note>
       </Section>
 

@@ -1,6 +1,7 @@
 import type { Curriculum, CurriculumDay, ProgressRecord, Settings } from './types'
 import { daysSince } from './time'
 import { orderedDays, swapsUsedInWeek, type Swap } from './swaps'
+import { isReEntryId } from './reentry'
 
 export interface OrphanedRecord {
   record: ProgressRecord
@@ -80,11 +81,13 @@ export function planState(
 ): PlanState {
   const byId = new Map(records.map((r) => [r.dayId, r]))
   const known = new Set(curriculum.days.map((d) => d.dayId))
+  // Re-entry days are real records that deliberately sit outside the
+  // curriculum. They are not orphans and must not be reported as damage.
   const orphaned: OrphanedRecord[] = records
-    .filter((r) => !known.has(r.dayId))
+    .filter((r) => !known.has(r.dayId) && !isReEntryId(r.dayId))
     .map((record) => ({ record, reason: 'no-such-day' as const }))
 
-  const live = records.filter((r) => known.has(r.dayId))
+  const live = records.filter((r) => known.has(r.dayId) || isReEntryId(r.dayId))
   const worked = live.filter((r) => r.status === 'full' || r.status === 'minimum').length
   const used = graceUsed(live, settings.graceWindowDays)
 
@@ -113,7 +116,10 @@ export function planState(
     orphaned,
     daysSinceLastWorked: since,
     // Skill decays, and the first day back is when people quit for good.
-    needsReEntry: since !== null && since > 10,
+    // One re-entry day only — the second time back you get the real plan.
+    needsReEntry:
+      since !== null && since > 10
+      && !isReEntryId(records[records.length - 1]?.dayId ?? ''),
     backupPrompt,
   }
 }

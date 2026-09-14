@@ -7,7 +7,7 @@ import { allProgress, markDay, setResourceState, getResourceState } from '../pro
 import { planState, computeStreak, graceUsed, findSwap, nextDay } from '../plan'
 import { buildExport, importExport, parseExport } from '../backup'
 import { seedDemoData, clearDemoData, SEED_THROUGH_DAY } from '../seed'
-import { planDate } from '../time'
+import { planDate, toISODate, daysBetween } from '../time'
 import type { Curriculum, ProgressRecord } from '../types'
 
 const curriculum: Curriculum = JSON.parse(
@@ -462,5 +462,134 @@ describe('the benchmark series', () => {
   it('is exactly the five days a year apart end to end', () => {
     const days = curriculum.days.filter((d) => d.isBenchmark).map((d) => d.day)
     expect(days).toEqual([1, 90, 180, 270, 365])
+  })
+})
+
+describe('instrumentation', () => {
+  it('spots a task type that consistently overruns its estimate', async () => {
+    const { driftByType } = await import('../stats')
+    const sketchDays = curriculum.days.filter((d) => d.type === 'sketch' && d.minutes === 25).slice(0, 6)
+    const rows = sketchDays.map((d) =>
+      rec({ dayId: d.dayId, day: d.day, type: 'sketch', status: 'full', actualTime: '40plus' }))
+    const [drift] = driftByType(curriculum, rows)
+    expect(drift.type).toBe('sketch')
+    expect(drift.estimated).toBe(25)
+    expect(drift.actual).toBe(50)
+    expect(drift.gapPercent).toBe(100)
+    expect(drift.overrunning).toBe(true)
+  })
+
+  it('stays quiet on a small sample, however lopsided', async () => {
+    const { driftByType } = await import('../stats')
+    const d = curriculum.days.find((x) => x.type === 'sketch')!
+    const rows = [rec({ dayId: d.dayId, day: d.day, type: 'sketch', actualTime: '40plus' })]
+    expect(driftByType(curriculum, rows)[0].overrunning).toBe(false)
+  })
+
+  it('finds the strand being silently dropped', async () => {
+    const { skipRates } = await import('../stats')
+    const rows = [
+      ...Array.from({ length: 10 }, (_, i) =>
+        rec({ dayId: `s${i}`, day: i, type: 'sketch', status: 'full' })),
+      ...Array.from({ length: 5 }, (_, i) =>
+        rec({ dayId: `m${i}`, day: 20 + i, type: 'make', status: i === 0 ? 'full' : 'skipped' })),
+    ]
+    const rates = await Promise.resolve(skipRates(rows))
+    const make = rates.find((r) => r.type === 'make')!
+    const sketch = rates.find((r) => r.type === 'sketch')!
+    expect(make.rate).toBeCloseTo(0.2)
+    expect(make.falling).toBe(true)
+    expect(sketch.falling).toBe(false)     // no false alarm on the healthy strand
+  })
+
+  it('projects the finish from the rate actually worked, not the calendar', async () => {
+    const { project } = await import('../stats')
+    // 20 days of records spread over 40 calendar days: half speed.
+    const start = new Date(2026, 0, 1)
+    const rows = Array.from({ length: 20 }, (_, i) => {
+      const d = new Date(start)
+      d.setDate(d.getDate() + i * 2)
+      return rec({ dayId: `d${i}`, day: i + 1, planDate: toISODate(d) })
+    })
+    const p = project(rows, 365, new Date(2026, 1, 9))
+    expect(p.daysPerWeek).toBeCloseTo(3.6, 1)
+    expect(p.remaining).toBe(345)
+    // Working half the days means the year takes about two.
+    const daysOut = daysBetween(toISODate(new Date(2026, 1, 9)), p.projectedFinish!)
+    expect(daysOut).toBeGreaterThan(600)
+    expect(daysOut).toBeLessThan(750)
+  })
+
+  it('flags a deadline inside sixty days and says if the plan lands after it', async () => {
+    const { deadlineViews } = await import('../stats')
+    const now = new Date(2026, 8, 13)   // local, not UTC
+    const views = deadlineViews(
+      [
+        { id: '1', school: 'RISD', programme: 'MID', date: '2026-10-15', priority: 'high' },
+        { id: '2', school: 'IIT', programme: 'MDes', date: '2027-06-01', priority: 'low' },
+      ],
+      '2027-01-20', now,
+    )
+    expect(views[0].school).toBe('RISD')
+    expect(views[0].daysLeft).toBe(32)
+    expect(views[0].urgent).toBe(true)
+    expect(views[0].finishesBefore).toBe(false)   // Day 365 lands after RISD
+    expect(views[1].urgent).toBe(false)
+    expect(views[1].finishesBefore).toBe(true)
+  })
+})
+
+describe('coming back after time away', () => {
+  it('offers a short familiar day, not day 143', async () => {
+    const { buildReEntryDay } = await import('../reentry')
+    const past = curriculum.days.slice(0, 120)
+    const rows = past.map((d) => rec({ dayId: d.dayId, day: d.day, type: d.type }))
+    const next = curriculum.days.find((d) => d.day === 143)!
+    const reentry = buildReEntryDay(curriculum, rows, next, new Date(2026, 8, 13))
+
+    expect(reentry.minutes).toBeLessThanOrEqual(15)
+    expect(reentry.dayId).toBe('reentry-2026-09-13')
+    expect(reentry.full).toMatch(/straight lines/)
+    expect(reentry.isRest).toBe(false)
+    expect(reentry.title).toBe('Coming back')
+  })
+
+  it('is not mistaken for a corrupted record', async () => {
+    const { buildReEntryDay } = await import('../reentry')
+    const next = curriculum.days[0]
+    const reentry = buildReEntryDay(curriculum, [], next)
+    await markDay(reentry, { status: 'full' })
+    const state = planState(curriculum, await allProgress(), await getSettings())
+    expect(state.orphaned).toHaveLength(0)   // outside the curriculum, but not damage
+    expect(state.worked).toBe(1)             // and it counts
+  })
+
+  it('is offered once, not every day', async () => {
+    const { buildReEntryDay } = await import('../reentry')
+    await markDay(curriculum.days[0], { status: 'full', at: new Date(Date.now() - 20 * 86_400_000) })
+    let state = planState(curriculum, await allProgress(), await getSettings())
+    expect(state.needsReEntry).toBe(true)
+
+    await markDay(buildReEntryDay(curriculum, await allProgress(), state.today!), { status: 'full' })
+    state = planState(curriculum, await allProgress(), await getSettings())
+    expect(state.needsReEntry).toBe(false)
+  })
+})
+
+describe('dates are local throughout', () => {
+  // new Date('2026-09-13') is UTC midnight, which is 2026-09-12 in any western
+  // timezone. Every date this app stores comes from local components, and
+  // daysBetween parses back as local midnight, so the two always agree.
+  it('round-trips a local date without slipping a day', () => {
+    const d = new Date(2026, 8, 13, 23, 55)
+    expect(toISODate(d)).toBe('2026-09-13')
+    expect(daysBetween('2026-09-13', '2026-10-15')).toBe(32)
+    expect(daysBetween('2026-09-13', '2026-09-13')).toBe(0)
+  })
+
+  it('counts across a daylight-saving boundary correctly', () => {
+    // US DST ends 2026-11-01; a naive hours-based diff loses or gains one.
+    expect(daysBetween('2026-10-25', '2026-11-08')).toBe(14)
+    expect(daysBetween('2026-03-01', '2026-03-15')).toBe(14)
   })
 })
