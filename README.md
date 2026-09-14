@@ -1,4 +1,4 @@
-# 365
+# Learn with me
 
 A year of industrial design practice, one day at a time. Static site, no server,
 no database. Deployed at **https://dudurudh.github.io/learn-with-me/**

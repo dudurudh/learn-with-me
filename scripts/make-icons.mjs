@@ -1,13 +1,12 @@
 #!/usr/bin/env node
-/** Writes the PWA icons with zlib and a hand-rolled PNG encoder — a build-time
- *  image dependency for six flat squares is not worth it. Foam-deep ground,
- *  a paper grid, one cinnabar cell: the drawer, at 1/365 scale. */
+/** Writes the PWA icons with zlib and a hand-rolled PNG encoder. A build-time
+ *  image dependency for nine flat squares is not worth it. */
 import { deflateSync } from 'node:zlib'
 import { writeFile } from 'node:fs/promises'
 
-const FOAM_DEEP = [0x2e, 0x6b, 0x7c]
-const PAPER = [0xf5, 0xf2, 0xec]
-const CINNABAR = [0xc2, 0x5a, 0x28]
+// Matches the wordmark: the drawer, three by three, one compartment filled.
+const ACCENT = [0x24, 0x45, 0x7f]
+const WHITE = [0xff, 0xff, 0xff]
 
 function crc32(buf) {
   let c = ~0
@@ -46,21 +45,24 @@ function png(size, pixels) {
   ])
 }
 
+function mix(a, b, t) {
+  return a.map((c, i) => c * (1 - t) + b[i] * t)
+}
+
 function drawer(size) {
-  const cells = 5
-  const pad = Math.round(size * 0.16)
-  const inner = size - pad * 2
-  const step = inner / cells
-  const gap = Math.max(1, Math.round(size * 0.012))
+  const cells = 3
+  const pad = Math.round(size * 0.2)
+  const step = (size - pad * 2) / cells
+  const cell = step * 0.66
   return (x, y) => {
-    if (x < pad || y < pad || x >= size - pad || y >= size - pad) return FOAM_DEEP
     const cx = Math.floor((x - pad) / step)
     const cy = Math.floor((y - pad) / step)
+    if (cx < 0 || cy < 0 || cx >= cells || cy >= cells) return ACCENT
     const ox = (x - pad) - cx * step
     const oy = (y - pad) - cy * step
-    if (ox < gap || oy < gap || ox > step - gap || oy > step - gap) return FOAM_DEEP
-    if (cx === 3 && cy === 1) return CINNABAR            // the one found colour
-    return (cx + cy * 2) % 3 === 0 ? PAPER : [0x62, 0xa8, 0xb8]
+    if (ox > cell || oy > cell) return ACCENT
+    // The middle compartment is the one that is filled.
+    return cx === 1 && cy === 1 ? WHITE : mix(ACCENT, WHITE, 0.42)
   }
 }
 
@@ -74,7 +76,7 @@ const maskable = png(512, (x, y) => {
   // Maskable icons get cropped to a circle, so keep the artwork well inside.
   const pad = 512 * 0.22
   const inner = drawer(Math.round(512 - pad * 2))
-  if (x < pad || y < pad || x >= 512 - pad || y >= 512 - pad) return FOAM_DEEP
+  if (x < pad || y < pad || x >= 512 - pad || y >= 512 - pad) return ACCENT
   return inner(Math.round(x - pad), Math.round(y - pad))
 })
 await writeFile('public/icon-maskable-512.png', maskable)

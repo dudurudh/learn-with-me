@@ -1,13 +1,13 @@
 {
-  "name": "365 — industrial design practice",
-  "short_name": "365",
+  "name": "Learn with me",
+  "short_name": "Learn with me",
   "description": "A year of industrial design practice, one day at a time.",
   "start_url": "/learn-with-me/",
   "scope": "/learn-with-me/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#F5F2EC",
-  "theme_color": "#F5F2EC",
+  "background_color": "#ffffff",
+  "theme_color": "#eaeef6",
   "icons": [
     { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
