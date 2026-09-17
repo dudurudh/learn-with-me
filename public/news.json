@@ -1,8 +1,63 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T15:53:59.590Z",
+  "generatedAt": "2026-09-17T14:17:52.467Z",
   "feedsTried": 10,
   "digests": [
+    {
+      "date": "2026-09-17",
+      "stories": [
+        {
+          "title": "Nina lounge chair by Patricia Urquiola for Andreu World",
+          "link": "https://www.dezeen.com/2026/09/17/nina-lounge-chair-patricia-urquiola-andreu-world-dezeen-showroom/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-09-17T09:30:11.000Z",
+          "summary": "Dezeen Showroom: 1970s-style curves meet creative textural contrast in the Nina lounge chair, designed by Patricia Urquiola for furniture brand Andreu World. The Nina lounge chair has a bulbous, organic shape that looks ",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "mushlume co-creates with living organisms to grow design objects at MADE: bush terminal",
+          "link": "https://www.designboom.com/design/mushlume-living-fungi-lighting-made-bush-terminal/",
+          "source": "designboom",
+          "sourceId": "designboom",
+          "publishedAt": "2026-09-17T10:00:50.000Z",
+          "summary": "mushlume transforms hemp byproducts and living mushroom roots into class A fire-rated, sound-absorbing lighting fixtures. The post mushlume co-creates with living organisms to grow design objects at MADE: bush terminal a",
+          "supplementary": false,
+          "score": 109
+        },
+        {
+          "title": "ZHA rethinks benghazi’s urban growth through a digital planning hub",
+          "link": "https://www.designboom.com/architecture/zha-benghazi-libya-urban-growth-digital-planning-hub/",
+          "source": "designboom",
+          "sourceId": "designboom",
+          "publishedAt": "2026-09-16T20:20:33.000Z",
+          "summary": "the citywide strategy is designed to evolve alongside benghazi, replacing a fixed masterplan with an adaptable framework for growth. The post ZHA rethinks benghazi’s urban growth through a digital planning hub appeared f",
+          "supplementary": false,
+          "score": 109
+        },
+        {
+          "title": "12 Things is the new fragrance brand doing everything a brand isn’t supposed to do",
+          "link": "https://www.wallpaper.com/fashion-beauty/fragrance/12-things-fragrance-brand",
+          "source": "Wallpaper*",
+          "sourceId": "wallpaper",
+          "publishedAt": "2026-09-17T13:34:27.000Z",
+          "summary": "With fragrances inspired by decay, unaesthetic packaging, and a text-to-order retail system, 12 Things might be the most disruptive beauty brand to emerge in years",
+          "supplementary": false,
+          "score": 109
+        },
+        {
+          "title": "Step inside Glenn Spiro’s sumptuous new London jewellery showroom",
+          "link": "https://www.wallpaper.com/watches-jewellery/glenn-spiro-london-jewellery-showroom",
+          "source": "Wallpaper*",
+          "sourceId": "wallpaper",
+          "publishedAt": "2026-09-17T13:02:44.000Z",
+          "summary": "Father and son duo Glenn and Joe Spiro worked with Venezuelan designer Valerie Name Bolaño on curating their elegant and eclectic jewellery boutique in Mayfair",
+          "supplementary": false,
+          "score": 109
+        }
+      ]
+    },
     {
       "date": "2026-09-14",
       "stories": [
