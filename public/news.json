@@ -1,8 +1,63 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-17T14:17:52.467Z",
+  "generatedAt": "2026-09-18T13:36:09.249Z",
   "feedsTried": 10,
   "digests": [
+    {
+      "date": "2026-09-18",
+      "stories": [
+        {
+          "title": "Tom Pearson unveils riveted aluminium furniture with droplet-like patterns",
+          "link": "https://www.dezeen.com/2026/09/18/tom-pearson-riveting-aluminium-furniture/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-09-18T05:00:44.000Z",
+          "summary": "Designer Tom Pearson has created industrial furniture pieces with rivets that are both structural and decorative for the 10,000 Rivets collection, on show at APOC Store during London Design Festival. The line, which is T",
+          "supplementary": false,
+          "score": 127
+        },
+        {
+          "title": "‘minimalism feels cold when empty of narrative’: how aarke shapes its brand identity",
+          "link": "https://www.designboom.com/design/minimalism-aarke-brand-identity-interview/",
+          "source": "designboom",
+          "sourceId": "designboom",
+          "publishedAt": "2026-09-18T10:00:25.000Z",
+          "summary": "aarke’s creative director shares how they elevate overlooked kitchen tools, bridging product design with refined lifestyle storytelling. The post ‘minimalism feels cold when empty of narrative’: how aarke shapes its bran",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "This Hydrogen Motorcycle Concept Revives a 90-Year-Old BMW Idea That Never Reached Production",
+          "link": "https://www.yankodesign.com/2026/09/17/this-hydrogen-motorcycle-concept-revives-a-90-year-old-bmw-idea-that-never-reached-production/?utm_source=rss&utm_medium=rss&utm_campaign=this-hydrogen-motorcycle-concept-revives-a-90-year-old-bmw-idea-that-never-reached-production",
+          "source": "Yanko Design",
+          "sourceId": "yanko",
+          "publishedAt": "2026-09-18T00:30:42.000Z",
+          "summary": "This Hydrogen Motorcycle Concept Revives a 90-Year-Old BMW Idea That Never Reached Production In 1934, a BMW designer named Alfred Böning built a motorcycle so far ahead of its time that BMW itself did not know what to..",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "Think you can design a better iPhone? Here’s your chance",
+          "link": "https://www.fastcompany.com/91606973/design-the-next-iphone-builder?partner=rss&amp;utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=rss+fastcompany&amp;utm_content=rss",
+          "source": "Fast Company",
+          "sourceId": "fastcompany",
+          "publishedAt": "2026-09-18T10:00:00.000Z",
+          "summary": "If you ever wanted to design your own iPhone, a new website gives you the tools. “Design the Next iPhone” is a one-off site from Neal Agarwal, a game designer, that lets users add features ranging from serious to absurd ",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "RCA design students exercise restraint in One Tool One Stool exhibition",
+          "link": "https://www.dezeen.com/2026/09/18/rca-design-students-exercise-restraint-in-one-tool-one-stool-exhibition/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-09-18T09:00:12.000Z",
+          "summary": "Chiselled acoustic foam, hand-bent metal and interlocking rulers feature in an exhibition of stools created with single tools, presented by students from the Royal College of Art at London Design Festival. One Tool, One ",
+          "supplementary": false,
+          "score": 113
+        }
+      ]
+    },
     {
       "date": "2026-09-17",
       "stories": [
