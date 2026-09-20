@@ -1,8 +1,63 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-19T13:10:27.350Z",
+  "generatedAt": "2026-09-20T13:35:06.234Z",
   "feedsTried": 10,
   "digests": [
+    {
+      "date": "2026-09-20",
+      "stories": [
+        {
+          "title": "Victoria Yakusha crafts sculptural jewellery boutique in New York",
+          "link": "https://www.dezeen.com/2026/09/19/guzema-jewellery-boutique-soho-new-york-victoria-yakusha-studio/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-09-19T17:00:45.000Z",
+          "summary": "Ukrainian designer Victoria Yakusha has created a sculptural, almost monochromatic interior for a jewellery brand's flagship boutique in New York City. Also from Ukraine, the brand Guzema's store in SoHo is its first US ",
+          "supplementary": false,
+          "score": 109
+        },
+        {
+          "title": "Why the Mutti tomato tin is more than just food – it's ‘summer in a can’",
+          "link": "https://www.wallpaper.com/architecture/mutti-tomato-tin-objectify-carlo-ratti-italy",
+          "source": "Wallpaper*",
+          "sourceId": "wallpaper",
+          "publishedAt": "2026-09-20T08:30:19.000Z",
+          "summary": "In his last instalment of ‘Objectify’, architect Carlo Ratti turns his attention to an Italian kitchen staple – the Mutti tomato tin, and how its gleaming red-and-gold packaging came to be",
+          "supplementary": false,
+          "score": 104
+        },
+        {
+          "title": "IPD Grants 350 Industrial Design Certificates - Global New Light Of Myanmar",
+          "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5uRW10RTB1TGxiZWwwSi1BTVBlemhYMjhRbzI3UVU0NFhDdWlOYzN6Q2JtaENVeEYzQ2NFTDdZTzhaQ3h2VV85b0M3WEQwRWJ5amp3bGlDdmM0Ulk0SVJBZHdfOFF1VWYzMzhGSDl0aDZJcmk4ai1FQzRn?oc=5",
+          "source": "Google News",
+          "sourceId": "gn-industrial",
+          "publishedAt": "2026-09-20T02:48:07.000Z",
+          "summary": "IPD Grants 350 Industrial Design Certificates Global New Light Of Myanmar",
+          "supplementary": true,
+          "score": 100
+        },
+        {
+          "title": "Design studio takes Ithuba to court over Tanzania lottery launch - TimesLIVE",
+          "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPSERuQ0ZpQmZyVktFQVZwZHJxdTdieEFjVFJlV2piNGdmdERyNVotR3VyTExyZWI0Y1F0cWlqZHpqakx0MjZmdjRIYnIzLTc3UmNpTzhPUWZRZW9rS2JaVlNuczFaR1dkZ1pMcWhpWTZGTVJUbzBWeElQQUhQVVpkYWlhajRVN1dCeTYwdXdOajNEdmMwcy1vY0hkX0NNcVFiTnNDcFV6OVd3QXlLLUE?oc=5",
+          "source": "Google News",
+          "sourceId": "gn-studio",
+          "publishedAt": "2026-09-19T22:06:24.000Z",
+          "summary": "Design studio takes Ithuba to court over Tanzania lottery launch TimesLIVE",
+          "supplementary": true,
+          "score": 91
+        },
+        {
+          "title": "5 Camping Gear Picks Built for the Last Warm Weekends of the Year",
+          "link": "https://www.yankodesign.com/2026/09/19/5-camping-gear-picks-built-for-the-last-warm-weekends-of-the-year/?utm_source=rss&utm_medium=rss&utm_campaign=5-camping-gear-picks-built-for-the-last-warm-weekends-of-the-year",
+          "source": "Yanko Design",
+          "sourceId": "yanko",
+          "publishedAt": "2026-09-19T11:40:31.000Z",
+          "summary": "5 Camping Gear Picks Built for the Last Warm Weekends of the Year September camping arrives with a specific quality that July doesn’t have. The mornings carry an edge, the light sits lower, and every good weekend feels..",
+          "supplementary": false,
+          "score": 88
+        }
+      ]
+    },
     {
       "date": "2026-09-19",
       "stories": [
