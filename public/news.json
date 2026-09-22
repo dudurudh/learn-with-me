@@ -1,8 +1,63 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-20T13:35:06.234Z",
+  "generatedAt": "2026-09-22T14:02:36.968Z",
   "feedsTried": 10,
   "digests": [
+    {
+      "date": "2026-09-22",
+      "stories": [
+        {
+          "title": "Billy Easter's Gel Lamp shifts colour using transposable slides",
+          "link": "https://www.dezeen.com/2026/09/22/billy-easter-public-parts-silicone-gel-lamp/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-09-22T05:00:01.000Z",
+          "summary": "London-based designer Billy Easter has released a cubic table lamp made from silicone that can change colour by manually slotting different translucent slabs into it. The Gel Lamp, released last month through Easter's st",
+          "supplementary": false,
+          "score": 127
+        },
+        {
+          "title": "Caraway’s $495 coffee maker is designed to keep plastic out of your morning cup of joe",
+          "link": "https://www.fastcompany.com/91610499/caraways-coffee-maker-plastic-free?partner=rss&amp;utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=rss+fastcompany&amp;utm_content=rss",
+          "source": "Fast Company",
+          "sourceId": "fastcompany",
+          "publishedAt": "2026-09-22T13:30:00.000Z",
+          "summary": "Caraway spent years designing pretty pans without the toxic coatings. Next, it’s coming for the coffee maker. The brand’s first appliance, which launches today for $495 online and at Crate & Barrel stores, took five year",
+          "supplementary": false,
+          "score": 127
+        },
+        {
+          "title": "CorkVector Panel by Gencork",
+          "link": "https://www.dezeen.com/2026/09/22/cork-wall-gencork-dezeen-showroom/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-09-22T09:30:50.000Z",
+          "summary": "Dezeen Showroom: Portuguese brand GenCork combines one of the world's most sustainable natural materials with customisable algorithmically generated design, creating an insulating wall cladding that makes a strong visual",
+          "supplementary": false,
+          "score": 109
+        },
+        {
+          "title": "europe’s largest carbon capture facility sends CO₂ from the netherlands to norway",
+          "link": "https://www.designboom.com/technology/europes-largest-carbon-capture-facility-co2-netherlands-yara-norway/",
+          "source": "designboom",
+          "sourceId": "designboom",
+          "publishedAt": "2026-09-22T09:19:09.000Z",
+          "summary": "captured in the netherlands, shipped across borders and buried 2,600 meters below the seabed, carbon becomes a new kind of industrial cargo The post europe’s largest carbon capture facility sends CO₂ from the netherlands",
+          "supplementary": false,
+          "score": 109
+        },
+        {
+          "title": "nearly 1,000 wooden chimes turn le bruit du bois into an alpine instrument",
+          "link": "https://www.designboom.com/architecture/1000-wooden-chimes-bruit-bois-alpine-instrument-sound-music-festival-cabanes-france/",
+          "source": "designboom",
+          "sourceId": "designboom",
+          "publishedAt": "2026-09-21T15:45:26.000Z",
+          "summary": "for le festival des cabanes, a playable timber wall carries changing wooden tones through the mountains above lake annecy. The post nearly 1,000 wooden chimes turn le bruit du bois into an alpine instrument appeared firs",
+          "supplementary": false,
+          "score": 109
+        }
+      ]
+    },
     {
       "date": "2026-09-20",
       "stories": [
