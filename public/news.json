@@ -1,8 +1,63 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-22T14:02:36.968Z",
+  "generatedAt": "2026-09-23T14:14:29.375Z",
   "feedsTried": 10,
   "digests": [
+    {
+      "date": "2026-09-23",
+      "stories": [
+        {
+          "title": "Grid radiator by Elisa Ossino for Tubes",
+          "link": "https://www.dezeen.com/2026/09/23/grid-radiator-elisa-ossino-tubes-dezeen-showroom/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-09-23T09:30:48.000Z",
+          "summary": "Dezeen Showroom: Italian brand Tubes and designer Elisa Ossino bring an echo of the workshop tool board to heating design with their electric Grid radiator. Taking the form of a thin panel of perforated aluminium, Grid c",
+          "supplementary": false,
+          "score": 136
+        },
+        {
+          "title": "Nyla leather chair by Omidi",
+          "link": "https://www.dezeen.com/2026/09/23/nyla-leather-chair-omidi-dezeen-showroom/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-09-23T13:00:22.000Z",
+          "summary": "Dezeen Showroom: carefully tailored leather upholstery takes centre stage in the Nyla executive chair, produced by furniture brand Omidi. Bringing the feeling of a private office wherever it sits, the Nyla leather chair ",
+          "supplementary": false,
+          "score": 127
+        },
+        {
+          "title": "Gubi brings back Carlo Nason’s ‘Lotus’ lamp",
+          "link": "https://www.wallpaper.com/design-interiors/lighting/lotus-lamp-carl-nason-gubi",
+          "source": "Wallpaper*",
+          "sourceId": "wallpaper",
+          "publishedAt": "2026-09-23T08:00:00.000Z",
+          "summary": "Gubi brings back the late Carlo Nason’s four-layered, flower-like, mouth-blown glass marvel, celebrating the Murano maestro's prowess with form and composition",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "Hook up with Lume’s lightest-ever caravan, the new aluminium-bodied Ranger",
+          "link": "https://www.wallpaper.com/transportation/lume-ranger-caravan",
+          "source": "Wallpaper*",
+          "sourceId": "wallpaper",
+          "publishedAt": "2026-09-23T09:53:22.000Z",
+          "summary": "The Dutch manufacturer’s latest model mixes classic caravan style with contemporary detailing and high-quality interior design",
+          "supplementary": false,
+          "score": 113
+        },
+        {
+          "title": "Someone Designed India’s Humble Tuk-Tuk As A Modern-day Renault-style Mini EV",
+          "link": "https://www.yankodesign.com/2026/09/22/someone-designed-indias-humble-tuk-tuk-as-a-modern-day-renault-style-mini-ev/?utm_source=rss&utm_medium=rss&utm_campaign=someone-designed-indias-humble-tuk-tuk-as-a-modern-day-renault-style-mini-ev",
+          "source": "Yanko Design",
+          "sourceId": "yanko",
+          "publishedAt": "2026-09-22T21:30:16.000Z",
+          "summary": "Someone Designed India’s Humble Tuk-Tuk As A Modern-day Renault-style Mini EV The Tuk-tuk, also called the ‘Auto Rickshaw’ in South Asia, actually comes from Italy! The original three-wheeled vehicle was manufactured by ",
+          "supplementary": false,
+          "score": 109
+        }
+      ]
+    },
     {
       "date": "2026-09-22",
       "stories": [
