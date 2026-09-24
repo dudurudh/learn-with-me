@@ -1,8 +1,63 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-23T14:14:29.375Z",
+  "generatedAt": "2026-09-24T14:12:52.141Z",
   "feedsTried": 10,
   "digests": [
+    {
+      "date": "2026-09-24",
+      "stories": [
+        {
+          "title": "Nobody Will Guess This Stool Actually Has Wheels",
+          "link": "https://www.yankodesign.com/2026/09/23/nobody-will-guess-this-stool-actually-has-wheels/?utm_source=rss&utm_medium=rss&utm_campaign=nobody-will-guess-this-stool-actually-has-wheels",
+          "source": "Yanko Design",
+          "sourceId": "yanko",
+          "publishedAt": "2026-09-23T22:30:52.000Z",
+          "summary": "Nobody Will Guess This Stool Actually Has Wheels Walk into any modern office, studio, or collaborative classroom and you’ll spot the same compromise everywhere. Furniture either sits still and looks good, or it...",
+          "supplementary": false,
+          "score": 136
+        },
+        {
+          "title": "Tom Pearson’s Riveted Furniture Makes the Limits of a Workshop Visible",
+          "link": "https://www.yankodesign.com/2026/09/23/tom-pearsons-riveted-furniture-makes-the-limits-of-a-workshop-visible/?utm_source=rss&utm_medium=rss&utm_campaign=tom-pearsons-riveted-furniture-makes-the-limits-of-a-workshop-visible",
+          "source": "Yanko Design",
+          "sourceId": "yanko",
+          "publishedAt": "2026-09-24T00:30:26.000Z",
+          "summary": "Tom Pearson’s Riveted Furniture Makes the Limits of a Workshop Visible The name is a provocation, not an audit. Tom Pearson’s debut furniture and lighting collection, shown at London’s APOC store during London Design Fes",
+          "supplementary": false,
+          "score": 127
+        },
+        {
+          "title": "synesthesia translated into light across audrey wright’s musical body at the MET",
+          "link": "https://www.designboom.com/art/synesthesia-light-audrey-wright-musical-body-metropolitan-museum-geoff-robertson-stephanie-ann-boyd/",
+          "source": "designboom",
+          "sourceId": "designboom",
+          "publishedAt": "2026-09-23T20:59:30.000Z",
+          "summary": "a wearable field of LEDs translates a composer’s synesthetic color map across the violinist’s moving body. The post synesthesia translated into light across audrey wright’s musical body at the MET appeared first on desig",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "lume traveler’s lightest caravan hides a pull-out kitchen in its aluminum shell",
+          "link": "https://www.designboom.com/technology/lume-travelers-lightest-caravan-pull-out-kitchen-aluminum-shell-ranger/",
+          "source": "designboom",
+          "sourceId": "designboom",
+          "publishedAt": "2026-09-23T15:45:12.000Z",
+          "summary": "the compact aluminum trailer moves cooking outdoors to leave more of its interior free for sleeping and sitting. The post lume traveler’s lightest caravan hides a pull-out kitchen in its aluminum shell appeared first on ",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "How Hans J Wegner became the ‘king of chairs’",
+          "link": "https://www.wallpaper.com/design-interiors/how-hans-j-wegner-became-the-king-of-chairs",
+          "source": "Wallpaper*",
+          "sourceId": "wallpaper",
+          "publishedAt": "2026-09-24T13:52:23.000Z",
+          "summary": "Danish designer Hans J Wegner created some of the 20th century’s most recognisable chairs. Here Wallpaper* explores the stories behind the designs",
+          "supplementary": false,
+          "score": 118
+        }
+      ]
+    },
     {
       "date": "2026-09-23",
       "stories": [
@@ -328,61 +383,6 @@
           "sourceId": "wallpaper",
           "publishedAt": "2026-09-17T13:02:44.000Z",
           "summary": "Father and son duo Glenn and Joe Spiro worked with Venezuelan designer Valerie Name Bolaño on curating their elegant and eclectic jewellery boutique in Mayfair",
-          "supplementary": false,
-          "score": 109
-        }
-      ]
-    },
-    {
-      "date": "2026-09-14",
-      "stories": [
-        {
-          "title": "These pediatric wheelchairs are a fraction of the cost thanks to 3D printing",
-          "link": "https://www.fastcompany.com/91589856/toddler-mobility-trainer-innovation-by-design-2026?partner=rss&amp;utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=rss+fastcompany&amp;utm_content=rss",
-          "source": "Fast Company",
-          "sourceId": "fastcompany",
-          "publishedAt": "2026-09-14T11:00:00.000Z",
-          "summary": "For decades, pediatric mobility device use has been constrained by high costs, insurance barriers, and the need for specialized manufacturing. Now, New Orleans nonprofit MakeGood, the winner of the 2026 Innovation by Des",
-          "supplementary": false,
-          "score": 127
-        },
-        {
-          "title": "Horse-mounted ecological regeneration system among projects by IE University",
-          "link": "https://www.dezeen.com/2026/09/14/horse-mounted-ecological-regeneration-system-ie-university-schoolshows/",
-          "source": "Dezeen",
-          "sourceId": "dezeen",
-          "publishedAt": "2026-09-14T15:00:41.000Z",
-          "summary": "Dezeen School Shows: a portable structure made from natural materials that disperses native seed types from horseback is among projects by IE University students. Also featured is a hospital interior scheme informed by g",
-          "supplementary": false,
-          "score": 118
-        },
-        {
-          "title": "A Wooden Floor Lamp That Refuses to Weigh You Down",
-          "link": "https://www.yankodesign.com/2026/09/14/a-wooden-floor-lamp-that-refuses-to-weigh-you-down/?utm_source=rss&utm_medium=rss&utm_campaign=a-wooden-floor-lamp-that-refuses-to-weigh-you-down",
-          "source": "Yanko Design",
-          "sourceId": "yanko",
-          "publishedAt": "2026-09-14T14:20:22.000Z",
-          "summary": "A Wooden Floor Lamp That Refuses to Weigh You Down Statement lighting has a dirty secret. The taller and more sculptural a floor lamp gets, the heavier it usually becomes, and the harder it is...",
-          "supplementary": false,
-          "score": 118
-        },
-        {
-          "title": "Design Academy Eindhoven students reinvent the bathroom for a resource-scarce future",
-          "link": "https://www.dezeen.com/2026/09/14/design-academy-eindhoven-kaldewei-behind-closed-doors/",
-          "source": "Dezeen",
-          "sourceId": "dezeen",
-          "publishedAt": "2026-09-14T10:00:39.000Z",
-          "summary": "Tiles decorated with hair and a dissolving washbasin made of soap are among the student projects featured in Behind Closed Doors, an exhibition by the Design Academy Eindhoven and Kaldewei at Berlin design festival Curre",
-          "supplementary": false,
-          "score": 109
-        },
-        {
-          "title": "5 Japanese-Made Kitchen Tools That Make Instant Ramen Look Like Fine Dining",
-          "link": "https://www.yankodesign.com/2026/09/14/5-japanese-made-kitchen-tools-that-make-instant-ramen-look-like-fine-dining/?utm_source=rss&utm_medium=rss&utm_campaign=5-japanese-made-kitchen-tools-that-make-instant-ramen-look-like-fine-dining",
-          "source": "Yanko Design",
-          "sourceId": "yanko",
-          "publishedAt": "2026-09-14T11:40:32.000Z",
-          "summary": "5 Japanese-Made Kitchen Tools That Make Instant Ramen Look Like Fine Dining Japanese kitchen tools have a way of reframing what you thought was a small decision. The bowl you use, the grater you reach for, the...",
           "supplementary": false,
           "score": 109
         }
