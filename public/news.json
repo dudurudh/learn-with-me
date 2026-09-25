@@ -1,8 +1,63 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-24T14:12:52.141Z",
+  "generatedAt": "2026-09-25T14:36:33.756Z",
   "feedsTried": 10,
   "digests": [
+    {
+      "date": "2026-09-25",
+      "stories": [
+        {
+          "title": "Jesse Butterfield marries paper and metal in A Veiled Boundary exhibition",
+          "link": "https://www.dezeen.com/2026/09/25/jesse-butterfield-a-veiled-boundary/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-09-25T05:00:49.000Z",
+          "summary": "Sewn paper and hand-hammered steel sit side by side in these lighting pieces and stools by designer Jesse Butterfield, displayed during London Design Festival 2026. The aptly named Sew Paper Lighting and Stool Des Pois s",
+          "supplementary": false,
+          "score": 136
+        },
+        {
+          "title": "MSCHF twists Lexus electric cars into absurd shapes in New York",
+          "link": "https://www.dezeen.com/2026/09/24/mschf-lexus-electric-motomorphosis-circle-car-twisted-car-amory-week/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-09-24T17:19:43.000Z",
+          "summary": "Brooklyn creative studio MSCHF has created two twisted and bent versions of Lexus electric cars for New York City's fall art week, which the studio said is a play on the automotive industry's concept car prototypes. The ",
+          "supplementary": false,
+          "score": 122
+        },
+        {
+          "title": "5 EDC Essentials Worth Clipping to Your Bag This Fall",
+          "link": "https://www.yankodesign.com/2026/09/25/5-edc-essentials-worth-clipping-to-your-bag-this-fall/?utm_source=rss&utm_medium=rss&utm_campaign=5-edc-essentials-worth-clipping-to-your-bag-this-fall",
+          "source": "Yanko Design",
+          "sourceId": "yanko",
+          "publishedAt": "2026-09-25T11:40:52.000Z",
+          "summary": "5 EDC Essentials Worth Clipping to Your Bag This Fall The bag you carry every morning is only as good as what is attached to it. Fall shifts the equation. Days get shorter, the light...",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "Work in Process: Objects of Common Interest share ‘the magic of surprise’ at their Piraeus workshop",
+          "link": "https://www.wallpaper.com/design-interiors/work-in-process-objects-of-common-interest-greece",
+          "source": "Wallpaper*",
+          "sourceId": "wallpaper",
+          "publishedAt": "2026-09-25T10:57:52.000Z",
+          "summary": "This Wallpaper* video series discovers the processes by which creative visionaries bring their work to life. Here, we dive deep into Objects of Common Interest’s experimentation and creative alchemy at the designers’ Gre",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "autonomous robotic hand walks on its fingertips like the addams family’s thing",
+          "link": "https://www.designboom.com/technology/autonomous-robotic-hand-addams-familys-thing-eth-zurich/",
+          "source": "designboom",
+          "sourceId": "designboom",
+          "publishedAt": "2026-09-25T10:55:53.000Z",
+          "summary": "with no legs, wheels or robotic arm in sight, the 818-gram prototype has figured out how to get around on its own. The post autonomous robotic hand walks on its fingertips like the addams family’s thing appeared first on",
+          "supplementary": false,
+          "score": 109
+        }
+      ]
+    },
     {
       "date": "2026-09-24",
       "stories": [
@@ -330,61 +385,6 @@
           "summary": "Chiselled acoustic foam, hand-bent metal and interlocking rulers feature in an exhibition of stools created with single tools, presented by students from the Royal College of Art at London Design Festival. One Tool, One ",
           "supplementary": false,
           "score": 113
-        }
-      ]
-    },
-    {
-      "date": "2026-09-17",
-      "stories": [
-        {
-          "title": "Nina lounge chair by Patricia Urquiola for Andreu World",
-          "link": "https://www.dezeen.com/2026/09/17/nina-lounge-chair-patricia-urquiola-andreu-world-dezeen-showroom/",
-          "source": "Dezeen",
-          "sourceId": "dezeen",
-          "publishedAt": "2026-09-17T09:30:11.000Z",
-          "summary": "Dezeen Showroom: 1970s-style curves meet creative textural contrast in the Nina lounge chair, designed by Patricia Urquiola for furniture brand Andreu World. The Nina lounge chair has a bulbous, organic shape that looks ",
-          "supplementary": false,
-          "score": 118
-        },
-        {
-          "title": "mushlume co-creates with living organisms to grow design objects at MADE: bush terminal",
-          "link": "https://www.designboom.com/design/mushlume-living-fungi-lighting-made-bush-terminal/",
-          "source": "designboom",
-          "sourceId": "designboom",
-          "publishedAt": "2026-09-17T10:00:50.000Z",
-          "summary": "mushlume transforms hemp byproducts and living mushroom roots into class A fire-rated, sound-absorbing lighting fixtures. The post mushlume co-creates with living organisms to grow design objects at MADE: bush terminal a",
-          "supplementary": false,
-          "score": 109
-        },
-        {
-          "title": "ZHA rethinks benghazi’s urban growth through a digital planning hub",
-          "link": "https://www.designboom.com/architecture/zha-benghazi-libya-urban-growth-digital-planning-hub/",
-          "source": "designboom",
-          "sourceId": "designboom",
-          "publishedAt": "2026-09-16T20:20:33.000Z",
-          "summary": "the citywide strategy is designed to evolve alongside benghazi, replacing a fixed masterplan with an adaptable framework for growth. The post ZHA rethinks benghazi’s urban growth through a digital planning hub appeared f",
-          "supplementary": false,
-          "score": 109
-        },
-        {
-          "title": "12 Things is the new fragrance brand doing everything a brand isn’t supposed to do",
-          "link": "https://www.wallpaper.com/fashion-beauty/fragrance/12-things-fragrance-brand",
-          "source": "Wallpaper*",
-          "sourceId": "wallpaper",
-          "publishedAt": "2026-09-17T13:34:27.000Z",
-          "summary": "With fragrances inspired by decay, unaesthetic packaging, and a text-to-order retail system, 12 Things might be the most disruptive beauty brand to emerge in years",
-          "supplementary": false,
-          "score": 109
-        },
-        {
-          "title": "Step inside Glenn Spiro’s sumptuous new London jewellery showroom",
-          "link": "https://www.wallpaper.com/watches-jewellery/glenn-spiro-london-jewellery-showroom",
-          "source": "Wallpaper*",
-          "sourceId": "wallpaper",
-          "publishedAt": "2026-09-17T13:02:44.000Z",
-          "summary": "Father and son duo Glenn and Joe Spiro worked with Venezuelan designer Valerie Name Bolaño on curating their elegant and eclectic jewellery boutique in Mayfair",
-          "supplementary": false,
-          "score": 109
         }
       ]
     }
