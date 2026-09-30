@@ -1,8 +1,63 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-29T15:51:22.162Z",
+  "generatedAt": "2026-09-30T15:55:18.901Z",
   "feedsTried": 10,
   "digests": [
+    {
+      "date": "2026-09-30",
+      "stories": [
+        {
+          "title": "Table lamp made from volcanic stone among projects from Tecnológico de Monterrey",
+          "link": "https://www.dezeen.com/2026/09/29/table-lamp-volcanic-stone-tecnologico-de-monterrey-schoolshows/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-09-29T21:00:33.000Z",
+          "summary": "Dezeen School Shows: a lamp crafted from volcanic stone and informed by a sunrise is among the projects from Instituto Tecnológico y de Estudios Superiores de Monterrey. Also featured is a stone plate with a glass cloche",
+          "supplementary": false,
+          "score": 127
+        },
+        {
+          "title": "8 Digital Nomad Gear Picks That Fit in One Carry-On",
+          "link": "https://www.yankodesign.com/2026/09/30/8-digital-nomad-gear-picks-that-fit-in-one-carry-on/?utm_source=rss&utm_medium=rss&utm_campaign=8-digital-nomad-gear-picks-that-fit-in-one-carry-on",
+          "source": "Yanko Design",
+          "sourceId": "yanko",
+          "publishedAt": "2026-09-30T11:40:31.000Z",
+          "summary": "8 Digital Nomad Gear Picks That Fit in One Carry-On The carry-on is the most honest test a piece of gear can face. Every extra centimeter costs something real. A charger left behind, a book…",
+          "supplementary": false,
+          "score": 109
+        },
+        {
+          "title": "New Balance Quietly Fixed What Makes Tech Sneakers Unwearable",
+          "link": "https://www.yankodesign.com/2026/09/30/new-balance-quietly-fixed-what-makes-tech-sneakers-unwearable/?utm_source=rss&utm_medium=rss&utm_campaign=new-balance-quietly-fixed-what-makes-tech-sneakers-unwearable",
+          "source": "Yanko Design",
+          "sourceId": "yanko",
+          "publishedAt": "2026-09-30T09:15:42.000Z",
+          "summary": "New Balance Quietly Fixed What Makes Tech Sneakers Unwearable Technical sneakers often make you choose between visible comfort and a sense of restraint. The cushioning is on display, the sole is sculpted, and suddenly…",
+          "supplementary": false,
+          "score": 109
+        },
+        {
+          "title": "Why McDonald’s, Dunkin’, Starbucks, and other chains keep making their rewards programs worse—and getting away with it",
+          "link": "https://www.fastcompany.com/91607721/mcdonalds-dunkin-starbucks-other-chains-rewards-programs-worse-getting-away-with-it-restaurant-loyalty?partner=rss&amp;utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=rss+fastcompany&amp;utm_content=rss",
+          "source": "Fast Company",
+          "sourceId": "fastcompany",
+          "publishedAt": "2026-09-30T09:00:00.000Z",
+          "summary": "Aaron Braun had decided to play the long game with his Dunkin’ Rewards points. For five years, his employer, an IT company that kept him on the road, covered his coffee and breakfast via a company card linked to his Dunk",
+          "supplementary": false,
+          "score": 109
+        },
+        {
+          "title": "Jonny Johansson on 30 years of Acne Studios: ‘I look forward much more than I look back’",
+          "link": "https://www.wallpaper.com/fashion-beauty/jonny-johansson-acne-studios-30-years-interview-nan-goldin",
+          "source": "Wallpaper*",
+          "sourceId": "wallpaper",
+          "publishedAt": "2026-09-30T11:50:14.000Z",
+          "summary": "Ahead of the cult Swedish brand’s runway show in Paris this evening (30 September 2026), co-founder and creative director Jonny Johansson sits down with Wallpaper* to talk denim, community, and why he’s avoiding nostalgi",
+          "supplementary": false,
+          "score": 109
+        }
+      ]
+    },
     {
       "date": "2026-09-29",
       "stories": [
@@ -330,61 +385,6 @@
           "summary": "for le festival des cabanes, a playable timber wall carries changing wooden tones through the mountains above lake annecy. The post nearly 1,000 wooden chimes turn le bruit du bois into an alpine instrument appeared firs",
           "supplementary": false,
           "score": 109
-        }
-      ]
-    },
-    {
-      "date": "2026-09-20",
-      "stories": [
-        {
-          "title": "Victoria Yakusha crafts sculptural jewellery boutique in New York",
-          "link": "https://www.dezeen.com/2026/09/19/guzema-jewellery-boutique-soho-new-york-victoria-yakusha-studio/",
-          "source": "Dezeen",
-          "sourceId": "dezeen",
-          "publishedAt": "2026-09-19T17:00:45.000Z",
-          "summary": "Ukrainian designer Victoria Yakusha has created a sculptural, almost monochromatic interior for a jewellery brand's flagship boutique in New York City. Also from Ukraine, the brand Guzema's store in SoHo is its first US ",
-          "supplementary": false,
-          "score": 109
-        },
-        {
-          "title": "Why the Mutti tomato tin is more than just food – it's ‘summer in a can’",
-          "link": "https://www.wallpaper.com/architecture/mutti-tomato-tin-objectify-carlo-ratti-italy",
-          "source": "Wallpaper*",
-          "sourceId": "wallpaper",
-          "publishedAt": "2026-09-20T08:30:19.000Z",
-          "summary": "In his last instalment of ‘Objectify’, architect Carlo Ratti turns his attention to an Italian kitchen staple – the Mutti tomato tin, and how its gleaming red-and-gold packaging came to be",
-          "supplementary": false,
-          "score": 104
-        },
-        {
-          "title": "IPD Grants 350 Industrial Design Certificates - Global New Light Of Myanmar",
-          "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5uRW10RTB1TGxiZWwwSi1BTVBlemhYMjhRbzI3UVU0NFhDdWlOYzN6Q2JtaENVeEYzQ2NFTDdZTzhaQ3h2VV85b0M3WEQwRWJ5amp3bGlDdmM0Ulk0SVJBZHdfOFF1VWYzMzhGSDl0aDZJcmk4ai1FQzRn?oc=5",
-          "source": "Google News",
-          "sourceId": "gn-industrial",
-          "publishedAt": "2026-09-20T02:48:07.000Z",
-          "summary": "IPD Grants 350 Industrial Design Certificates Global New Light Of Myanmar",
-          "supplementary": true,
-          "score": 100
-        },
-        {
-          "title": "Design studio takes Ithuba to court over Tanzania lottery launch - TimesLIVE",
-          "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPSERuQ0ZpQmZyVktFQVZwZHJxdTdieEFjVFJlV2piNGdmdERyNVotR3VyTExyZWI0Y1F0cWlqZHpqakx0MjZmdjRIYnIzLTc3UmNpTzhPUWZRZW9rS2JaVlNuczFaR1dkZ1pMcWhpWTZGTVJUbzBWeElQQUhQVVpkYWlhajRVN1dCeTYwdXdOajNEdmMwcy1vY0hkX0NNcVFiTnNDcFV6OVd3QXlLLUE?oc=5",
-          "source": "Google News",
-          "sourceId": "gn-studio",
-          "publishedAt": "2026-09-19T22:06:24.000Z",
-          "summary": "Design studio takes Ithuba to court over Tanzania lottery launch TimesLIVE",
-          "supplementary": true,
-          "score": 91
-        },
-        {
-          "title": "5 Camping Gear Picks Built for the Last Warm Weekends of the Year",
-          "link": "https://www.yankodesign.com/2026/09/19/5-camping-gear-picks-built-for-the-last-warm-weekends-of-the-year/?utm_source=rss&utm_medium=rss&utm_campaign=5-camping-gear-picks-built-for-the-last-warm-weekends-of-the-year",
-          "source": "Yanko Design",
-          "sourceId": "yanko",
-          "publishedAt": "2026-09-19T11:40:31.000Z",
-          "summary": "5 Camping Gear Picks Built for the Last Warm Weekends of the Year September camping arrives with a specific quality that July doesn’t have. The mornings carry an edge, the light sits lower, and every good weekend feels..",
-          "supplementary": false,
-          "score": 88
         }
       ]
     }
