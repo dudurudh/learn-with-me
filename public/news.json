@@ -1,8 +1,63 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-04T14:47:29.206Z",
+  "generatedAt": "2026-10-06T15:57:08.903Z",
   "feedsTried": 10,
   "digests": [
+    {
+      "date": "2026-10-06",
+      "stories": [
+        {
+          "title": "\"We want to be a global furniture brand, but not in the Hay or Muuto or Vitra area of expensiveness\" says Omhu CEO",
+          "link": "https://www.dezeen.com/2026/10/06/omhu-teddy-sofa-interview/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-10-06T10:00:25.000Z",
+          "summary": "Since being founded by two friends just four years ago, Omhu has sold more than 40,000 sofas. In this interview, CEO Simon Salomonsson explains how the Danish company is disrupting the furniture industry. If you're an In",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "Knekt floor lamp by Hegren among seven new products on Dezeen Showroom",
+          "link": "https://www.dezeen.com/2026/10/05/knekt-floor-lamp-hegren-lighting-furniture-products-dezeen-showroom/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-10-05T18:00:16.000Z",
+          "summary": "Dezeen Showroom: an aluminium floor standing lamp with a wedge-shaped head is among seven new products featured on Dezeen Showroom. Knekt floor lamp by Hegren Norwegian brand Hegren has released a standing lamp that can ",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "Wuben’s Prime Day Fall 2026 Sale Has a Different Light for Every Kind of Carry",
+          "link": "https://www.yankodesign.com/2026/10/05/wubens-prime-day-fall-2026-sale-has-a-different-light-for-every-kind-of-carry/?utm_source=rss&utm_medium=rss&utm_campaign=wubens-prime-day-fall-2026-sale-has-a-different-light-for-every-kind-of-carry",
+          "source": "Yanko Design",
+          "sourceId": "yanko",
+          "publishedAt": "2026-10-05T23:30:08.000Z",
+          "summary": "Wuben’s Prime Day Fall 2026 Sale Has a Different Light for Every Kind of Carry Most flashlights spend their lives in drawers, which is unfortunate because darkness rarely waits for you to find one. Wuben’s Prime Day Fall",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "studio 5.5 recombines sockets and switches into modular lighting and furniture building blocks",
+          "link": "https://www.designboom.com/design/studio-5-5-sockets-switches-modular-lighting-furniture-building-blocks-volt-face/",
+          "source": "designboom",
+          "sourceId": "designboom",
+          "publishedAt": "2026-10-06T02:10:16.000Z",
+          "summary": "volt face treats the switch as a starting point rather than a finishing detail. The post studio 5.5 recombines sockets and switches into modular lighting and furniture building blocks appeared first on designboom | archi",
+          "supplementary": false,
+          "score": 113
+        },
+        {
+          "title": "on le corbusier’s 139th birthday, revisit his iconic ronchamp chapel through paul clemence’s lens",
+          "link": "https://www.designboom.com/architecture/le-corbusiers-ronchamp-chapel-modern-architecture/",
+          "source": "designboom",
+          "sourceId": "designboom",
+          "publishedAt": "2026-10-06T08:58:28.000Z",
+          "summary": "light, texture and sculptural form come together in a building that still feels remarkably contemporary more than seven decades after its completion. The post on le corbusier’s 139th birthday, revisit his iconic ronchamp",
+          "supplementary": false,
+          "score": 109
+        }
+      ]
+    },
     {
       "date": "2026-10-04",
       "stories": [
@@ -328,61 +383,6 @@
           "sourceId": "designboom",
           "publishedAt": "2026-09-28T23:55:19.000Z",
           "summary": "from darkness to light by meireles de pinho acts as a device for memory, reflection, and freedom. The post engraved soldiers’ names cover corten steel cylinder memorial in portugal appeared first on designboom | architec",
-          "supplementary": false,
-          "score": 109
-        }
-      ]
-    },
-    {
-      "date": "2026-09-28",
-      "stories": [
-        {
-          "title": "illya goldman gubin embraces cardboard boxes, shaping them into stools for bottega veneta",
-          "link": "https://www.designboom.com/design/bottega-veneta-cardboard-boxes-sculptural-stools-summer-2027-show-illya-goldman-gubin/",
-          "source": "designboom",
-          "sourceId": "designboom",
-          "publishedAt": "2026-09-28T08:17:09.000Z",
-          "summary": "the ukrainian artist shapes each box through direct physical contact, leaving its folds, creases, and irregularities visible in a series of individually formed seats. The post illya goldman gubin embraces cardboard boxes",
-          "supplementary": false,
-          "score": 113
-        },
-        {
-          "title": "Silora task chair by ITO Design for Narbutas",
-          "link": "https://www.dezeen.com/2026/09/28/silora-task-chair-ito-design-narbutas-dezeen-showroom/",
-          "source": "Dezeen",
-          "sourceId": "dezeen",
-          "publishedAt": "2026-09-28T13:00:17.000Z",
-          "summary": "Dezeen Showroom: ITO Design let function drive form when creating this task chair, which features a distinctive sculptural back, for office brand Narbutas. The Silora chair features a striking backrest, with two petals t",
-          "supplementary": false,
-          "score": 109
-        },
-        {
-          "title": "Nest Egg is a tech-based take on a children's piggy bank",
-          "link": "https://www.dezeen.com/2026/09/28/nest-egg-filament-piggy-bank/",
-          "source": "Dezeen",
-          "sourceId": "dezeen",
-          "publishedAt": "2026-09-28T05:00:31.000Z",
-          "summary": "Scottish design studio Filament has developed a financial learning platform for children based around a toy egg that reintroduces physical interaction to the process of saving and spending money. The conceptual project i",
-          "supplementary": false,
-          "score": 109
-        },
-        {
-          "title": "design for humanity at play: compasso d’oro international design award 2027 calls for entries",
-          "link": "https://www.designboom.com/design/compasso-doro-international-design-award-2027-calls-for-entries/",
-          "source": "designboom",
-          "sourceId": "designboom",
-          "publishedAt": "2026-09-28T10:30:50.000Z",
-          "summary": "the award invites designers, brands, and institutions to submit works completed between 2023 and 2026 across nine distinct project categories. The post design for humanity at play: compasso d’oro international design awa",
-          "supplementary": false,
-          "score": 109
-        },
-        {
-          "title": "5 Tailgate Speakers Built to Survive a Full Saturday Outdoors",
-          "link": "https://www.yankodesign.com/2026/09/28/5-tailgate-speakers-built-to-survive-a-full-saturday-outdoors/?utm_source=rss&utm_medium=rss&utm_campaign=5-tailgate-speakers-built-to-survive-a-full-saturday-outdoors",
-          "source": "Yanko Design",
-          "sourceId": "yanko",
-          "publishedAt": "2026-09-28T11:40:29.000Z",
-          "summary": "5 Tailgate Speakers Built to Survive a Full Saturday Outdoors A parking lot does not care how good your speaker sounded in the store. Too quiet for an open sky, too fragile for a cooler…",
           "supplementary": false,
           "score": 109
         }
