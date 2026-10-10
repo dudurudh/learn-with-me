@@ -1,8 +1,63 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-09T16:12:16.768Z",
+  "generatedAt": "2026-10-10T15:22:39.692Z",
   "feedsTried": 10,
   "digests": [
+    {
+      "date": "2026-10-10",
+      "stories": [
+        {
+          "title": "This plastic stool is a giant Esc key, and it hides your clutter",
+          "link": "https://www.yankodesign.com/2026/10/09/this-plastic-stool-is-a-giant-esc-key-and-it-hides-your-clutter/?utm_source=rss&utm_medium=rss&utm_campaign=this-plastic-stool-is-a-giant-esc-key-and-it-hides-your-clutter",
+          "source": "Yanko Design",
+          "sourceId": "yanko",
+          "publishedAt": "2026-10-09T18:20:51.000Z",
+          "summary": "This plastic stool is a giant Esc key, and it hides your clutter I have a soft spot for objects nobody bothers to credit, and the plastic stool might be the champion of them. It’s the monobloc chair’s...",
+          "supplementary": false,
+          "score": 136
+        },
+        {
+          "title": "Eight unconventional lighting designs that tear up the rulebook",
+          "link": "https://www.dezeen.com/2026/10/10/eight-unconventional-lighting-designs-roundups/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-10-10T09:00:41.000Z",
+          "summary": "From mouldable wax lampshades that can be melted and remade to a desk lamp that packs flat inside an A4 envelope, this roundup celebrates a series of unusual lighting designs. Lamps by City Girls City Girls is the studio",
+          "supplementary": false,
+          "score": 127
+        },
+        {
+          "title": "stefan sagmeister and ekn transform global data into colorful sneakers and boots",
+          "link": "https://www.designboom.com/design/stefan-sagmeister-ekn-global-data-colorful-sneakers-boots-frankfurt/",
+          "source": "designboom",
+          "sourceId": "designboom",
+          "publishedAt": "2026-10-10T08:49:48.000Z",
+          "summary": "the designer collaborates with ekn footwear on a data-driven sneaker and leather boot for his upcoming paris exhibition. The post stefan sagmeister and ekn transform global data into colorful sneakers and boots appeared ",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "massimo dutti reincarnates 16th-century palace as rome flagship store",
+          "link": "https://www.designboom.com/design/massimo-dutti-rome-flagship-store-palazzo-ruspoli/",
+          "source": "designboom",
+          "sourceId": "designboom",
+          "publishedAt": "2026-10-09T17:01:00.000Z",
+          "summary": "an olfactory archive, curated design books, and a custom coffee activation connect the fashion retail space to local culture. The post massimo dutti reincarnates 16th-century palace as rome flagship store appeared first ",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "3 Lamps Built From Objects Nobody Wanted Anymore",
+          "link": "https://www.yankodesign.com/2026/10/09/3-lamps-built-from-objects-nobody-wanted-anymore/?utm_source=rss&utm_medium=rss&utm_campaign=3-lamps-built-from-objects-nobody-wanted-anymore",
+          "source": "Yanko Design",
+          "sourceId": "yanko",
+          "publishedAt": "2026-10-09T16:20:29.000Z",
+          "summary": "3 Lamps Built From Objects Nobody Wanted Anymore A room can have plenty of light and still feel oddly flat. Overhead fixtures handle the practical stuff, but they rarely give you a reason...",
+          "supplementary": false,
+          "score": 118
+        }
+      ]
+    },
     {
       "date": "2026-10-09",
       "stories": [
@@ -328,61 +383,6 @@
           "sourceId": "dezeen",
           "publishedAt": "2026-10-02T14:30:47.000Z",
           "summary": "Florida-based Nothing has created hot and cold paper takeaway cups with built-in lids that are designed to be compostable. In the past two years, Nothing has created two versions of its proprietary cups, which feature el",
-          "supplementary": false,
-          "score": 109
-        }
-      ]
-    },
-    {
-      "date": "2026-10-01",
-      "stories": [
-        {
-          "title": "Porsche’s Car Studio Concept Secretly Doubles as a Club",
-          "link": "https://www.yankodesign.com/2026/09/30/porsches-car-studio-concept-secretly-doubles-as-a-club/?utm_source=rss&utm_medium=rss&utm_campaign=porsches-car-studio-concept-secretly-doubles-as-a-club",
-          "source": "Yanko Design",
-          "sourceId": "yanko",
-          "publishedAt": "2026-09-30T21:30:06.000Z",
-          "summary": "Porsche’s Car Studio Concept Secretly Doubles as a Club A collector car can be the most exciting thing you own and the least exciting thing you store. Keeping a prized vehicle safe often means...",
-          "supplementary": false,
-          "score": 127
-        },
-        {
-          "title": "San Francisco exhibition explores the \"radical imagination\" of Rael San Fratello",
-          "link": "https://www.dezeen.com/2026/10/01/rael-san-fratello-san-francisco-exhibition-yerba-buena-broom-roof/",
-          "source": "Dezeen",
-          "sourceId": "dezeen",
-          "publishedAt": "2026-10-01T14:00:13.000Z",
-          "summary": "A structure made of bio-based thermoplastic and recycled broom heads is among the works featured in a mid-career retrospective of design studio Rael San Fratello at San Francisco's Yerba Buena Center for the Arts. The ex",
-          "supplementary": false,
-          "score": 122
-        },
-        {
-          "title": "Dezeen's favourite furniture and lighting from September",
-          "link": "https://www.dezeen.com/2026/10/01/dezeens-favourite-furniture-and-lighting-from-september/",
-          "source": "Dezeen",
-          "sourceId": "dezeen",
-          "publishedAt": "2026-10-01T10:15:05.000Z",
-          "summary": "Dezeen's editorial team has been trawling design weeks across Europe this month to seek out some of the best new furniture and lighting. Below, we've compiled ten favourites from London Design Festival, Helsinki Design W",
-          "supplementary": false,
-          "score": 118
-        },
-        {
-          "title": "‘How a practice evolves over 30 years’: Es Devlin at the Design Museum is both intimate and sweeping",
-          "link": "https://www.wallpaper.com/design-interiors/design-events/es-devlin-design-museum-london",
-          "source": "Wallpaper*",
-          "sourceId": "wallpaper",
-          "publishedAt": "2026-09-30T18:39:03.000Z",
-          "summary": "‘Es Devlin: Other Worlds’ at the Design Museum (2 October 2026 – 4 April 2027) features a reproduction of the multidisciplinary designer’s own studio, excerpts from her sketchbooks, an overview of her most celebrated ins",
-          "supplementary": false,
-          "score": 113
-        },
-        {
-          "title": "future-proof design relies on a chain of sustainable decisions",
-          "link": "https://www.designboom.com/design/if-design-award-sustainable-decisions/",
-          "source": "designboom",
-          "sourceId": "designboom",
-          "publishedAt": "2026-10-01T10:00:09.000Z",
-          "summary": "the iF design award 2026 highlights how intentional design decisions drive circular systems, material innovation, and resilient communities. The post future-proof design relies on a chain of sustainable decisions appeare",
           "supplementary": false,
           "score": 109
         }
