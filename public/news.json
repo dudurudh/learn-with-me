@@ -1,8 +1,63 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-14T14:30:35.077Z",
+  "generatedAt": "2026-10-16T13:57:32.430Z",
   "feedsTried": 10,
   "digests": [
+    {
+      "date": "2026-10-16",
+      "stories": [
+        {
+          "title": "Tesla launches flying Roadster concept car",
+          "link": "https://www.dezeen.com/2026/10/16/tesla-launches-flying-roadster-concept-car/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-10-16T02:09:57.000Z",
+          "summary": "Electric car company Tesla has unveiled its flying Roadster vehicle with a demonstration in which the car drove upside down, flipped off a ramp and briefly flew, using compressed-air thrusters that Tesla claims will make",
+          "supplementary": false,
+          "score": 127
+        },
+        {
+          "title": "nightswimming: giovanna silva on discotheques, light, and nightlife",
+          "link": "https://www.designboom.com/architecture/nightswimming-giovanna-silva-discotheques-light-nightlife-guest-essay/",
+          "source": "designboom",
+          "sourceId": "designboom",
+          "publishedAt": "2026-10-16T10:50:41.000Z",
+          "summary": "the italian photographer reflects on the changing spaces of club culture, from italian discotheques to the improvised dance floors of contemporary nightlife. The post nightswimming: giovanna silva on discotheques, light,",
+          "supplementary": false,
+          "score": 109
+        },
+        {
+          "title": "porsche mission S reinterprets the sports car with cues from its racing heritage",
+          "link": "https://www.designboom.com/technology/porsche-mission-s-sports-car-cues-racing-heritage/",
+          "source": "designboom",
+          "sourceId": "designboom",
+          "publishedAt": "2026-10-16T07:45:21.000Z",
+          "summary": "drawing on the 550 spyder, 911, and GT1, the vision model proposes a future for porsche that looks to its motorsport heritage, questioning the growing dominance of screens inside the car. The post porsche mission S reint",
+          "supplementary": false,
+          "score": 109
+        },
+        {
+          "title": "Fyne Audio’s Speaker Uses Hidden Glass to Tame Ringing",
+          "link": "https://www.yankodesign.com/2026/10/16/fyne-audios-speaker-uses-hidden-glass-to-tame-ringing/?utm_source=rss&utm_medium=rss&utm_campaign=fyne-audios-speaker-uses-hidden-glass-to-tame-ringing",
+          "source": "Yanko Design",
+          "sourceId": "yanko",
+          "publishedAt": "2026-10-16T13:20:51.000Z",
+          "summary": "Fyne Audio’s Speaker Uses Hidden Glass to Tame Ringing A glass diaphragm is an unlikely detail to get excited about in a speaker that looks like expensive furniture. Yet it’s the detail that makes...",
+          "supplementary": false,
+          "score": 109
+        },
+        {
+          "title": "Elgato Wave Go Turns a Tiny Clip-On Into a Handheld Microphone",
+          "link": "https://www.yankodesign.com/2026/10/16/elgato-wave-go-turns-a-tiny-clip-on-into-a-handheld-microphone/?utm_source=rss&utm_medium=rss&utm_campaign=elgato-wave-go-turns-a-tiny-clip-on-into-a-handheld-microphone",
+          "source": "Yanko Design",
+          "sourceId": "yanko",
+          "publishedAt": "2026-10-16T10:07:54.000Z",
+          "summary": "Elgato Wave Go Turns a Tiny Clip-On Into a Handheld Microphone Clipping a microphone to your shirt leaves your hands free, but interviewing someone else calls for something you can comfortably hold between you. Carrying ",
+          "supplementary": false,
+          "score": 109
+        }
+      ]
+    },
     {
       "date": "2026-10-14",
       "stories": [
@@ -330,61 +385,6 @@
           "summary": "light, texture and sculptural form come together in a building that still feels remarkably contemporary more than seven decades after its completion. The post on le corbusier’s 139th birthday, revisit his iconic ronchamp",
           "supplementary": false,
           "score": 109
-        }
-      ]
-    },
-    {
-      "date": "2026-10-04",
-      "stories": [
-        {
-          "title": "A Pocket Concept Built to Catch Design Ideas Before They Get Away",
-          "link": "https://www.yankodesign.com/2026/10/03/a-pocket-concept-built-to-catch-design-ideas-before-they-get-away/?utm_source=rss&utm_medium=rss&utm_campaign=a-pocket-concept-built-to-catch-design-ideas-before-they-get-away",
-          "source": "Yanko Design",
-          "sourceId": "yanko",
-          "publishedAt": "2026-10-03T22:30:09.000Z",
-          "summary": "A Pocket Concept Built to Catch Design Ideas Before They Get Away Good ideas don’t always wait until you’ve found the right pen and an empty page. For industrial designers, a quick sketch can turn into a...",
-          "supplementary": false,
-          "score": 118
-        },
-        {
-          "title": "A 1908 New York building’s discarded fragments got turned into furniture instead of being demolished",
-          "link": "https://www.yankodesign.com/2026/10/04/a-1908-new-york-buildings-discarded-fragments-got-turned-into-furniture-instead-of-being-demolished/?utm_source=rss&utm_medium=rss&utm_campaign=a-1908-new-york-buildings-discarded-fragments-got-turned-into-furniture-instead-of-being-demolished",
-          "source": "Yanko Design",
-          "sourceId": "yanko",
-          "publishedAt": "2026-10-04T13:20:25.000Z",
-          "summary": "A 1908 New York building’s discarded fragments got turned into furniture instead of being demolished A renovation across the street from Rafael Prieto’s studio offered an unusually good view of his next project. As decor",
-          "supplementary": false,
-          "score": 113
-        },
-        {
-          "title": "Five innovative and practical modular furniture designs",
-          "link": "https://www.dezeen.com/2026/10/04/innovative-practical-modular-furniture-designs/",
-          "source": "Dezeen",
-          "sourceId": "dezeen",
-          "publishedAt": "2026-10-04T09:00:44.000Z",
-          "summary": "Our latest roundup looks at modular furniture pieces that are both practical and surprising, ranging from an alternative to bespoke cabinetry to a furniture system made up of squishy balls. Amoreba by Golem Amoreba is co",
-          "supplementary": false,
-          "score": 109
-        },
-        {
-          "title": "Be careful – women photographers are dangerous, says a new art book",
-          "link": "https://www.wallpaper.com/art/photography/be-careful-women-photographers-are-dangerous-says-a-new-art-book",
-          "source": "Wallpaper*",
-          "sourceId": "wallpaper",
-          "publishedAt": "2026-10-04T06:00:00.000Z",
-          "summary": "'Women Photographers Are Dangerous,' published by ACC Art Books, aims to give female photographers their time in the spotlight",
-          "supplementary": false,
-          "score": 104
-        },
-        {
-          "title": "Museum Vonk is \"a testing ground for affordable bio-based construction\"",
-          "link": "https://www.dezeen.com/2026/10/04/museum-vonk-studio-marco-vermeulen/",
-          "source": "Dezeen",
-          "sourceId": "dezeen",
-          "publishedAt": "2026-10-04T10:00:01.000Z",
-          "summary": "Pigmented lime plaster colours the hempcrete facades of this wedge-shaped history museum in Eindhoven, completed by Dutch studio Studio Marco Vermeulen with a palette of biomaterials. Located on the site of a former driv",
-          "supplementary": false,
-          "score": 90
         }
       ]
     }
