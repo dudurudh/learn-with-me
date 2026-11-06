@@ -1,8 +1,63 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-05T17:23:34.397Z",
+  "generatedAt": "2026-11-06T16:45:29.281Z",
   "feedsTried": 10,
   "digests": [
+    {
+      "date": "2026-11-06",
+      "stories": [
+        {
+          "title": "Nothing but a single joint holds together Dado furniture",
+          "link": "https://www.dezeen.com/2026/11/06/dado-furniture-allen-kaufmann/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-11-06T06:00:00.000Z",
+          "summary": "Berlin studio Allen Kaufmann Architekten has adapted a traditional woodworking joint to create a flat-pack range that can be assembled completely without tools – and it's been voted furniture design of the year by Dezeen",
+          "supplementary": false,
+          "score": 127
+        },
+        {
+          "title": "Fragile lighting collection by Marset among 15 new products on Dezeen Showroom",
+          "link": "https://www.dezeen.com/2026/11/05/fragile-lighting-marset-furniture-tiles-products-dezeen-showroom/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-11-05T19:00:00.000Z",
+          "summary": "A lighting range comprising repeatable spherical and pyramidal forms made from delicate glass is among recent products published on our furniture directory. Fragile lighting collection by Jaume Ramírez for Marset A simpl",
+          "supplementary": false,
+          "score": 127
+        },
+        {
+          "title": "HOZO Hobby Knife Pairs Push-Button Blade Changes With a Fold-Out Workspace",
+          "link": "https://www.yankodesign.com/2026/11/05/hozo-hobby-knife-pairs-push-button-blade-changes-with-a-fold-out-workspace/?utm_source=rss&utm_medium=rss&utm_campaign=hozo-hobby-knife-pairs-push-button-blade-changes-with-a-fold-out-workspace",
+          "source": "Yanko Design",
+          "sourceId": "yanko",
+          "publishedAt": "2026-11-06T02:45:35.000Z",
+          "summary": "HOZO Hobby Knife Pairs Push-Button Blade Changes With a Fold-Out Workspace Small craft projects have a funny way of spreading across a table. Pieces of cardboard become a miniature building, and suddenly the knife, spare",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "maison margiela celebrates tokyo flagship anniversary with toothpick-drawn manga",
+          "link": "https://www.designboom.com/art/toothpick-drawn-manga-celebrates-maison-martin-margiela-tokyo-flagship-anniversary-takehito-moriizumi-ebisu/",
+          "source": "designboom",
+          "sourceId": "designboom",
+          "publishedAt": "2026-11-06T09:30:27.000Z",
+          "summary": "an abandoned electronics factory, strange signals, and a group of researchers set the scene for the factory at night, an illustrated story that explores transformation without erasing the past. The post maison margiela c",
+          "supplementary": false,
+          "score": 109
+        },
+        {
+          "title": "hurricane-proof polycarbonate wraps resilient 24-hour public library in miami",
+          "link": "https://www.designboom.com/architecture/hurricane-proof-polycarbonate-resilient-24-hour-public-library-miami-89th-studio/",
+          "source": "designboom",
+          "sourceId": "designboom",
+          "publishedAt": "2026-11-05T20:10:03.000Z",
+          "summary": "faced with the challenge of sheltering an automated 24-hour library from hurricanes, the design utilizes an ambiguous, geometric steel frame wrapped entirely in high-velocity polycarbonate paneling. The post hurricane-pr",
+          "supplementary": false,
+          "score": 109
+        }
+      ]
+    },
     {
       "date": "2026-11-05",
       "stories": [
@@ -328,61 +383,6 @@
           "sourceId": "dezeen",
           "publishedAt": "2026-10-29T05:00:00.000Z",
           "summary": "For the ninth edition of the C Next Designers design conference, Spanish brand Cosentino brought together designers from Europe, Africa and the Middle East for three days of talks focused on “design as a driver of change",
-          "supplementary": false,
-          "score": 109
-        }
-      ]
-    },
-    {
-      "date": "2026-10-27",
-      "stories": [
-        {
-          "title": "emma sicher grows biomaterials from wild berries and microorganisms",
-          "link": "https://www.designboom.com/design/emma-sicher-biomaterials-microorganisms-cellulose-eating-scoby/",
-          "source": "designboom",
-          "sourceId": "designboom",
-          "publishedAt": "2026-10-27T11:50:35.000Z",
-          "summary": "with bacteria and locally sourced plants, biodesigner emma sicher grows microbial cellulose into edible prototypes and packaging. The post emma sicher grows biomaterials from wild berries and microorganisms appeared firs",
-          "supplementary": false,
-          "score": 136
-        },
-        {
-          "title": "how light and materiality shape spaces in EDRA MAGAZINE issue six",
-          "link": "https://www.designboom.com/design/how-light-and-materiality-shape-spaces-in-edra-magazine-issue-six/",
-          "source": "designboom",
-          "sourceId": "designboom",
-          "publishedAt": "2026-10-27T11:16:17.000Z",
-          "summary": "the sixth issue draws a parallel between the way light shapes spaces, brings them to life and changes their atmosphere, and the ability of furniture to do the same. The post how light and materiality shape spaces in EDRA",
-          "supplementary": false,
-          "score": 118
-        },
-        {
-          "title": "These tiny trackers were designed to be light enough for a butterfly",
-          "link": "https://www.fastcompany.com/91628226/these-tiny-trackers-were-designed-to-be-light-enough-for-a-butterfly?partner=rss&amp;utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=rss+fastcompany&amp;utm_content=rss",
-          "source": "Fast Company",
-          "sourceId": "fastcompany",
-          "publishedAt": "2026-10-27T10:00:00.000Z",
-          "summary": "Researchers track animal movements through tags on their limbs, wings, and shells, but how do you track a creature that weighs less than a gram? To build a device tiny and light enough for a monarch butterfly, designers ",
-          "supplementary": false,
-          "score": 118
-        },
-        {
-          "title": "Photos reveal walkable Oxford Street as first phase of pedestrianisation begins",
-          "link": "https://www.dezeen.com/2026/10/27/photos-walkable-oxford-street-pedestrianisation-begins/",
-          "source": "Dezeen",
-          "sourceId": "dezeen",
-          "publishedAt": "2026-10-27T10:30:00.000Z",
-          "summary": "Almost a kilometre of Oxford Street in central London has been permanently closed off to vehicle traffic as pedestrianisation of the major shopping street and thoroughfare began yesterday. The post Photos reveal walkable",
-          "supplementary": false,
-          "score": 109
-        },
-        {
-          "title": "Lenovo’s Color Ink Tablet Switches Its LCD From Full Color to Black and White",
-          "link": "https://www.yankodesign.com/2026/10/27/lenovos-color-ink-tablet-switches-its-lcd-from-full-color-to-black-and-white/?utm_source=rss&utm_medium=rss&utm_campaign=lenovos-color-ink-tablet-switches-its-lcd-from-full-color-to-black-and-white",
-          "source": "Yanko Design",
-          "sourceId": "yanko",
-          "publishedAt": "2026-10-27T08:15:32.000Z",
-          "summary": "Lenovo’s Color Ink Tablet Switches Its LCD From Full Color to Black and White “Color Ink” sounds like something you’d find in an e-book reader, but Lenovo’s newly announced tablet takes a different route. The Xiaoxin 10.",
           "supplementary": false,
           "score": 109
         }
