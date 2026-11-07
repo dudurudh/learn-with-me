@@ -1,8 +1,63 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-06T16:45:29.281Z",
+  "generatedAt": "2026-11-07T15:39:38.442Z",
   "feedsTried": 10,
   "digests": [
+    {
+      "date": "2026-11-07",
+      "stories": [
+        {
+          "title": "Tesla \"winding down\" production of Cybertruck",
+          "link": "https://www.dezeen.com/2026/11/06/tesla-cybertruck-production-discontinuation/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-11-06T17:12:12.000Z",
+          "summary": "According to a recent tweet by Tesla founder Elon Musk, the company will be decreasing its production of the Cybertruck electric vehicle at its Texas Gigafactory two and a half years after the car's debut. The post Tesla",
+          "supplementary": false,
+          "score": 136
+        },
+        {
+          "title": "3D printed ruffled collars top checkerboard lamps, vases, and candle holders in ondu wonderland",
+          "link": "https://www.designboom.com/design/3d-printed-ruffled-collars-top-checkerboard-lamps-vases-and-candle-holders-in-ondu-wonderland-gliese-design/",
+          "source": "designboom",
+          "sourceId": "designboom",
+          "publishedAt": "2026-11-06T20:10:49.000Z",
+          "summary": "crafted through advanced 3D printing using sustainable biopolymers, this series of table lamps, vases, and candle holders bridges digital precision with a touch of fairytale storytelling. The post 3D printed ruffled coll",
+          "supplementary": false,
+          "score": 127
+        },
+        {
+          "title": "The Cupra Raval is the Spanish brand’s newest EV. We talk design with Cupra’s Jorge Díez",
+          "link": "https://www.wallpaper.com/transportation/cupra-raval-ev-jorge-diez-interview",
+          "source": "Wallpaper*",
+          "sourceId": "wallpaper",
+          "publishedAt": "2026-11-07T10:00:00.000Z",
+          "summary": "How does Cupra distil so much design innovation and energy into a compact car within the constraints of mass production? Cupra’s Jorge Díez and Francesca Sangalli walk Wallpaper* around the new Raval to decode its multip",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "The 5 Best Outdoor Gear of November 2026",
+          "link": "https://www.yankodesign.com/2026/11/07/the-5-best-outdoor-gear-of-november-2026/?utm_source=rss&utm_medium=rss&utm_campaign=the-5-best-outdoor-gear-of-november-2026",
+          "source": "Yanko Design",
+          "sourceId": "yanko",
+          "publishedAt": "2026-11-07T12:40:23.000Z",
+          "summary": "The 5 Best Outdoor Gear of November 2026 A campsite gets complicated through small inconveniences: a flashlight that’s running low, cookware competing for space, nowhere inviting to sit once dinner is done. Those...",
+          "supplementary": false,
+          "score": 109
+        },
+        {
+          "title": "This $129 Portable Jacuzzi turns any bathtub into a personal spa",
+          "link": "https://www.yankodesign.com/2026/11/06/this-129-portable-jacuzzi-turns-any-bathtub-into-a-personal-spa/?utm_source=rss&utm_medium=rss&utm_campaign=this-129-portable-jacuzzi-turns-any-bathtub-into-a-personal-spa",
+          "source": "Yanko Design",
+          "sourceId": "yanko",
+          "publishedAt": "2026-11-07T02:45:53.000Z",
+          "summary": "This $129 Portable Jacuzzi turns any bathtub into a personal spa Installing a jetted tub usually means a new tub, a plumber, a dedicated electrical circuit, and some tile you never planned on replacing. That’s a...",
+          "supplementary": false,
+          "score": 109
+        }
+      ]
+    },
     {
       "date": "2026-11-06",
       "stories": [
@@ -330,61 +385,6 @@
           "summary": "Local studio Al-Jawad Pike has given skincare brand Aesop's shop in London department store Harrods an update, creating a terracotta-clad counter designed to have \"the qualities of a miniature building\". The post Al-Jawa",
           "supplementary": false,
           "score": 104
-        }
-      ]
-    },
-    {
-      "date": "2026-10-29",
-      "stories": [
-        {
-          "title": "brazilian studio rótulo em branco turns oversized nails into sculptural steel tables",
-          "link": "https://www.designboom.com/design/rotulo-em-branco-prego-oversized-nails-steel-furniture/",
-          "source": "designboom",
-          "sourceId": "designboom",
-          "publishedAt": "2026-10-28T22:01:14.000Z",
-          "summary": "designed by ingrid sani lang, the prego collection reimagines construction nails as stainless-steel side, coffee, and bar tables with interchangeable heads. The post brazilian studio rótulo em branco turns oversized nail",
-          "supplementary": false,
-          "score": 118
-        },
-        {
-          "title": "How Aldo Bakker's ambiguous designs merge sculpture and function",
-          "link": "https://www.wallpaper.com/design-interiors/aldo-bakker-strangely-familiar",
-          "source": "Wallpaper*",
-          "sourceId": "wallpaper",
-          "publishedAt": "2026-10-29T13:25:43.000Z",
-          "summary": "Aldo Bakker's latest exhibition, titled ‘Strangely Familiar’, is currently on view in Amsterdam at Looiersgracht 60 until 23 December 2026. Nick Vinson spoke to the designer about materials and forms",
-          "supplementary": false,
-          "score": 118
-        },
-        {
-          "title": "mcdonald’s recycles happy meal toys into wireless mouse shaped like french fries",
-          "link": "https://www.designboom.com/technology/mcdonalds-lenovo-french-fries-wireless-mouse-recycled-happy-meal-toys/",
-          "source": "designboom",
-          "sourceId": "designboom",
-          "publishedAt": "2026-10-29T11:49:50.000Z",
-          "summary": "developed with lenovo, this french fry-shaped wireless mouse brings a familiar red carton to the desktop, giving recycled toy plastic a new day job. The post mcdonald’s recycles happy meal toys into wireless mouse shaped",
-          "supplementary": false,
-          "score": 113
-        },
-        {
-          "title": "Montana acquires sustainable furniture maker Takt",
-          "link": "https://www.dezeen.com/2026/10/29/montana-takt-acquisition/",
-          "source": "Dezeen",
-          "sourceId": "dezeen",
-          "publishedAt": "2026-10-29T10:30:00.000Z",
-          "summary": "Montana has announced its buyout of fellow Danish design brand Takt, known for its solid wood furniture and pioneering approach to sustainable design. The post Montana acquires sustainable furniture maker Takt appeared f",
-          "supplementary": false,
-          "score": 109
-        },
-        {
-          "title": "C Next Designers EMEA brings together over 250 professionals for design conference in Almería",
-          "link": "https://www.dezeen.com/2026/10/29/c-next-designers-emea-almeria-cosentino/",
-          "source": "Dezeen",
-          "sourceId": "dezeen",
-          "publishedAt": "2026-10-29T05:00:00.000Z",
-          "summary": "For the ninth edition of the C Next Designers design conference, Spanish brand Cosentino brought together designers from Europe, Africa and the Middle East for three days of talks focused on “design as a driver of change",
-          "supplementary": false,
-          "score": 109
         }
       ]
     }
