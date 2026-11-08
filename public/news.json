@@ -1,8 +1,63 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-07T15:39:38.442Z",
+  "generatedAt": "2026-11-08T15:58:00.512Z",
   "feedsTried": 10,
   "digests": [
+    {
+      "date": "2026-11-08",
+      "stories": [
+        {
+          "title": "Lepas’ debut concept car, the Aura, showcases the brand’s future aesthetic aspiration",
+          "link": "https://www.wallpaper.com/transportation/lepas-aura-concept-car",
+          "source": "Wallpaper*",
+          "sourceId": "wallpaper",
+          "publishedAt": "2026-11-08T04:00:00.000Z",
+          "summary": "We speak to Lepas chief designer Ivan Dulanovic about the inspiration and innovation represented by the company’s first concept car, the Aura",
+          "supplementary": false,
+          "score": 127
+        },
+        {
+          "title": "Refreshed Freetown Memorial is a spectacle of light, as well as a ‘message of hope’",
+          "link": "https://www.wallpaper.com/architecture/freetown-memorial-oshinowo-studio-sierra-leone",
+          "source": "Wallpaper*",
+          "sourceId": "wallpaper",
+          "publishedAt": "2026-11-07T19:30:00.000Z",
+          "summary": "Oshinówò Studio reveals a new Freetown Memorial in Sierra Leone, extending the existing monument designed by Sir Edwin Lutyens and honouring the local Carrier Corps for the first time",
+          "supplementary": false,
+          "score": 127
+        },
+        {
+          "title": "Embru’s Patio Chair Can Get a New Seat Without a New Frame",
+          "link": "https://www.yankodesign.com/2026/11/08/embrus-patio-chair-can-get-a-new-seat-without-a-new-frame/?utm_source=rss&utm_medium=rss&utm_campaign=embrus-patio-chair-can-get-a-new-seat-without-a-new-frame",
+          "source": "Yanko Design",
+          "sourceId": "yanko",
+          "publishedAt": "2026-11-08T12:40:53.000Z",
+          "summary": "Embru’s Patio Chair Can Get a New Seat Without a New Frame A wire-grid lounge chair sounds like a hard sell for an afternoon off. Yet Moritz Schmid’s Patio Chair for Swiss furniture maker Embru has a...",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "Diden Spider Robot Climbs Steel Walls and Actually Welds Them",
+          "link": "https://www.yankodesign.com/2026/11/07/diden-spider-robot-climbs-steel-walls-and-actually-welds-them/?utm_source=rss&utm_medium=rss&utm_campaign=diden-spider-robot-climbs-steel-walls-and-actually-welds-them",
+          "source": "Yanko Design",
+          "sourceId": "yanko",
+          "publishedAt": "2026-11-07T20:15:15.000Z",
+          "summary": "Diden Spider Robot Climbs Steel Walls and Actually Welds Them A welding tool is only useful if you can get it to the seam. Inside a ship’s steel structure, that can mean bringing a worker,...",
+          "supplementary": false,
+          "score": 109
+        },
+        {
+          "title": "Tesla \"winding down\" production of Cybertruck",
+          "link": "https://www.dezeen.com/2026/11/06/tesla-cybertruck-production-discontinuation/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-11-06T17:12:12.000Z",
+          "summary": "According to a recent tweet by Tesla founder Elon Musk, the company will be decreasing its production of the Cybertruck electric vehicle at its Texas Gigafactory two and a half years after the car's debut. The post Tesla",
+          "supplementary": false,
+          "score": 106
+        }
+      ]
+    },
     {
       "date": "2026-11-07",
       "stories": [
@@ -330,61 +385,6 @@
           "summary": "This Printer-shaped Chair Has Receipts… Literally! Somewhere along the way, the internet decided that “receipts” means proof. Screenshots of your ex’s texts are receipts. That old tweet a celebrity forgot to...",
           "supplementary": false,
           "score": 109
-        }
-      ]
-    },
-    {
-      "date": "2026-10-30",
-      "stories": [
-        {
-          "title": "MyGlamper mounts on your SUV hitch and inflates into a large, 12-person tent at the campsite",
-          "link": "https://www.yankodesign.com/2026/10/30/myglamper-mounts-on-your-suv-hitch-and-inflates-into-a-large-12-person-tent-at-the-campsite/?utm_source=rss&utm_medium=rss&utm_campaign=myglamper-mounts-on-your-suv-hitch-and-inflates-into-a-large-12-person-tent-at-the-campsite",
-          "source": "Yanko Design",
-          "sourceId": "yanko",
-          "publishedAt": "2026-10-30T15:20:30.000Z",
-          "summary": "MyGlamper mounts on your SUV hitch and inflates into a large, 12-person tent at the campsite Rooftop tents have their own advantages, but they cap the camping setup at a limited number of people. Tents are better off the",
-          "supplementary": false,
-          "score": 109
-        },
-        {
-          "title": "Kord and Bark Give a Power Strip a Wooden Case Worth Leaving on Display",
-          "link": "https://www.yankodesign.com/2026/10/30/kord-and-bark-give-a-power-strip-a-wooden-case-worth-leaving-on-display/?utm_source=rss&utm_medium=rss&utm_campaign=kord-and-bark-give-a-power-strip-a-wooden-case-worth-leaving-on-display",
-          "source": "Yanko Design",
-          "sourceId": "yanko",
-          "publishedAt": "2026-10-30T13:20:05.000Z",
-          "summary": "Kord and Bark Give a Power Strip a Wooden Case Worth Leaving on Display Power strips tend to get the least glamorous spot in a room, usually behind furniture or underneath a desk. That’s understandable when the alternati",
-          "supplementary": false,
-          "score": 109
-        },
-        {
-          "title": "How the Cheesecake Factory won a political food fight",
-          "link": "https://www.fastcompany.com/91632461/how-the-cheesecake-factory-won-a-political-food-fight?partner=rss&amp;utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=rss+fastcompany&amp;utm_content=rss",
-          "source": "Fast Company",
-          "sourceId": "fastcompany",
-          "publishedAt": "2026-10-30T10:00:00.000Z",
-          "summary": "In the thick of a heated midterm electoral season, the Cheesecake Factory, of all things, became the latest brand to get sucked into a political food fight against its will. This week, Democrats and Republicans converted",
-          "supplementary": false,
-          "score": 109
-        },
-        {
-          "title": "Designing for the modern office: Brunner and Doshi Levien launch a flexible furniture collection",
-          "link": "https://www.wallpaper.com/design-interiors/furniture/brunner-group-doshi-levien-session-collection-office-furniture",
-          "source": "Wallpaper*",
-          "sourceId": "wallpaper",
-          "publishedAt": "2026-10-30T08:41:44.000Z",
-          "summary": "At Orgatec 2026, Brunner and Doshi Levien present the ‘Session’ collection, a series of flexible furniture elements that respond to the needs of a contemporary workspace",
-          "supplementary": false,
-          "score": 109
-        },
-        {
-          "title": "Al-Jawad Pike refreshes Aesop store with terracotta-tiled counter evoking ancient Persia",
-          "link": "https://www.dezeen.com/2026/10/30/al-jawad-pike-aesop-store-harrods-terracotta-counter/",
-          "source": "Dezeen",
-          "sourceId": "dezeen",
-          "publishedAt": "2026-10-30T06:00:00.000Z",
-          "summary": "Local studio Al-Jawad Pike has given skincare brand Aesop's shop in London department store Harrods an update, creating a terracotta-clad counter designed to have \"the qualities of a miniature building\". The post Al-Jawa",
-          "supplementary": false,
-          "score": 104
         }
       ]
     }
