@@ -1,8 +1,63 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-08T15:58:00.512Z",
+  "generatedAt": "2026-11-09T19:48:48.212Z",
   "feedsTried": 10,
   "digests": [
+    {
+      "date": "2026-11-09",
+      "stories": [
+        {
+          "title": "Casual Store, a new retail space in São Paulo, elevates minimalism to theatrical effect",
+          "link": "https://www.wallpaper.com/architecture/casual-store-studio-mk27-brazil",
+          "source": "Wallpaper*",
+          "sourceId": "wallpaper",
+          "publishedAt": "2026-11-09T06:00:00.000Z",
+          "summary": "A new showroom for furniture and design retailer Casual at Micasa, designed by Studio mk27, is a flexible retail project in Brazil that plays with light, transparency and typological constraints",
+          "supplementary": false,
+          "score": 127
+        },
+        {
+          "title": "Oshinówò Studio tops Lutyens-designed war memorial with glass prism to honour Sierra Leone's Carrier Corps",
+          "link": "https://www.dezeen.com/2026/11/09/freetown-memorial-sierra-leone-carrier-corps-tosin-oshinowo/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-11-09T11:00:00.000Z",
+          "summary": "The Commonwealth War Graves Commission has unveiled a memorial to the Sierra Leone Carrier Corps in Freetown, Sierra Leone. The post Oshinówò Studio tops Lutyens-designed war memorial with glass prism to honour Sierra Le",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "Studio Aslak Siimes designs PharmaPrinter Aurum to \"empower pharmacists\"",
+          "link": "https://www.dezeen.com/2026/11/09/studio-aslak-curifylabs-pharmaprinter-aurum-empower-pharmacists/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-11-09T06:00:00.000Z",
+          "summary": "Industrial design firm Studio Aslak Siimes has unveiled CurifyLabs PharmaPrinter Aurum, a pharmaceutical compounding system that was designed to improve the process of creating patient-specific medicine. The post Studio ",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "SMALLrevolution’s traceable recycling takes second in designboom special prize at seoul design award",
+          "link": "https://www.designboom.com/design/smallrevolution-traceable-recycling-furniture-seoul-design-award-2026-special-prize/",
+          "source": "designboom",
+          "sourceId": "designboom",
+          "publishedAt": "2026-11-09T10:21:15.000Z",
+          "summary": "recycled aircraft safety strips become furniture that retains its glow, making the material’s previous life visible. The post SMALLrevolution’s traceable recycling takes second in designboom special prize at seoul design",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "A celebrated Berlin designer turns her eye to kids’ furniture",
+          "link": "https://www.fastcompany.com/91636491/a-celebrated-berlin-designer-turns-her-eye-to-kids-furniture?partner=rss&amp;utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=rss+fastcompany&amp;utm_content=rss",
+          "source": "Fast Company",
+          "sourceId": "fastcompany",
+          "publishedAt": "2026-11-09T14:00:00.000Z",
+          "summary": "If you walk through the kids’ furniture section of a Target or Walmart, you’ll get a glimpse into what adults think children like: pink for girls, blue for boys, a parade of cartoon bunnies and Disney princesses emblazon",
+          "supplementary": false,
+          "score": 113
+        }
+      ]
+    },
     {
       "date": "2026-11-08",
       "stories": [
@@ -328,61 +383,6 @@
           "sourceId": "yanko",
           "publishedAt": "2026-11-02T18:20:31.000Z",
           "summary": "Board’s Tabletop Console Uses Toy Spoons and Spaceships Instead of Gamepads Touchscreens have plenty of games, but tapping on glass doesn’t quite replace moving a piece across a board. The Board, a tabletop console from ",
-          "supplementary": false,
-          "score": 109
-        }
-      ]
-    },
-    {
-      "date": "2026-10-31",
-      "stories": [
-        {
-          "title": "retro cocktail bar with multi-chrome lighting and curved steel hides behind barcelona focacceria",
-          "link": "https://www.designboom.com/architecture/retro-cocktail-bar-multi-chrome-lighting-curved-steel-barcelona-focacceria-isern-serra-focacha/",
-          "source": "designboom",
-          "sourceId": "designboom",
-          "publishedAt": "2026-10-30T19:10:27.000Z",
-          "summary": "behind a neighborhood focacceria storefront on barcelona's carrer tuset, designer isern serra completes focacha, a speakeasy cocktail lounge inspired by space age and verner panton's visiona. The post retro cocktail bar ",
-          "supplementary": false,
-          "score": 127
-        },
-        {
-          "title": "Old Chairs Get a Resin Shell Without Hiding Their Scars",
-          "link": "https://www.yankodesign.com/2026/10/30/old-chairs-get-a-resin-shell-without-hiding-their-scars/?utm_source=rss&utm_medium=rss&utm_campaign=old-chairs-get-a-resin-shell-without-hiding-their-scars",
-          "source": "Yanko Design",
-          "sourceId": "yanko",
-          "publishedAt": "2026-10-30T17:20:36.000Z",
-          "summary": "Old Chairs Get a Resin Shell Without Hiding Their Scars Darkened wood, uneven color, and exposed fasteners are hardly the usual ingredients of a furniture makeover. In Younghyun Lee’s The Youth, they’re the reason to...",
-          "supplementary": false,
-          "score": 127
-        },
-        {
-          "title": "woven bamboo armchair clad in UV-reactive crocheted blooms glows in the dark",
-          "link": "https://www.designboom.com/design/woven-bamboo-armchair-uv-reactive-crocheted-blooms-dark-peiyang-camille-li/",
-          "source": "designboom",
-          "sourceId": "designboom",
-          "publishedAt": "2026-10-31T03:10:14.000Z",
-          "summary": "peiyang (camille) li designs she blooms in the dark, an intimate woven bamboo armchair clad in hand-crocheted blossoms made from uv-reactive yarn that absorb daylight and emit a soft nocturnal glow. The post woven bamboo",
-          "supplementary": false,
-          "score": 118
-        },
-        {
-          "title": "There’s a new player in the aluminium luggage game: meet Alu’r from Delsey Paris",
-          "link": "https://www.wallpaper.com/travel/alur-delsey-paris-aluminium-luggage",
-          "source": "Wallpaper*",
-          "sourceId": "wallpaper",
-          "publishedAt": "2026-10-31T10:15:27.000Z",
-          "summary": "Delsey has announced its first aluminium collection, launching a carry-on and check-in bag that feature fresh colours and signature patterned metal finishes",
-          "supplementary": false,
-          "score": 118
-        },
-        {
-          "title": "This Printer-shaped Chair Has Receipts… Literally!",
-          "link": "https://www.yankodesign.com/2026/10/30/this-printer-shaped-chair-has-receipts-literally/?utm_source=rss&utm_medium=rss&utm_campaign=this-printer-shaped-chair-has-receipts-literally",
-          "source": "Yanko Design",
-          "sourceId": "yanko",
-          "publishedAt": "2026-10-30T22:30:38.000Z",
-          "summary": "This Printer-shaped Chair Has Receipts… Literally! Somewhere along the way, the internet decided that “receipts” means proof. Screenshots of your ex’s texts are receipts. That old tweet a celebrity forgot to...",
           "supplementary": false,
           "score": 109
         }
