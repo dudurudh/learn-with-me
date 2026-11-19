@@ -1,8 +1,63 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-18T18:03:44.800Z",
+  "generatedAt": "2026-11-19T18:16:20.327Z",
   "feedsTried": 10,
   "digests": [
+    {
+      "date": "2026-11-19",
+      "stories": [
+        {
+          "title": "Bubbly lamp by Canalside Studio among nine new products on Dezeen Showroom",
+          "link": "https://www.dezeen.com/2026/11/18/bubbly-lamp-canalside-studio-lighting-furniture-products-surfaces-dezeen-showroom/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-11-18T19:00:00.000Z",
+          "summary": "A table lamp comprising a plastic base topped with five magnetically attached glowing orbs is among the products recently published on our Showroom section. Bubbly lamp by Canalside Studio Magnetic connector points are p",
+          "supplementary": false,
+          "score": 136
+        },
+        {
+          "title": "interview: meeting the soft, breathing creatures of katrijn westland",
+          "link": "https://www.designboom.com/design/soft-breathing-creatures-katrijn-westland-interview/",
+          "source": "designboom",
+          "sourceId": "designboom",
+          "publishedAt": "2026-11-19T11:50:22.000Z",
+          "summary": "through touch, movement, and unexpected gestures, the designer explores how textile creatures can change our relationship with everyday materials. The post interview: meeting the soft, breathing creatures of katrijn west",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "This DIY Manga Reader Looks Like an Oversized Tamagotchi",
+          "link": "https://www.yankodesign.com/2026/11/19/this-diy-manga-reader-looks-like-an-oversized-tamagotchi/?utm_source=rss&utm_medium=rss&utm_campaign=this-diy-manga-reader-looks-like-an-oversized-tamagotchi",
+          "source": "Yanko Design",
+          "sourceId": "yanko",
+          "publishedAt": "2026-11-19T17:20:26.000Z",
+          "summary": "This DIY Manga Reader Looks Like an Oversized Tamagotchi Tamagotchi toys have always made a little plastic egg feel like something worth carrying around. The Mega Tamagotchi takes that familiar shape in a considerably...",
+          "supplementary": false,
+          "score": 118
+        },
+        {
+          "title": "Meet Swedish Girls, Sabine Marcelis’s pick for the most influential designer of the next 20 years",
+          "link": "https://www.dezeen.com/2026/11/19/swedish-girls-20-20-swedish-girls/",
+          "source": "Dezeen",
+          "sourceId": "dezeen",
+          "publishedAt": "2026-11-19T11:25:00.000Z",
+          "summary": "Sabine Marcelis has nominated Swedish Girls for Dezeen's 20/20 project. In this interview, we learn why the design duo deliberately play into stereotypes. The post Meet Swedish Girls, Sabine Marcelis’s pick for the most ",
+          "supplementary": false,
+          "score": 109
+        },
+        {
+          "title": "air-powered vehicles take passengers on a journey beneath the water’s surface",
+          "link": "https://www.designboom.com/technology/air-powered-vehicles-passengers-journey-water-surface-sub-sea-systems/",
+          "source": "designboom",
+          "sourceId": "designboom",
+          "publishedAt": "2026-11-19T08:45:42.000Z",
+          "summary": "developed by sub sea systems, the attraction combines a gravity-fed track, an air-powered propulsion system, and enclosed passenger cabins to create a new kind of aquatic entertainment. The post air-powered vehicles take",
+          "supplementary": false,
+          "score": 109
+        }
+      ]
+    },
     {
       "date": "2026-11-18",
       "stories": [
@@ -328,61 +383,6 @@
           "sourceId": "yanko",
           "publishedAt": "2026-11-13T12:40:41.000Z",
           "summary": "5 Thoughtful Gifts for Men Who Appreciate Great Design Shopping for a man who notices the curve of a drinking glass or the way a lamp opens calls for more than an expensive label....",
-          "supplementary": false,
-          "score": 109
-        }
-      ]
-    },
-    {
-      "date": "2026-11-12",
-      "stories": [
-        {
-          "title": "Portable and polychromatic, Lumio’s ‘Milo’ light is your new desktop companion",
-          "link": "https://www.wallpaper.com/design-interiors/lighting/milo-portable-light-by-max-gunawan-for-lumio",
-          "source": "Wallpaper*",
-          "sourceId": "wallpaper",
-          "publishedAt": "2026-11-12T11:16:56.000Z",
-          "summary": "Designer Max Gunawan was inspired by scattered clumps of wild mushrooms to create a portable light with personality and flexibility",
-          "supplementary": false,
-          "score": 127
-        },
-        {
-          "title": "real motors brings futuristic project: ARES electric motorcycle to life with new prototypes",
-          "link": "https://www.designboom.com/technology/real-motors-futuristic-ares-electric-motorcycle-prototypes-03-04/",
-          "source": "designboom",
-          "sourceId": "designboom",
-          "publishedAt": "2026-11-11T19:20:46.000Z",
-          "summary": "with sculptural bodywork and an analog-inspired experience, project: ARES is preparing for its first 250 production units. The post real motors brings futuristic project: ARES electric motorcycle to life with new prototy",
-          "supplementary": false,
-          "score": 118
-        },
-        {
-          "title": "Loupe Light Concept Lets Diners Borrow a Magnifier From the Table Lamp",
-          "link": "https://www.yankodesign.com/2026/11/11/loupe-light-concept-lets-diners-borrow-a-magnifier-from-the-table-lamp/?utm_source=rss&utm_medium=rss&utm_campaign=loupe-light-concept-lets-diners-borrow-a-magnifier-from-the-table-lamp",
-          "source": "Yanko Design",
-          "sourceId": "yanko",
-          "publishedAt": "2026-11-11T18:20:34.000Z",
-          "summary": "Loupe Light Concept Lets Diners Borrow a Magnifier From the Table Lamp Dim restaurant lighting can make dinner feel intimate, right up until you have to decipher the menu. Reaching for your phone’s flashlight solves one ",
-          "supplementary": false,
-          "score": 113
-        },
-        {
-          "title": "built99 positions india’s contextual intelligence on the global stage",
-          "link": "https://www.designboom.com/architecture/built99-india-contextual-intelligence/",
-          "source": "designboom",
-          "sourceId": "designboom",
-          "publishedAt": "2026-11-12T11:00:34.000Z",
-          "summary": "built99 introduces an annual selection of 99 nominated studios. backed by designboom and archdaily, the initiative champions low-impact construction, regional craft, and deep contextual intelligence. The post built99 pos",
-          "supplementary": false,
-          "score": 109
-        },
-        {
-          "title": "The 8 Best Kitchen Tools of November 2026 That Earn Their Drawer Space",
-          "link": "https://www.yankodesign.com/2026/11/12/the-8-best-kitchen-tools-of-november-2026-that-earn-their-drawer-space/?utm_source=rss&utm_medium=rss&utm_campaign=the-8-best-kitchen-tools-of-november-2026-that-earn-their-drawer-space",
-          "source": "Yanko Design",
-          "sourceId": "yanko",
-          "publishedAt": "2026-11-12T12:40:11.000Z",
-          "summary": "The 8 Best Kitchen Tools of November 2026 That Earn Their Drawer Space Freshly fried food shouldn’t have to sit in its own drippings while you finish dinner. A plate with a removable rack is one answer. A...",
           "supplementary": false,
           "score": 109
         }
